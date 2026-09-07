@@ -26,7 +26,12 @@ def git(*args):
 
 
 def external_sources():
-    result = {}
+    result = {
+        "RepresentationDirected/IyamaWordMeshAdditiveHull.html":
+            "https://github.com/haruhisa-enomoto/quotient-submodule-equidistribution/blob/"
+            "d5ba0c48e7a851afd51247ff9cd81fc629e00ed2/QuotientSubmoduleEquidistribution/"
+            "RepresentationDirected/IyamaWordMeshAdditiveHull.lean"
+    }
     manifest = json.loads((ROOT / "lake-manifest.json").read_text())
     for package in manifest["packages"]:
         base = ROOT / ".lake/packages" / package["name"]
@@ -54,6 +59,16 @@ def fix_dependency_links():
     sources = external_sources()
     replaced = 0
     for page in site.rglob("*.html"):
+        def keep_archival_reference(match):
+            # doc-gen4 auto-links .lean filenames even in prose about an older
+            # project. This Cartan source is a historical reference, not a
+            # module of this library; preserve its text and the adjacent commit.
+            link = urlsplit(match.group(1))
+            target = (page.parent / unquote(link.path)).resolve()
+            if target == site / "ClosedRayChain/GenericFiniteness.html":
+                return match.group(2)
+            return match.group(0)
+
         def rewrite(match):
             nonlocal replaced
             link = urlsplit(match.group(1))
@@ -67,7 +82,9 @@ def fix_dependency_links():
                 replaced += 1
                 return 'href="' + sources[relative] + '"'
             return match.group(0)
-        page.write_text(re.sub(r'href="([^"]+)"', rewrite, page.read_text()))
+        text = re.sub(r'<a href="([^"]+)">(.*?)</a>', keep_archival_reference,
+                      page.read_text(), flags=re.S)
+        page.write_text(re.sub(r'href="([^"]+)"', rewrite, text))
     return replaced
 
 

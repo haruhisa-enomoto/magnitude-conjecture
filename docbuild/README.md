@@ -15,7 +15,7 @@ python3 scripts/check_website.py
 ```
 
 The committed manifest pins this separate project's dependencies. The generator
-documents every project module serially, using doc-gen4's SQLite database and
+documents every production library module serially, using doc-gen4's SQLite database and
 HTML/search renderer. It links dependency imports to their exact source
 revisions, without regenerating Mathlib's entire documentation site.
 

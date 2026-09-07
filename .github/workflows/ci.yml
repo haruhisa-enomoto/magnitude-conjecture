@@ -6,6 +6,10 @@ on:
   pull_request:
   workflow_dispatch:
     inputs:
+      runner:
+        description: Runner label (use a configured runner with at least 16 GB RAM for replay)
+        type: string
+        default: ubuntu-24.04
       docs:
         description: Generate the complete project API and website artifact
         type: boolean
@@ -47,7 +51,7 @@ jobs:
     # During private preparation the substantial fresh build is requested
     # explicitly. It runs on every push/PR once the repository is public.
     if: github.event_name == 'workflow_dispatch' || !github.event.repository.private
-    runs-on: ubuntu-24.04
+    runs-on: ${{ inputs.runner || 'ubuntu-24.04' }}
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262

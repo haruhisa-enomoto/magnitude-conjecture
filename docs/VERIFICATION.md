@@ -80,3 +80,8 @@ The first source/site CI run passed at commit `539a4c26ff68dd5266761f00f2781b8a6
 The full remote build has not been run at this checkpoint. Private standard
 Linux runners have less memory than public runners, so the workflow adds swap
 on smaller machines. See [GitHub's runner specifications](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).
+Independent replay has a larger total memory footprint than an individual
+Lean compilation: Comparator retains the exported environment while NanoDa
+runs. Use a machine with at least 16 GB RAM for that optional step; manual
+dispatch accepts a configured runner label. The default private runner is
+intended for the serial proof build, with swap for its largest steps.

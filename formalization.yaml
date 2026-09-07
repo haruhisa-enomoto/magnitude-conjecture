@@ -14,6 +14,13 @@ classification:
   arxiv: ["math.RT"]
   msc2020: ["16G10", "16G70"]
 sources:
+  - title: "Magnitude of module categories"
+    authors: ["Erlend D. Børve", "Daniel Horiatakis", "Martin Kalck"]
+    id: "arXiv:2607.07555v1"
+    type: "preprint"
+    relationship: "background"
+    location: "https://arxiv.org/abs/2607.07555v1"
+    note: "Source of the magnitude conjecture resolved by the formalized theorem."
   - title: "The magnitude conjecture for module categories"
     authors: ["Haruhisa Enomoto"]
     type: "manuscript"

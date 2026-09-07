@@ -8,7 +8,8 @@ with equality exactly when the basic algebra of A is special biserial.
 There is no characteristic or basicness restriction on A.
 
 This repository contains the complete Lean proof and a mathematical website.
-The source theorem is the magnitude conjecture of Børve, Horiatakis, and Kalck,
+The result resolves the magnitude conjecture of
+[Børve, Horiatakis, and Kalck](https://arxiv.org/abs/2607.07555v1),
 as proved in Haruhisa Enomoto's manuscript *The magnitude conjecture for module
 categories*. See [paper correspondence](docs/PAPER-CORRESPONDENCE.md) for the
 recorded manuscript revision and known exposition discrepancies.
