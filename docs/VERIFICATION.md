@@ -17,7 +17,8 @@ is `MagnitudeConjecture.PublicAxiomAudit`; the full supporting-result audit
 is `MagnitudeConjecture.AxiomAudit`. To print the current public axioms again:
 
 ```sh
-lake env lean MagnitudeConjecture/PublicAxiomAudit.lean
+python3 scripts/audit_axioms.py
+python3 scripts/audit_axioms.py --full
 ```
 
 After building Challenge and Solution, on Linux with Go and Rust installed:
@@ -62,3 +63,18 @@ licence, description, and retained placeholders. It is not a mathematical
 review or a complete registry acceptance test. The provenance of inherited
 AI-assisted development is disclosed without claiming an independent human
 review.
+
+## Continuous integration
+
+Pushes and pull requests run source, metadata, helper, and website checks.
+During private preparation, use the workflow's manual dispatch for the
+substantial full proof build, with optional documentation and independent
+replay. The full proof build also runs automatically once the repository is
+public. The workflow uploads evidence and website artifacts; it does not deploy.
+
+The local fresh build and independent replay are recorded separately from CI.
+The first source/site CI run passed at commit `539a4c26ff68dd5266761f00f2781b8a61a190af`:
+[workflow run](https://github.com/haruhisa-enomoto/magnitude-conjecture/actions/runs/34074150379).
+The full remote build has not been run at this checkpoint. Private standard
+Linux runners have less memory than public runners, so the workflow adds swap
+on smaller machines. See [GitHub's runner specifications](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).

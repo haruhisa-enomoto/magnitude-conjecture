@@ -1,0 +1,25 @@
+digraph imports {
+rankdir=TB; bgcolor="#f7f6f1"; pad=0.3;
+node [shape=box, style="rounded,filled", fillcolor="white", color="#007d78", fontname="sans-serif", fontsize=12];
+edge [color="#53656d"];
+"MagnitudeConjecture.MainResults" [label="MainResults"];
+"MagnitudeConjecture.Statement" [label="Statement"];
+"MagnitudeConjecture.Algebra.StatementTheorem" [label="Algebra\nStatementTheorem"];
+"MagnitudeConjecture.Algebra.StatementFiniteModules" [label="Algebra\nStatementFiniteModules"];
+"MagnitudeConjecture.Algebra.StatementPresentation" [label="Algebra\nStatementPresentation"];
+"MagnitudeConjecture.Algebra.RightModuleMagnitudePublic" [label="Algebra\nRightModuleMagnitudePublic"];
+"MagnitudeConjecture.Algebra.RightModuleSimpleCount" [label="Algebra\nRightModuleSimpleCount"];
+"MagnitudeConjecture.Algebra.RightModuleMagnitudeCharacterization" [label="Algebra\nRightModuleMagnitudeCharacterization"];
+"MagnitudeConjecture.Algebra.BoundQuiverPresentation" [label="Algebra\nBoundQuiverPresentation"];
+"MagnitudeConjecture.CategoryTheory.FiniteCategoryAlgebraEquivalence" [label="CategoryTheory\nFiniteCategoryAlgebraEquivalence"];
+"MagnitudeConjecture.MainResults" -> "MagnitudeConjecture.Algebra.StatementTheorem";
+"MagnitudeConjecture.Algebra.StatementTheorem" -> "MagnitudeConjecture.Algebra.StatementFiniteModules";
+"MagnitudeConjecture.Algebra.StatementTheorem" -> "MagnitudeConjecture.Algebra.StatementPresentation";
+"MagnitudeConjecture.Algebra.StatementFiniteModules" -> "MagnitudeConjecture.Statement";
+"MagnitudeConjecture.Algebra.StatementFiniteModules" -> "MagnitudeConjecture.Algebra.RightModuleMagnitudePublic";
+"MagnitudeConjecture.Algebra.StatementPresentation" -> "MagnitudeConjecture.Statement";
+"MagnitudeConjecture.Algebra.StatementPresentation" -> "MagnitudeConjecture.Algebra.BoundQuiverPresentation";
+"MagnitudeConjecture.Algebra.StatementPresentation" -> "MagnitudeConjecture.CategoryTheory.FiniteCategoryAlgebraEquivalence";
+"MagnitudeConjecture.Algebra.RightModuleMagnitudePublic" -> "MagnitudeConjecture.Algebra.RightModuleMagnitudeCharacterization";
+"MagnitudeConjecture.Algebra.RightModuleMagnitudePublic" -> "MagnitudeConjecture.Algebra.RightModuleSimpleCount";
+}

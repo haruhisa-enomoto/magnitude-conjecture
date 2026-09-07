@@ -32,7 +32,8 @@ def pending_targets(output: str) -> list[str]:
     if marker not in output:
         raise RuntimeError("Lake did not report its outdated dependency frontier")
     lines = output.rsplit(marker, 1)[1].splitlines()
-    targets = [line[2:] for line in lines if line.startswith("- ")]
+    targets = [re.sub(r"«([\w.-]+)»", r"\1", line[2:])
+               for line in lines if line.startswith("- ")]
     if not targets or any(
         not re.fullmatch(r"(?:[\w-]+/)?[\w.][\w.-]*(?::[\w.]+)?", t)
         for t in targets

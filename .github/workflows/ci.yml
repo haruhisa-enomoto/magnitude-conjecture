@@ -30,6 +30,7 @@ jobs:
         with:
           persist-credentials: false
       - run: python3 scripts/generate_challenge.py --check
+      - run: python3 -m unittest discover -s tests
       - run: ruby scripts/validate-formalization.rb
       - run: bash -n scripts/verify-comparator.sh scripts/landrun-wrapper.sh
       - run: python3 scripts/build_website.py
@@ -53,13 +54,23 @@ jobs:
           lint: false
           use-github-cache: false
           use-mathlib-cache: true
+      - name: Provide swap for private runners with less RAM
+        run: |
+          if [ "$(awk '/MemTotal/ { print $2 }' /proc/meminfo)" -lt 12000000 ]; then
+            sudo fallocate -l 4G /tmp/magnitude-ci.swap
+            sudo chmod 600 /tmp/magnitude-ci.swap
+            sudo mkswap /tmp/magnitude-ci.swap
+            sudo swapon /tmp/magnitude-ci.swap
+          fi
       - name: Build complete proof and both statement modules serially
         run: >-
           python3 scripts/build_lean_serial.py --package . --output .build-audit/ci
           --max-rss-kib 8388608
           MagnitudeConjecture MagnitudeConjecture.AxiomAudit Challenge Solution
       - name: Query public axioms
-        run: lake env lean MagnitudeConjecture/PublicAxiomAudit.lean > .build-audit/public-axioms.log
+        run: |
+          python3 scripts/audit_axioms.py
+          python3 scripts/audit_axioms.py --full
       - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff
         if: inputs.replay
         with:

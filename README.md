@@ -21,7 +21,7 @@ recorded manuscript revision and known exposition discrepancies.
   `MagnitudeConjecture.Statement.mainClaim` and the exact presentation equivalence.
 - [Public entry point](MagnitudeConjecture/MainResults.lean): the theorem,
   direct simple count, and simple/projective bijection.
-- [Proof guide](website/pages/proof.html) and [provenance](PROVENANCE.md).
+- [Website instructions](website/README.md) and [provenance](PROVENANCE.md).
 
 The independent [Challenge](Challenge.lean) is generated from Statement.lean.
 It has one deliberate theorem placeholder for Comparator. [Solution](Solution.lean)
@@ -44,6 +44,8 @@ python3 scripts/build_lean_serial.py --package . --output .build-audit/full \
 python3 scripts/build_lean_serial.py --package . --output .build-audit/statement \
   --max-rss-kib 8388608 Challenge Solution
 python3 scripts/generate_challenge.py --check
+python3 scripts/audit_axioms.py
+python3 scripts/audit_axioms.py --full
 ```
 
 Run one build at a time. The helper compiles Lake's dependency frontier
