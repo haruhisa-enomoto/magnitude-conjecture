@@ -1,0 +1,12 @@
+<p class="eyebrow">Reproducibility</p><h1>Verification and provenance</h1>
+<p>The production theorem and its independent vocabulary compile with Lean 4.33.1. Their axiom reports contain only <code>propext</code>, <code>Classical.choice</code>, and <code>Quot.sound</code>. The deliberate Challenge placeholder is excluded from production proof counts.</p>
+<p>{{verification_status}}</p>
+<h2>Build the project</h2><pre><code>lake exe cache get
+python3 scripts/build_lean_serial.py --package . --output .build-audit \
+  --max-rss-kib 8388608 MagnitudeConjecture.MainResults \
+  MagnitudeConjecture.PublicAxiomAudit
+python3 scripts/generate_challenge.py --check</code></pre>
+<p>The serial helper keeps a per-module log and memory measurement. For the complete library, use targets <code>MagnitudeConjecture MagnitudeConjecture.AxiomAudit</code>. Build <code>Challenge Solution</code> before independent comparison.</p>
+<h2>Source and attribution</h2><p>The standalone source was extracted from the owner-directed research development. The vendored categorical foundations retain their original names, attribution, and Apache-2.0 licence. The project records the source revision and manuscript revision separately.</p>
+<p><a href="{{source_url}}/PROVENANCE.md">Provenance</a> · <a href="{{source_url}}/VENDORED.md">Reused source</a> · <a href="{{source_url}}/docs/PAPER-CORRESPONDENCE.md">Paper correspondence</a></p>
+<h2>Registry status</h2><p>No Palomar submission or public website deployment has been made. A registry entry would record a specific public commit and its verification results. This documentation can accompany that submission.</p>

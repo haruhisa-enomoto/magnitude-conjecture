@@ -1,0 +1,30 @@
+name = "magnitude_conjecture"
+version = "0.1.0"
+defaultTargets = ["MagnitudeConjecture"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "0df444a360eaa60ab8c11dca51a86af692955474"
+
+[[lean_lib]]
+name = "QuotientSubmoduleEquidistribution"
+globs = ["QuotientSubmoduleEquidistribution", "QuotientSubmoduleEquidistribution.*"]
+moreLeanArgs = ["-Dbackward.isDefEq.respectTransparency.types=false"]
+weakLeanArgs = ["-j1", "-M14000"]
+
+[[lean_lib]]
+name = "Challenge"
+roots = ["Challenge"]
+weakLeanArgs = ["-j1", "-M14000"]
+
+[[lean_lib]]
+name = "Solution"
+roots = ["Solution"]
+weakLeanArgs = ["-j1", "-M14000"]
+
+[[lean_lib]]
+name = "MagnitudeConjecture"
+globs = ["MagnitudeConjecture", "MagnitudeConjecture.*"]
+moreLeanArgs = ["-Dbackward.isDefEq.respectTransparency.types=false"]
+weakLeanArgs = ["-j1", "-M14000"]

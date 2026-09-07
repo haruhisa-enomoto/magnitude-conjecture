@@ -1,0 +1,76 @@
+version: "v0.4"
+project:
+  name: "Magnitude conjecture for module categories"
+  description: >-
+    The magnitude of the module category of a finite-dimensional
+    representation-finite algebra over an algebraically closed field is at
+    least its number of simple-module isomorphism classes, with equality
+    exactly when its basic algebra is special biserial. The formalization
+    includes nonsingularity of the Hom matrix and the full equality case.
+  authors: ["Haruhisa Enomoto"]
+  responsible_maintainers: ["Haruhisa Enomoto"]
+  license: "Apache-2.0"
+classification:
+  arxiv: ["math.RT"]
+  msc2020: ["16G10", "16G70"]
+sources:
+  - title: "The magnitude conjecture for module categories"
+    authors: ["Haruhisa Enomoto"]
+    type: "manuscript"
+    relationship: "formalizes"
+    note: "Read-only manuscript checkpoint and known discrepancies are recorded in docs/PAPER-CORRESPONDENCE.md."
+  - title: "An equidistribution conjecture for quotient-closed and submodule-closed subcategories: Lean formalization"
+    authors: ["Haruhisa Enomoto"]
+    type: "formalization"
+    relationship: "background"
+    location: "https://github.com/haruhisa-enomoto/quotient-submodule-equidistribution"
+    note: "Generic categorical foundations were narrowly vendored and adapted; see VENDORED.md."
+related_formalizations:
+  - id: "https://github.com/haruhisa-enomoto/quotient-submodule-equidistribution"
+    relationship: "adapts"
+    note: "Reuses generic foundations, not the equidistribution theorem."
+status:
+  scope: >-
+    Full main theorem over arbitrary algebraically closed fields, including
+    positive characteristic and nonbasic algebras. The independent definitions
+    are proved equivalent to the production definitions. The broader library
+    also contains supporting categorical and coherent-duality developments.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+automation:
+  methods:
+    - method: "agent"
+      models: ["GPT-6"]
+      framework: "Codex"
+      tool_setup: "Owner-directed Lean development, compiler feedback, source audit, and explicit axiom checks."
+      cost:
+        wall_time: "Not tracked for the full inherited development"
+        spend_usd: "Not tracked"
+        hardware: "Local Linux workstation"
+      prompting_notes: "Audit the exact main theorem, expose independent definitions, prove their connections, and prepare a private standalone repository."
+  spend_usd: "Not tracked"
+  notes: >-
+    The model listed is recorded for the independent-interface and extraction
+    work. The full inherited development's model inventory has not been
+    reconstructed. No subagents were used in this preparation pass.
+fidelity:
+  divergences: >-
+    The formal proof uses the correct stable Hom quotients where the recorded
+    manuscript reverses the bars, and supplies a direct left/right beta
+    comparison. The appendix's middle-term description also requires a prose
+    correction. See docs/PAPER-CORRESPONDENCE.md. No weakening of the main
+    theorem's hypotheses or conclusion is known.
+review:
+  status: "Agent-audited; independent human review not claimed"
+  reviewers: ["Codex"]
+  notes: "Statement, hypotheses, definitions, and standard-axiom boundaries were audited. Kernel verification status is recorded separately."
+alignment:
+  namespace: "MagnitudeConjecture"
+  statements:
+    - source: "The magnitude conjecture for module categories, thm:main"
+      lean: "MagnitudeConjecture.Statement.mainClaim"
+      module: "MagnitudeConjecture.Algebra.StatementTheorem"
+      status: "proved"
+      note: "Direct simple count and exact special-biserial presentation; nonsingularity is explicit."
+acknowledgements: "Lean, Mathlib, and the attributed equidistribution foundations; see VENDORED.md."

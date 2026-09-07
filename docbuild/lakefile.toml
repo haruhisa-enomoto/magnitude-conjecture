@@ -1,0 +1,12 @@
+name = "magnitude_conjecture_docbuild"
+version = "0.1.0"
+packagesDir = "../.lake/packages"
+
+[[require]]
+name = "doc-gen4"
+git = "https://github.com/leanprover/doc-gen4.git"
+rev = "e2af49a7b7e5e1a9224008c1f15e7aa4f58a4015"
+
+[[require]]
+name = "magnitude_conjecture"
+path = ".."

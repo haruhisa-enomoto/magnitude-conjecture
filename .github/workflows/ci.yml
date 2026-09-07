@@ -1,0 +1,96 @@
+name: Formalization
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      docs:
+        description: Generate the complete project API and website artifact
+        type: boolean
+        default: true
+      replay:
+        description: Run the pinned local Comparator/NanoDa toolchain (see verification qualifications)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-and-site:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - run: python3 scripts/generate_challenge.py --check
+      - run: ruby scripts/validate-formalization.rb
+      - run: bash -n scripts/verify-comparator.sh scripts/landrun-wrapper.sh
+      - run: python3 scripts/build_website.py
+      - run: python3 scripts/check_website.py
+
+  proof:
+    # During private preparation the substantial fresh build is requested
+    # explicitly. It runs on every push/PR once the repository is public.
+    if: github.event_name == 'workflow_dispatch' || !github.event.repository.private
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Build complete proof and both statement modules serially
+        run: >-
+          python3 scripts/build_lean_serial.py --package . --output .build-audit/ci
+          --max-rss-kib 8388608
+          MagnitudeConjecture MagnitudeConjecture.AxiomAudit Challenge Solution
+      - name: Query public axioms
+        run: lake env lean MagnitudeConjecture/PublicAxiomAudit.lean > .build-audit/public-axioms.log
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff
+        if: inputs.replay
+        with:
+          go-version: "1.27.1"
+          cache: false
+      - name: Independent replay
+        if: inputs.replay
+        run: ./scripts/verify-comparator.sh > .build-audit/comparator.log 2>&1
+      - name: Build documentation tool serially
+        if: inputs.docs
+        working-directory: docbuild
+        env:
+          MATHLIB_NO_CACHE_ON_UPDATE: "1"
+        run: >-
+          python3 ../scripts/build_lean_serial.py --package .
+          --output ../.build-audit/doc-tool --max-rss-kib 8388608 doc-gen4
+      - name: Generate project API and website
+        if: inputs.docs
+        run: |
+          python3 scripts/build_api.py
+          python3 scripts/build_website.py
+          python3 scripts/check_website.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: build-evidence
+          path: .build-audit/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: inputs.docs && success()
+        with:
+          name: magnitude-website
+          path: _site/
+          if-no-files-found: error
