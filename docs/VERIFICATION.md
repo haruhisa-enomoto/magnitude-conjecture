@@ -58,9 +58,11 @@ presentation, Morita condition, rational Hom matrix, and direct simple count.
 Its connections to the production definitions are proved. Run
 `python3 scripts/generate_challenge.py --check` to detect drift.
 
-The metadata validator checks the template's required sections, version,
-licence, description, and retained placeholders. It is not a mathematical
-review or a complete registry acceptance test. The provenance of inherited
+The template metadata validator checks required sections, version, licence,
+description, and retained placeholders. The metadata also passes the upstream
+v0.4 JSON schema at commit `99c678e569c7c4c0772db297c5ddd5e4c9b6322e`, checked
+with `check-jsonschema` 0.38.0. Neither is a mathematical review or a complete
+registry acceptance test. The provenance of inherited
 AI-assisted development is disclosed without claiming an independent human
 review.
 

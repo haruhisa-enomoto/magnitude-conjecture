@@ -32,6 +32,13 @@ jobs:
       - run: python3 scripts/generate_challenge.py --check
       - run: python3 -m unittest discover -s tests
       - run: ruby scripts/validate-formalization.rb
+      - name: Validate the upstream metadata schema
+        run: |
+          python3 -m venv "$RUNNER_TEMP/metadata-validator"
+          "$RUNNER_TEMP/metadata-validator/bin/pip" install check-jsonschema==0.38.0
+          "$RUNNER_TEMP/metadata-validator/bin/check-jsonschema" --schemafile \
+            https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/99c678e569c7c4c0772db297c5ddd5e4c9b6322e/schema/v0.4.schema.json \
+            formalization.yaml
       - run: bash -n scripts/verify-comparator.sh scripts/landrun-wrapper.sh
       - run: python3 scripts/build_website.py
       - run: python3 scripts/check_website.py

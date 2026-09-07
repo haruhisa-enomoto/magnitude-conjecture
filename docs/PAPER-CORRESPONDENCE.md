@@ -31,6 +31,13 @@ to the old projective count by
 `RightModule.simpleModuleCount_eq_numberOfSimpleModules`; the underlying
 simple-top bijection holds over any field.
 
+The Lean induction decreases the number of indecomposable labels; the
+manuscript uses the number of simple modules. Both provide a decreasing
+finite measure for the reduction. The formal proof also supplies the coherent
+duality ingredient through Freyd categories and closure of defect subcategories
+under subobjects and quotients. The additional full Ext² comparison development
+is retained as supplementary library material.
+
 ## Known manuscript discrepancies
 
 These are findings for the paper author, not paper edits.
