@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-09-07T12:24:37.872289+09:00",
+  "exit": 0,
+  "target": "MagnitudeConjecture.magnitudeTheorem",
+  "research_source_commit": "20ebfbcf9f83e359425a89bf5b8980e3ad7054e6",
+  "standalone_source_commit": "539a4c26ff68dd5266761f00f2781b8a61a190af",
+  "lean": "leanprover/lean4:v4.33.1",
+  "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "tools": {
+    "comparator": "68a064109f01c08f47c8edc9f51d6a2bbffaa188",
+    "lean4export": "15f6055e299ad5b89345e533cc2192f4cc00f659",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "statement_match": "passed",
+  "axiom_boundary": "passed",
+  "nanoda": "passed",
+  "lean_kernel_replay": "passed",
+  "sandbox": "Landrun through the official Palomar template wrapper",
+  "qualification": "The v4.33.0 lean4export source was compiled with Lean v4.33.1. No v4.33.1 exporter release tag was available; this local result does not establish acceptance by Palomar's exact-release resolver.",
+  "reproduction": "scripts/verify-comparator.sh",
+  "log": "comparator.log.gz"
+}

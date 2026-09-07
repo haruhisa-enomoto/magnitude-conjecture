@@ -5,10 +5,14 @@ compiled with only `propext`, `Classical.choice`, and `Quot.sound`. The
 independent Challenge contains one deliberate theorem placeholder; it is not
 imported by the production proof or Solution.
 
-At this preparation checkpoint, Comparator has accepted the statement match
-and axiom boundary. Its NanoDa replay and the fresh standalone build are still
-running. They are not yet reported as successful. Final results will replace
-this preparation status after the processes finish.
+Comparator passed on 2026-09-07: the exact statement comparison, permitted
+axiom check, NanoDa verification, and Lean default kernel replay all succeeded
+with exit code 0. The [result and exact tool pins](../verification/2026-09-07/comparator.json)
+and [complete compressed log](../verification/2026-09-07/comparator.log.gz)
+record this check. The exporter-version qualification below still applies.
+
+The fresh standalone build and full API generation are still running. Their
+results will be recorded after completion.
 
 ## Reproduce the checks
 
