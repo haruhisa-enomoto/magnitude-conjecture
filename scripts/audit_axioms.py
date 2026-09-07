@@ -12,9 +12,9 @@ ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 
 def parse_report(output):
     reports = {}
-    for name, axioms in re.findall(r"'([^']+)' depends on axioms:\s*\[([^\]]*)\]", output):
+    for name, axioms in re.findall(r"^'(.+)' depends on axioms:\s*\[([^\]]*)\]", output, re.M):
         reports[name] = {x.strip() for x in axioms.split(",") if x.strip()}
-    for name in re.findall(r"'([^']+)' does not depend on any axioms", output):
+    for name in re.findall(r"^'(.+)' does not depend on any axioms$", output, re.M):
         reports[name] = set()
     return reports
 

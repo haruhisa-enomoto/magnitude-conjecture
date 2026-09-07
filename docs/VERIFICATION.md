@@ -11,8 +11,29 @@ with exit code 0. The [result and exact tool pins](../verification/2026-09-07/co
 and [complete compressed log](../verification/2026-09-07/comparator.log.gz)
 record this check. The exporter-version qualification below still applies.
 
-The fresh standalone build and full API generation are still running. Their
-results will be recorded after completion.
+The fresh standalone build passed all 1,065 steps, including the entire
+1,063-module production library, Challenge, and Solution. The fresh public
+and full axiom audits checked 7 and 3,650 declarations respectively, with
+only the three standard axioms. The axiom-report parser handles primed Lean
+names; six verification-helper regression tests pass.
+
+The complete API covers all 1,063 production modules. All 1,076 generated
+pages passed local-target checks, and the displayed statement matches
+Challenge exactly. Browser checks passed for the five public declaration
+links, theorem search, API return navigation, and the five handwritten pages
+on desktop and mobile.
+
+Evidence: [fresh build summary](../verification/2026-09-07/fresh-build-summary.json),
+[per-step metrics](../verification/2026-09-07/fresh-build-metrics.jsonl),
+[public axioms](../verification/2026-09-07/public-axioms.json),
+[full axioms](../verification/2026-09-07/full-axioms.json), and
+[website checks](../verification/2026-09-07/website-summary.json).
+
+The largest measured step used 7.99 GiB, leaving very little room under the
+8 GiB compiler guard. The public proof's covering-average base used 7.88 GiB;
+the largest step was a supplementary Ext² comparison. These measurements are
+from one Linux/WSL2 run, not memory guarantees for other environments. Profile
+those declarations before assuming the same tight limit is portable.
 
 ## Reproduce the checks
 
@@ -79,8 +100,8 @@ replay. The full proof build also runs automatically once the repository is
 public. The workflow uploads evidence and website artifacts; it does not deploy.
 
 The local fresh build and independent replay are recorded separately from CI.
-The first source/site CI run passed at commit `539a4c26ff68dd5266761f00f2781b8a61a190af`:
-[workflow run](https://github.com/haruhisa-enomoto/magnitude-conjecture/actions/runs/34074150379).
+The source/site CI run passed at commit `7c481593c483baa791fc3f8434f5135d39cfa1f5`:
+[workflow run](https://github.com/haruhisa-enomoto/magnitude-conjecture/actions/runs/34079715066).
 The full remote build has not been run at this checkpoint. Private standard
 Linux runners have less memory than public runners, so the workflow adds swap
 on smaller machines. See [GitHub's runner specifications](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).

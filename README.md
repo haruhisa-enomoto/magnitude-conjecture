@@ -33,7 +33,9 @@ and proofs are complete, with only `propext`, `Classical.choice`, and `Quot.soun
 
 Lean is pinned to 4.33.1; the committed manifest pins Mathlib. Mathlib is the
 only external dependency of the proof package. Reused categorical source and
-its licence are recorded in [VENDORED.md](VENDORED.md).
+its licence are recorded in [VENDORED.md](VENDORED.md). The commands below
+were tested on Linux/WSL2. The serial helper requires Python 3, GNU time, and
+`ps`.
 
 ```sh
 lake exe cache get

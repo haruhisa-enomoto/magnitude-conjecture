@@ -1,0 +1,17 @@
+'MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.projectiveLabelEquivSimpleLabel' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.simpleCount_eq_projectiveCount' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'MagnitudeConjecture.RightModule.simpleModuleCount_eq_numberOfSimpleModules' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'MagnitudeConjecture.RightModule.magnitudeConjecture_simpleCount' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.magnitudeConjecture_simpleCount' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'MagnitudeConjecture.Statement.isSpecialBiserial_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MagnitudeConjecture.Statement.mainClaim' depends on axioms: [propext, Classical.choice, Quot.sound]

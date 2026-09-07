@@ -1,0 +1,165 @@
+{
+  "source_commit": "539a4c26ff68dd5266761f00f2781b8a61a190af",
+  "command": [
+    "python3",
+    "scripts/build_lean_serial.py",
+    "--package",
+    ".",
+    "--output",
+    ".build-audit/fresh",
+    "--max-rss-kib",
+    "8388608",
+    "MagnitudeConjecture",
+    "MagnitudeConjecture.AxiomAudit",
+    "Challenge",
+    "Solution"
+  ],
+  "exit": 0,
+  "rebuilt_targets": 1065,
+  "production_modules": 1063,
+  "max_sampled_lean_compilers": 1,
+  "maximum_step_rss_kib": 8377484,
+  "maximum_sampled_lean_rss_kib": 8377648,
+  "maximum_sampled_tree_rss_kib": 9302480,
+  "summed_step_seconds": 10434.26,
+  "timing_scope": "One local serial compilation run; per-step elapsed time excludes frontier probes. API generation ran alongside it, with independent replay overlapping the early part. RSS sums are not proportional set size.",
+  "machine": {
+    "architecture": "x86_64",
+    "kernel": "6.18.33.2-microsoft-standard-WSL2",
+    "logical_cpus": 20,
+    "mem_total_kib": 49209988,
+    "cpu": "Intel Core i5-13500"
+  },
+  "largest_steps": [
+    {
+      "peak_rss_kib": 8377484,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleCoherentCodefectExtTwo",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleCoherentCodefectExtTwo"
+      ],
+      "sampled_tree_peak_rss_kib": 9302480,
+      "sampled_lean_peak_rss_kib": 8377648,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 58.21
+    },
+    {
+      "peak_rss_kib": 8261352,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardFormCoveringAverageBase",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardFormCoveringAverageBase"
+      ],
+      "sampled_tree_peak_rss_kib": 9205692,
+      "sampled_lean_peak_rss_kib": 8260536,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 143.54
+    },
+    {
+      "peak_rss_kib": 8152052,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardFormCoveringAverageEquality",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardFormCoveringAverageEquality"
+      ],
+      "sampled_tree_peak_rss_kib": 9069388,
+      "sampled_lean_peak_rss_kib": 8143956,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 47.17
+    },
+    {
+      "peak_rss_kib": 8149524,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardFormCoveringAverageInequality",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardFormCoveringAverageInequality"
+      ],
+      "sampled_tree_peak_rss_kib": 9068752,
+      "sampled_lean_peak_rss_kib": 8136372,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 49.19
+    },
+    {
+      "peak_rss_kib": 8099612,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleCoherentDefectExtTwo",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleCoherentDefectExtTwo"
+      ],
+      "sampled_tree_peak_rss_kib": 9035004,
+      "sampled_lean_peak_rss_kib": 8099788,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 53.19
+    }
+  ],
+  "slowest_steps": [
+    {
+      "peak_rss_kib": 4403356,
+      "exit": 0,
+      "target": "MagnitudeConjecture.CategoryTheory.ObjectDeletionStageEndpoints",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.CategoryTheory.ObjectDeletionStageEndpoints"
+      ],
+      "sampled_tree_peak_rss_kib": 5336424,
+      "sampled_lean_peak_rss_kib": 4404076,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 202.76
+    },
+    {
+      "peak_rss_kib": 6915416,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardFormUniversalCovering",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardFormUniversalCovering"
+      ],
+      "sampled_tree_peak_rss_kib": 7854508,
+      "sampled_lean_peak_rss_kib": 6915284,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 162.61
+    },
+    {
+      "peak_rss_kib": 8261352,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardFormCoveringAverageBase",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardFormCoveringAverageBase"
+      ],
+      "sampled_tree_peak_rss_kib": 9205692,
+      "sampled_lean_peak_rss_kib": 8260536,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 143.54
+    }
+  ]
+}

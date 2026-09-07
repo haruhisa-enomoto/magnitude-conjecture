@@ -30,6 +30,16 @@ Some required targets logged failures:
 
 
 class AxiomReportTests(unittest.TestCase):
+    def test_apostrophes_in_lean_names(self):
+        reports = parse_report(
+            "'MagnitudeConjecture.CoveringHom.shiftHomComp'_assoc' depends on axioms: "
+            "[propext, Classical.choice, Quot.sound]\n"
+            "'lemma''_name' does not depend on any axioms\n")
+        self.assertEqual(reports, {
+            "MagnitudeConjecture.CoveringHom.shiftHomComp'_assoc": ALLOWED,
+            "lemma''_name": set(),
+        })
+
     def test_multiline_and_axiom_free_reports(self):
         reports = parse_report("'A' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n"
                                "'B' does not depend on any axioms\n")

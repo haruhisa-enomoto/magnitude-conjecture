@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-09-07T20:23:33+09:00",
+  "tool": "Playwright 1.62.0",
+  "browser": "151.0.7922.34",
+  "website_build": {
+    "commit": "7c481593c483baa791fc3f8434f5135d39cfa1f5",
+    "dirty": true,
+    "api_generated": true,
+    "api_source_commit": "539a4c26ff68dd5266761f00f2781b8a61a190af",
+    "statement_lines": 298
+  },
+  "declaration_links": [
+    "api/MagnitudeConjecture/Algebra/StatementTheorem.html#MagnitudeConjecture.Statement.mainClaim",
+    "api/MagnitudeConjecture/Algebra/StatementTheorem.html#MagnitudeConjecture.Statement.isSpecialBiserial_iff",
+    "api/MagnitudeConjecture/Algebra/RightModuleMagnitudePublic.html#MagnitudeConjecture.RightModule.magnitudeConjecture_simpleCount",
+    "api/MagnitudeConjecture/Algebra/RightModuleMagnitudePublic.html#MagnitudeConjecture.RightModule.simpleModuleCount_eq_numberOfSimpleModules",
+    "api/MagnitudeConjecture/Algebra/RightModuleSimpleCount.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.projectiveLabelEquivSimpleLabel"
+  ],
+  "search": "Statement.mainClaim",
+  "search_and_result_navigation": "passed",
+  "api_to_overview_navigation": "passed",
+  "javascript_errors": []
+}

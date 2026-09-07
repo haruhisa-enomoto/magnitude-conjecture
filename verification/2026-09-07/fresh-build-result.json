@@ -1,0 +1,1 @@
+{"exit": 0, "rebuilt_targets": 1065, "validation_command": ["lake", "--no-ansi", "--log-level=error", "--no-build", "build", "MagnitudeConjecture", "MagnitudeConjecture.AxiomAudit", "Challenge", "Solution"]}
