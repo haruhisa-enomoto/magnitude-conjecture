@@ -1,0 +1,37 @@
+{
+  "standalone_source_commit": "317a6e27a5be03c720dc4238b92c74d1d6037e07",
+  "command": [
+    "python3",
+    "scripts/build_lean_serial.py",
+    "--package",
+    ".",
+    "--output",
+    ".build-audit/f1-fresh",
+    "--max-rss-kib",
+    "12582912",
+    "MagnitudeConjecture",
+    "MagnitudeConjecture.AxiomAudit",
+    "Challenge",
+    "Solution"
+  ],
+  "started_after_lake_clean": true,
+  "rebuilt_targets": 4501,
+  "maximum_process_peak_rss_kib": 9683212,
+  "maximum_sampled_lean_peak_rss_kib": 9683512,
+  "maximum_sampled_process_tree_peak_rss_kib": 10623112,
+  "maximum_memory_target": "MagnitudeConjecture.Algebra.RightModuleF1CoveringPrimitive",
+  "maximum_sampled_lean_processes": 1,
+  "summed_step_elapsed_seconds": 19110.3,
+  "validation_command": [
+    "lake",
+    "--no-ansi",
+    "--log-level=error",
+    "--no-build",
+    "build",
+    "MagnitudeConjecture",
+    "MagnitudeConjecture.AxiomAudit",
+    "Challenge",
+    "Solution"
+  ],
+  "exit": 0
+}

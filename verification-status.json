@@ -1,11 +1,16 @@
 {
-  "summary": "The fresh full build, public and full axiom audits, exact statement comparison, NanoDa verification, and Lean kernel replay passed. The complete API and website link, search, and navigation checks passed.",
-  "research_source_commit": "20ebfbcf9f83e359425a89bf5b8980e3ad7054e6",
-  "standalone_source_commit": "539a4c26ff68dd5266761f00f2781b8a61a190af",
-  "comparator_result": "verification/2026-09-07/comparator.json",
+  "summary": "The frozen F1 source synchronization, fresh 4,501-step full build, public and 3,675-declaration full axiom audits, exact statement comparison, NanoDa verification, Lean kernel replay, complete API, and website checks passed.",
+  "research_source_commit": "d0831ee92",
+  "manuscript_source_commit": "6d9095121c8cafac4b97e9dfabf1f6bc9b6519e5",
+  "standalone_source_commit": "317a6e27a5be03c720dc4238b92c74d1d6037e07",
+  "comparator_result": "verification/2026-09-15/comparator.json",
   "fresh_build": "passed",
+  "axiom_audits": "passed",
+  "comparator": "passed",
   "api": "passed",
+  "website": "passed",
   "palomar": "Not submitted; the exact Lean v4.33.1 exporter release tag remains unavailable.",
-  "fresh_build_result": "verification/2026-09-07/fresh-build-summary.json",
-  "website_result": "verification/2026-09-07/website-summary.json"
+  "fresh_build_result": "verification/2026-09-15/fresh-build-summary.json",
+  "source_sync_result": "verification/2026-09-15/source-sync.json",
+  "website_result": "verification/2026-09-15/website-summary.json"
 }

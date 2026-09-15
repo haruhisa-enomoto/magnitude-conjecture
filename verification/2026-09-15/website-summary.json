@@ -1,0 +1,15 @@
+{
+  "standalone_source_commit": "317a6e27a5be03c720dc4238b92c74d1d6037e07",
+  "api_source_commit": "317a6e27a5be03c720dc4238b92c74d1d6037e07",
+  "documented_modules": 1072,
+  "dependency_source_links_rewritten": 1738,
+  "checked_html_pages": 1103,
+  "handwritten_pages": 5,
+  "challenge_lines": 298,
+  "challenge_bytes": 13402,
+  "selected_import_graph_modules": 12,
+  "selected_import_graph_edges": 12,
+  "local_targets_match": true,
+  "displayed_challenge_matches": true,
+  "exit": 0
+}

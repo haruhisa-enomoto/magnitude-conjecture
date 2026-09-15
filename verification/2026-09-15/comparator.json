@@ -1,0 +1,34 @@
+{
+  "checked_at": "2026-09-15T23:23:24+09:00",
+  "exit": 0,
+  "target": "MagnitudeConjecture.magnitudeTheorem",
+  "canonical_source_commit": "d0831ee92",
+  "standalone_source_commit": "317a6e27a5be03c720dc4238b92c74d1d6037e07",
+  "challenge_sha256": "0da003b9397a756e9426af6d663c624902008d6dd11ae70ce745d46b86290ef3",
+  "solution_sha256": "9bc4f17928e2fa87aa660e686a671cca5f20c81138785b64e9b247b6c7a79713",
+  "lean": "leanprover/lean4:v4.33.1",
+  "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "tools": {
+    "comparator": "68a064109f01c08f47c8edc9f51d6a2bbffaa188",
+    "lean4export": "15f6055e299ad5b89345e533cc2192f4cc00f659",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "go": "go1.27.1"
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "statement_match": "passed",
+  "axiom_boundary": "passed",
+  "nanoda": "passed",
+  "lean_kernel_replay": "passed",
+  "result": "Your solution is okay!",
+  "sandbox": "Landrun through the official Palomar template wrapper",
+  "reproduction": "scripts/verify-comparator.sh",
+  "local_log": ".build-audit/f1-comparator.log",
+  "local_log_bytes": 2888445,
+  "local_log_sha256": "6f743f872148340d2e6d30c7a285db0602b309723af86b231fc71669595d300e",
+  "qualification": "The v4.33.0 lean4export source was compiled with Lean v4.33.1 because no exact v4.33.1 exporter release tag was available. This local result does not establish acceptance by Palomar's exact-release resolver."
+}

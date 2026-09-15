@@ -1,0 +1,14 @@
+{
+  "standalone_source_commit": "317a6e27a5be03c720dc4238b92c74d1d6037e07",
+  "canonical_repository": "/home/italing/work/homological-conjectures",
+  "canonical_commit": "d0831ee92",
+  "canonical_package": "formalization/magnitude_conjecture",
+  "source_files": 995,
+  "standalone_files": 995,
+  "root_module_matches": true,
+  "missing_files": [],
+  "extra_files": [],
+  "content_mismatches": [],
+  "legacy_exact_import_hits": [],
+  "exit": 0
+}
