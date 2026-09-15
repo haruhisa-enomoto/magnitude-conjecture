@@ -7,7 +7,7 @@ After building the root package, run:
 
 ```sh
 python3 ../scripts/build_lean_serial.py --package . --output ../.build-audit/doc-tool \
-  --max-rss-kib 8388608 doc-gen4
+  --max-rss-kib 12582912 doc-gen4
 cd ..
 python3 scripts/build_api.py
 python3 scripts/build_website.py

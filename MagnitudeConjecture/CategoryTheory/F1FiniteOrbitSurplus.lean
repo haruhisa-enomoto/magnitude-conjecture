@@ -10,19 +10,14 @@ import MagnitudeConjecture.CategoryTheory.FiniteOrbitPushdownExactLocalDensity
 import MagnitudeConjecture.Combinatorics.FiniteOrbitCarrier
 
 /-!
-# Residual finite-push-down endpoint
+# Finite push-down endpoint compatibility layer
 
-The strict orbit-tower equivalence identifies the direct quotient with the
-successive quotient by a normal subgroup and its residual quotient.  This
-file connects density for direct finite push-down to the residual finite
-push-down: every label of the transported direct skeleton is represented by
-the residual push-down of a subgroup push-down.
+The first declarations provide the finite orbit surplus used by the F1
+bridge. The later declarations preserve the historical orbit-tower
+comparison while the direct finite-support replacement is developed.
 
-The residual coherent deck shift and the shift transported through the orbit
-tower are propositionally equal but expensive to normalize inside module
-category types.  The finite residual push-down is therefore kept abstract at
-the theorem boundary and identified with the coherent construction by an
-explicit equality.
+The orbit-tower comparison is intentionally isolated here so that its
+remaining residual-cover dependency is visible in the migration audit.
 -/
 
 set_option autoImplicit false

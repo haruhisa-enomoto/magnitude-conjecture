@@ -1,5 +1,6 @@
 import MagnitudeConjecture.CategoryTheory.FiniteDeletionSkeletonLocalChange
 import MagnitudeConjecture.CategoryTheory.ObjectDeletionLocalChangeSum
+import MagnitudeConjecture.CategoryTheory.FiniteCategoryPrimitiveQuotientSurplusReindex
 
 /-!
 # Restricting finite deletion change to a support family
@@ -184,5 +185,55 @@ theorem finiteDeletionLocalChangeSum_eq_surplus_sub
       (k := k) C hlocal D W S hsupport,
     FiniteDeletionSkeleton.sum_finiteDeletionLocalChangeAt_eq_surplus_sub
       (k := k) D S T hlocal]
+
+/- A finite directed category admits the singleton deletion inequality in
+   every object universe.  The previous equality therefore turns it into a
+   sign theorem for any selected family after the complementary terms have
+   been discharged by locality. -/
+theorem finiteDeletionLocalChangeSum_nonnegative_of_singleton_support
+    [Fintype C] [IsAlgClosed k]
+    (hP : ∀ X : C, IsFiniteDimensionalModule (C := C) k
+      (linearCoyonedaLinearModule (k := k) X))
+    (hlocal : IsLocallyRepresentationFinite (k := k) (C := C))
+    (hlocalRing : ∀ X : C, IsLocalRing (End X))
+    (hC : Skeletal C)
+    (H : HasAcyclicFiniteModuleNonzeroNonisomorphisms
+      (k := k) (C := C))
+    (x : C)
+    (W : FiniteIndecomposableModuleFamily (k := k) (C := C))
+    (S : FiniteDimensionalModuleIndecomposableSkeleton
+      (k := k) (C := C))
+    (T : FiniteDimensionalModuleIndecomposableSkeleton
+      (k := k) (C := DeletionCategory (k := k) C ({x} : Set C)))
+    (hsupport : ∀ i : Fin S.n, S.obj i ∉ W.isoClosure →
+      finiteDeletionLocalChangeAt (k := k) C hlocal ({x} : Set C)
+        (S.obj i) (S.indecomposable i) = 0) :
+    0 ≤ finiteDeletionLocalChangeSum (k := k) C hlocal ({x} : Set C) W := by
+  letI : EnoughProjectives
+      (FiniteDimensionalModuleCategory.{u, v, v, v} (C := C) k) :=
+    enoughProjectives_of_finiteRepresentables hP
+  let hPdeleted := fun Y ↦
+      ObjectDeletion.deletion_linearCoyoneda_isFiniteDimensional
+      (k := k) C hP ({x} : Set C) Y
+  letI : EnoughProjectives
+      (FiniteDimensionalModuleCategory.{u, v, v, v}
+        (C := DeletionCategory (k := k) C ({x} : Set C)) k) :=
+    enoughProjectives_of_finiteRepresentables hPdeleted
+  have hmono :
+      @ARCount.surplus (Fin T.n) inferInstance
+          (FiniteTauMatrix.arrowMultiplicity
+            T.toFiniteRightTauCategoryData)
+          T.toFiniteRightTauCategoryData.IsProjective
+          (Classical.decPred _) ≤
+        @ARCount.surplus (Fin S.n) inferInstance
+          (FiniteTauMatrix.arrowMultiplicity
+            S.toFiniteRightTauCategoryData)
+          S.toFiniteRightTauCategoryData.IsProjective
+          (Classical.decPred _) := by
+    exact finiteCategoryProjectiveGenerator.singletonDeletion_surplus_le_of_fintype
+      hP hlocalRing hC hlocal H x S T
+  rw [finiteDeletionLocalChangeSum_eq_surplus_sub
+    (k := k) C hlocal ({x} : Set C) W S T hsupport]
+  exact sub_nonneg.mpr hmono
 
 end MagnitudeConjecture.ObjectDeletion

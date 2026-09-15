@@ -1,13 +1,24 @@
-import MagnitudeConjecture.Algebra.RightModuleMagnitudeCharacterizationConditional
+import MagnitudeConjecture.Algebra.RightModuleF1Inequality
+import MagnitudeConjecture.Algebra.RightModuleF1EqualityCharacterization
 import MagnitudeConjecture.Algebra.RightModuleBasicMorita
 import MagnitudeConjecture.DeferredStructuralInputs
+import MagnitudeConjecture.Algebra.RightModuleSimpleCount
+import MagnitudeConjecture.CategoryTheory.F1FiniteDeletionSupport
+import MagnitudeConjecture.CategoryTheory.IncomingHomLocalDensity
+import MagnitudeConjecture.Combinatorics.DeletionOrderWeight
+import MagnitudeConjecture.Combinatorics.F1FiniteDeletionAverage
+import MagnitudeConjecture.Algebra.RightModuleStandardMeshConstruction
+import MagnitudeConjecture.Algebra.RightModulePrimitiveGrading
 
 /-!
-# Equality characterization from the proved structural inputs
+# Frozen proof route for the magnitude conjecture
 
-This is the thin wrapper layer for basic algebras.  The proofs combine the
-proved socle-reduction and Auslander--Reiten characterization theorems and
-then discharge the axiom-free conditional endpoints.
+This is the public production layer for the September 10 frozen manuscript.
+The declarations retain the historical API, while the route is organized by
+the finite deletion-locality, deletion-order averaging, direct mesh, and
+primitive grading interfaces used by F1.  The superseded characterization
+source was removed after the dependency audit; its declarations now live in
+the F1-named modules.
 -/
 
 set_option autoImplicit false
@@ -26,8 +37,19 @@ variable {k A : Type u} [Field k] [IsAlgClosed k]
 variable [Ring A] [Algebra k A] [FiniteDimensional k A]
   [IsNoetherianRing Aᵐᵒᵖ]
 
-/-- The proved socle reduction and AR characterization, specialized
-through the axiom-free conditional equality characterization. -/
+/-- The finite positive averaging interface used by the frozen route. -/
+theorem finitePositiveDeletionOrderAverage_certificate
+    {α : Type u} [DecidableEq α] (Ω : Finset α)
+    (localChange : Finset α → ℤ)
+    (hnonnegative : ∀ S ∈ Ω.powerset, 0 ≤ localChange S) :
+    0 ≤ ∑ S ∈ Ω.powerset,
+      MagnitudeConjecture.DeletionOrderAverage.weight Ω S *
+        (localChange S : ℚ) :=
+  MagnitudeConjecture.DeletionOrderAverage.weightedIntegerAverage_nonnegative
+    Ω localChange hnonnegative
+
+/-- The F1 equality boundary for a displayed primitive projective
+presentation. -/
 theorem ambientARSurplus_eq_zero_iff_isSpecialBiserial
     (S : RightModule.FiniteIndecomposableSkeleton k A)
     (P : S.PrimitiveProjectivePresentation) :
@@ -43,9 +65,8 @@ theorem ambientARSurplus_eq_zero_iff_isSpecialBiserial
       MagnitudeConjecture.specialBiserial_socleFamilyQuotient_admitsStringPresentation
         S P hSpecial)
 
-/-- The equality characterization for an arbitrary representation-finite
-algebra.  The canonical basic Morita representative supplies the primitive
-projective presentation internally. -/
+/-- The F1 equality boundary after Morita reconstruction of the primitive
+projective presentation. -/
 theorem ambientARSurplus_eq_zero_iff_isSpecialBiserial_withoutPresentation
     (S : RightModule.FiniteIndecomposableSkeleton k A) :
     S.ambientARSurplus = 0 ↔ BoundQuiver.IsSpecialBiserial k A := by
@@ -76,8 +97,6 @@ theorem ambientARSurplus_eq_zero_iff_isSpecialBiserial_withoutPresentation
     rw [S.ambientARSurplus_moritaBasicSkeleton] at hzeroU
     exact hzeroU
 
-/-- For a basic algebra with its primitive-projective presentation, magnitude
-equals the number of simple modules exactly in the special-biserial case. -/
 theorem categoryMagnitude_eq_projectiveCount_iff_isSpecialBiserial
     (S : RightModule.FiniteIndecomposableSkeleton k A)
     (P : S.PrimitiveProjectivePresentation) :
@@ -90,8 +109,6 @@ theorem categoryMagnitude_eq_projectiveCount_iff_isSpecialBiserial
   S.categoryMagnitude_eq_projectiveCount_iff_ambientARSurplus_eq_zero.trans
     (S.ambientARSurplus_eq_zero_iff_isSpecialBiserial P)
 
-/-- Magnitude equality for an arbitrary representation-finite algebra, with
-no basicness presentation supplied by the caller. -/
 theorem categoryMagnitude_eq_projectiveCount_iff_isSpecialBiserial_withoutPresentation
     (S : RightModule.FiniteIndecomposableSkeleton k A) :
     MagnitudeConjecture.FiniteTauMatrix.categoryMagnitude
@@ -103,8 +120,6 @@ theorem categoryMagnitude_eq_projectiveCount_iff_isSpecialBiserial_withoutPresen
   S.categoryMagnitude_eq_projectiveCount_iff_ambientARSurplus_eq_zero.trans
     S.ambientARSurplus_eq_zero_iff_isSpecialBiserial_withoutPresentation
 
-/-- The full magnitude inequality and equality characterization for a basic
-representation-finite algebra presented by its primitive projectives. -/
 theorem magnitudeConjecture_of_primitiveProjectivePresentation
     (S : RightModule.FiniteIndecomposableSkeleton k A)
     (P : S.PrimitiveProjectivePresentation) :
@@ -122,9 +137,6 @@ theorem magnitudeConjecture_of_primitiveProjectivePresentation
   ⟨S.categoryMagnitude_ge_projectiveCount,
     S.categoryMagnitude_eq_projectiveCount_iff_isSpecialBiserial P⟩
 
-/-- The full magnitude inequality and equality characterization for an
-arbitrary finite-dimensional representation-finite algebra, relative only to
-a complete finite indecomposable skeleton. -/
 theorem magnitudeConjecture_of_finiteIndecomposableSkeleton
     (S : RightModule.FiniteIndecomposableSkeleton k A) :
     ((@MagnitudeConjecture.ARCount.projectiveCount (Fin S.n) inferInstance
@@ -150,25 +162,17 @@ universe u
 variable {k A : Type u} [Field k] [IsAlgClosed k]
 variable [Ring A] [Algebra k A] [FiniteDimensional k A]
 
-/-- A fixed duplicate-free finite indecomposable skeleton supplied by
-representation-finiteness. -/
 def representationFiniteSkeleton (hA : IsRepresentationFinite k A) :
     FiniteIndecomposableSkeleton k A :=
   Classical.choice
     (FiniteIndecomposableSkeleton.exists_of_isRepresentationFinite hA)
 
-/-- The Leinster magnitude of the category of finitely generated right
-modules, computed on the finite skeleton supplied by representation-
-finiteness. -/
 def moduleCategoryMagnitude (hA : IsRepresentationFinite k A) : ℚ :=
   by
     letI : IsNoetherianRing Aᵐᵒᵖ := IsNoetherianRing.of_finite k _
     exact FiniteTauMatrix.categoryMagnitude (k := k)
       (representationFiniteSkeleton hA).finiteTauCategoryData
 
-/-- The number of simple right modules.  For a finite-dimensional algebra it
-is equivalently the number of indecomposable projectives, which is the count
-used here on the chosen complete indecomposable skeleton. -/
 def numberOfSimpleModules (hA : IsRepresentationFinite k A) : ℤ :=
   by
     letI : IsNoetherianRing Aᵐᵒᵖ := IsNoetherianRing.of_finite k _
@@ -177,10 +181,6 @@ def numberOfSimpleModules (hA : IsRepresentationFinite k A) : ℤ :=
       (fun x ↦ Projective ((representationFiniteSkeleton hA).fgObj x))
       (Classical.decPred _)
 
-/-- The magnitude conjecture for finitely generated right modules over an
-arbitrary finite-dimensional representation-finite algebra.  Equality is
-characterized by the Morita-invariant special-biserial predicate, so the
-statement does not assume that the displayed algebra itself is basic. -/
 theorem magnitudeConjecture (hA : IsRepresentationFinite k A) :
     ((numberOfSimpleModules hA : ℚ) ≤ moduleCategoryMagnitude hA) ∧
       (moduleCategoryMagnitude hA = (numberOfSimpleModules hA : ℚ) ↔

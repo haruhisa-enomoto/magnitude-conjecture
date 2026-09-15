@@ -1,4 +1,4 @@
-import MagnitudeConjecture.Algebra.RightModuleMagnitudeCharacterization
+import MagnitudeConjecture.Algebra.RightModuleF1Proof
 import MagnitudeConjecture.Algebra.RightModuleSimpleCount
 
 /-!

@@ -1,6 +1,6 @@
-import MagnitudeConjecture.Algebra.RightModuleMagnitudeEqualityThin
+import MagnitudeConjecture.Algebra.RightModuleF1EqualityThin
 import MagnitudeConjecture.CategoryTheory.FiniteCategoryPointwiseThinBiserial
-import MagnitudeConjecture.CategoryTheory.FiniteConvexRepresentableExtension
+import MagnitudeConjecture.CategoryTheory.F1FiniteObjectDeletion
 import MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleDuality
 import MagnitudeConjecture.CategoryTheory.FiniteOrbitPushdownBiserial
 
@@ -9,9 +9,10 @@ import MagnitudeConjecture.CategoryTheory.FiniteOrbitPushdownBiserial
 
 At magnitude equality, every finite-dimensional indecomposable module on the
 opposite projective source category is pointwise thin.  Coefficient duality
-gives the same statement in the other variance.  Finite convex restriction,
-the direct biserial induction, and extension by zero then prove intrinsic
-biseriality of both right and left representables on the universal cover.
+gives the same statement in the other variance.  Finite object-support
+deletion, the direct biserial induction, and extension by zero then prove
+intrinsic biseriality of both right and left representables on the universal
+cover.
 -/
 
 set_option autoImplicit false
@@ -40,10 +41,10 @@ noncomputable local instance
 
 namespace UniversalCover
 
-/-- At equality, every representable on a finite convex full subcategory of
+/-- At equality, every representable on a finite object-deletion quotient of
 the opposite projective source category is intrinsically biserial. -/
 theorem
-    standardFormCoveringFiniteConvex_covariantRepresentable_isBiserialObject_of_ambientARSurplus_eq_zero
+    standardFormCoveringDeletion_covariantRepresentable_isBiserialObject_of_ambientARSurplus_eq_zero
     (x₀ : Fin S.n)
     (hconnected :
       MeshCategory.RightMeshData.UniversalCover.IsWalkConnectedAt
@@ -51,28 +52,28 @@ theorem
     (hzero : S.ambientARSurplus = 0)
     (U : Set ((StandardFormProjectiveSourceCategory S x₀)ᵒᵖ))
     (hUfinite : U.Finite)
-    (hUconvex : CoveringHom.IsConvexObjectSet
-      (C := (StandardFormProjectiveSourceCategory S x₀)ᵒᵖ) U)
-    [Fintype (ObjectDeletion.FullSubcategoryOn
-      ((StandardFormProjectiveSourceCategory S x₀)ᵒᵖ) U)]
-    (X : ObjectDeletion.FullSubcategoryOn
-      ((StandardFormProjectiveSourceCategory S x₀)ᵒᵖ) U) :
+    (X : ObjectDeletion.DeletionCategory (k := k)
+      ((StandardFormProjectiveSourceCategory S x₀)ᵒᵖ) Uᶜ) :
     IsBiserialObject
       ((CoveringHom.finiteDimensionalLinearCoyonedaFunctor (k := k)
-        (ObjectDeletion.fullSubcategory_finiteCovariantRepresentables
-          ((StandardFormProjectiveSourceCategory S x₀)ᵒᵖ)
-          (standardFormOppositeProjectiveSourceCategoryIsLocallyBounded S x₀)
-          U hUfinite)).obj (Opposite.op X)) := by
+        (ObjectDeletion.isLocallyBounded_deletion
+          (k := k) Uᶜ
+          (standardFormOppositeProjectiveSourceCategoryIsLocallyBounded S x₀)).finiteCovariantRepresentables).obj
+          (Opposite.op X)) := by
+  let C := (StandardFormProjectiveSourceCategory S x₀)ᵒᵖ
+  let H := standardFormOppositeProjectiveSourceCategoryIsLocallyBounded S x₀
+  let hD := ObjectDeletion.isLocallyBounded_deletion (k := k) Uᶜ H
+  letI : Finite (ObjectDeletion.DeletionCategory (k := k) C Uᶜ) :=
+    ObjectDeletion.finite_deletion_of_finite_survivors (k := k) (C := C) U hUfinite
+  letI : Fintype (ObjectDeletion.DeletionCategory (k := k) C Uᶜ) :=
+    Fintype.ofFinite _
   exact CoveringHom.finiteCovariantRepresentable_isBiserialObject_of_pointwiseThin
-    (ObjectDeletion.fullSubcategory_finiteCovariantRepresentables
-      ((StandardFormProjectiveSourceCategory S x₀)ᵒᵖ)
-      (standardFormOppositeProjectiveSourceCategoryIsLocallyBounded S x₀)
-      U hUfinite)
-    (ObjectDeletion.fullSubcategory_localEndomorphismRings
-      ((StandardFormProjectiveSourceCategory S x₀)ᵒᵖ)
-      (standardFormOppositeProjectiveSourceCategoryIsLocallyBounded S x₀) U)
-    (standardFormCoveringFiniteConvex_isPointwiseThin_of_ambientARSurplus_eq_zero
-      S x₀ hconnected hzero U hUfinite hUconvex) X
+    hD.finiteCovariantRepresentables hD.localEndomorphismRings
+    (by
+      intro M hM
+      exact standardFormCoveringDeletion_isPointwiseThin_of_ambientARSurplus_eq_zero
+        S x₀ hconnected hzero Uᶜ M hM)
+    X
 
 /-- At equality, every right representable of the universal cover is
 intrinsically biserial.  In the opposite projective source category this is
@@ -97,27 +98,45 @@ theorem
   let T : Set C := {X} ∪ CoveringHom.moduleSupport k M.obj.obj
   have hTfinite : T.Finite :=
     (Set.finite_singleton X).union M.property.2
-  obtain ⟨U, hUfinite, hTU, hUconvex⟩ :=
-    (standardFormOppositeProjectiveSourceCategoryHasFiniteConvexObjectNeighborhoods
-      S x₀) T hTfinite
-  have hXU : X ∈ U := hTU (by simp [T])
-  let XU : ObjectDeletion.FullSubcategoryOn C U := ⟨X, hXU⟩
-  letI : Finite (ObjectDeletion.FullSubcategoryOn C U) :=
-    ObjectDeletion.fullSubcategoryOn_finite C U hUfinite
-  letI : Fintype (ObjectDeletion.FullSubcategoryOn C U) :=
+  have hX : X ∈ T := by simp [T]
+  have hXdeleted : X ∉ Tᶜ := by
+    simpa only [Set.mem_compl_iff, not_not] using hX
+  let XU : ObjectDeletion.DeletionCategory (k := k) C Tᶜ :=
+    ObjectDeletion.survivingObj (k := k) C Tᶜ hXdeleted
+  let hD := ObjectDeletion.isLocallyBounded_deletion (k := k) Tᶜ H
+  letI : Finite (ObjectDeletion.DeletionCategory (k := k) C Tᶜ) :=
+    ObjectDeletion.finite_deletion_of_finite_survivors (k := k) (C := C) T hTfinite
+  letI : Fintype (ObjectDeletion.DeletionCategory (k := k) C Tᶜ) :=
     Fintype.ofFinite _
-  let hPU := ObjectDeletion.fullSubcategory_finiteCovariantRepresentables
-    C H U hUfinite
+  let hPU := hD.finiteCovariantRepresentables
+  have hsupport : CoveringHom.moduleSupport k M.obj.obj ⊆ T := by
+    intro Y hY
+    exact Or.inr hY
+  let hvanish : ObjectDeletion.ModuleVanishesOnDeleted
+      (k := k) C Tᶜ M.obj.obj := by
+    intro Y hY
+    rw [ModuleCat.isZero_iff_subsingleton]
+    exact not_nontrivial_iff_subsingleton.mp fun hnontrivial ↦
+      hY (hsupport hnontrivial)
+  let R := ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion
+    (k := k) C Tᶜ M hvanish
   have hlocal : IsBiserialObject
       ((CoveringHom.finiteDimensionalLinearCoyonedaFunctor (k := k) hPU).obj
         (Opposite.op XU)) :=
-    standardFormCoveringFiniteConvex_covariantRepresentable_isBiserialObject_of_ambientARSurplus_eq_zero
-      S x₀ hconnected hzero U hUfinite hUconvex XU
-  have hsupport : CoveringHom.moduleSupport k M.obj.obj ⊆ U := by
-    intro Y hY
-    exact hTU (Or.inr hY)
-  exact ObjectDeletion.finiteCovariantRepresentable_isBiserialObject_of_finiteConvex
-    C H.skeletal hP U hUfinite hUconvex hPU XU hsupport hlocal
+    standardFormCoveringDeletion_covariantRepresentable_isBiserialObject_of_ambientARSurplus_eq_zero
+      S x₀ hconnected hzero T hTfinite XU
+  have hR : IsBiserialObject R := by
+    let i := ObjectDeletion.deletionRepresentableRestrictionIso
+      (k := k) (C := C) hP T XU hsupport
+    exact hlocal.congr i
+  have hExt : IsBiserialObject
+      ((ObjectDeletion.finiteDimensionalModuleExtensionByZero
+        (k := k) C Tᶜ).obj R) :=
+    ObjectDeletion.IsBiserialObject.finiteDimensionalModuleExtensionByZero
+      C Tᶜ hR
+  exact hExt.congr
+    (ObjectDeletion.finiteDimensionalModuleRestrictionExtensionIso
+      (k := k) C Tᶜ M hvanish)
 
 /-- Coefficient duality transfers the equality-case pointwise-thin theorem
 from the opposite projective source category to the projective source
@@ -172,38 +191,10 @@ theorem
   exact ObjectDeletion.isPointwiseThin_of_extensionByZero
     (k := k) C D M.obj hthin
 
-/-- Every indecomposable finite module on a finite convex full subcategory
-of the projective source category is pointwise thin. -/
-theorem
-    standardFormProjectiveSourceFiniteConvex_isPointwiseThin_of_ambientARSurplus_eq_zero
-    (x₀ : Fin S.n)
-    (hconnected :
-      MeshCategory.RightMeshData.UniversalCover.IsWalkConnectedAt
-        S.standardFormRightMeshData x₀)
-    (hzero : S.ambientARSurplus = 0)
-    (U : Set (StandardFormProjectiveSourceCategory S x₀))
-    (hUfinite : U.Finite)
-    (hUconvex : CoveringHom.IsConvexObjectSet
-      (C := StandardFormProjectiveSourceCategory S x₀) U)
-    (M : CoveringHom.FiniteDimensionalModuleCategory.{0, u, u, u}
-      (C := ObjectDeletion.FullSubcategoryOn
-        (StandardFormProjectiveSourceCategory S x₀) U) k)
-    (hM : Indecomposable M) :
-    CoveringHom.IsPointwiseThin M.obj.obj := by
-  let C := StandardFormProjectiveSourceCategory S x₀
-  let H := standardFormProjectiveSourceCategoryIsLocallyBounded S x₀
-  apply ObjectDeletion.fullSubcategory_isPointwiseThin_of_deletion
-    (k := k) C H.skeletal U hUfinite hUconvex
-  · intro N hN
-    exact
-      standardFormProjectiveSourceCoveringDeletion_isPointwiseThin_of_ambientARSurplus_eq_zero
-        S x₀ hconnected hzero Uᶜ N hN
-  · exact hM
-
-/-- At equality, every representable on a finite convex full subcategory of
+/-- At equality, every representable on a finite object-deletion quotient of
 the projective source category is intrinsically biserial. -/
 theorem
-    standardFormProjectiveSourceFiniteConvex_covariantRepresentable_isBiserialObject_of_ambientARSurplus_eq_zero
+    standardFormProjectiveSourceDeletion_covariantRepresentable_isBiserialObject_of_ambientARSurplus_eq_zero
     (x₀ : Fin S.n)
     (hconnected :
       MeshCategory.RightMeshData.UniversalCover.IsWalkConnectedAt
@@ -211,28 +202,28 @@ theorem
     (hzero : S.ambientARSurplus = 0)
     (U : Set (StandardFormProjectiveSourceCategory S x₀))
     (hUfinite : U.Finite)
-    (hUconvex : CoveringHom.IsConvexObjectSet
-      (C := StandardFormProjectiveSourceCategory S x₀) U)
-    [Fintype (ObjectDeletion.FullSubcategoryOn
-      (StandardFormProjectiveSourceCategory S x₀) U)]
-    (X : ObjectDeletion.FullSubcategoryOn
-      (StandardFormProjectiveSourceCategory S x₀) U) :
+    (X : ObjectDeletion.DeletionCategory (k := k)
+      (StandardFormProjectiveSourceCategory S x₀) Uᶜ) :
     IsBiserialObject
       ((CoveringHom.finiteDimensionalLinearCoyonedaFunctor (k := k)
-        (ObjectDeletion.fullSubcategory_finiteCovariantRepresentables
-          (StandardFormProjectiveSourceCategory S x₀)
-          (standardFormProjectiveSourceCategoryIsLocallyBounded S x₀)
-          U hUfinite)).obj (Opposite.op X)) := by
+        (ObjectDeletion.isLocallyBounded_deletion
+          (k := k) Uᶜ
+          (standardFormProjectiveSourceCategoryIsLocallyBounded S x₀)).finiteCovariantRepresentables).obj
+          (Opposite.op X)) := by
+  let C := StandardFormProjectiveSourceCategory S x₀
+  let H := standardFormProjectiveSourceCategoryIsLocallyBounded S x₀
+  let hD := ObjectDeletion.isLocallyBounded_deletion (k := k) Uᶜ H
+  letI : Finite (ObjectDeletion.DeletionCategory (k := k) C Uᶜ) :=
+    ObjectDeletion.finite_deletion_of_finite_survivors (k := k) (C := C) U hUfinite
+  letI : Fintype (ObjectDeletion.DeletionCategory (k := k) C Uᶜ) :=
+    Fintype.ofFinite _
   exact CoveringHom.finiteCovariantRepresentable_isBiserialObject_of_pointwiseThin
-    (ObjectDeletion.fullSubcategory_finiteCovariantRepresentables
-      (StandardFormProjectiveSourceCategory S x₀)
-      (standardFormProjectiveSourceCategoryIsLocallyBounded S x₀)
-      U hUfinite)
-    (ObjectDeletion.fullSubcategory_localEndomorphismRings
-      (StandardFormProjectiveSourceCategory S x₀)
-      (standardFormProjectiveSourceCategoryIsLocallyBounded S x₀) U)
-    (standardFormProjectiveSourceFiniteConvex_isPointwiseThin_of_ambientARSurplus_eq_zero
-      S x₀ hconnected hzero U hUfinite hUconvex) X
+    hD.finiteCovariantRepresentables hD.localEndomorphismRings
+    (by
+      intro M hM
+      exact standardFormProjectiveSourceCoveringDeletion_isPointwiseThin_of_ambientARSurplus_eq_zero
+        S x₀ hconnected hzero Uᶜ M hM)
+    X
 
 /-- At equality, every left representable of the universal cover is
 intrinsically biserial. -/
@@ -256,27 +247,45 @@ theorem
   let T : Set C := {X} ∪ CoveringHom.moduleSupport k M.obj.obj
   have hTfinite : T.Finite :=
     (Set.finite_singleton X).union M.property.2
-  obtain ⟨U, hUfinite, hTU, hUconvex⟩ :=
-    (standardFormProjectiveSourceCategoryHasFiniteConvexObjectNeighborhoods
-      S x₀) T hTfinite
-  have hXU : X ∈ U := hTU (by simp [T])
-  let XU : ObjectDeletion.FullSubcategoryOn C U := ⟨X, hXU⟩
-  letI : Finite (ObjectDeletion.FullSubcategoryOn C U) :=
-    ObjectDeletion.fullSubcategoryOn_finite C U hUfinite
-  letI : Fintype (ObjectDeletion.FullSubcategoryOn C U) :=
+  have hX : X ∈ T := by simp [T]
+  have hXdeleted : X ∉ Tᶜ := by
+    simpa only [Set.mem_compl_iff, not_not] using hX
+  let XU : ObjectDeletion.DeletionCategory (k := k) C Tᶜ :=
+    ObjectDeletion.survivingObj (k := k) C Tᶜ hXdeleted
+  let hD := ObjectDeletion.isLocallyBounded_deletion (k := k) Tᶜ H
+  letI : Finite (ObjectDeletion.DeletionCategory (k := k) C Tᶜ) :=
+    ObjectDeletion.finite_deletion_of_finite_survivors (k := k) (C := C) T hTfinite
+  letI : Fintype (ObjectDeletion.DeletionCategory (k := k) C Tᶜ) :=
     Fintype.ofFinite _
-  let hPU := ObjectDeletion.fullSubcategory_finiteCovariantRepresentables
-    C H U hUfinite
+  let hPU := hD.finiteCovariantRepresentables
+  have hsupport : CoveringHom.moduleSupport k M.obj.obj ⊆ T := by
+    intro Y hY
+    exact Or.inr hY
+  let hvanish : ObjectDeletion.ModuleVanishesOnDeleted
+      (k := k) C Tᶜ M.obj.obj := by
+    intro Y hY
+    rw [ModuleCat.isZero_iff_subsingleton]
+    exact not_nontrivial_iff_subsingleton.mp fun hnontrivial ↦
+      hY (hsupport hnontrivial)
+  let R := ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion
+    (k := k) C Tᶜ M hvanish
   have hlocal : IsBiserialObject
       ((CoveringHom.finiteDimensionalLinearCoyonedaFunctor (k := k) hPU).obj
         (Opposite.op XU)) :=
-    standardFormProjectiveSourceFiniteConvex_covariantRepresentable_isBiserialObject_of_ambientARSurplus_eq_zero
-      S x₀ hconnected hzero U hUfinite hUconvex XU
-  have hsupport : CoveringHom.moduleSupport k M.obj.obj ⊆ U := by
-    intro Y hY
-    exact hTU (Or.inr hY)
-  exact ObjectDeletion.finiteCovariantRepresentable_isBiserialObject_of_finiteConvex
-    C H.skeletal hP U hUfinite hUconvex hPU XU hsupport hlocal
+    standardFormProjectiveSourceDeletion_covariantRepresentable_isBiserialObject_of_ambientARSurplus_eq_zero
+      S x₀ hconnected hzero T hTfinite XU
+  have hR : IsBiserialObject R := by
+    let i := ObjectDeletion.deletionRepresentableRestrictionIso
+      (k := k) (C := C) hP T XU hsupport
+    exact hlocal.congr i
+  have hExt : IsBiserialObject
+      ((ObjectDeletion.finiteDimensionalModuleExtensionByZero
+        (k := k) C Tᶜ).obj R) :=
+    ObjectDeletion.IsBiserialObject.finiteDimensionalModuleExtensionByZero
+      C Tᶜ hR
+  exact hExt.congr
+    (ObjectDeletion.finiteDimensionalModuleRestrictionExtensionIso
+      (k := k) C Tᶜ M hvanish)
 
 /-- At equality, pushing a right representable through the opposite
 projective deck covering produces a biserial object. -/

@@ -11,8 +11,10 @@ SELECTED = [
     "MainResults", "Statement", "Algebra.StatementTheorem",
     "Algebra.StatementFiniteModules", "Algebra.StatementPresentation",
     "Algebra.RightModuleMagnitudePublic", "Algebra.RightModuleSimpleCount",
-    "Algebra.RightModuleMagnitudeCharacterization", "Algebra.BoundQuiverPresentation",
-    "CategoryTheory.FiniteCategoryAlgebraEquivalence",
+    "Algebra.RightModuleF1Proof", "Algebra.RightModuleF1Inequality",
+    "Algebra.RightModuleF1EqualityCharacterization",
+    "Algebra.RightModuleF1CoveringBridge",
+    "CategoryTheory.F1FiniteSupportIncidence",
 ]
 
 

@@ -1,4 +1,5 @@
 import MagnitudeConjecture.CategoryTheory.ObjectDeletionLocalDensity
+import MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleFiniteType
 
 /-!
 # Finite local-change sums for object deletion
@@ -80,6 +81,71 @@ noncomputable def finiteModuleLocalDensitySum
     (W : FiniteIndecomposableModuleFamily (k := k) (C := C)) : ℤ :=
   ∑ q : W.IsoClass,
     finiteModuleLocalDensityOnIsoClass (k := k) C hlocal W q
+
+/- A finite indecomposable family which covers a complete finite skeleton has
+the same intrinsic density sum as that skeleton.  This is the finite
+isomorphism-class reindexing used when passing from source representatives to
+the canonical deleted-category skeleton. -/
+theorem finiteModuleLocalDensitySum_eq_skeleton_sum_of_complete
+    (hlocal : IsLocallyRepresentationFinite (k := k) (C := C))
+    (W : FiniteIndecomposableModuleFamily (k := k) (C := C))
+    (S : MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleIndecomposableSkeleton
+      (k := k) (C := C))
+    (hWcover : ∀ (M : FiniteDimensionalModuleCategory.{u,v,v,v} (C := C) k),
+      Indecomposable M → ∃ i, Nonempty (M ≅ W.obj i)) :
+    finiteModuleLocalDensitySum (k := k) C hlocal W =
+      ∑ i : Fin S.n,
+        finiteModuleLocalDensity hlocal (S.obj i) (S.indecomposable i) := by
+  classical
+  let φ : W.IsoClass → Fin S.n := Quotient.lift
+    (fun i ↦ Classical.choose (S.complete (W.obj i) (W.indecomposable i)))
+    (by
+      intro i j hij
+      apply S.skeletal
+      obtain ⟨e⟩ := hij
+      exact ⟨(Classical.choice (Classical.choose_spec
+        (S.complete (W.obj i) (W.indecomposable i)))).symm ≪≫
+        e ≪≫ Classical.choice (Classical.choose_spec
+          (S.complete (W.obj j) (W.indecomposable j)))⟩)
+  have hφ : Function.Bijective φ := by
+    constructor
+    · intro q r hqr
+      induction q using Quotient.inductionOn with
+      | _ i =>
+        induction r using Quotient.inductionOn with
+        | _ j =>
+          apply Quotient.sound
+          have hij : φ (Quotient.mk W.isoSetoid i) =
+              φ (Quotient.mk W.isoSetoid j) := hqr
+          change Classical.choose (S.complete (W.obj i) (W.indecomposable i)) =
+            Classical.choose (S.complete (W.obj j) (W.indecomposable j)) at hij
+          have ewi := Classical.choice (Classical.choose_spec
+            (S.complete (W.obj i) (W.indecomposable i)))
+          have ewj := Classical.choice (Classical.choose_spec
+            (S.complete (W.obj j) (W.indecomposable j)))
+          exact ⟨ewi.trans ((eqToIso (congrArg S.obj hij)).trans ewj.symm)⟩
+    · intro i
+      obtain ⟨j, hj⟩ := hWcover (S.obj i) (S.indecomposable i)
+      refine ⟨Quotient.mk W.isoSetoid j, ?_⟩
+      apply S.skeletal
+      exact ⟨((Classical.choice hj).trans (Classical.choice (Classical.choose_spec
+        (S.complete (W.obj j) (W.indecomposable j))))).symm⟩
+  unfold finiteModuleLocalDensitySum
+  apply Fintype.sum_bijective φ hφ
+    (finiteModuleLocalDensityOnIsoClass (k := k) C hlocal W)
+    (fun i ↦ finiteModuleLocalDensity hlocal (S.obj i) (S.indecomposable i))
+    (by
+      intro q
+      induction q using Quotient.inductionOn with
+      | _ j =>
+        dsimp [finiteModuleLocalDensityOnIsoClass, φ]
+        let q := Classical.choose (S.complete (W.obj j) (W.indecomposable j))
+        have e : W.obj j ≅ S.obj q :=
+          Classical.choice (Classical.choose_spec
+            (S.complete (W.obj j) (W.indecomposable j)))
+        exact finiteModuleLocalDensity_eq_of_iso hlocal
+          (W.indecomposable j) (S.indecomposable q) e
+    )
 
 /-- Deletion-extended intrinsic density descended to an isomorphism class
 represented by a finite indecomposable family. -/

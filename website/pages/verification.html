@@ -3,7 +3,7 @@
 <p>{{verification_status}}</p>
 <h2>Build the project</h2><pre><code>lake exe cache get
 python3 scripts/build_lean_serial.py --package . --output .build-audit \
-  --max-rss-kib 8388608 MagnitudeConjecture.MainResults \
+  --max-rss-kib 12582912 MagnitudeConjecture.MainResults \
   MagnitudeConjecture.PublicAxiomAudit
 python3 scripts/generate_challenge.py --check</code></pre>
 <p>The serial helper keeps a per-module log and memory measurement. For the complete library, use targets <code>MagnitudeConjecture MagnitudeConjecture.AxiomAudit</code>. Build <code>Challenge Solution</code> before independent comparison.</p>

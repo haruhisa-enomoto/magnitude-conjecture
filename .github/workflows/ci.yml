@@ -76,7 +76,7 @@ jobs:
       - name: Build complete proof and both statement modules serially
         run: >-
           python3 scripts/build_lean_serial.py --package . --output .build-audit/ci
-          --max-rss-kib 8388608
+          --max-rss-kib 12582912
           MagnitudeConjecture MagnitudeConjecture.AxiomAudit Challenge Solution
       - name: Query public axioms
         run: |
@@ -97,7 +97,7 @@ jobs:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
         run: >-
           python3 ../scripts/build_lean_serial.py --package .
-          --output ../.build-audit/doc-tool --max-rss-kib 8388608 doc-gen4
+          --output ../.build-audit/doc-tool --max-rss-kib 12582912 doc-gen4
       - name: Generate project API and website
         if: inputs.docs
         run: |

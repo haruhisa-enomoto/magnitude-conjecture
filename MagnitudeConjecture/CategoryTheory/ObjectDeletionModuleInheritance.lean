@@ -417,6 +417,19 @@ def finiteDimensionalModuleRestrictionExtensionIso
   ObjectProperty.isoMk _
     (linearModuleRestrictionExtensionIso (k := k) C S M.obj hM)
 
+/- The extension-by-zero functor is also a retraction on the deletion
+   category.  This finite-dimensional wrapper keeps the covering incidence
+   argument from repeatedly unpacking the underlying linear-module property. -/
+noncomputable def finiteDimensionalModuleExtensionRestrictionIso
+    (M : FiniteDimensionalModuleCategory.{u, v, v, v}
+      (C := DeletionCategory (k := k) C S) k) :
+    (finiteDimensionalModuleRestrictionToDeletion (k := k) C S
+      ((finiteDimensionalModuleExtensionByZero (k := k) C S).obj M)
+      (fun _X hX => moduleExtensionByZero_obj_isZero_of_mem
+        (k := k) C S M.obj.obj hX)) ≅ M := by
+  apply ObjectProperty.isoMk
+  exact linearModuleExtensionRestrictionIso (k := k) C S M.obj
+
 /-- Restriction to the deletion category preserves indecomposability for an
 ambient finite module which vanishes on the deleted objects. -/
 theorem finiteDimensionalModuleRestrictionToDeletion_indec

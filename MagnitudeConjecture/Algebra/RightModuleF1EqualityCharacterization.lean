@@ -1,4 +1,4 @@
-import MagnitudeConjecture.Algebra.RightModuleMagnitudeEqualityBiserialAlgebra
+import MagnitudeConjecture.Algebra.RightModuleF1EqualityBiserialAlgebra
 import MagnitudeConjecture.Algebra.RightModuleSocleReductionString
 import MagnitudeConjecture.Algebra.RightModuleStandardFormBeta
 

@@ -1,5 +1,6 @@
 import MagnitudeConjecture.CategoryTheory.ObjectDeletionAlmostSplit
 import MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleControlWindow
+import MagnitudeConjecture.CategoryTheory.FiniteDecompositionVanishes
 
 /-!
 # Finite control of object-deletion source and sink terms
@@ -17,81 +18,6 @@ noncomputable section
 
 open CategoryTheory CategoryTheory.Limits
 open QuotientSubmoduleEquidistribution
-
-namespace MagnitudeConjecture.CategoryTheory
-
-universe u v
-
-variable {D : Type u} [Category.{v} D] [Preadditive D]
-  [HasFiniteBiproducts D] [HasBinaryBiproducts D]
-
-namespace FiniteIndecomposableDecomposition
-
-/-- Inclusion of one displayed indecomposable summand. -/
-def inclusion {X : D} (d : FiniteIndecomposableDecomposition X)
-    (i : Fin d.n) : d.summand i ⟶ X :=
-  biproduct.ι d.summand i ≫ d.isoBiproduct.inv
-
-/-- Projection onto one displayed indecomposable summand. -/
-def projection {X : D} (d : FiniteIndecomposableDecomposition X)
-    (i : Fin d.n) : X ⟶ d.summand i :=
-  d.isoBiproduct.hom ≫ biproduct.π d.summand i
-
-@[simp]
-theorem inclusion_projection {X : D}
-    (d : FiniteIndecomposableDecomposition X) (i : Fin d.n) :
-    d.inclusion i ≫ d.projection i = 𝟙 (d.summand i) := by
-  simp [inclusion, projection, Category.assoc]
-
-/-- Every displayed component of a right-minimal map is nonzero. -/
-theorem inclusion_comp_ne_zero_of_isRightMinimal
-    {X Y : D} (d : FiniteIndecomposableDecomposition X)
-    (i : Fin d.n) (f : X ⟶ Y) (hf : IsRightMinimal f) :
-    d.inclusion i ≫ f ≠ 0 := by
-  intro hzero
-  let e : X ⟶ X := 𝟙 X - d.projection i ≫ d.inclusion i
-  have hefix : e ≫ f = f := by
-    dsimp only [e]
-    rw [Preadditive.sub_comp, Category.id_comp, Category.assoc,
-      hzero, comp_zero, sub_zero]
-  letI : IsIso e := hf e hefix
-  have hie : d.inclusion i ≫ e = 0 := by
-    dsimp only [e]
-    rw [Preadditive.comp_sub, Category.comp_id, ← Category.assoc,
-      d.inclusion_projection, Category.id_comp, sub_self]
-  have hi0 : d.inclusion i = 0 := by
-    apply (cancel_mono e).1
-    simpa only [zero_comp] using hie
-  have hzeroSummand : IsZero (d.summand i) := by
-    rw [IsZero.iff_id_eq_zero, ← d.inclusion_projection i, hi0, zero_comp]
-  exact (d.indecomposable i).1 hzeroSummand
-
-/-- Every displayed component of a left-minimal map is nonzero. -/
-theorem comp_projection_ne_zero_of_isLeftMinimal
-    {X Y : D} (d : FiniteIndecomposableDecomposition Y)
-    (i : Fin d.n) (f : X ⟶ Y) (hf : IsLeftMinimal f) :
-    f ≫ d.projection i ≠ 0 := by
-  intro hzero
-  let e : Y ⟶ Y := 𝟙 Y - d.projection i ≫ d.inclusion i
-  have hefix : f ≫ e = f := by
-    dsimp only [e]
-    rw [Preadditive.comp_sub, Category.comp_id, ← Category.assoc,
-      hzero, zero_comp, sub_zero]
-  letI : IsIso e := hf e hefix
-  have hep : e ≫ d.projection i = 0 := by
-    dsimp only [e]
-    rw [Preadditive.sub_comp, Category.id_comp, Category.assoc,
-      d.inclusion_projection, Category.comp_id, sub_self]
-  have hp0 : d.projection i = 0 := by
-    apply (cancel_epi e).1
-    simpa only [comp_zero] using hep
-  have hzeroSummand : IsZero (d.summand i) := by
-    rw [IsZero.iff_id_eq_zero, ← d.inclusion_projection i, hp0, comp_zero]
-  exact (d.indecomposable i).1 hzeroSummand
-
-end FiniteIndecomposableDecomposition
-
-end MagnitudeConjecture.CategoryTheory
 
 namespace MagnitudeConjecture.CoveringHom
 

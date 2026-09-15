@@ -24,20 +24,6 @@ universe u v
 variable {k : Type v} [Field k]
 variable (C : Type u) [Category.{v} C] [Preadditive C] [Linear k C]
 
-/-- Vanishing on a deleted set is invariant under isomorphism of finite
-ambient modules. -/
-theorem moduleVanishesOnDeleted_of_iso
-    (D : Set C)
-    {M N : FiniteDimensionalModuleCategory.{u, v, v, v} (C := C) k}
-    (e : M ≅ N) (hM : ModuleVanishesOnDeleted (k := k) C D M.obj.obj) :
-    ModuleVanishesOnDeleted (k := k) C D N.obj.obj := by
-  intro X hX
-  let J := (IsFiniteDimensionalModule.{u, v, v, v} (C := C) k).ι
-  let K := (IsLinearModule.{u, v, v, v} (C := C) k).ι
-  let eX : (K.obj (J.obj M)).obj X ≅ (K.obj (J.obj N)).obj X :=
-    (K.mapIso (J.mapIso e)).app X
-  exact (eX.isZero_iff).1 (hM X hX)
-
 /-- The indices of a finite ambient family whose representatives survive a
 given deletion, equivalently whose modules vanish on every deleted object. -/
 def deletionSurvivingIndices

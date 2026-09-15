@@ -1,6 +1,4 @@
-import MagnitudeConjecture.Algebra.RightModuleMagnitudeEquality
-import MagnitudeConjecture.CategoryTheory.FiniteConvexModuleThin
-import MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleThin
+import MagnitudeConjecture.Algebra.RightModuleF1Equality
 
 /-!
 # Universal and finite-stage thinness at equality
@@ -82,36 +80,6 @@ theorem standardFormCoveringDeletion_isPointwiseThin_of_ambientARSurplus_eq_zero
       S x₀ hconnected hzero (E.obj M) hEM
   exact ObjectDeletion.isPointwiseThin_of_extensionByZero
     (k := k) C D M.obj hthin
-
-/-- At equality, every indecomposable finite-dimensional module on a finite
-convex full subcategory of the standard-form universal cover is pointwise
-thin.  This is the literal finite-convex formulation used in the manuscript's
-multiplicity-free-to-biserial step. -/
-theorem
-    standardFormCoveringFiniteConvex_isPointwiseThin_of_ambientARSurplus_eq_zero
-    (x₀ : Fin S.n)
-    (hconnected :
-      MeshCategory.RightMeshData.UniversalCover.IsWalkConnectedAt
-        S.standardFormRightMeshData x₀)
-    (hzero : S.ambientARSurplus = 0)
-    (U : Set ((StandardFormProjectiveSourceCategory S x₀)ᵒᵖ))
-    (hUfinite : U.Finite)
-    (hUconvex : CoveringHom.IsConvexObjectSet
-      (C := (StandardFormProjectiveSourceCategory S x₀)ᵒᵖ) U)
-    (M : CoveringHom.FiniteDimensionalModuleCategory.{0, u, u, u}
-      (C := ObjectDeletion.FullSubcategoryOn
-        ((StandardFormProjectiveSourceCategory S x₀)ᵒᵖ) U) k)
-    (hM : Indecomposable M) :
-    CoveringHom.IsPointwiseThin M.obj.obj := by
-  let C := (StandardFormProjectiveSourceCategory S x₀)ᵒᵖ
-  let H := standardFormOppositeProjectiveSourceCategoryIsLocallyBounded S x₀
-  apply ObjectDeletion.fullSubcategory_isPointwiseThin_of_deletion
-    (k := k) C H.skeletal U hUfinite hUconvex
-  · intro N hN
-    exact
-      standardFormCoveringDeletion_isPointwiseThin_of_ambientARSurplus_eq_zero
-        S x₀ hconnected hzero Uᶜ N hN
-  · exact hM
 
 end UniversalCover
 

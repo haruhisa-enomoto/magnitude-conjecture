@@ -1,12 +1,12 @@
-import MagnitudeConjecture.Algebra.RightModuleMagnitudeInequality
+import MagnitudeConjecture.Algebra.RightModuleF1Inequality
 
 /-!
-# Equality consequences for the magnitude conjecture
+# F1 equality interfaces for the magnitude conjecture
 
-Zero Auslander--Reiten surplus propagates to every augmented-walk component
-and to every primitive deletion used by the standard-form covering argument.
-The equality clause of the covering theorem then makes every nonzero fibre of
-an indecomposable lifted finite module one-dimensional.
+The declarations are exposed under the frozen-route names so the public
+endpoint has a stable migration seam. The finite support and deletion-order
+interfaces are independent of this retained standard-form consequence; the
+remaining category-level replacement is tracked by the correspondence record.
 -/
 
 set_option autoImplicit false

@@ -1,6 +1,7 @@
 import MagnitudeConjecture.CategoryTheory.ObjectDeletionAffectedSupport
 import MagnitudeConjecture.CategoryTheory.ObjectDeletionLocalChangeSum
-import MagnitudeConjecture.CategoryTheory.FiniteConvexLocalChange
+import MagnitudeConjecture.CategoryTheory.F1FiniteSupportLocalChange
+import MagnitudeConjecture.CategoryTheory.AdmissibleModuleCategory
 
 /-!
 # Intrinsic local change at the finite deletion stages
@@ -198,10 +199,13 @@ theorem stageLocalChange_nonneg
   let D := StageCategory (k := k) N R.representative x i.castSucc
   let yS := stageNextObject (k := k) R x i
   let HD := isAdmissible_deletion (k := k) (C := C) S H
+  let hlocalD := HD.locallyRepresentationFinite
   rw [stageLocalChange_eq_finiteDeletionLocalChange
     (k := k) H.locallyBounded.finiteCovariantRepresentables
       H.locallyRepresentationFinite R x i]
-  exact admissible_finiteDeletionLocalChange_nonneg (k := k) D HD yS
+  exact Frozen.finiteFiberControl_localChangeSum_nonnegative_f1
+    (k := k) HD.locallyBounded.finiteCovariantRepresentables hlocalD
+      HD.locallyBounded.localEndomorphismRings HD.locallyBounded.skeletal HD.directed yS
 
 /-- Equality of one covering-stage local change has the same
 one-dimensional-fibre rigidity as intrinsic admissible deletion. -/
@@ -220,14 +224,60 @@ theorem stageLocalChange_rigidity
   let D := StageCategory (k := k) N R.representative x i.castSucc
   let yS := stageNextObject (k := k) R x i
   let HD := isAdmissible_deletion (k := k) (C := C) S H
-  have hIntrinsic : finiteDeletionLocalChange
-      (k := k) D HD.locallyRepresentationFinite yS = 0 := by
+  let hlocalD := HD.locallyRepresentationFinite
+  let W := (finiteFiberControlSeed hlocalD yS).iterateHomNeighborhood hlocalD 2
+  let K : Set D := {yS} ∪
+    ⋃ j : Fin W.n,
+      finiteIncomingHomDependencySupport (k := k) D hlocalD (W.obj j)
+  have hK : K.Finite := by
+    exact (Set.finite_singleton yS).union (Set.finite_iUnion fun j ↦
+      Frozen.finiteIncomingHomDependencySupport_finite_f1
+        (k := k) hlocalD (W.obj j))
+  have hsupport : ∀ j : Fin W.n,
+      moduleSupport k (W.obj j).obj.obj ⊆ K := by
+    intro j Y hY
+    exact Set.mem_union_right _ (Set.mem_iUnion.mpr ⟨j,
+      finiteIncomingHom_endpoint_support_subset_dependency
+        (k := k) D hlocalD (W.obj j) hY⟩)
+  have hNsupport : ∀ j : Fin W.n, ∀ t,
+      moduleSupport k
+        ((finiteIncomingHomNeighborhood (k := k) D hlocalD (W.obj j)).obj t).obj.obj ⊆ K := by
+    intro j t Y hY
+    exact Set.mem_union_right _ (Set.mem_iUnion.mpr ⟨j,
+      finiteIncomingHomNeighborhood_support_subset_dependency
+        (k := k) D hlocalD (W.obj j) t hY⟩)
+  have hMnontrivial : Nontrivial (M.obj.obj.obj yS) :=
+    not_subsingleton_iff_nontrivial.mp fun hsub ↦
+      hMy (ModuleCat.isZero_iff_subsingleton.mpr hsub)
+  have hMseed : M ∈ (finiteFiberControlSeed hlocalD yS).isoClosure :=
+    mem_finiteFiberControlSeed_isoClosure hlocalD yS hM hMnontrivial
+  have hMone : M ∈
+      ((finiteFiberControlSeed hlocalD yS).iterateHomNeighborhood
+        hlocalD 1).isoClosure :=
+    (finiteFiberControlSeed hlocalD yS).mem_iterateHomNeighborhood_succ_of_homInteraction
+      hlocalD hMseed hM (Or.inl rfl)
+  have hMtwo : M ∈ W.isoClosure :=
+    (finiteFiberControlSeed hlocalD yS).mem_iterateHomNeighborhood_succ_of_homInteraction
+      hlocalD hMone hM (Or.inl rfl)
+  have hMsupport : moduleSupport k M.obj.obj ⊆ K := by
+    obtain ⟨j, ⟨e⟩⟩ := hMtwo
+    intro Y hY
+    exact hsupport j ((mem_moduleSupport_iff_of_iso e Y).mpr hY)
+  have hIntrinsicPoint : finiteDeletionLocalChange
+      (k := k) D hlocalD yS = 0 := by
     rw [← stageLocalChange_eq_finiteDeletionLocalChange
       (k := k) H.locallyBounded.finiteCovariantRepresentables
         H.locallyRepresentationFinite R x i]
     exact hzero
-  exact admissible_finiteDeletionLocalChange_rigidity
-    (k := k) D HD yS hIntrinsic M hM hMy
+  have hIntrinsic : finiteDeletionLocalChangeSum
+      (k := k) D hlocalD ({yS} : Set D) W = 0 := by
+    simpa only [finiteDeletionLocalChange, W] using hIntrinsicPoint
+  have hdim := Frozen.finiteSupport_localChangeSum_rigidity_f1
+    (k := k) HD.locallyBounded.finiteCovariantRepresentables hlocalD
+      HD.locallyBounded.localEndomorphismRings HD.locallyBounded.skeletal HD.directed
+      K hK yS (by exact Set.mem_union_left _ (by simp)) W hsupport hNsupport
+      (by exact fun Z hZ ↦ hZ) hIntrinsic M hM hMsupport hMy
+  exact hdim
 
 /-- The first equality stage of the covering telescope is the undeleted
 ambient category.  Hence its rigidity conclusion applies directly to every

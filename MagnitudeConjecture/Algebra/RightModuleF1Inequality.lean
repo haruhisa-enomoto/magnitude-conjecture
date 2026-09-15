@@ -1,15 +1,16 @@
 import MagnitudeConjecture.Algebra.RightModuleStandardFormComponentARIdentification
-import MagnitudeConjecture.Algebra.RightModuleStandardFormCoveringAverage
+import MagnitudeConjecture.Algebra.RightModuleF1CoveringBridge
 import MagnitudeConjecture.CategoryTheory.Magnitude
+import MagnitudeConjecture.Combinatorics.F1FiniteDeletionAverage
+import MagnitudeConjecture.CategoryTheory.F1FiniteSupportMonotonicity
 
 /-!
-# Nonnegativity of Auslander--Reiten surplus
+# Frozen finite-deletion inequality route
 
-The connected covering-average deletion is applied separately to every
-augmented-walk component of the standard form.  Its primitive quotient has
-strictly fewer indecomposable labels than the ambient skeleton, so strong
-induction closes without assuming that the original Auslander--Reiten quiver
-is connected.
+This module is the F1 production layer for the lower-bound endpoint.  The
+standard-form component induction calls the F1 covering bridge, while finite
+support and positive deletion-order interfaces are exposed in the category
+and combinatorics modules beside it.
 -/
 
 set_option autoImplicit false

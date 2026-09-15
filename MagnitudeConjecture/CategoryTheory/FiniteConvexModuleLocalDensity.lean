@@ -1,6 +1,7 @@
 import MagnitudeConjecture.CategoryTheory.FiniteConvexModuleControlWindow
 import MagnitudeConjecture.CategoryTheory.ObjectDeletionControlWindow
 import MagnitudeConjecture.CategoryTheory.ObjectDeletionLocalDensity
+import MagnitudeConjecture.CategoryTheory.FiniteDecompositionVanishes
 
 /-!
 # Local density inside a finite convex support window
@@ -26,31 +27,6 @@ universe u v
 
 variable {k : Type v} [Field k]
 variable (C : Type u) [Category.{v} C] [Preadditive C] [Linear k C]
-
-/-- If every displayed indecomposable summand of a finite decomposition
-vanishes on a deleted object set, then so does the decomposed module. -/
-theorem moduleVanishesOnDeleted_of_decomposition_summands
-    (S : Set C)
-    (Y : FiniteDimensionalModuleCategory.{u, v, v, v} (C := C) k)
-    (d : MagnitudeConjecture.CategoryTheory.FiniteIndecomposableDecomposition Y)
-    (hvanish : ∀ i, ModuleVanishesOnDeleted
-      (k := k) C S (d.summand i).obj.obj) :
-    ModuleVanishesOnDeleted (k := k) C S Y.obj.obj := by
-  intro X hXS
-  let E := finiteDimensionalModuleEvaluation (k := k) C X
-  have hzeroSummand (i : Fin d.n) : IsZero (E.obj (d.summand i)) :=
-    hvanish i X hXS
-  have hzeroSum : IsZero (⨁ fun i : Fin d.n ↦ E.obj (d.summand i)) := by
-    rw [IsZero.iff_id_eq_zero]
-    apply biproduct.hom_ext
-    intro i
-    exact (hzeroSummand i).eq_of_tgt _ _
-  letI : E.Additive := by
-    dsimp only [E, finiteDimensionalModuleEvaluation]
-    infer_instance
-  have hzeroBiproduct : IsZero (E.obj (⨁ d.summand)) :=
-    hzeroSum.of_iso (E.mapBiproduct d.summand)
-  exact hzeroBiproduct.of_iso (E.mapIso d.isoBiproduct)
 
 /-- If the ambient extension of a deletion-stage module is supported in
 `U`, then the stage module vanishes on the surviving representatives of the

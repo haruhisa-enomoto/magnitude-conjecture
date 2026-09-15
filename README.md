@@ -29,6 +29,14 @@ It has one deliberate theorem placeholder for Comparator. [Solution](Solution.le
 supplies its proof and never imports the Challenge. All production definitions
 and proofs are complete, with only `propext`, `Classical.choice`, and `Quot.sound`.
 
+The implementation follows the frozen September 10 F1 manuscript route. Its
+central step is a finite-support incidence argument: local deletion changes are
+averaged over deletion orders and transported through source-orbit
+representatives. The F1 inequality and equality layers then connect this
+positive average to the primitive quotient and special-biserial
+characterization. The earlier algebra-level covering-average and
+finite-convex equality modules have been removed; Git retains their history.
+
 ## Build and verify
 
 Lean is pinned to 4.33.1; the committed manifest pins Mathlib. Mathlib is the
@@ -40,12 +48,12 @@ were tested on Linux/WSL2. The serial helper requires Python 3, GNU time, and
 ```sh
 lake exe cache get
 python3 scripts/build_lean_serial.py --package . --output .build-audit/public \
-  --max-rss-kib 8388608 MagnitudeConjecture.MainResults \
+  --max-rss-kib 12582912 MagnitudeConjecture.MainResults \
   MagnitudeConjecture.PublicAxiomAudit
 python3 scripts/build_lean_serial.py --package . --output .build-audit/full \
-  --max-rss-kib 8388608 MagnitudeConjecture MagnitudeConjecture.AxiomAudit
+  --max-rss-kib 12582912 MagnitudeConjecture MagnitudeConjecture.AxiomAudit
 python3 scripts/build_lean_serial.py --package . --output .build-audit/statement \
-  --max-rss-kib 8388608 Challenge Solution
+  --max-rss-kib 12582912 Challenge Solution
 python3 scripts/generate_challenge.py --check
 python3 scripts/audit_axioms.py
 python3 scripts/audit_axioms.py --full
@@ -53,7 +61,9 @@ python3 scripts/audit_axioms.py --full
 
 Run one build at a time. The helper compiles Lake's dependency frontier
 serially and records memory and timing. A fresh full build is substantial;
-subsequent builds reuse current artifacts. Do not commit `.lake/`.
+subsequent builds reuse current artifacts. The 12 GiB process guard leaves
+room above the largest measured F1 compilation while still detecting runaway
+steps; use a machine with at least 16 GiB RAM. Do not commit `.lake/`.
 
 [Comparator configuration](comparator.json) requests statement matching and
 NanoDa replay, with only the three standard axioms permitted. The current

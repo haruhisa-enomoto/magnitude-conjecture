@@ -64,5 +64,34 @@ theorem standardFormOppositeProjectiveLiftedOrbitCategoryAlgebraEquivNonempty
     (standardFormOppositeProjectiveOrbitCategoryAlgebraEquiv
       S x₀ hconnected hfinite)⟩
 
+/-- The canonical choice of the lifted orbit-category algebra equivalence.
+Keeping this choice shared prevents downstream dependent transports from
+re-elaborating two definitionally equal `Classical.choice` terms. -/
+noncomputable def standardFormOppositeProjectiveLiftedOrbitCategoryAlgebraEquiv
+    (x₀ : Fin S.n)
+    (hconnected :
+      MeshCategory.RightMeshData.UniversalCover.IsWalkConnectedAt
+        S.standardFormRightMeshData x₀)
+    (hfinite : S.StandardFormMeshHomFinite) :
+    let hP :=
+      (standardFormOppositeProjectiveSourceCategoryIsLocallyBounded S x₀
+        ).finiteCovariantRepresentables
+    let D₀ := standardFormOppositeProjectiveDeckShift S x₀
+    let D := D₀.ulift.{0, u, 0, u}
+    letI := D₀.hasShift
+    letI := D₀.additiveShift
+    letI := D₀.linearShift (k := k)
+    letI := D.hasShift
+    letI := D.additiveShift
+    letI := D.linearShift (k := k)
+    letI : Finite (MulAction.orbitRel.Quotient (LiftedProjectiveGroup S x₀)
+      (StandardFormProjectiveSourceCategory S x₀)ᵒᵖ) :=
+      standardFormOppositeProjectiveLiftedDeckOrbitFinite S x₀ hconnected
+    StandardCovering.orbitCategoryAlgebra (k := k) D hP ≃ₐ[k]
+      S.standardFormAlgebra hfinite :=
+  Classical.choice
+    (standardFormOppositeProjectiveLiftedOrbitCategoryAlgebraEquivNonempty
+      S x₀ hconnected hfinite)
+
 end UniversalCover
 end MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton
