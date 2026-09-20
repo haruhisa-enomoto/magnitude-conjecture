@@ -783,9 +783,7 @@ theorem card_primitiveNewRightMeshEndpoint_eq_crossing_sub_projectiveRemainder
     [IsAlgClosed k]
     (P : S.PrimitiveProjectivePresentation)
     (p : S.ProjectiveLabel)
-    (H : S.HasAcyclicNonzeroNonisomorphisms)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput (P.primitive p))) :
+    (H : S.HasAcyclicNonzeroNonisomorphisms) :
     (Nat.card (S.PrimitiveNewRightMeshEndpoint (P.primitive p)) : ℤ) =
       (Nat.card (S.PrimitiveCrossingArrow (P.primitive p)) : ℤ) -
         ((Nat.card
@@ -806,7 +804,7 @@ theorem card_primitiveNewRightMeshEndpoint_eq_crossing_sub_projectiveRemainder
   have hquotientMesh :=
     S.card_primitiveQuotientNonprojectiveMesh_eq_internal_add_new D
   have hcrossing :=
-    S.card_primitiveCrossingArrow_eq_card_primitiveBoundaryMesh D H E
+    S.card_primitiveCrossingArrow_eq_card_primitiveBoundaryMesh D H
   have hverticesInt := congrArg (fun n : ℕ ↦ (n : ℤ)) hvertices
   have hprojectiveDropInt :=
     congrArg (fun n : ℕ ↦ (n : ℤ)) hprojectiveDrop

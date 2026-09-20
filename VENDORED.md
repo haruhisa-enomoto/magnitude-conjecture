@@ -6,6 +6,7 @@ repository as a Lake dependency.
 
 ## Source
 
+- Local donor: `/home/italing/work/quotient-submodule-equidistribution`
 - Git remote: `https://github.com/haruhisa-enomoto/quotient-submodule-equidistribution.git`
 - Branch: `main`
 - Commit: `d5ba0c48e7a851afd51247ff9cd81fc629e00ed2`

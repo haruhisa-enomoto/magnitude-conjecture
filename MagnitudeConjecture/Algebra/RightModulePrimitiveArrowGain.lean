@@ -1,5 +1,5 @@
 import MagnitudeConjecture.Algebra.RightModulePrimitiveQuotientSkeleton
-import MagnitudeConjecture.Algebra.RightModulePrimitiveContragredientBoundary
+import MagnitudeConjecture.Algebra.RightModulePrimitiveFiniteKernelFactorBoundary
 import MagnitudeConjecture.Algebra.RightModulePrimitiveContragredientMultiplicity
 import MagnitudeConjecture.Algebra.RightModulePrimitiveRelativeMesh
 import QuotientSubmoduleEquidistribution.RepresentationTheory.LeftAROccurrenceBasis
@@ -403,8 +403,6 @@ separate from the marker-complement theorem that supplies dual positivity. -/
 def negativeGainingPairOfContragredientPositive [IsAlgClosed k]
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (N : S.PrimitiveNewRightMeshEndpoint D)
     (hpositiveOp : letI : IsNoetherianRing (Aᵐᵒᵖ)ᵐᵒᵖ :=
         IsNoetherianRing.of_finite k _
@@ -417,7 +415,7 @@ def negativeGainingPairOfContragredientPositive [IsAlgClosed k]
     IsNoetherianRing.of_finite k _
   let Sop := S.contragredientSkeleton
   let Hop := S.contragredientSkeleton_hasAcyclicNonzeroNonisomorphisms H
-  let dualBoundary := PrimitiveDirectedBoundaryData.contragredient S D H E
+  let dualBoundary := Sop.primitiveDirectedBoundaryData_finiteKernel Hop D.opposite
   let Nop := N.contragredientNewMeshEndpoint H he
   let wop := Nop.positiveSourceLabel dualBoundary hpositiveOp
   let target := (S.contragredientPrimitiveQuotientLabelEquiv D).symm wop
@@ -427,7 +425,7 @@ def negativeGainingPairOfContragredientPositive [IsAlgClosed k]
   rw [S.primitiveQuotientIrreducibleArrowMultiplicity_eq_relative_left
     D H he N target]
   apply (N.contragredient_relative_gt_ambient_iff H he target).1
-  simpa [Nop, wop, target, Hop,
+  simpa [Nop, wop, target, Hop, Sop,
     contragredientPrimitiveQuotientLabelEquiv] using
       Nop.positiveSourceLabel_strict_multiplicity dualBoundary hpositiveOp
 
@@ -442,8 +440,6 @@ above is applied. -/
 def negativeGainingPair [IsAlgClosed k]
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D))
     (P : PrimitiveNewRightMeshEndpoint.NegativeEndpoint
@@ -451,7 +447,7 @@ def negativeGainingPair [IsAlgClosed k]
     PrimitiveGainingPair (S := S) (D := D) := by
   letI : IsNoetherianRing (Aᵐᵒᵖ)ᵐᵒᵖ :=
     IsNoetherianRing.of_finite k _
-  exact S.negativeGainingPairOfContragredientPositive D H he E P.1
+  exact S.negativeGainingPairOfContragredientPositive D H he P.1
     (S.contragredientNewMeshEndpoint_isPositive_of_not_isPositive
       D H he B P.1 P.2)
 
@@ -460,12 +456,10 @@ gaining pairs, since their first coordinates are the original mesh sources. -/
 theorem negativeGainingPair_injective [IsAlgClosed k]
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D)) :
     Function.Injective
-      (S.negativeGainingPair D H he E B) := by
+      (S.negativeGainingPair D H he B) := by
   intro P Q h
   apply Subtype.ext
   apply PrimitiveNewRightMeshEndpoint.sourceLabel_injective H he
@@ -477,16 +471,14 @@ theorem card_negativeEndpoint_le_card_primitiveGainingPair
     [IsAlgClosed k]
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D)) :
     Nat.card (PrimitiveNewRightMeshEndpoint.NegativeEndpoint
       (S := S) (D := D)) ≤
       Nat.card (PrimitiveGainingPair (S := S) (D := D)) :=
   Nat.card_le_card_of_injective
-    (S.negativeGainingPair D H he E B)
-    (S.negativeGainingPair_injective D H he E B)
+    (S.negativeGainingPair D H he B)
+    (S.negativeGainingPair_injective D H he B)
 
 /-- The sign partition of the manuscript's primitive new meshes. -/
 abbrev SignedNewMeshEndpoint :=
@@ -517,14 +509,12 @@ partition. -/
 def signedGainingPair [IsAlgClosed k]
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D)) :
     SignedNewMeshEndpoint (S := S) (D := D) →
       PrimitiveGainingPair (S := S) (D := D) :=
   Sum.elim (S.positiveGainingPair D H he B)
-    (S.negativeGainingPair D H he E B)
+    (S.negativeGainingPair D H he B)
 
 /-- Positive and negative meshes cannot select the same gaining pair: the
 first entry of a positive pair has a nonzero map from its inverse translate
@@ -533,12 +523,10 @@ to the deleted simple, whereas the first entry of a negative pair has none.
 theorem signedGainingPair_injective [IsAlgClosed k]
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D)) :
     Function.Injective
-      (S.signedGainingPair D H he E B) := by
+      (S.signedGainingPair D H he B) := by
   intro P Q hPQ
   cases P with
   | inl P =>
@@ -628,32 +616,28 @@ theorem signedGainingPair_injective [IsAlgClosed k]
           exact hf' (hzero f')
       | inr Q =>
           exact congrArg Sum.inr
-            (S.negativeGainingPair_injective D H he E B hPQ)
+            (S.negativeGainingPair_injective D H he B hPQ)
 
 /-- The manuscript's gaining-pair assignment on the original, unsigned new
 mesh type. -/
 def newMeshGainingPair [IsAlgClosed k]
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D)) :
     S.PrimitiveNewRightMeshEndpoint D →
       PrimitiveGainingPair (S := S) (D := D) :=
-  S.signedGainingPair D H he E B ∘ S.newMeshSignEquiv D
+  S.signedGainingPair D H he B ∘ S.newMeshSignEquiv D
 
 /-- Distinct new meshes receive distinct gaining pairs. -/
 theorem newMeshGainingPair_injective [IsAlgClosed k]
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D)) :
     Function.Injective
-      (S.newMeshGainingPair D H he E B) :=
-  (S.signedGainingPair_injective D H he E B).comp
+      (S.newMeshGainingPair D H he B) :=
+  (S.signedGainingPair_injective D H he B).comp
     (S.newMeshSignEquiv D).injective
 
 /-- The number of new meshes is at most the number of gaining pairs. -/
@@ -661,15 +645,13 @@ theorem card_primitiveNewRightMeshEndpoint_le_card_primitiveGainingPair
     [IsAlgClosed k]
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D)) :
     Nat.card (S.PrimitiveNewRightMeshEndpoint D) ≤
       Nat.card (PrimitiveGainingPair (S := S) (D := D)) :=
   Nat.card_le_card_of_injective
-    (S.newMeshGainingPair D H he E B)
-    (S.newMeshGainingPair_injective D H he E B)
+    (S.newMeshGainingPair D H he B)
+    (S.newMeshGainingPair_injective D H he B)
 
 omit [IsNoetherianRing
   (RightModule.primitiveQuotientAlgebra e)ᵐᵒᵖ] in
@@ -728,14 +710,12 @@ theorem card_primitiveNewRightMeshEndpoint_le_primitiveTotalArrowGain
     [IsAlgClosed k]
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D)) :
     Nat.card (S.PrimitiveNewRightMeshEndpoint D) ≤
       S.primitiveTotalArrowGain D :=
   (S.card_primitiveNewRightMeshEndpoint_le_card_primitiveGainingPair
-    D H he E B).trans
+    D H he B).trans
       (S.card_primitiveGainingPair_le_primitiveTotalArrowGain D)
 
 end MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton

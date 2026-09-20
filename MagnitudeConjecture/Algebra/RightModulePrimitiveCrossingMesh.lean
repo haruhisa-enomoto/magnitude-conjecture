@@ -445,9 +445,8 @@ private theorem card_eq_one_of_sum_eq_one_of_pos
 
 /-- At a boundary mesh ending on the killed side, the full displayed
 primitive-coordinate sum is one. -/
-theorem sum_primitiveMultiplicity_incomingBoundaryMesh_eq_one
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
+theorem sum_primitiveMultiplicity_incomingBoundaryMesh_eq_one [IsAlgClosed k]
+    (H : S.HasAcyclicNonzeroNonisomorphisms)
     (z : S.PrimitiveIncomingBoundaryMesh D) :
     (∑ i : (S.minimalRightAlmostSplitAt z.1.1).index,
         S.primitiveMultiplicity D
@@ -462,16 +461,8 @@ theorem sum_primitiveMultiplicity_incomingBoundaryMesh_eq_one
       (S := S) (S.primitiveMultiplicityInput D)
         (⟨S.rightTranslationLabel z.1, z.2.2⟩ :
           S.SurvivingLabel (S.primitiveKilledLabels D))
-  have hdiff := E.translation_difference_le_one z.1
-  have htauLeInt :
-      (S.primitiveMultiplicity D (S.rightTranslationLabel z.1) : ℤ) ≤ 1 := by
-    have hneg := le_trans
-      (neg_le_abs ((S.primitiveMultiplicity D z.1.1 : ℤ) -
-        S.primitiveMultiplicity D (S.rightTranslationLabel z.1))) hdiff
-    simpa only [hzZero, Nat.cast_zero, zero_sub, neg_neg] using hneg
-  have htauLe :
-      S.primitiveMultiplicity D (S.rightTranslationLabel z.1) ≤ 1 := by
-    exact_mod_cast htauLeInt
+  have htauLe := S.primitiveMultiplicity_rightTranslation_le_one_of_killed_finiteKernel
+    H D z.1 z.2.1
   have htau :
       S.primitiveMultiplicity D (S.rightTranslationLabel z.1) = 1 := by
     omega
@@ -479,9 +470,8 @@ theorem sum_primitiveMultiplicity_incomingBoundaryMesh_eq_one
 
 /-- At a boundary mesh ending on the non-killed side, the full displayed
 primitive-coordinate sum is also one. -/
-theorem sum_primitiveMultiplicity_outgoingBoundaryMesh_eq_one
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
+theorem sum_primitiveMultiplicity_outgoingBoundaryMesh_eq_one [IsAlgClosed k]
+    (H : S.HasAcyclicNonzeroNonisomorphisms)
     (z : S.PrimitiveOutgoingBoundaryMesh D) :
     (∑ i : (S.minimalRightAlmostSplitAt z.1.1).index,
         S.primitiveMultiplicity D
@@ -496,14 +486,8 @@ theorem sum_primitiveMultiplicity_outgoingBoundaryMesh_eq_one
       (S := S) (S.primitiveMultiplicityInput D)
         (⟨z.1.1, z.2.1⟩ :
           S.SurvivingLabel (S.primitiveKilledLabels D))
-  have hdiff := E.translation_difference_le_one z.1
-  have hzLeInt : (S.primitiveMultiplicity D z.1.1 : ℤ) ≤ 1 := by
-    have hpos := le_trans
-      (le_abs_self ((S.primitiveMultiplicity D z.1.1 : ℤ) -
-        S.primitiveMultiplicity D (S.rightTranslationLabel z.1))) hdiff
-    simpa only [htauZero, Nat.cast_zero, sub_zero] using hpos
-  have hzLe : S.primitiveMultiplicity D z.1.1 ≤ 1 := by
-    exact_mod_cast hzLeInt
+  have hzLe := S.primitiveMultiplicity_le_one_of_rightTranslation_killed_finiteKernel
+    H D z.1 z.2.2
   have hzOne : S.primitiveMultiplicity D z.1.1 = 1 := by omega
   simpa only [htauZero, hzOne, zero_add] using hsum
 
@@ -565,17 +549,16 @@ private theorem card_primitiveNonKilledMiddleOccurrence_eq_one_of_sum_eq_one
 
 /-- Every ambient boundary mesh has exactly one displayed middle occurrence
 on the non-killed side. -/
-theorem card_primitiveNonKilledMiddleOccurrence_eq_one
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
+theorem card_primitiveNonKilledMiddleOccurrence_eq_one [IsAlgClosed k]
+    (H : S.HasAcyclicNonzeroNonisomorphisms)
     (z : S.PrimitiveBoundaryMesh D) :
     Nat.card (S.PrimitiveNonKilledMiddleOccurrence D
       (S.primitiveBoundaryMeshEndpoint D z)) = 1 := by
   rcases z with z | z
   · exact S.card_primitiveNonKilledMiddleOccurrence_eq_one_of_sum_eq_one
-      D z.1 (S.sum_primitiveMultiplicity_incomingBoundaryMesh_eq_one D E z)
+      D z.1 (S.sum_primitiveMultiplicity_incomingBoundaryMesh_eq_one D H z)
   · exact S.card_primitiveNonKilledMiddleOccurrence_eq_one_of_sum_eq_one
-      D z.1 (S.sum_primitiveMultiplicity_outgoingBoundaryMesh_eq_one D E z)
+      D z.1 (S.sum_primitiveMultiplicity_outgoingBoundaryMesh_eq_one D H z)
 
 /-- Outgoing crossing arrows, paired across their ambient mesh, are the
 surviving middle occurrences in the boundary meshes ending on the
@@ -583,9 +566,7 @@ non-killed side.  Uniqueness of the surviving occurrence makes the result
 independent of the proof transports used to recover the inverse translate. -/
 def outgoingCrossingArrowEquivBoundaryOccurrence
     [IsAlgClosed k]
-    (H : S.HasAcyclicNonzeroNonisomorphisms)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D)) :
+    (H : S.HasAcyclicNonzeroNonisomorphisms) :
     S.PrimitiveOutgoingCrossingArrow D ≃
       Σ z : S.PrimitiveOutgoingBoundaryMesh D,
         S.PrimitiveNonKilledMiddleOccurrence D z.1 where
@@ -626,7 +607,7 @@ def outgoingCrossingArrowEquivBoundaryOccurrence
     have hcard :
         Nat.card (S.PrimitiveNonKilledMiddleOccurrence D z.1) = 1 := by
       have h :=
-        S.card_primitiveNonKilledMiddleOccurrence_eq_one D E (Sum.inr z)
+        S.card_primitiveNonKilledMiddleOccurrence_eq_one D H (Sum.inr z)
       change Nat.card
         (S.PrimitiveNonKilledMiddleOccurrence D z.1) = 1 at h
       exact h
@@ -636,9 +617,7 @@ def outgoingCrossingArrowEquivBoundaryOccurrence
 boundary meshes, of their surviving middle occurrences. -/
 def crossingArrowEquivBoundaryOccurrence
     [IsAlgClosed k]
-    (H : S.HasAcyclicNonzeroNonisomorphisms)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D)) :
+    (H : S.HasAcyclicNonzeroNonisomorphisms) :
     S.PrimitiveCrossingArrow D ≃
       Σ z : S.PrimitiveBoundaryMesh D,
         S.PrimitiveNonKilledMiddleOccurrence D
@@ -646,7 +625,7 @@ def crossingArrowEquivBoundaryOccurrence
   exact
     (Equiv.sumCongr
       (S.incomingCrossingArrowEquivBoundaryOccurrence D)
-      (S.outgoingCrossingArrowEquivBoundaryOccurrence D H E)).trans
+      (S.outgoingCrossingArrowEquivBoundaryOccurrence D H)).trans
         (Equiv.sumSigmaDistrib (fun z : S.PrimitiveBoundaryMesh D ↦
           S.PrimitiveNonKilledMiddleOccurrence D
             (S.primitiveBoundaryMeshEndpoint D z))).symm
@@ -656,9 +635,7 @@ ambient meshes whose translation endpoints lie on opposite sides of the
 primitive deletion. -/
 theorem card_primitiveCrossingArrow_eq_card_primitiveBoundaryMesh
     [IsAlgClosed k]
-    (H : S.HasAcyclicNonzeroNonisomorphisms)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D)) :
+    (H : S.HasAcyclicNonzeroNonisomorphisms) :
     Nat.card (S.PrimitiveCrossingArrow D) =
       Nat.card (S.PrimitiveBoundaryMesh D) := by
   classical
@@ -669,14 +646,14 @@ theorem card_primitiveCrossingArrow_eq_card_primitiveBoundaryMesh
           (Σ z : S.PrimitiveBoundaryMesh D,
             S.PrimitiveNonKilledMiddleOccurrence D
               (S.primitiveBoundaryMeshEndpoint D z)) :=
-      Nat.card_congr (S.crossingArrowEquivBoundaryOccurrence D H E)
+      Nat.card_congr (S.crossingArrowEquivBoundaryOccurrence D H)
     _ = ∑ z : S.PrimitiveBoundaryMesh D,
           Nat.card (S.PrimitiveNonKilledMiddleOccurrence D
             (S.primitiveBoundaryMeshEndpoint D z)) := Nat.card_sigma
     _ = ∑ _z : S.PrimitiveBoundaryMesh D, 1 := by
       apply Finset.sum_congr rfl
       intro z _hz
-      exact S.card_primitiveNonKilledMiddleOccurrence_eq_one D E z
+      exact S.card_primitiveNonKilledMiddleOccurrence_eq_one D H z
     _ = Nat.card (S.PrimitiveBoundaryMesh D) := by
       rw [Nat.card_eq_fintype_card]
       simp

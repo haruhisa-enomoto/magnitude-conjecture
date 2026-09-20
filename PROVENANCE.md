@@ -1,31 +1,28 @@
 # Provenance
 
-The Lean source is synchronized from the magnitude-conjecture package of the
-owner-directed `homological-conjectures` research repository, at canonical
-commit `d0831ee92` (2026-09-15). That checkpoint completes the migration to the
-frozen F1 proof route, removes the superseded endpoint modules, and passes the
-canonical public, full-library, axiom, source, Challenge/Solution, and
-independent-kernel checks.
+The Lean source is synchronized from `formalization/magnitude_conjecture`
+in the owner-directed `homological-conjectures` research repository at commit
+`62b5468c3` (2026-09-20). The complete graded-interval proof replaces the
+previous F1 implementation, with 199 obsolete modules removed after dependency
+checks. The canonical full library, source and axiom audits pass; the current
+standalone build and independent replay results are recorded in
+[verification](docs/VERIFICATION.md).
 
-The standalone repository was initially extracted from canonical commit
-`20ebfbcf9f83e359425a89bf5b8980e3ad7054e6` on 2026-09-07. This synchronization
-replaces its production Lean tree with the complete F1 checkpoint. The source
-package path is `formalization/magnitude_conjecture`. No compiled Lean artifacts
-or research checkout caches are part of the transferred source; the standalone
-build downloads the pinned dependency cache and compiles its own project
-modules.
+The standalone repository was initially extracted from research commit
+`20ebfbcf9f83e359425a89bf5b8980e3ad7054e6` on 2026-09-07. Compiled artifacts
+are not transferred as source; this checkout builds its own project modules.
 
-The mathematical source is Haruhisa Enomoto's frozen September 10 manuscript
-checkpoint. Its canonical repository commit is
-`6d9095121c8cafac4b97e9dfabf1f6bc9b6519e5`, and the frozen proof source has Git
-blob `c4d50a6257aab1c0368ccbc2ba618d1e389367fe`. The
-[paper correspondence](docs/PAPER-CORRESPONDENCE.md) maps that proof route to
-the synchronized Lean modules. Later exposition edits do not change which
-proof checkpoint this release records.
+The manuscript target is the September 20 snapshot at research commit
+`4404dea52deec5a0dc20dddf1ac8204b620ecb6a`, TeX blob
+`3f2273a3faf11d226ec2a131a902ff05664f9ebf`. Its SHA-256 is
+`8941be673f965879cae99484353ce50f6a05a6b8f3649229570976eedab5e5b8`.
+The [paper correspondence](docs/PAPER-CORRESPONDENCE.md) maps this fixed proof
+to Lean and describes the final-map formulation of almost-split transfer.
+Later exposition revisions do not change the recorded target.
 
 The owner and responsible maintainer is Haruhisa Enomoto. The formalization was
 developed using AI coding agents under his direction. The independent
-statement, presentation equivalences, F1 migration, release interface, and
+statement, presentation equivalences, graded-interval migration, release interface, and
 website were prepared by Codex using GPT-6. A complete model-by-model history
 and total cost for the inherited development have not been reconstructed.
 

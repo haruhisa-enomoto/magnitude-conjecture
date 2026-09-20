@@ -1,6 +1,5 @@
-import MagnitudeConjecture.Algebra.RightModulePosetPositiveGrading
+import MagnitudeConjecture.Algebra.RightModuleDirectPosetThinness
 import MagnitudeConjecture.Algebra.RightModulePrimitiveDirectCount
-import MagnitudeConjecture.Algebra.RightModuleSchurianBoundary
 
 /-!
 # The representation-theoretic correction in primitive directed deletion
@@ -226,9 +225,7 @@ primitive-quotient translation-quiver counts. -/
 theorem ambientTranslationQuiverSurplus_sub_primitiveQuotientTranslationQuiverSurplus_eq_cost
     (P : S.PrimitiveProjectivePresentation)
     (p : S.ProjectiveLabel)
-    (H : S.HasAcyclicNonzeroNonisomorphisms)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput (P.primitive p))) :
+    (H : S.HasAcyclicNonzeroNonisomorphisms) :
     S.ambientTranslationQuiverSurplus -
         S.primitiveQuotientTranslationQuiverSurplus (P.primitive p) =
       S.primitiveDirectedDeletionCost (P.primitive p) := by
@@ -243,7 +240,7 @@ theorem ambientTranslationQuiverSurplus_sub_primitiveQuotientTranslationQuiverSu
   have hfactor := S.primitiveFactorIntrinsicEulerExcess_eq_directCount D
   have hnewMeshes :=
     S.card_primitiveNewRightMeshEndpoint_eq_crossing_sub_projectiveRemainder
-      P p H E
+      P p H
   have hvertices :
       (Nat.card (Fin S.n) : ℤ) =
         Nat.card (S.PrimitiveQuotientLabel D) +
@@ -289,14 +286,11 @@ theorem ambientTranslationQuiverSurplus_sub_primitiveQuotientTranslationQuiverSu
       (Nat.card (S.PrimitiveNewRightMeshEndpoint D))
       hvertices hsimples hambientArrows hquotientArrows hfactor hnewMeshes
 
-/-- The structural direct-deletion identity once the multiplicity-coordinate
-estimate has been supplied. -/
-private theorem ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost_ofCoordinateEstimate
+/-- The structural direct-deletion identity using the finite-kernel boundary bounds. -/
+private theorem ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost_ofFiniteKernel
     (P : S.PrimitiveProjectivePresentation)
     (p : S.ProjectiveLabel)
-    (H : S.HasAcyclicNonzeroNonisomorphisms)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput (P.primitive p))) :
+    (H : S.HasAcyclicNonzeroNonisomorphisms) :
     S.ambientARSurplus -
         S.primitiveQuotientARSurplus (P.primitive p) =
       S.primitiveDirectedDeletionCost (P.primitive p) := by
@@ -304,25 +298,23 @@ private theorem ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost_ofCoordi
     S.primitiveQuotientARSurplus_eq_primitiveQuotientTranslationQuiverSurplus]
   exact
     S.ambientTranslationQuiverSurplus_sub_primitiveQuotientTranslationQuiverSurplus_eq_cost
-      P p H E
+      P p H
 
-/-- Nonnegativity of the primitive-deletion correction from constructed
-coordinate and boundary data. -/
+/-- Nonnegativity of the primitive-deletion correction from directed
+boundary data. -/
 private theorem primitiveDirectedDeletionCost_nonnegative_ofBoundaryData
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D)) :
     0 ≤ S.primitiveDirectedDeletionCost D := by
   letI : IsNoetherianRing
       (RightModule.primitiveQuotientAlgebra e)ᵐᵒᵖ :=
     IsNoetherianRing.of_finite k _
-  have hFactor := B.standardFactorIntrinsicEulerExcess_nonnegative
+  have hFactor := B.directHeight_intrinsicExcess_nonnegative
   have hGainNat :=
     S.card_primitiveNewRightMeshEndpoint_le_primitiveTotalArrowGain
-      D H he E B
+      D H he B
   have hGain :
       (Nat.card (S.PrimitiveNewRightMeshEndpoint D) : ℤ) ≤
         (S.primitiveTotalArrowGain D : ℤ) := by
@@ -336,27 +328,22 @@ private theorem primitiveQuotientARSurplus_le_ambientARSurplus_ofBoundaryData
     (P : S.PrimitiveProjectivePresentation)
     (p : S.ProjectiveLabel)
     (H : S.HasAcyclicNonzeroNonisomorphisms)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput (P.primitive p)))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput (P.primitive p))) :
     S.primitiveQuotientARSurplus (P.primitive p) ≤
       S.ambientARSurplus := by
   have hcost := primitiveDirectedDeletionCost_nonnegative_ofBoundaryData
     (S := S)
-    (P.primitive p) H (P.primitive p).idempotent E B
-  rw [← ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost_ofCoordinateEstimate
+    (P.primitive p) H (P.primitive p).idempotent B
+  rw [← ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost_ofFiniteKernel
     (S := S)
-    P p H E] at hcost
+    P p H] at hcost
   omega
 
-/-- Structural equality decomposition from constructed coordinate and
-boundary data. -/
+/-- Structural equality decomposition from directed boundary data. -/
 private theorem primitiveDirectedDeletionCost_eq_zero_iff_ofBoundaryData
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D)) :
     S.primitiveDirectedDeletionCost D = 0 ↔
@@ -369,10 +356,10 @@ private theorem primitiveDirectedDeletionCost_eq_zero_iff_ofBoundaryData
   letI : IsNoetherianRing
       (RightModule.primitiveQuotientAlgebra e)ᵐᵒᵖ :=
     IsNoetherianRing.of_finite k _
-  have hFactor := B.standardFactorIntrinsicEulerExcess_nonnegative
+  have hFactor := B.directHeight_intrinsicExcess_nonnegative
   have hGainNat :=
     S.card_primitiveNewRightMeshEndpoint_le_primitiveTotalArrowGain
-      D H he E B
+      D H he B
   have hGain :
       (Nat.card (S.PrimitiveNewRightMeshEndpoint D) : ℤ) ≤
         (S.primitiveTotalArrowGain D : ℤ) := by
@@ -386,14 +373,11 @@ private theorem primitiveDirectedDeletionCost_eq_zero_iff_ofBoundaryData
   · rintro ⟨hzero, heq⟩
     exact ⟨hzero, by exact_mod_cast heq⟩
 
-/-- Structural equality characterization from constructed coordinate and
-boundary data. -/
+/-- Structural equality characterization from directed boundary data. -/
 private theorem ambientARSurplus_eq_primitiveQuotientARSurplus_iff_ofBoundaryData
     (P : S.PrimitiveProjectivePresentation)
     (p : S.ProjectiveLabel)
     (H : S.HasAcyclicNonzeroNonisomorphisms)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput (P.primitive p)))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput (P.primitive p))) :
     S.ambientARSurplus =
@@ -406,18 +390,15 @@ private theorem ambientARSurplus_eq_primitiveQuotientARSurplus_iff_ofBoundaryDat
           Nat.card
             (S.PrimitiveNewRightMeshEndpoint (P.primitive p)) := by
   rw [← sub_eq_zero,
-    ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost_ofCoordinateEstimate
-      (S := S) P p H E,
+    ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost_ofFiniteKernel
+      (S := S) P p H,
     primitiveDirectedDeletionCost_eq_zero_iff_ofBoundaryData (S := S)
-      (P.primitive p) H (P.primitive p).idempotent E B]
+      (P.primitive p) H (P.primitive p).idempotent B]
 
-/-- Structural equality rigidity from constructed coordinate and boundary
-data. -/
+/-- Structural equality rigidity from directed boundary data. -/
 private theorem primitiveMultiplicity_eq_one_of_primitiveDirectedDeletionCost_eq_zero_ofBoundaryData
     (H : S.HasAcyclicNonzeroNonisomorphisms)
     (he : IsIdempotentElem e)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput D))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput D))
     (hzero : S.primitiveDirectedDeletionCost D = 0)
@@ -425,24 +406,14 @@ private theorem primitiveMultiplicity_eq_one_of_primitiveDirectedDeletionCost_eq
     S.primitiveMultiplicity D X.1 = 1 := by
   have hFactorZero :=
     (primitiveDirectedDeletionCost_eq_zero_iff_ofBoundaryData
-      (S := S) D H he E B).mp hzero |>.1
-  let R := B.schurRealizationFamily
-  calc
-    S.primitiveMultiplicity D X.1 =
-        Module.finrank k (R.obj X) :=
-      R.multiplicity_eq_finrank X
-    _ = 1 :=
-      B.standardFactorSchur_finrank_eq_one_of_intrinsicEulerExcess_eq_zero
-        hFactorZero (R.obj X) (R.schur X)
+      (S := S) D H he B).mp hzero |>.1
+  exact B.directMultiplicity_eq_one_of_excess_zero hFactorZero X
 
-/-- Structural ambient-equality rigidity from constructed coordinate and
-boundary data. -/
+/-- Structural ambient-equality rigidity from directed boundary data. -/
 private theorem primitiveMultiplicity_eq_one_of_ambientARSurplus_eq_primitiveQuotientARSurplus_ofBoundaryData
     (P : S.PrimitiveProjectivePresentation)
     (p : S.ProjectiveLabel)
     (H : S.HasAcyclicNonzeroNonisomorphisms)
-    (E : S.MultiplicityCoordinateEstimate
-      (S.primitiveMultiplicityInput (P.primitive p)))
     (B : S.PrimitiveDirectedBoundaryData
       (S.primitiveMultiplicityInput (P.primitive p)))
     (hEquality : S.ambientARSurplus =
@@ -453,15 +424,15 @@ private theorem primitiveMultiplicity_eq_one_of_ambientARSurplus_eq_primitiveQuo
   apply
     primitiveMultiplicity_eq_one_of_primitiveDirectedDeletionCost_eq_zero_ofBoundaryData
       (S := S)
-    (P.primitive p) H (P.primitive p).idempotent E B
-  rw [← ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost_ofCoordinateEstimate
+    (P.primitive p) H (P.primitive p).idempotent B
+  rw [← ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost_ofFiniteKernel
     (S := S)
-    P p H E, hEquality, sub_self]
+    P p H, hEquality, sub_self]
 
 /-- The manuscript's direct-deletion identity
 `sigma(A) - sigma(A/AeA) = epsilon(Q) + c - r` for a
-representation-directed algebra.  The coordinate estimate is constructed
-from the literal middle-support quotient. -/
+representation-directed algebra. The crossing-mesh count uses the finite-kernel
+boundary bounds. -/
 theorem ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost
     (P : S.PrimitiveProjectivePresentation)
     (p : S.ProjectiveLabel)
@@ -470,13 +441,12 @@ theorem ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost
     S.ambientARSurplus -
         S.primitiveQuotientARSurplus (P.primitive p) =
       S.primitiveDirectedDeletionCost (P.primitive p) :=
-  ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost_ofCoordinateEstimate
+  ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost_ofFiniteKernel
     (S := S) P p H
-      (P.multiplicityCoordinateEstimate hA H (P.primitive p))
 
 /-- The actual primitive-deletion correction is nonnegative for a
-representation-directed algebra.  The coordinate and boundary packages are
-constructed from the manuscript's hypotheses. -/
+representation-directed algebra.  The boundary package is
+constructed by the finite-kernel argument. -/
 theorem primitiveDirectedDeletionCost_nonnegative
     (P : S.PrimitiveProjectivePresentation)
     (hA : RightModule.IsRepresentationFinite k A)
@@ -484,8 +454,7 @@ theorem primitiveDirectedDeletionCost_nonnegative
     0 ≤ S.primitiveDirectedDeletionCost D :=
   primitiveDirectedDeletionCost_nonnegative_ofBoundaryData (S := S)
     D H D.idempotent
-      (P.multiplicityCoordinateEstimate hA H D)
-      (P.primitiveDirectedBoundaryData hA H D)
+      (S.primitiveDirectedBoundaryData_finiteKernel H D)
 
 /-- Primitive directed deletion cannot increase the quotient
 Auslander--Reiten surplus.  This is the manuscript-facing local monotonicity
@@ -499,8 +468,7 @@ theorem primitiveQuotientARSurplus_le_ambientARSurplus
       S.ambientARSurplus :=
   primitiveQuotientARSurplus_le_ambientARSurplus_ofBoundaryData (S := S)
     P p H
-      (P.multiplicityCoordinateEstimate hA H (P.primitive p))
-      (P.primitiveDirectedBoundaryData hA H (P.primitive p))
+      (S.primitiveDirectedBoundaryData_finiteKernel H (P.primitive p))
 
 /-- Equality in the actual correction separates into vanishing factor excess
 and equality between total arrow gain and the number of new meshes. -/
@@ -517,8 +485,7 @@ theorem primitiveDirectedDeletionCost_eq_zero_iff
           Nat.card (S.PrimitiveNewRightMeshEndpoint D) :=
   primitiveDirectedDeletionCost_eq_zero_iff_ofBoundaryData (S := S)
     D H D.idempotent
-      (P.multiplicityCoordinateEstimate hA H D)
-      (P.primitiveDirectedBoundaryData hA H D)
+      (S.primitiveDirectedBoundaryData_finiteKernel H D)
 
 /-- Equality of the ambient and quotient Auslander--Reiten surpluses is
 equivalent to simultaneous vanishing of the factor excess and of the
@@ -539,8 +506,7 @@ theorem ambientARSurplus_eq_primitiveQuotientARSurplus_iff
             (S.PrimitiveNewRightMeshEndpoint (P.primitive p)) :=
   ambientARSurplus_eq_primitiveQuotientARSurplus_iff_ofBoundaryData (S := S)
     P p H
-      (P.multiplicityCoordinateEstimate hA H (P.primitive p))
-      (P.primitiveDirectedBoundaryData hA H (P.primitive p))
+      (S.primitiveDirectedBoundaryData_finiteKernel H (P.primitive p))
 
 /-- Equality in the actual correction forces every object of the strict
 primitive factor to have deleted-simple multiplicity one. -/
@@ -553,8 +519,7 @@ theorem primitiveMultiplicity_eq_one_of_primitiveDirectedDeletionCost_eq_zero
     S.primitiveMultiplicity D X.1 = 1 :=
   primitiveMultiplicity_eq_one_of_primitiveDirectedDeletionCost_eq_zero_ofBoundaryData
     (S := S) D H D.idempotent
-      (P.multiplicityCoordinateEstimate hA H D)
-      (P.primitiveDirectedBoundaryData hA H D) hzero X
+      (S.primitiveDirectedBoundaryData_finiteKernel H D) hzero X
 
 /-- Equality of the ambient and primitive-quotient Auslander--Reiten
 surpluses forces every object in the strict primitive factor to have
@@ -571,7 +536,6 @@ theorem primitiveMultiplicity_eq_one_of_ambientARSurplus_eq_primitiveQuotientARS
     S.primitiveMultiplicity (P.primitive p) X.1 = 1 :=
   primitiveMultiplicity_eq_one_of_ambientARSurplus_eq_primitiveQuotientARSurplus_ofBoundaryData
     (S := S) P p H
-      (P.multiplicityCoordinateEstimate hA H (P.primitive p))
-      (P.primitiveDirectedBoundaryData hA H (P.primitive p)) hEquality X
+      (S.primitiveDirectedBoundaryData_finiteKernel H (P.primitive p)) hEquality X
 
 end MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton
