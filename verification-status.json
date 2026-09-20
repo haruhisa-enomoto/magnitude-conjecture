@@ -1,14 +1,15 @@
 {
-  "summary": "The graded-interval proof passes the canonical and standalone full-library builds and 4,090-declaration axiom audits. Replay with the current Comparator and regenerated API checks are in progress.",
+  "summary": "The frozen graded-interval proof passes both full-library builds, all 4,090 axiom checks, and independent NanoDa and Lean-kernel replay with the current Comparator. Complete API generation and final website checks are in progress.",
   "research_source_commit": "62b5468c3",
   "manuscript_source_commit": "4404dea52deec5a0dc20dddf1ac8204b620ecb6a",
   "standalone_source_commit": "2396fb9",
   "build": "passed: incremental serial full-library build",
   "axiom_audits": "passed: 7 public and 4090 supporting declarations",
-  "comparator": "in progress",
-  "api": "pending",
+  "comparator": "passed: statement match, standard axiom boundary, NanoDa and Lean kernel",
+  "api": "in progress",
   "website": "pending",
   "palomar": "Not submitted; current local metadata, licence, configuration, toolchain and exporter-resolution checks pass.",
   "source_sync_result": "verification/2026-09-20/source-sync.json",
-  "build_result": "verification/2026-09-20/build-summary.json"
+  "build_result": "verification/2026-09-20/build-summary.json",
+  "comparator_result": "verification/2026-09-20/comparator.json"
 }

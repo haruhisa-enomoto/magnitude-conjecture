@@ -9,9 +9,13 @@ All use only `propext`, `Classical.choice`, `Quot.sound`, or no axioms.
 The independent Challenge has one deliberate placeholder and is not imported
 by the production proof.
 
-The standalone full-library build and both axiom audits also pass. Replay
-with the current Palomar Comparator pin and regenerated documentation checks
-are in progress. This page will record their results when complete. The earlier `verification/2026-09-15/` evidence describes
+The standalone full-library build and both axiom audits also pass. Independent
+replay with the current Palomar Comparator passed on September 21: the statement
+matches, only the permitted axioms occur, and both NanoDa and Lean's kernel
+accept the exported proof. The run took 2,288.61 seconds (38.1 minutes), with a
+reported peak process RSS of 4.21 GiB. Exact source hashes, tool pins and results
+are in [the replay record](../verification/2026-09-20/comparator.json).
+Complete API generation and final website checks are in progress. The earlier `verification/2026-09-15/` evidence describes
 the superseded F1 proof and is retained only as history.
 
 Both full-library builds were incremental, not from an empty cache. The

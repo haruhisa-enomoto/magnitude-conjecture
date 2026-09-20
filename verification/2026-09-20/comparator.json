@@ -1,0 +1,34 @@
+{
+  "checked_at": "2026-09-21T00:58:47+09:00",
+  "exit": 0,
+  "target": "MagnitudeConjecture.magnitudeTheorem",
+  "source_commit": "9380dc294e2586430ff853b613918d5d9fc44375",
+  "challenge_sha256": "0da003b9397a756e9426af6d663c624902008d6dd11ae70ce745d46b86290ef3",
+  "solution_sha256": "9bc4f17928e2fa87aa660e686a671cca5f20c81138785b64e9b247b6c7a79713",
+  "lean": "leanprover/lean4:v4.33.1",
+  "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "tools": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "15f6055e299ad5b89345e533cc2192f4cc00f659",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "statement_match": "passed",
+  "axiom_boundary": "passed",
+  "nanoda": "passed",
+  "lean_kernel_replay": "passed",
+  "result": "Your solution is okay!",
+  "log_sha256": "63e980854d60bba2b8169922e1eb4f1aad96b559baeed964c1f75d1e67d897ea",
+  "log_bytes": 2155527,
+  "qualification": "Local replay; not a hosted Palomar preflight or registry acceptance. Exporter v4.33.0 source compiled with project Lean v4.33.1.",
+  "timing": {
+    "elapsed_seconds": 2288.61,
+    "peak_rss_kib": 4416148,
+    "exit": 0
+  }
+}

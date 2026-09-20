@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-09-21T00:57:24+09:00",
+  "canonical_head": "f2f8bf8989a5331b7856cd0f31d25e335fae618d",
+  "standalone_head": "9380dc294e2586430ff853b613918d5d9fc44375",
+  "canonical_proof_source_commit": "62b5468c300e6b53f01849b1ea58ffb1519124ca",
+  "synchronized_files_checked": 1193,
+  "canonical_and_standalone_hashes": "all match source-sync manifest",
+  "source_sync_manifest_sha256": "fbb9a05148df7d19be552d829cca010f3082745c4fc66776cc294365e3649ee4",
+  "frozen_source_commit": "4404dea52deec5a0dc20dddf1ac8204b620ecb6a",
+  "frozen_files": {
+    "main.tex": "8941be673f965879cae99484353ce50f6a05a6b8f3649229570976eedab5e5b8",
+    "main.pdf": "550e41abf2a4bc83f5daef3a3338ef52000dea3daada7be6caf5ba63d6c9e5d5",
+    "PROOF-MAP.md": "b1500ddcb4eff575d6364dfde114bc6a5d3156275fe41bb0a4378365152a7213",
+    "SIMPLIFIED-PROOF.md": "3b2c494232fe52fd66fe0958f9d8ccf63c194ba6d7ae19383cecac29e70899d5"
+  },
+  "frozen_hashes": "all match frozen manifest",
+  "standalone_worktree_clean_before_record": true
+}
