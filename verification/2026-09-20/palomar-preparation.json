@@ -43,5 +43,25 @@
   "upstream_v04_schema": "passed at 99c678e569c7c4c0772db297c5ddd5e4c9b6322e",
   "template_metadata_validator": "passed",
   "helper_regressions": "6 passed",
-  "license_detector": "Not run: local Ruby 3.0 cannot install the current pinned bundle (locked nokogiri artifact unavailable); hosted licence detection not claimed."
+  "license_detector": {
+    "status": "passed",
+    "path": "LICENSE",
+    "detected_identifier": "Apache-2.0",
+    "declared_identifier": "Apache-2.0",
+    "license_sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+    "ruby": "3.3.9 (isolated runtime)",
+    "bundler": "2.7.2",
+    "licensee": "10.0.0",
+    "verifier_gem_lock_sha256": "d93caad3b41ab81138c1770dcde1415ac9aa47e8e469ea25b3f876a9f3d2cdff",
+    "ruby_archive_sha256": "d7d919561852a7a2f9bd170dc8b0f2d06cc7363cf1d32d07c1f4a176d2665d78"
+  },
+  "current_configuration_check": "passed",
+  "manifest_git_pins": "passed",
+  "mathlib_toolchain": [
+    {
+      "revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "toolchain": "leanprover/lean4:v4.33.1"
+    }
+  ],
+  "checked_at": "2026-09-20T23:06:13+09:00"
 }
