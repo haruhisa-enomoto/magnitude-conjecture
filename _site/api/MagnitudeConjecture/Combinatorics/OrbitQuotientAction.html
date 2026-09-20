@@ -1,0 +1,342 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.Combinatorics.OrbitQuotientAction</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.Combinatorics.OrbitQuotientAction";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">Combinatorics</span>.<span class="name">OrbitQuotientAction</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Tactic.lean">Mathlib.Tactic</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/GroupTheory/GroupAction/Quotient.lean">Mathlib.GroupTheory.GroupAction.Quotient</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.Combinatorics.OrbitQuotientAction" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitInvariantDescend"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitInvariantDescend</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitInvariantDescend_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitInvariantDescend_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitClassifierDescend"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitClassifierDescend</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitClassifierDescend_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitClassifierDescend_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitClassifierDescend_bijective"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitClassifierDescend_bijective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitClassifierEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitClassifierEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.sum_orbitInvariantDescend_eq_sum_of_orbitClassifier"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">sum_orbitInvariantDescend_eq_sum_of_orbitClassifier</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.sum_eq_card_nsmul_sum_orbitInvariantDescend"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">sum_eq_card_nsmul_sum_orbitInvariantDescend</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.sum_eq_card_mul_sum_orbitInvariantDescend"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">sum_eq_card_mul_sum_orbitInvariantDescend</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.card_eq_orbitQuotient_card_mul_group_card"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">card_eq_orbitQuotient_card_mul_group_card</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.eulerSurplus_scale_of_free_actions"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">eulerSurplus_scale_of_free_actions</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitQuotientMulAction"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientMulAction</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.quotient_smul_orbit_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">quotient_smul_orbit_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitTowerEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitTowerEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitTowerEquiv_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitTowerEquiv_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitTowerEquiv_symm_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitTowerEquiv_symm_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitQuotientIsCancelSMul"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientIsCancelSMul</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Deck-quotient-action-on-orbit-classes" class="markdown-heading">Deck quotient action on orbit classes <a class="hover-link" href="#Deck-quotient-action-on-orbit-classes">#</a></h1><p>If a group <code>G</code> acts on <code>X</code> and <code>N</code> is normal, then <code>G / N</code> acts on the
+set of <code>N</code>-orbits in <code>X</code>.  A free <code>G</code>-action induces a free quotient action.
+This is the group-action calculation used for the endpoint scaling in the
+finite covering average.</p></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitInvariantDescend"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L21-L30">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitInvariantDescend"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitInvariantDescend</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span></span> → <span class="fn">M</span></span></div></div><p>An invariant function descends to the orbit quotient.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.orbitInvariantDescend" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitInvariantDescend_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L32-L41">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitInvariantDescend_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitInvariantDescend_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">X</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitInvariantDescend">orbitInvariantDescend</a> <span class="fn">f</span> <span class="fn">invariant</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitClassifierDescend"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L43-L52">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitClassifierDescend"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitClassifierDescend</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">c</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">c</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">c</span> <span class="fn">x</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span></span> → <span class="fn">Y</span></span></div></div><p>A function constant on orbits descends to its orbit quotient, without any
+algebraic structure on the codomain.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.orbitClassifierDescend" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitClassifierDescend_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L54-L61">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitClassifierDescend_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitClassifierDescend_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">c</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">c</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">c</span> <span class="fn">x</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">X</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitClassifierDescend">orbitClassifierDescend</a> <span class="fn">c</span> <span class="fn">invariant</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">c</span> <span class="fn">x</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitClassifierDescend_bijective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L63-L83">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitClassifierDescend_bijective"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitClassifierDescend_bijective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">c</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">c</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">c</span> <span class="fn">x</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">surjective</span> : <span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">c</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">fiber</span> : <span class="fn">∀ (<span class="fn">x </span><span class="fn">y</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">c</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">c</span> <span class="fn">y</span></span></span> → <span class="fn">∃ (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span></span> <span class="fn">=</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Bijective</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitClassifierDescend">orbitClassifierDescend</a> <span class="fn">c</span> <span class="fn">invariant</span>)</span></span></div></div><p>An orbit classifier is bijective on the orbit quotient when it is
+surjective and its fibres are exactly the orbits.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitClassifierEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L85-L93">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitClassifierEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitClassifierEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">c</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">c</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">c</span> <span class="fn">x</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">surjective</span> : <span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">c</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">fiber</span> : <span class="fn">∀ (<span class="fn">x </span><span class="fn">y</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">c</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">c</span> <span class="fn">y</span></span></span> → <span class="fn">∃ (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span></span> <span class="fn">=</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span></span> <span class="fn">≃</span> <span class="fn">Y</span></span></div></div><p>The equivalence induced by a complete orbit classifier with orbit fibres.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.orbitClassifierEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.sum_orbitInvariantDescend_eq_sum_of_orbitClassifier"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L95-L117">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.sum_orbitInvariantDescend_eq_sum_of_orbitClassifier"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">sum_orbitInvariantDescend_eq_sum_of_orbitClassifier</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">c</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">c_invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">c</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">c</span> <span class="fn">x</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">c_surjective</span> : <span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">c</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">c_fiber</span> : <span class="fn">∀ (<span class="fn">x </span><span class="fn">y</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">c</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">c</span> <span class="fn">y</span></span></span> → <span class="fn">∃ (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span></span> <span class="fn">=</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f_invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn"><span class="fn">Y</span> → <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">value_eq</span> : <span class="fn">∀ (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">t</span> <span class="fn">(<span class="fn">c</span> <span class="fn">x</span>)</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">∑ <span class="fn">q</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span></span>, <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitInvariantDescend">orbitInvariantDescend</a> <span class="fn">f</span> <span class="fn">f_invariant</span> <span class="fn">q</span></span></span> <span class="fn">=</span> <span class="fn">∑ <span class="fn">y</span> : <span class="fn">Y</span>, <span class="fn"><span class="fn">t</span> <span class="fn">y</span></span></span></span></div></div><p>Reindex an orbit sum along a complete orbit classifier whose fibres are
+exactly the orbits.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.sum_eq_card_nsmul_sum_orbitInvariantDescend"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L119-L145">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.sum_eq_card_nsmul_sum_orbitInvariantDescend"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">sum_eq_card_nsmul_sum_orbitInvariantDescend</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">∑ <span class="fn">x</span> : <span class="fn">X</span>, <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">Fintype.card</span> <span class="fn">G</span></span> <span class="fn">•</span> <span class="fn">∑ <span class="fn">q</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span></span>, <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitInvariantDescend">orbitInvariantDescend</a> <span class="fn">f</span> <span class="fn">invariant</span> <span class="fn">q</span></span></span></span></span></div></div><p>For a finite free action, the sum of an invariant function is the group
+order times its sum over the orbit quotient.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.sum_eq_card_mul_sum_orbitInvariantDescend"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L147-L159">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.sum_eq_card_mul_sum_orbitInvariantDescend"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">sum_eq_card_mul_sum_orbitInvariantDescend</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">ℤ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">∑ <span class="fn">x</span> : <span class="fn">X</span>, <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span> <span class="fn">=</span> <span class="fn"><span class="fn">↑<span class="fn">(<span class="fn">Fintype.card</span> <span class="fn">G</span>)</span></span> <span class="fn">*</span> <span class="fn">∑ <span class="fn">q</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span></span>, <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitInvariantDescend">orbitInvariantDescend</a> <span class="fn">f</span> <span class="fn">invariant</span> <span class="fn">q</span></span></span></span></span></div></div><p>Integer form of invariant-sum scaling, matching the covering-average
+arithmetic.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.card_eq_orbitQuotient_card_mul_group_card"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L161-L173">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.card_eq_orbitQuotient_card_mul_group_card"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">card_eq_orbitQuotient_card_mul_group_card</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">Q</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">Q</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">Q</span> <span class="fn">Y</span>)</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Fintype.card</span> <span class="fn">Y</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">Fintype.card</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">Q</span> <span class="fn">Y</span>)</span></span> <span class="fn">*</span> <span class="fn"><span class="fn">Fintype.card</span> <span class="fn">Q</span></span></span></span></div></div><p>Every orbit quotient of a finite free action has uniform fibre size equal
+to the order of the acting group.  This cardinal form is what scales the
+vertex, arrow-occurrence, and mesh counts at the covering endpoints.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.eulerSurplus_scale_of_free_actions"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L175-L191">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.eulerSurplus_scale_of_free_actions"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">eulerSurplus_scale_of_free_actions</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Arrow </span><span class="fn">Mesh</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">Q</span> <span class="fn">Arrow</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">Q</span> <span class="fn">Mesh</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">Q</span> <span class="fn">Arrow</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">Q</span> <span class="fn">Mesh</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Arrow</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Mesh</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">Q</span> <span class="fn">Arrow</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">Q</span> <span class="fn">Mesh</span>)</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">2</span> <span class="fn">*</span> <span class="fn">↑<span class="fn">(<span class="fn">Fintype.card</span> <span class="fn">Mesh</span>)</span></span></span> <span class="fn">-</span> <span class="fn">↑<span class="fn">(<span class="fn">Fintype.card</span> <span class="fn">Arrow</span>)</span></span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">↑<span class="fn">(<span class="fn">Fintype.card</span> <span class="fn">Q</span>)</span></span> <span class="fn">*</span>     <span class="fn">(<span class="fn"><span class="fn">2</span> <span class="fn">*</span> <span class="fn">↑<span class="fn">(<span class="fn">Fintype.card</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">Q</span> <span class="fn">Mesh</span>)</span>)</span></span></span> <span class="fn">-</span> <span class="fn">↑<span class="fn">(<span class="fn">Fintype.card</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">Q</span> <span class="fn">Arrow</span>)</span>)</span></span>)</span></span></span></div></div><p>Uniform free fibres scale the integer mesh-minus-arrow surplus by the
+order of the acting group.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitQuotientMulAction"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L235-L242">source</a></div><div class="attributes">@[instance_reducible]</div>
+<div class="decl_header"><span class="decl_kind">noncomputable instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitQuotientMulAction"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientMulAction</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">MulAction</span> <span class="fn">(<span class="fn">G</span> <span class="fn">⧸</span> <span class="fn">N</span>)</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">X</span>)</span></span></div></div><p>The canonical action of <code>G / N</code> on the set of <code>N</code>-orbits in <code>X</code>.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.quotient_smul_orbit_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L244-L252">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.quotient_smul_orbit_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">quotient_smul_orbit_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">X</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">↑<span class="fn">g</span></span> <span class="fn">•</span> <span class="fn"><span class="fn">Quotient.mk''</span> <span class="fn">x</span></span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Quotient.mk''</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span></span></div></div><p>The quotient action is represented by applying a representative before
+passing to the orbit quotient.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitTowerEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L291-L306">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitTowerEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitTowerEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(<span class="fn">G</span> <span class="fn">⧸</span> <span class="fn">N</span>)</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">X</span>)</span></span> <span class="fn">≃</span> <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span></span></span></div></div><p>Taking <code>N</code>-orbits and then <code>G / N</code>-orbits gives the same orbit set as
+taking <code>G</code>-orbits directly.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.orbitTowerEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitTowerEquiv_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L308-L314">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitTowerEquiv_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitTowerEquiv_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">X</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitTowerEquiv">orbitTowerEquiv</a> <span class="fn">N</span>)</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">x</span>)</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Quotient.mk''</span> <span class="fn">x</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitTowerEquiv_symm_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L316-L322">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitTowerEquiv_symm_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitTowerEquiv_symm_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">X</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitTowerEquiv">orbitTowerEquiv</a> <span class="fn">N</span>)</span>.<span class="fn">symm</span></span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Quotient.mk''</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">x</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitQuotientIsCancelSMul"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientAction.lean#L324-L341">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitQuotientIsCancelSMul"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientIsCancelSMul</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">(<span class="fn">G</span> <span class="fn">⧸</span> <span class="fn">N</span>)</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">X</span>)</span></span></div></div><p>Freeness descends from a group action to the quotient action on subgroup
+orbits.  This is the manuscript's endpoint-fibre freeness argument.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

@@ -1,0 +1,318 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.EndomorphismDrop</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.EndomorphismDrop";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">EndomorphismDrop</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/LinearBiproduct.html">MagnitudeConjecture.CategoryTheory.LinearBiproduct</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/LinearAlgebra/FiniteDimensional/Lemmas.lean">Mathlib.LinearAlgebra.FiniteDimensional.Lemmas</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/Homology/ShortComplex/ShortExact.lean">Mathlib.Algebra.Homology.ShortComplex.ShortExact</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.EndomorphismDrop" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearMap.finrank_le_add_of_exact"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearMap</span>.<span class="name">finrank_le_add_of_exact</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearMap.finrank_lt_add_of_exact_of_not_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearMap</span>.<span class="name">finrank_lt_add_of_exact_of_not_surjective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearMap.finrank_eq_add_of_exact_of_injective_of_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearMap</span>.<span class="name">finrank_eq_add_of_exact_of_injective_of_surjective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.biproductIsoPairComplement"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">biproductIsoPairComplement</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.rightComp_exact"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">rightComp_exact</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.leftComp_exact"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">leftComp_exact</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_hom_from_middle_le"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">finrank_hom_from_middle_le</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_hom_to_middle_le"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">finrank_hom_to_middle_le</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_hom_middle_to_source_lt"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">finrank_hom_middle_to_source_lt</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_end_middle_lt_endpoint_blocks"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">finrank_end_middle_lt_endpoint_blocks</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.finrank_end_biprod"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">finrank_end_biprod</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_end_middle_biprod_lt"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">finrank_end_middle_biprod_lt</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Endomorphism-dimension-drops-under-nonsplit-extension" class="markdown-heading">Endomorphism dimension drops under nonsplit extension <a class="hover-link" href="#Endomorphism-dimension-drops-under-nonsplit-extension">#</a></h1><p>This file formalizes the dimension comparison used in Ringel Section 2.3,
+Lemma 1.  Exactness bounds Hom dimensions for the middle term by those for
+the two endpoints.  If the extension is nonsplit, one of these bounds is
+strict, hence replacing the endpoints by the middle term strictly lowers the
+endomorphism dimension, even in the presence of an unchanged direct summand.</p></div><div class="decl" id="MagnitudeConjecture.LinearMap.finrank_le_add_of_exact"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L33-L49">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.LinearMap.finrank_le_add_of_exact"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearMap</span>.<span class="name">finrank_le_add_of_exact</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">U </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">U</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfg</span> : <span class="fn"><span class="fn">Function.Exact</span> <span class="fn">⇑<span class="fn">f</span></span> <span class="fn">⇑<span class="fn">g</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">V</span></span> <span class="fn">≤</span> <span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">U</span></span> <span class="fn">+</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">W</span></span></span></span></div></div><p>Exactness at the middle term gives the elementary dimension bound
+<code>dim V ≤ dim U + dim W</code>.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearMap.finrank_lt_add_of_exact_of_not_surjective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L51-L71">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.LinearMap.finrank_lt_add_of_exact_of_not_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearMap</span>.<span class="name">finrank_lt_add_of_exact_of_not_surjective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">U </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">U</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfg</span> : <span class="fn"><span class="fn">Function.Exact</span> <span class="fn">⇑<span class="fn">f</span></span> <span class="fn">⇑<span class="fn">g</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hg</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">⇑<span class="fn">g</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">V</span></span> <span class="fn">&lt;</span> <span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">U</span></span> <span class="fn">+</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">W</span></span></span></span></div></div><p>If the second map in an exact pair is not onto, the middle dimension
+bound is strict.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearMap.finrank_eq_add_of_exact_of_injective_of_surjective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L74-L91">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.LinearMap.finrank_eq_add_of_exact_of_injective_of_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearMap</span>.<span class="name">finrank_eq_add_of_exact_of_injective_of_surjective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">U </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">U</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfg</span> : <span class="fn"><span class="fn">Function.Exact</span> <span class="fn">⇑<span class="fn">f</span></span> <span class="fn">⇑<span class="fn">g</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn">Function.Injective</span> <span class="fn">⇑<span class="fn">f</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hg</span> : <span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">⇑<span class="fn">g</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">V</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">U</span></span> <span class="fn">+</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">W</span></span></span></span></div></div><p>A short exact pair of linear maps gives additivity of finite
+dimensions.</p></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.biproductIsoPairComplement"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L102-L219">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.CategoryTheory.biproductIsoPairComplement"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">biproductIsoPairComplement</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">DecidableEq</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">J</span> → <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">i </span><span class="fn">j</span> : <span class="fn">J</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hij</span> : <span class="fn"><span class="fn">i</span> <span class="fn">≠</span> <span class="fn">j</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">⨁</span> <span class="fn">F</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">F</span> <span class="fn">i</span></span> <span class="fn">⊞</span> <span class="fn"><span class="fn">F</span> <span class="fn">j</span></span>)</span> <span class="fn">⊞</span> <span class="fn"><span class="fn">⨁</span> <span class="fn">fun (<span class="fn">t</span> : <span class="fn"><span class="fn">{</span> <span class="fn">t</span> <span class="fn">:</span> <span class="fn">J</span> <span class="fn">//</span> <span class="fn"><span class="fn"><span class="fn">t</span> <span class="fn">≠</span> <span class="fn">i</span></span> <span class="fn">∧</span> <span class="fn"><span class="fn">t</span> <span class="fn">≠</span> <span class="fn">j</span></span></span> <span class="fn">}</span></span>) =&gt; <span class="fn"><span class="fn">F</span> <span class="fn">↑<span class="fn">t</span></span></span></span></span></span></span></div></div><p>Reorganize a finite biproduct by displaying two distinct summands first
+and collecting all remaining summands in a complementary biproduct.</p><details id="instances-for-list-MagnitudeConjecture.CategoryTheory.biproductIsoPairComplement" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.rightComp_exact"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L223-L241">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.rightComp_exact"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">rightComp_exact</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Balanced</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Exact</span> <span class="fn">⇑<span class="fn">(<span class="fn">CategoryTheory.Linear.rightComp</span> <span class="fn">k</span> <span class="fn">W</span> <span class="fn"><span class="fn">S</span>.<span class="fn">f</span></span>)</span></span> <span class="fn">⇑<span class="fn">(<span class="fn">CategoryTheory.Linear.rightComp</span> <span class="fn">k</span> <span class="fn">W</span> <span class="fn"><span class="fn">S</span>.<span class="fn">g</span></span>)</span></span></span></div></div><p>Composition out of a fixed object carries a short exact sequence to an
+exact pair of linear maps on Hom spaces.</p></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.leftComp_exact"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L245-L263">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.leftComp_exact"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">leftComp_exact</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Balanced</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Exact</span> <span class="fn">⇑<span class="fn">(<span class="fn">CategoryTheory.Linear.leftComp</span> <span class="fn">k</span> <span class="fn">W</span> <span class="fn"><span class="fn">S</span>.<span class="fn">g</span></span>)</span></span> <span class="fn">⇑<span class="fn">(<span class="fn">CategoryTheory.Linear.leftComp</span> <span class="fn">k</span> <span class="fn">W</span> <span class="fn"><span class="fn">S</span>.<span class="fn">f</span></span>)</span></span></span></div></div><p>Composition into a fixed object carries a short exact sequence to the
+contravariant exact pair of linear maps on Hom spaces.</p></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_hom_from_middle_le"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L266-L275">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_hom_from_middle_le"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">finrank_hom_from_middle_le</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Balanced</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span> <span class="fn">⟶</span> <span class="fn">W</span>)</span></span> <span class="fn">≤</span> <span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span> <span class="fn">⟶</span> <span class="fn">W</span>)</span></span> <span class="fn">+</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">⟶</span> <span class="fn">W</span>)</span></span></span></span></div></div><p>Hom out of the middle term is no larger than Hom out of the direct sum
+of the two endpoints.</p></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_hom_to_middle_le"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L278-L287">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_hom_to_middle_le"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">finrank_hom_to_middle_le</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Balanced</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn">W</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span>)</span></span> <span class="fn">≤</span> <span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn">W</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span>)</span></span> <span class="fn">+</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn">W</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span>)</span></span></span></span></div></div><p>Hom into the middle term is no larger than Hom into the direct sum of
+the two endpoints.</p></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_hom_middle_to_source_lt"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L290-L304">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_hom_middle_to_source_lt"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">finrank_hom_middle_to_source_lt</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Balanced</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hnonsplit</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">CategoryTheory.IsSplitMono</span> <span class="fn"><span class="fn">S</span>.<span class="fn">f</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span>)</span></span> <span class="fn">&lt;</span> <span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span>)</span></span> <span class="fn">+</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span>)</span></span></span></span></div></div><p>For a nonsplit short exact sequence, the Hom bound into the source is
+strict: the identity of the source cannot extend across the monomorphism.</p></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_end_middle_lt_endpoint_blocks"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L307-L324">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_end_middle_lt_endpoint_blocks"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">finrank_end_middle_lt_endpoint_blocks</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Balanced</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hnonsplit</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">CategoryTheory.IsSplitMono</span> <span class="fn"><span class="fn">S</span>.<span class="fn">f</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span>)</span></span> <span class="fn">&lt;</span>   <span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span>)</span></span> <span class="fn">+</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span>)</span></span></span> <span class="fn">+</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span>)</span></span></span> <span class="fn">+</span>     <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span>)</span></span></span></span></div></div><p>Ringel's strict comparison: the middle term of a nonsplit extension has
+smaller endomorphism dimension than the direct sum of its endpoints, written
+as the sum of the four matrix-block dimensions.</p></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.finrank_end_biprod"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L327-L367">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.CategoryTheory.finrank_end_biprod"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">finrank_end_biprod</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">X</span> <span class="fn">⊞</span> <span class="fn">Y</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">X</span> <span class="fn">⊞</span> <span class="fn">Y</span></span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span> <span class="fn">+</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span></span></span> <span class="fn">+</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span> <span class="fn">+</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span></span></span></span></div></div><p>Endomorphisms of a binary biproduct are the four Hom matrix blocks.</p></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_end_middle_biprod_lt"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EndomorphismDrop.lean#L370-L410">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EndomorphismDrop.html#MagnitudeConjecture.CategoryTheory.ShortComplex.ShortExact.finrank_end_middle_biprod_lt"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShortComplex</span>.<span class="name">ShortExact</span>.<span class="name">finrank_end_middle_biprod_lt</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Balanced</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hnonsplit</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">CategoryTheory.IsSplitMono</span> <span class="fn"><span class="fn">S</span>.<span class="fn">f</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span> <span class="fn">⊞</span> <span class="fn">R</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span> <span class="fn">⊞</span> <span class="fn">R</span></span>)</span></span> <span class="fn">&lt;</span> <span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">⊞</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span>)</span> <span class="fn">⊞</span> <span class="fn">R</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">⊞</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span>)</span> <span class="fn">⊞</span> <span class="fn">R</span></span>)</span></span></span></div></div><p>Ringel Section 2.3, Lemma 1 in the form needed for the minimization
+argument: replacing two summands by a nonsplit extension strictly lowers the
+endomorphism dimension even after adjoining an arbitrary unchanged summand.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

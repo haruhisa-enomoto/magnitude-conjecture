@@ -1,0 +1,143 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.RadicalSubobject</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.RadicalSubobject";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">RadicalSubobject</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RadicalSubobject.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitCokernel.html">MagnitudeConjecture.CategoryTheory.AlmostSplitCokernel</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html">MagnitudeConjecture.CategoryTheory.UniserialObject</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Subobject/Limits.lean">Mathlib.CategoryTheory.Subobject.Limits</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.RadicalSubobject" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.isRadicalSubobject_mk_of_mono_rightAlmostSplit"><span class="name">MagnitudeConjecture</span>.<span class="name">isRadicalSubobject_mk_of_mono_rightAlmostSplit</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.mk_ne_top_of_mono_rightAlmostSplit"><span class="name">MagnitudeConjecture</span>.<span class="name">mk_ne_top_of_mono_rightAlmostSplit</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.isCoatom_mk_of_mono_rightAlmostSplit"><span class="name">MagnitudeConjecture</span>.<span class="name">isCoatom_mk_of_mono_rightAlmostSplit</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.simple_cokernel_of_isRadicalSubobject"><span class="name">MagnitudeConjecture</span>.<span class="name">simple_cokernel_of_isRadicalSubobject</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.imageSubobject_pullback_arrow_comp_eq_of_epi"><span class="name">MagnitudeConjecture</span>.<span class="name">imageSubobject_pullback_arrow_comp_eq_of_epi</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.isRadicalSubobject_imageSubobject_comp_of_epi"><span class="name">MagnitudeConjecture</span>.<span class="name">isRadicalSubobject_imageSubobject_comp_of_epi</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.imageSubobject_comp_ne_top_of_isEssentialEpi"><span class="name">MagnitudeConjecture</span>.<span class="name">imageSubobject_comp_ne_top_of_isEssentialEpi</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MinimalProjectivePresentation.source_indecomposable_of_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">MinimalProjectivePresentation</span>.<span class="name">source_indecomposable_of_uniserial</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Radical-subobjects-from-projective-covers" class="markdown-heading">Radical subobjects from projective covers <a class="hover-link" href="#Radical-subobjects-from-projective-covers">#</a></h1><p>A monic right almost-split morphism represents the unique maximal subobject
+of its target.  If such a subobject is mapped through a minimal projective
+cover, its image contains every proper subobject of the cover target and is
+itself proper.  This is the intrinsic projective-cover description of the
+module radical used in the covering argument.</p></div><div class="decl" id="MagnitudeConjecture.isRadicalSubobject_mk_of_mono_rightAlmostSplit"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RadicalSubobject.lean#L29-L43">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RadicalSubobject.html#MagnitudeConjecture.isRadicalSubobject_mk_of_mono_rightAlmostSplit"><span class="name">MagnitudeConjecture</span>.<span class="name">isRadicalSubobject_mk_of_mono_rightAlmostSplit</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">P</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">P</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hr</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">QuotientSubmoduleEquidistribution.IsRightAlmostSplit</a> <span class="fn">r</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject.IsRadicalSubobject">IsUniserialObject.IsRadicalSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">r</span>)</span></span></div></div><p>A monic right almost-split morphism represents a subobject containing
+every proper subobject of its target.</p></div></div><div class="decl" id="MagnitudeConjecture.mk_ne_top_of_mono_rightAlmostSplit"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RadicalSubobject.lean#L46-L54">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RadicalSubobject.html#MagnitudeConjecture.mk_ne_top_of_mono_rightAlmostSplit"><span class="name">MagnitudeConjecture</span>.<span class="name">mk_ne_top_of_mono_rightAlmostSplit</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">P</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">P</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hr</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">QuotientSubmoduleEquidistribution.IsRightAlmostSplit</a> <span class="fn">r</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">r</span></span> <span class="fn">≠</span> <span class="fn">⊤</span></span></div></div><p>The subobject represented by a monic right almost-split morphism is
+proper.</p></div></div><div class="decl" id="MagnitudeConjecture.isCoatom_mk_of_mono_rightAlmostSplit"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RadicalSubobject.lean#L57-L65">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RadicalSubobject.html#MagnitudeConjecture.isCoatom_mk_of_mono_rightAlmostSplit"><span class="name">MagnitudeConjecture</span>.<span class="name">isCoatom_mk_of_mono_rightAlmostSplit</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">P</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">P</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hr</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">QuotientSubmoduleEquidistribution.IsRightAlmostSplit</a> <span class="fn">r</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">IsCoatom</span> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">r</span>)</span></span></div></div><p>A monic right almost-split morphism represents a maximal proper
+subobject.</p></div></div><div class="decl" id="MagnitudeConjecture.simple_cokernel_of_isRadicalSubobject"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RadicalSubobject.lean#L67-L98">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RadicalSubobject.html#MagnitudeConjecture.simple_cokernel_of_isRadicalSubobject"><span class="name">MagnitudeConjecture</span>.<span class="name">simple_cokernel_of_isRadicalSubobject</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hr</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject.IsRadicalSubobject">IsUniserialObject.IsRadicalSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">r</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hproper</span> : <span class="fn"><span class="fn"><span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">r</span></span> <span class="fn">≠</span> <span class="fn">⊤</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">r</span>)</span></span></div></div><p>A proper radical subobject has simple quotient.  Indeed, it is a coatom
+in the subobject lattice, hence its quotient is an atom under the abelian
+subobject--quotient order duality.</p></div></div><div class="decl" id="MagnitudeConjecture.imageSubobject_pullback_arrow_comp_eq_of_epi"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RadicalSubobject.lean#L100-L124">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RadicalSubobject.html#MagnitudeConjecture.imageSubobject_pullback_arrow_comp_eq_of_epi"><span class="name">MagnitudeConjecture</span>.<span class="name">imageSubobject_pullback_arrow_comp_eq_of_epi</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P </span><span class="fn">M</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><span class="fn">P</span> <span class="fn">⟶</span> <span class="fn">M</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Epi</span> <span class="fn">p</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.Subobject</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.Limits.imageSubobject</span>
+    <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">(<span class="fn">CategoryTheory.Subobject.pullback</span> <span class="fn">p</span>)</span>.<span class="fn">obj</span></span> <span class="fn">S</span>)</span>.<span class="fn">arrow</span></span> <span class="fn">p</span>)</span></span> <span class="fn">=</span>   <span class="fn">S</span></span></div></div><p>The image of the inverse image of a subobject along an epimorphism is
+the original subobject.</p></div></div><div class="decl" id="MagnitudeConjecture.isRadicalSubobject_imageSubobject_comp_of_epi"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RadicalSubobject.lean#L126-L159">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RadicalSubobject.html#MagnitudeConjecture.isRadicalSubobject_imageSubobject_comp_of_epi"><span class="name">MagnitudeConjecture</span>.<span class="name">isRadicalSubobject_imageSubobject_comp_of_epi</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">P </span><span class="fn">M</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">P</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><span class="fn">P</span> <span class="fn">⟶</span> <span class="fn">M</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Epi</span> <span class="fn">p</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hr</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject.IsRadicalSubobject">IsUniserialObject.IsRadicalSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">r</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject.IsRadicalSubobject">IsUniserialObject.IsRadicalSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Limits.imageSubobject</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">r</span> <span class="fn">p</span>)</span>)</span></span></div></div><p>If a subobject contains every proper subobject of the source of an
+epimorphism, then its image contains every proper subobject of the target.</p></div></div><div class="decl" id="MagnitudeConjecture.imageSubobject_comp_ne_top_of_isEssentialEpi"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RadicalSubobject.lean#L161-L178">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RadicalSubobject.html#MagnitudeConjecture.imageSubobject_comp_ne_top_of_isEssentialEpi"><span class="name">MagnitudeConjecture</span>.<span class="name">imageSubobject_comp_ne_top_of_isEssentialEpi</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">P </span><span class="fn">M</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">P</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><span class="fn">P</span> <span class="fn">⟶</span> <span class="fn">M</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Epi</span> <span class="fn">p</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hp</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ProjectiveCover.html#MagnitudeConjecture.IsEssentialEpi">IsEssentialEpi</a> <span class="fn">p</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hr</span> : <span class="fn"><span class="fn"><span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">r</span></span> <span class="fn">≠</span> <span class="fn">⊤</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.Limits.imageSubobject</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">r</span> <span class="fn">p</span>)</span></span> <span class="fn">≠</span> <span class="fn">⊤</span></span></div></div><p>Under an essential epimorphism, the image of a proper subobject remains
+proper.</p></div></div><div class="decl" id="MagnitudeConjecture.MinimalProjectivePresentation.source_indecomposable_of_uniserial"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RadicalSubobject.lean#L182-L272">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RadicalSubobject.html#MagnitudeConjecture.MinimalProjectivePresentation.source_indecomposable_of_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">MinimalProjectivePresentation</span>.<span class="name">source_indecomposable_of_uniserial</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ProjectiveCover.html#MagnitudeConjecture.MinimalProjectivePresentation">MinimalProjectivePresentation</a> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject">IsUniserialObject</a> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hMzero</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">CategoryTheory.Limits.IsZero</span> <span class="fn">M</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Indecomposable</span> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/ProjectiveCover.html#CategoryTheory.ProjectivePresentation.p">p</a></span></span></div></div><p>A minimal projective cover of a nonzero uniserial object has
+indecomposable source.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

@@ -1,0 +1,202 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.OrthogonalModuleSupport</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.OrthogonalModuleSupport";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">OrthogonalModuleSupport</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleIndecomposable.html">MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleIndecomposable</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleLocalRepresentationFinite.html">MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleLocalRepresentationFinite</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.OrthogonalModuleSupport" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orthogonalBlockProjection"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orthogonalBlockProjection</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orthogonalBlockProjection_idempotent"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orthogonalBlockProjection_idempotent</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.exists_nonzero_fiber_of_indecomposable"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">exists_nonzero_fiber_of_indecomposable</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orthogonalBlockProjection_eq_id"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orthogonalBlockProjection_eq_id</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.isZero_fiber_of_block_ne"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">isZero_fiber_of_block_ne</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.existsUnique_support_block"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">existsUnique_support_block</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.nonzero_map_has_nonzero_fibers"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">nonzero_map_has_nonzero_fibers</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.incoming_source_supported_on_block"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">incoming_source_supported_on_block</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Indecomposable-modules-are-supported-on-one-orthogonal-block" class="markdown-heading">Indecomposable modules are supported on one orthogonal block <a class="hover-link" href="#Indecomposable-modules-are-supported-on-one-orthogonal-block">#</a></h1></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orthogonalBlockProjection"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.lean#L16-L29">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.html#MagnitudeConjecture.CoveringHom.orthogonalBlockProjection"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orthogonalBlockProjection</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">block</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hcross</span> : <span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">block</span> <span class="fn">X</span></span> <span class="fn">≠</span> <span class="fn"><span class="fn">block</span> <span class="fn">Y</span></span></span> → <span class="fn">∀ (<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>), <span class="fn"><span class="fn">f</span> <span class="fn">=</span> <span class="fn">0</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">j</span> : <span class="fn">J</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.End</span> <span class="fn">M</span></span></div></div><p>The natural projection of a module onto one orthogonal block.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.orthogonalBlockProjection" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orthogonalBlockProjection_idempotent"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.lean#L31-L43">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.html#MagnitudeConjecture.CoveringHom.orthogonalBlockProjection_idempotent"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orthogonalBlockProjection_idempotent</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">block</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hcross</span> : <span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">block</span> <span class="fn">X</span></span> <span class="fn">≠</span> <span class="fn"><span class="fn">block</span> <span class="fn">Y</span></span></span> → <span class="fn">∀ (<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>), <span class="fn"><span class="fn">f</span> <span class="fn">=</span> <span class="fn">0</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">j</span> : <span class="fn">J</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.html#MagnitudeConjecture.CoveringHom.orthogonalBlockProjection">orthogonalBlockProjection</a> <span class="fn">block</span> <span class="fn">hcross</span> <span class="fn">M</span> <span class="fn">j</span>)</span></span></div></div><p>A block projection is an idempotent endomorphism.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.exists_nonzero_fiber_of_indecomposable"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.lean#L45-L54">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.html#MagnitudeConjecture.CoveringHom.exists_nonzero_fiber_of_indecomposable"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">exists_nonzero_fiber_of_indecomposable</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><span class="fn">CategoryTheory.Indecomposable</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">CategoryTheory.Limits.IsZero</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span></span></span></span></div></div><p>An indecomposable finite module is nonzero at some base object.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orthogonalBlockProjection_eq_id"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.lean#L56-L69">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.html#MagnitudeConjecture.CoveringHom.orthogonalBlockProjection_eq_id"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orthogonalBlockProjection_eq_id</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">block</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hcross</span> : <span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">block</span> <span class="fn">X</span></span> <span class="fn">≠</span> <span class="fn"><span class="fn">block</span> <span class="fn">Y</span></span></span> → <span class="fn">∀ (<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>), <span class="fn"><span class="fn">f</span> <span class="fn">=</span> <span class="fn">0</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><span class="fn">CategoryTheory.Indecomposable</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hX</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">CategoryTheory.Limits.IsZero</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.html#MagnitudeConjecture.CoveringHom.orthogonalBlockProjection">orthogonalBlockProjection</a> <span class="fn">block</span> <span class="fn">hcross</span> <span class="fn">M</span> <span class="fn">(<span class="fn">block</span> <span class="fn">X</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.id</span> <span class="fn">M</span></span></span></div></div><p>A projection containing a nonzero fiber of an indecomposable is the identity.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.isZero_fiber_of_block_ne"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.lean#L73-L81">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.html#MagnitudeConjecture.CoveringHom.isZero_fiber_of_block_ne"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">isZero_fiber_of_block_ne</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">block</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hcross</span> : <span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">block</span> <span class="fn">X</span></span> <span class="fn">≠</span> <span class="fn"><span class="fn">block</span> <span class="fn">Y</span></span></span> → <span class="fn">∀ (<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>), <span class="fn"><span class="fn">f</span> <span class="fn">=</span> <span class="fn">0</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><span class="fn">CategoryTheory.Indecomposable</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hX</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">CategoryTheory.Limits.IsZero</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hYX</span> : <span class="fn"><span class="fn"><span class="fn">block</span> <span class="fn">Y</span></span> <span class="fn">≠</span> <span class="fn"><span class="fn">block</span> <span class="fn">X</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.IsZero</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span> <span class="fn">Y</span>)</span></span></div></div><p>A module indecomposable has zero fibers outside the block of any nonzero fiber.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.existsUnique_support_block"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.lean#L83-L90">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.html#MagnitudeConjecture.CoveringHom.existsUnique_support_block"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">existsUnique_support_block</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">block</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hcross</span> : <span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">block</span> <span class="fn">X</span></span> <span class="fn">≠</span> <span class="fn"><span class="fn">block</span> <span class="fn">Y</span></span></span> → <span class="fn">∀ (<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>), <span class="fn"><span class="fn">f</span> <span class="fn">=</span> <span class="fn">0</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><span class="fn">CategoryTheory.Indecomposable</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">∃!</span> <span class="fn">j</span> <span class="fn">:</span> <span class="fn">J</span><span class="fn">,</span> <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">block</span> <span class="fn">X</span></span> <span class="fn">≠</span> <span class="fn">j</span></span> → <span class="fn"><span class="fn">CategoryTheory.Limits.IsZero</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span></span></span></span></span></div></div><p>Exactly one orthogonal block supports an indecomposable finite module.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.nonzero_map_has_nonzero_fibers"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.lean#L93-L108">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.html#MagnitudeConjecture.CoveringHom.nonzero_map_has_nonzero_fibers"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">nonzero_map_has_nonzero_fibers</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M </span><span class="fn">N</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">N</span> <span class="fn">⟶</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn">f</span> <span class="fn">≠</span> <span class="fn">0</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">CategoryTheory.Limits.IsZero</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn"><span class="fn">N</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">CategoryTheory.Limits.IsZero</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span></span></span></span></span></div></div><p>A nonzero module map is nonzero at some object, where both fibers are nonzero.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.incoming_source_supported_on_block"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.lean#L110-L122">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrthogonalModuleSupport.html#MagnitudeConjecture.CoveringHom.incoming_source_supported_on_block"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">incoming_source_supported_on_block</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">block</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hcross</span> : <span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">block</span> <span class="fn">X</span></span> <span class="fn">≠</span> <span class="fn"><span class="fn">block</span> <span class="fn">Y</span></span></span> → <span class="fn">∀ (<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>), <span class="fn"><span class="fn">f</span> <span class="fn">=</span> <span class="fn">0</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">j</span> : <span class="fn">J</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">block</span> <span class="fn">X</span></span> <span class="fn">≠</span> <span class="fn">j</span></span> → <span class="fn"><span class="fn">CategoryTheory.Limits.IsZero</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hN</span> : <span class="fn"><span class="fn">CategoryTheory.Indecomposable</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">N</span> <span class="fn">⟶</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn">f</span> <span class="fn">≠</span> <span class="fn">0</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">block</span> <span class="fn">Y</span></span> <span class="fn">≠</span> <span class="fn">j</span></span> → <span class="fn"><span class="fn">CategoryTheory.Limits.IsZero</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn"><span class="fn">N</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span> <span class="fn">Y</span>)</span></span></span></div></div><p>Every indecomposable mapping nontrivially into a block-supported module
+is supported on that same block.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

@@ -1,0 +1,245 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.RepresentedHomTransport</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.RepresentedHomTransport";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">RepresentedHomTransport</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteCategoryAlgebraEquivalence.html">MagnitudeConjecture.CategoryTheory.FiniteCategoryAlgebraEquivalence</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.RepresentedHomTransport" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.representedEndEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedEndEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.representedHomEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedHomEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.representedHomEquiv_precomp"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedHomEquiv_precomp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.representedHomEquiv_postcomp"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedHomEquiv_postcomp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.representedModuleEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedModuleEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.representedModuleEquivOverTarget"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedModuleEquivOverTarget</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Transport-of-represented-modules-along-a-fully-faithful-linear-functor" class="markdown-heading">Transport of represented modules along a fully faithful linear functor <a class="hover-link" href="#Transport-of-represented-modules-along-a-fully-faithful-linear-functor">#</a></h1></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.representedEndEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.lean#L15-L17">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.html#MagnitudeConjecture.CategoryTheory.representedEndEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedEndEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> t}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{z, v}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Q</span> : <span class="fn">D</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">P</span></span> <span class="fn">≅</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.End</span> <span class="fn">P</span></span> <span class="fn">≃ₐ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">CategoryTheory.End</span> <span class="fn">Q</span></span></span></div></div><p>The algebra comparison induced by realization and a chosen generator isomorphism.</p><details id="instances-for-list-MagnitudeConjecture.CategoryTheory.representedEndEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.representedHomEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.lean#L19-L26">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.html#MagnitudeConjecture.CategoryTheory.representedHomEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedHomEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> t}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{z, v}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Q</span> : <span class="fn">D</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">P</span></span> <span class="fn">≅</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">P</span> <span class="fn">⟶</span> <span class="fn">X</span>)</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">Q</span> <span class="fn">⟶</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">X</span></span></span></span></div></div><p>Hom from the generator is unchanged by fully faithful realization.</p><details id="instances-for-list-MagnitudeConjecture.CategoryTheory.representedHomEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.representedHomEquiv_precomp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.lean#L28-L34">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.html#MagnitudeConjecture.CategoryTheory.representedHomEquiv_precomp"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedHomEquiv_precomp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> t}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{z, v}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Q</span> : <span class="fn">D</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">P</span></span> <span class="fn">≅</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">CategoryTheory.End</span> <span class="fn">P</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">P</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.html#MagnitudeConjecture.CategoryTheory.representedHomEquiv">representedHomEquiv</a> <span class="fn">F</span> <span class="fn">e</span> <span class="fn">X</span>)</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn"><span class="fn">a</span>.<span class="fn">asHom</span></span> <span class="fn">f</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn"><span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.html#MagnitudeConjecture.CategoryTheory.representedEndEquiv">representedEndEquiv</a> <span class="fn">F</span> <span class="fn">e</span>)</span> <span class="fn">a</span>)</span>.<span class="fn">asHom</span></span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.html#MagnitudeConjecture.CategoryTheory.representedHomEquiv">representedHomEquiv</a> <span class="fn">F</span> <span class="fn">e</span> <span class="fn">X</span>)</span> <span class="fn">f</span>)</span></span></span></div></div><p>This comparison preserves the right endomorphism-algebra action.</p></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.representedHomEquiv_postcomp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.lean#L36-L40">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.html#MagnitudeConjecture.CategoryTheory.representedHomEquiv_postcomp"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedHomEquiv_postcomp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> t}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{z, v}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Q</span> : <span class="fn">D</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">P</span></span> <span class="fn">≅</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">P</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.html#MagnitudeConjecture.CategoryTheory.representedHomEquiv">representedHomEquiv</a> <span class="fn">F</span> <span class="fn">e</span> <span class="fn">Y</span>)</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">f</span> <span class="fn">g</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.html#MagnitudeConjecture.CategoryTheory.representedHomEquiv">representedHomEquiv</a> <span class="fn">F</span> <span class="fn">e</span> <span class="fn">X</span>)</span> <span class="fn">f</span>)</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">g</span>)</span></span></span></div></div><p>The comparison is natural in the target.</p></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.representedModuleEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.lean#L42-L52">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.html#MagnitudeConjecture.CategoryTheory.representedModuleEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedModuleEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> t}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{z, v}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Q</span> : <span class="fn">D</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">P</span></span> <span class="fn">≅</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">P</span> <span class="fn">⟶</span> <span class="fn">X</span>)</span> <span class="fn">≃ₗ[</span><span class="fn"><span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">P</span>)</span><span class="fn">ᵐᵒᵖ</span></span><span class="fn">]</span> <span class="fn"><span class="fn">Q</span> <span class="fn">⟶</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">X</span></span></span></span></div></div><p>After restriction along the opposite algebra comparison, the Hom comparison
+is an isomorphism of actual right modules.</p><details id="instances-for-list-MagnitudeConjecture.CategoryTheory.representedModuleEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.representedModuleEquivOverTarget"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.lean#L54-L69">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RepresentedHomTransport.html#MagnitudeConjecture.CategoryTheory.representedModuleEquivOverTarget"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">representedModuleEquivOverTarget</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> t}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{z, v}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Q</span> : <span class="fn">D</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">P</span></span> <span class="fn">≅</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">P</span> <span class="fn">⟶</span> <span class="fn">X</span>)</span> <span class="fn">≃ₗ[</span><span class="fn"><span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">Q</span>)</span><span class="fn">ᵐᵒᵖ</span></span><span class="fn">]</span> <span class="fn"><span class="fn">Q</span> <span class="fn">⟶</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">X</span></span></span></span></div></div><p>The same comparison over the realized generator algebra, restricting the
+source action along the inverse algebra equivalence.</p><details id="instances-for-list-MagnitudeConjecture.CategoryTheory.representedModuleEquivOverTarget" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

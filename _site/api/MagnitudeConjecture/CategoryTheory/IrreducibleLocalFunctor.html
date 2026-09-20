@@ -1,0 +1,93 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.IrreducibleLocalFunctor</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.IrreducibleLocalFunctor";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">IrreducibleLocalFunctor</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/IrreducibleCofinite.html">QuotientSubmoduleEquidistribution.RepresentationTheory.IrreducibleCofinite</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Functor/EpiMono.lean">Mathlib.CategoryTheory.Functor.EpiMono</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.IrreducibleLocalFunctor" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsLocallyFactorizationClosedAt"><span class="name">MagnitudeConjecture</span>.<span class="name">IsLocallyFactorizationClosedAt</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.irreducible_of_map_of_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">irreducible_of_map_of_full_faithful</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.irreducible_map_of_full_faithful_of_locallyFactorizationClosed"><span class="name">MagnitudeConjecture</span>.<span class="name">irreducible_map_of_full_faithful_of_locallyFactorizationClosed</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.isIrreducibleMorphism_map_iff_of_locallyFactorizationClosed"><span class="name">MagnitudeConjecture</span>.<span class="name">isIrreducibleMorphism_map_iff_of_locallyFactorizationClosed</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Irreducible-morphisms-under-locally-closed-functors" class="markdown-heading">Irreducible morphisms under locally closed functors <a class="hover-link" href="#Irreducible-morphisms-under-locally-closed-functors">#</a></h1><p>A fully faithful functor always reflects irreducible morphisms, but need not
+preserve them: an image morphism might acquire a factorization through an
+object outside the essential image.  For one fixed morphism, preservation
+only requires the intermediate objects of factorizations whose two factors
+are nonsplit to lie in the essential image.  This is the precise categorical
+role of the manuscript's third Hom-neighborhood in the covering argument.</p></div><div class="decl" id="MagnitudeConjecture.IsLocallyFactorizationClosedAt"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.lean#L28-L36">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.html#MagnitudeConjecture.IsLocallyFactorizationClosedAt"><span class="name">MagnitudeConjecture</span>.<span class="name">IsLocallyFactorizationClosedAt</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>The essential image of <code>F</code> contains every intermediate object needed to
+test irreducibility of <code>F.map f</code>.  Factorizations already split on one side
+need no lifting and are omitted from the condition.</p><details id="instances-for-list-MagnitudeConjecture.IsLocallyFactorizationClosedAt" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.irreducible_of_map_of_full_faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.lean#L38-L60">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.html#MagnitudeConjecture.irreducible_of_map_of_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">irreducible_of_map_of_full_faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/IrreducibleCofinite.html#QuotientSubmoduleEquidistribution.IsIrreducibleMorphism">QuotientSubmoduleEquidistribution.IsIrreducibleMorphism</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/IrreducibleCofinite.html#QuotientSubmoduleEquidistribution.IsIrreducibleMorphism">QuotientSubmoduleEquidistribution.IsIrreducibleMorphism</a> <span class="fn">f</span></span></div></div><p>Full faithfulness reflects irreducibility without any hypothesis on
+objects outside the image.</p></div></div><div class="decl" id="MagnitudeConjecture.irreducible_map_of_full_faithful_of_locallyFactorizationClosed"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.lean#L62-L102">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.html#MagnitudeConjecture.irreducible_map_of_full_faithful_of_locallyFactorizationClosed"><span class="name">MagnitudeConjecture</span>.<span class="name">irreducible_map_of_full_faithful_of_locallyFactorizationClosed</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/IrreducibleCofinite.html#QuotientSubmoduleEquidistribution.IsIrreducibleMorphism">QuotientSubmoduleEquidistribution.IsIrreducibleMorphism</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hclosed</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.html#MagnitudeConjecture.IsLocallyFactorizationClosedAt">IsLocallyFactorizationClosedAt</a> <span class="fn">F</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/IrreducibleCofinite.html#QuotientSubmoduleEquidistribution.IsIrreducibleMorphism">QuotientSubmoduleEquidistribution.IsIrreducibleMorphism</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></div></div><p>A fully faithful functor preserves irreducibility at a morphism when all
+new nonsplit factorizations have intermediate object in its essential image.</p></div></div><div class="decl" id="MagnitudeConjecture.isIrreducibleMorphism_map_iff_of_locallyFactorizationClosed"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.lean#L104-L115">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.html#MagnitudeConjecture.isIrreducibleMorphism_map_iff_of_locallyFactorizationClosed"><span class="name">MagnitudeConjecture</span>.<span class="name">isIrreducibleMorphism_map_iff_of_locallyFactorizationClosed</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hclosed</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.html#MagnitudeConjecture.IsLocallyFactorizationClosedAt">IsLocallyFactorizationClosedAt</a> <span class="fn">F</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/IrreducibleCofinite.html#QuotientSubmoduleEquidistribution.IsIrreducibleMorphism">QuotientSubmoduleEquidistribution.IsIrreducibleMorphism</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span> <span class="fn">↔</span>   <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/IrreducibleCofinite.html#QuotientSubmoduleEquidistribution.IsIrreducibleMorphism">QuotientSubmoduleEquidistribution.IsIrreducibleMorphism</a> <span class="fn">f</span></span></span></div></div><p>Under local factorization closure, full faithfulness identifies
+irreducibility on the nose.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

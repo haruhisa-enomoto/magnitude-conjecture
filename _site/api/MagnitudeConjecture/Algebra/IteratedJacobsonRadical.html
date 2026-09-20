@@ -1,0 +1,271 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.Algebra.IteratedJacobsonRadical</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.Algebra.IteratedJacobsonRadical";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">Algebra</span>.<span class="name">IteratedJacobsonRadical</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/Algebra/JacobsonRadicalAction.html">MagnitudeConjecture.Algebra.JacobsonRadicalAction</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.Algebra.IteratedJacobsonRadical" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.iteratedModuleJacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.iteratedModuleJacobson_zero"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_zero</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.iteratedModuleJacobson_succ"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_succ</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.iteratedModuleJacobson_succ_le"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_succ_le</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.iteratedModuleJacobson_map_le"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_map_le</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.iteratedModuleJacobson_eq_ringJacobson_pow_smul_top"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_eq_ringJacobson_pow_smul_top</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.iteratedModuleJacobson_map_eq_of_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_map_eq_of_surjective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.iteratedModuleJacobson_apply_mem_succ_of_range_le_jacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_apply_mem_succ_of_range_le_jacobson</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.iteratedModuleJacobson_eventually_eq_bot"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_eventually_eq_bot</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.exists_incomparable_submodules_of_semisimple_not_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">exists_incomparable_submodules_of_semisimple_not_simple</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.isUniserialModule_of_iteratedJacobson_tops_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">isUniserialModule_of_iteratedJacobson_tops_simple</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.exists_incomparable_over_jacobson_of_not_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">exists_incomparable_over_jacobson_of_not_uniserial</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.exists_incomparable_between_iteratedJacobson_of_not_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">exists_incomparable_between_iteratedJacobson_of_not_uniserial</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.quotientMap_sub_comp_range_not_le_jacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">quotientMap_sub_comp_range_not_le_jacobson</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Iterated-module-radicals" class="markdown-heading">Iterated module radicals <a class="hover-link" href="#Iterated-module-radicals">#</a></h1><p>This file packages the radical filtration of a module as actual submodules of
+the original module.  The formulation is tailored to the radical-layer
+argument in Auslander--Reiten, Proposition 1.1(a): a finite radical filtration
+whose nonzero tops are simple is uniserial.</p></div><div class="decl" id="MagnitudeConjecture.iteratedModuleJacobson"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L24-L32">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">ℕ</span> → <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span></span></div></div><p>The <code>n</code>th term of the module radical filtration, retained as a submodule
+of the original module.</p><details id="instances-for-list-MagnitudeConjecture.iteratedModuleJacobson" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.iteratedModuleJacobson_zero"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L34-L36">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson_zero"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_zero</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">0</span></span> <span class="fn">=</span> <span class="fn">⊤</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.iteratedModuleJacobson_succ"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L38-L42">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson_succ"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_succ</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">(<span class="fn">n</span> <span class="fn">+</span> <span class="fn">1</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">Submodule.map</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span>)</span>.<span class="fn">subtype</span></span> <span class="fn">(<span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span>)</span></span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.iteratedModuleJacobson_succ_le"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L44-L49">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson_succ_le"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_succ_le</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">(<span class="fn">n</span> <span class="fn">+</span> <span class="fn">1</span>)</span></span> <span class="fn">≤</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span></span></span></div></div><p>Consecutive terms of the radical filtration are nested.</p></div></div><div class="decl" id="MagnitudeConjecture.iteratedModuleJacobson_map_le"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L51-L70">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson_map_le"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_map_le</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">R</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Submodule.map</span> <span class="fn">f</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span>)</span></span> <span class="fn">≤</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">N</span> <span class="fn">n</span></span></span></div></div><p>A linear map carries each term of the radical filtration into the
+corresponding term.</p></div></div><div class="decl" id="MagnitudeConjecture.iteratedModuleJacobson_eq_ringJacobson_pow_smul_top"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L72-L91">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson_eq_ringJacobson_pow_smul_top"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_eq_ringJacobson_pow_smul_top</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemiprimaryRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn"><span class="fn">Ring.jacobson</span> <span class="fn">R</span></span> <span class="fn">^</span> <span class="fn">n</span></span> <span class="fn">•</span> <span class="fn">⊤</span></span></span></div></div><p>Each iterated radical is the corresponding power of the ring Jacobson
+radical acting on the module.</p></div></div><div class="decl" id="MagnitudeConjecture.iteratedModuleJacobson_map_eq_of_surjective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L93-L103">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson_map_eq_of_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_map_eq_of_surjective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemiprimaryRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">R</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">⇑<span class="fn">f</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Submodule.map</span> <span class="fn">f</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span>)</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">N</span> <span class="fn">n</span></span></span></div></div><p>A surjective linear map carries each radical-filtration term onto the
+corresponding term.</p></div></div><div class="decl" id="MagnitudeConjecture.iteratedModuleJacobson_apply_mem_succ_of_range_le_jacobson"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L105-L123">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson_apply_mem_succ_of_range_le_jacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_apply_mem_succ_of_range_le_jacobson</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemiprimaryRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">R</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn"><span class="fn">f</span>.<span class="fn">range</span></span> <span class="fn">≤</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">N</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x</span> : <span class="fn">M</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hx</span> : <span class="fn"><span class="fn">x</span> <span class="fn">∈</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">x</span></span> <span class="fn">∈</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">N</span> <span class="fn">(<span class="fn">n</span> <span class="fn">+</span> <span class="fn">1</span>)</span></span></span></div></div><p>If the whole image of a map lies in the target radical, the map shifts
+the radical filtration by one step.</p></div></div><div class="decl" id="MagnitudeConjecture.iteratedModuleJacobson_eventually_eq_bot"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L125-L132">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson_eventually_eq_bot"><span class="name">MagnitudeConjecture</span>.<span class="name">iteratedModuleJacobson_eventually_eq_bot</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemiprimaryRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">n</span> : <span class="fn">ℕ</span>), <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span></span> <span class="fn">=</span> <span class="fn">⊥</span></span></span></div></div><p>Over a semiprimary ring, the radical filtration terminates.</p></div></div><div class="decl" id="MagnitudeConjecture.exists_incomparable_submodules_of_semisimple_not_simple"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L134-L168">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.exists_incomparable_submodules_of_semisimple_not_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">exists_incomparable_submodules_of_semisimple_not_simple</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Nontrivial</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemisimpleModule</span> <span class="fn">R</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hnot</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">E</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">P</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">E</span></span>) (<span class="fn">Q</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">E</span></span>), <span class="fn"><span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">P</span> <span class="fn">≤</span> <span class="fn">Q</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">Q</span> <span class="fn">≤</span> <span class="fn">P</span></span></span></span></span></div></div><p>A non-simple nonzero semisimple module contains two incomparable
+submodules.</p></div></div><div class="decl" id="MagnitudeConjecture.isUniserialModule_of_iteratedJacobson_tops_simple"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L170-L217">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.isUniserialModule_of_iteratedJacobson_tops_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">isUniserialModule_of_iteratedJacobson_tops_simple</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">bound</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hbot</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">bound</span></span> <span class="fn">=</span> <span class="fn">⊥</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hsimple</span> :
+  <span class="fn">∀ <span class="fn">n</span> &lt; <span class="fn">bound</span>,
+    <span class="fn"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span></span> <span class="fn">≠</span> <span class="fn">⊥</span></span> →
+      <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">(<span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span>)</span></span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span>)</span></span></span>)</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>If a finite radical filtration has simple nonzero tops at every stage,
+then its initial module is uniserial.</p></div></div><div class="decl" id="MagnitudeConjecture.exists_incomparable_over_jacobson_of_not_uniserial"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L219-L271">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.exists_incomparable_over_jacobson_of_not_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">exists_incomparable_over_jacobson_of_not_uniserial</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemiprimaryRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">n</span> : <span class="fn">ℕ</span>) (<span class="fn">K</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span>)</span></span></span>) (<span class="fn">L</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span>)</span></span></span>),
+  <span class="fn"><span class="fn"><span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span>)</span></span></span> <span class="fn">≤</span> <span class="fn">K</span></span> <span class="fn">∧</span>     <span class="fn"><span class="fn"><span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span>)</span></span></span> <span class="fn">≤</span> <span class="fn">L</span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">K</span> <span class="fn">≤</span> <span class="fn">L</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">L</span> <span class="fn">≤</span> <span class="fn">K</span></span></span></span></span></span></span></div></div><p>A nonuniserial noetherian module over a semiprimary ring has a radical
+layer containing two incomparable submodules.  The returned submodules live
+in the corresponding term of the radical filtration and contain its
+intrinsic radical.</p></div></div><div class="decl" id="MagnitudeConjecture.exists_incomparable_between_iteratedJacobson_of_not_uniserial"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L273-L301">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.exists_incomparable_between_iteratedJacobson_of_not_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">exists_incomparable_between_iteratedJacobson_of_not_uniserial</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemiprimaryRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">n</span> : <span class="fn">ℕ</span>) (<span class="fn">K</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>) (<span class="fn">L</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>),
+  <span class="fn"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">(<span class="fn">n</span> <span class="fn">+</span> <span class="fn">1</span>)</span></span> <span class="fn">≤</span> <span class="fn">K</span></span> <span class="fn">∧</span>     <span class="fn"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">(<span class="fn">n</span> <span class="fn">+</span> <span class="fn">1</span>)</span></span> <span class="fn">≤</span> <span class="fn">L</span></span> <span class="fn">∧</span>       <span class="fn"><span class="fn"><span class="fn">K</span> <span class="fn">≤</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">L</span> <span class="fn">≤</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">K</span> <span class="fn">≤</span> <span class="fn">L</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">L</span> <span class="fn">≤</span> <span class="fn">K</span></span></span></span></span></span></span></span></span></div></div><p>Ambient form of the preceding radical-layer witness.</p></div></div><div class="decl" id="MagnitudeConjecture.quotientMap_sub_comp_range_not_le_jacobson"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/IteratedJacobsonRadical.lean#L303-L343">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.quotientMap_sub_comp_range_not_le_jacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">quotientMap_sub_comp_range_not_le_jacobson</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemiprimaryRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">n</span> : <span class="fn">ℕ</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K </span><span class="fn">L</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hnextK</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">(<span class="fn">n</span> <span class="fn">+</span> <span class="fn">1</span>)</span></span> <span class="fn">≤</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hLn</span> : <span class="fn"><span class="fn">L</span> <span class="fn">≤</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/IteratedJacobsonRadical.html#MagnitudeConjecture.iteratedModuleJacobson">iteratedModuleJacobson</a> <span class="fn">R</span> <span class="fn">M</span> <span class="fn">n</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hLK</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">L</span> <span class="fn">≤</span> <span class="fn">K</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn"><span class="fn"><span class="fn">M</span> <span class="fn">⧸</span> <span class="fn">L</span></span> <span class="fn">→ₗ[</span><span class="fn">R</span><span class="fn">]</span> <span class="fn"><span class="fn">M</span> <span class="fn">⧸</span> <span class="fn">K</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">K</span>.<span class="fn">mkQ</span></span> <span class="fn">-</span> <span class="fn"><span class="fn">t</span> <span class="fn">∘ₗ</span> <span class="fn"><span class="fn">L</span>.<span class="fn">mkQ</span></span></span>)</span>.<span class="fn">range</span></span> <span class="fn">≤</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn">K</span>)</span></span></span></span></div></div><p>For incomparable intermediate submodules in one radical layer, a quotient
+map cannot differ from a map through the other quotient by a map whose image
+lies in the target radical.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verification · Magnitude conjecture</title><link rel="stylesheet" href="assets/site.css"></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><nav class="nav" aria-label="Main"><a class="brand" href="index.html">Magnitude conjecture</a><a href="index.html">Overview</a><a href="statement.html">Statement</a><a href="proof.html">Proof guide</a><a href="api.html">API</a><a href="verification.html">Verification</a></nav></header>
+<main id="main"><p class="eyebrow">Reproducibility</p><h1>Verification and provenance</h1>
+<p>The production theorem and its independent vocabulary compile with Lean 4.33.1. Their axiom reports contain only <code>propext</code>, <code>Classical.choice</code>, and <code>Quot.sound</code>. The deliberate Challenge placeholder is excluded from production proof counts.</p>
+<p>The frozen graded-interval proof passes both full-library builds, all 4,090 axiom checks, and independent NanoDa and Lean-kernel replay with the current Comparator. The complete API covers 1,183 modules; all 1,196 pages pass local checks, and browser search, navigation and desktop/mobile checks pass.</p>
+<h2>Build the project</h2><pre><code>lake exe cache get
+python3 scripts/build_lean_serial.py --package . --output .build-audit \
+  --max-rss-kib 12582912 MagnitudeConjecture.MainResults \
+  MagnitudeConjecture.PublicAxiomAudit
+python3 scripts/generate_challenge.py --check</code></pre>
+<p>The serial helper keeps a per-module log and memory measurement. For the complete library, use targets <code>MagnitudeConjecture MagnitudeConjecture.AxiomAudit</code>. Build <code>Challenge Solution</code> before independent comparison.</p>
+<h2>Source and attribution</h2><p>The standalone source was extracted from the owner-directed research development. The vendored categorical foundations retain their original names, attribution, and Apache-2.0 licence. The project records the source revision and manuscript revision separately.</p>
+<p><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/c57ecb0f7051075b27937e68fe703847d6a56f1d/PROVENANCE.md">Provenance</a> · <a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/c57ecb0f7051075b27937e68fe703847d6a56f1d/VENDORED.md">Reused source</a> · <a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/c57ecb0f7051075b27937e68fe703847d6a56f1d/docs/PAPER-CORRESPONDENCE.md">Paper correspondence</a></p>
+<h2>Registry status</h2><p>No Palomar submission has been made. A registry entry would record a specific public commit and its verification results. This documentation can accompany that submission.</p>
+</main><footer class="site-footer">Source: <code>c57ecb0f7051075b27937e68fe703847d6a56f1d</code><br>API source: <code>9380dc294e2586430ff853b613918d5d9fc44375</code><br>Haruhisa Enomoto · Lean formalization · Apache-2.0</footer></body></html>

@@ -1,0 +1,127 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleRestriction</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleRestriction";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">FiniteDimensionalModuleRestriction</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleAbelian.html">MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleAbelian</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleHomFinite.html">MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleHomFinite</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Limits/Preserves/FunctorCategory.lean">Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleRestriction" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteLinearModuleRestrictionFunctor</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteLinearModuleRestrictionFunctor_additive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteLinearModuleRestrictionFunctor_linear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor_preservesKernel"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteLinearModuleRestrictionFunctor_preservesKernel</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Restriction-of-finite-dimensional-linear-modules" class="markdown-heading">Restriction of finite-dimensional linear modules <a class="hover-link" href="#Restriction-of-finite-dimensional-linear-modules">#</a></h1><p>Precomposition along a linear functor whose source has finitely many objects
+restricts finite-dimensional modules to finite-dimensional modules.</p></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.lean#L27-L49">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.html#MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteLinearModuleRestrictionFunctor</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span>)</span></span></div></div><p>Restriction of finite-dimensional linear modules along a linear functor
+with finite source.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.lean#L51-L60">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.html#MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteLinearModuleRestrictionFunctor_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.html#MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor">finiteLinearModuleRestrictionFunctor</a> <span class="fn">F</span>)</span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.lean#L62-L71">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.html#MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteLinearModuleRestrictionFunctor_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.html#MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor">finiteLinearModuleRestrictionFunctor</a> <span class="fn">F</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor_preservesKernel"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.lean#L73-L135">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.html#MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor_preservesKernel"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteLinearModuleRestrictionFunctor_preservesKernel</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesLimit</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.parallelPair</span> <span class="fn">f</span> <span class="fn">0</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleRestriction.html#MagnitudeConjecture.CoveringHom.finiteLinearModuleRestrictionFunctor">finiteLinearModuleRestrictionFunctor</a> <span class="fn">F</span>)</span></span></div></div><p>Restriction of finite linear modules preserves kernels.  After forgetting
+the two full-subcategory layers, this is the pointwise fact that
+precomposition preserves limits.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

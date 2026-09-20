@@ -1,0 +1,184 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.Algebra.BiserialSemisimpleSubmodule</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.Algebra.BiserialSemisimpleSubmodule";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">Algebra</span>.<span class="name">BiserialSemisimpleSubmodule</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/Algebra/BiserialRadicalTop.html">MagnitudeConjecture.Algebra.BiserialRadicalTop</a></li><li><a href="../.././MagnitudeConjecture/Algebra/SocleModule.html">MagnitudeConjecture.Algebra.SocleModule</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.Algebra.BiserialSemisimpleSubmodule" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.semisimple_submodule_le_moduleSocle"><span class="name">MagnitudeConjecture</span>.<span class="name">semisimple_submodule_le_moduleSocle</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.semisimple_submodule_length_le_two_of_le_sup_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">semisimple_submodule_length_le_two_of_le_sup_uniserial</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.semisimple_submodule_length_le_two_of_biserial_of_le_jacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">semisimple_submodule_length_le_two_of_biserial_of_le_jacobson</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.semisimple_submodule_eq_moduleSocle_of_biserial_of_simple_top_of_length_eq_two"><span class="name">MagnitudeConjecture</span>.<span class="name">semisimple_submodule_eq_moduleSocle_of_biserial_of_simple_top_of_length_eq_two</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.isSimpleModule_of_nontrivial_of_length_le_two_of_ne_two"><span class="name">MagnitudeConjecture</span>.<span class="name">isSimpleModule_of_nontrivial_of_length_le_two_of_ne_two</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.exists_complementary_simple_of_semisimple_of_length_eq_two"><span class="name">MagnitudeConjecture</span>.<span class="name">exists_complementary_simple_of_semisimple_of_length_eq_two</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.of_semisimple_jacobson_length_le_two"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_semisimple_jacobson_length_le_two</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.exists_three_simple_nested_complements_of_semisimple_of_length_not_le_two"><span class="name">MagnitudeConjecture</span>.<span class="name">exists_three_simple_nested_complements_of_semisimple_of_length_not_le_two</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Semisimple-submodules-of-biserial-modules" class="markdown-heading">Semisimple submodules of biserial modules <a class="hover-link" href="#Semisimple-submodules-of-biserial-modules">#</a></h1><p>A semisimple submodule contained in the sum of two uniserial branches has
+composition length at most two.  This is the structural length bound used for
+the intersection of the two local branches in the Pogorzały--Skowroński
+induction.</p></div><div class="decl" id="MagnitudeConjecture.semisimple_submodule_le_moduleSocle"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.lean#L24-L34">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.html#MagnitudeConjecture.semisimple_submodule_le_moduleSocle"><span class="name">MagnitudeConjecture</span>.<span class="name">semisimple_submodule_le_moduleSocle</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemisimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">P</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">P</span> <span class="fn">≤</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/SocleModule.html#MagnitudeConjecture.moduleSocle">moduleSocle</a> <span class="fn">R</span> <span class="fn">M</span></span></span></div></div><p>Every semisimple submodule is contained in the socle of the ambient
+module.</p></div></div><div class="decl" id="MagnitudeConjecture.semisimple_submodule_length_le_two_of_le_sup_uniserial"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.lean#L36-L107">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.html#MagnitudeConjecture.semisimple_submodule_length_le_two_of_le_sup_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">semisimple_submodule_length_le_two_of_le_sup_uniserial</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">U </span><span class="fn">V </span><span class="fn">P</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hU</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">↥<span class="fn">U</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hV</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">↥<span class="fn">V</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hP</span> : <span class="fn"><span class="fn">P</span> <span class="fn">≤</span> <span class="fn"><span class="fn">U</span> ⊔ <span class="fn">V</span></span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemisimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">P</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">P</span></span></span> <span class="fn">≤</span> <span class="fn">2</span></span></div></div><p>A semisimple submodule contained in the sum of two uniserial submodules
+has composition length at most two.  Quotienting by the first branch makes
+the kernel embed in the first branch and the range embed in the second.</p></div></div><div class="decl" id="MagnitudeConjecture.semisimple_submodule_length_le_two_of_biserial_of_le_jacobson"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.lean#L109-L120">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.html#MagnitudeConjecture.semisimple_submodule_length_le_two_of_biserial_of_le_jacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">semisimple_submodule_length_le_two_of_biserial_of_le_jacobson</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule">IsBiserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hP</span> : <span class="fn"><span class="fn">P</span> <span class="fn">≤</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemisimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">P</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">P</span></span></span> <span class="fn">≤</span> <span class="fn">2</span></span></div></div><p>A semisimple submodule of the radical of a biserial module has
+composition length at most two.</p></div></div><div class="decl" id="MagnitudeConjecture.semisimple_submodule_eq_moduleSocle_of_biserial_of_simple_top_of_length_eq_two"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.lean#L122-L168">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.html#MagnitudeConjecture.semisimple_submodule_eq_moduleSocle_of_biserial_of_simple_top_of_length_eq_two"><span class="name">MagnitudeConjecture</span>.<span class="name">semisimple_submodule_eq_moduleSocle_of_biserial_of_simple_top_of_length_eq_two</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hMbis</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule">IsBiserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hMtop</span> : <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemisimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">P</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hPjac</span> : <span class="fn"><span class="fn">P</span> <span class="fn">≤</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hPlength</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">P</span></span></span> <span class="fn">=</span> <span class="fn">2</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">P</span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/SocleModule.html#MagnitudeConjecture.moduleSocle">moduleSocle</a> <span class="fn">R</span> <span class="fn">M</span></span></span></div></div><p>A semisimple length-two submodule of the radical of a local biserial
+module is its whole socle.</p></div></div><div class="decl" id="MagnitudeConjecture.isSimpleModule_of_nontrivial_of_length_le_two_of_ne_two"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.lean#L170-L182">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.html#MagnitudeConjecture.isSimpleModule_of_nontrivial_of_length_le_two_of_ne_two"><span class="name">MagnitudeConjecture</span>.<span class="name">isSimpleModule_of_nontrivial_of_length_le_two_of_ne_two</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Nontrivial</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hle</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">≤</span> <span class="fn">2</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hne</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">≠</span> <span class="fn">2</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>A nonzero finite-length module of length at most two is simple as soon
+as the length-two case has been excluded.</p></div></div><div class="decl" id="MagnitudeConjecture.exists_complementary_simple_of_semisimple_of_length_eq_two"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.lean#L184-L209">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.html#MagnitudeConjecture.exists_complementary_simple_of_semisimple_of_length_eq_two"><span class="name">MagnitudeConjecture</span>.<span class="name">exists_complementary_simple_of_semisimple_of_length_eq_two</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemisimpleModule</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hlength</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">=</span> <span class="fn">2</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">S</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>) (<span class="fn">T</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>), <span class="fn"><span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">S</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">T</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn">IsCompl</span> <span class="fn">S</span> <span class="fn">T</span></span></span></span></span></div></div><p>A semisimple module of composition length two is a direct sum of two
+simple submodules.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.of_semisimple_jacobson_length_le_two"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.lean#L211-L253">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.html#MagnitudeConjecture.IsBiserialModule.of_semisimple_jacobson_length_le_two"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_semisimple_jacobson_length_le_two</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemisimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hlength</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span>)</span></span></span> <span class="fn">≤</span> <span class="fn">2</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule">IsBiserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>A module whose Jacobson radical is semisimple of composition length at
+most two is biserial.  At length two, split the radical into two simple
+summands; below length two, the radical is simple or zero.</p></div></div><div class="decl" id="MagnitudeConjecture.exists_three_simple_nested_complements_of_semisimple_of_length_not_le_two"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.lean#L255-L328">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialSemisimpleSubmodule.html#MagnitudeConjecture.exists_three_simple_nested_complements_of_semisimple_of_length_not_le_two"><span class="name">MagnitudeConjecture</span>.<span class="name">exists_three_simple_nested_complements_of_semisimple_of_length_not_le_two</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsSemisimpleModule</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hlength</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">≤</span> <span class="fn">2</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">S</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>) (<span class="fn">C</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>) (<span class="fn">T</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">C</span></span></span>) (<span class="fn">D</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">C</span></span></span>) (<span class="fn">U</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">D</span></span></span>) (<span class="fn">V</span> :
+  <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">D</span></span></span>),
+  <span class="fn"><span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">S</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">IsCompl</span> <span class="fn">S</span> <span class="fn">C</span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">T</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">IsCompl</span> <span class="fn">T</span> <span class="fn">D</span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">U</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn">IsCompl</span> <span class="fn">U</span> <span class="fn">V</span></span></span></span></span></span></span></span></div></div><p>A semisimple finite-length module of length greater than two admits
+three successive simple summands.  The nested complement form is convenient
+for later quotient constructions: <code>M = S ⊕ C</code>, <code>C = T ⊕ D</code>, and
+<code>D = U ⊕ V</code>.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

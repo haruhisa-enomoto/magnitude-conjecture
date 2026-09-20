@@ -1,0 +1,140 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.LinearExtAlongFunctor</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.LinearExtAlongFunctor";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">LinearExtAlongFunctor</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/Category/ModuleCat/Abelian.lean">Mathlib.Algebra.Category.ModuleCat.Abelian</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/Homology/DerivedCategory/Ext/Linear.lean">Mathlib.Algebra.Homology.DerivedCategory.Ext.Linear</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.LinearExtAlongFunctor" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.linearExtObjAlong"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">linearExtObjAlong</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">linearExtPrecompAlong</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong_id"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">linearExtPrecompAlong_id</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">linearExtPrecompAlong_comp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CategoryTheory.linearExtAlong"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">linearExtAlong</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Linear-Ext-along-a-functor" class="markdown-heading">Linear Ext along a functor <a class="hover-link" href="#Linear-Ext-along-a-functor">#</a></h1><p>For an <code>R</code>-linear abelian category <code>C</code> and a functor <code>T : D ⥤ C</code>, this file
+packages</p><p><code>(X, d) ↦ Extⁿ(X, T(d))</code></p><p>as a functor <code>Cᵒᵖ ⥤ D ⥤ ModuleCat R</code>.  The derived-category Ext API already
+provides the groups and their two composition maps; the construction here
+only records their linear functoriality in a reusable, elaboration-light form.</p></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.linearExtObjAlong"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.lean#L31-L53">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtObjAlong"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">linearExtObjAlong</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> uR}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">R</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">D</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">D</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">R</span>)</span></span></div></div><p>For fixed first argument, degree, and <code>T : D ⥤ C</code>, Ext is a linear-module
+valued functor on <code>D</code>.</p><details id="instances-for-list-MagnitudeConjecture.CategoryTheory.linearExtObjAlong" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.lean#L55-L77">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">linearExtPrecompAlong</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> uR}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">R</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">D</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtObjAlong">linearExtObjAlong</a> <span class="fn">T</span> <span class="fn">X</span> <span class="fn">n</span></span> <span class="fn">⟶</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtObjAlong">linearExtObjAlong</a> <span class="fn">T</span> <span class="fn">Y</span> <span class="fn">n</span></span></span></div></div><p>Precomposition in the first Ext variable, natural in the variable along
+<code>T</code>.</p><details id="instances-for-list-MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong_id"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.lean#L79-L91">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong_id"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">linearExtPrecompAlong_id</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> uR}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">R</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">D</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong">linearExtPrecompAlong</a> <span class="fn">T</span> <span class="fn">n</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.id</span> <span class="fn">X</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.id</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtObjAlong">linearExtObjAlong</a> <span class="fn">T</span> <span class="fn">X</span> <span class="fn">n</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong_comp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.lean#L93-L110">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">linearExtPrecompAlong_comp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> uR}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">R</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">D</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y </span><span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn"><span class="fn">Z</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong">linearExtPrecompAlong</a> <span class="fn">T</span> <span class="fn">n</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">b</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong">linearExtPrecompAlong</a> <span class="fn">T</span> <span class="fn">n</span> <span class="fn">a</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtPrecompAlong">linearExtPrecompAlong</a> <span class="fn">T</span> <span class="fn">n</span> <span class="fn">b</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CategoryTheory.linearExtAlong"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.lean#L112-L121">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearExtAlongFunctor.html#MagnitudeConjecture.CategoryTheory.linearExtAlong"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">linearExtAlong</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> uR}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">R</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">D</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn"><span class="fn">C</span><span class="fn">ᵒᵖ</span></span> <span class="fn">(<span class="fn">CategoryTheory.Functor</span> <span class="fn">D</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">R</span>)</span>)</span></span></div></div><p>The linear Ext bifunctor after restricting its second variable along
+<code>T</code>.</p><details id="instances-for-list-MagnitudeConjecture.CategoryTheory.linearExtAlong" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

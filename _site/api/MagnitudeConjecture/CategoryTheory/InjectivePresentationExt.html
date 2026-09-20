@@ -1,0 +1,365 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.InjectivePresentationExt</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.InjectivePresentationExt";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">InjectivePresentationExt</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html">MagnitudeConjecture.CategoryTheory.InjectiveEnvelope</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/LinearAlgebra/Isomorphisms.lean">Mathlib.LinearAlgebra.Isomorphisms</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/Homology/DerivedCategory/Ext/EnoughInjectives.lean">Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/Homology/DerivedCategory/Ext/Linear.lean">Mathlib.Algebra.Homology.DerivedCategory.Ext.Linear</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.InjectivePresentationExt" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.connectingLinear"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">connectingLinear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.presentationPostcompLinear"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">presentationPostcompLinear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.presentationRange"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">presentationRange</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.mem_presentationRange_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">mem_presentationRange_iff</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.presentationRange_eq_connectingLinear_ker"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">presentationRange_eq_connectingLinear_ker</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.simple_to_cokernel_eq_zero_of_extOne_subsingleton"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">simple_to_cokernel_eq_zero_of_extOne_subsingleton</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.connectingLinear_injective_of_subsingleton_hom_middle"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">connectingLinear_injective_of_subsingleton_hom_middle</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.connectingLinear_surjective_of_ext_subsingleton_middle"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">connectingLinear_surjective_of_ext_subsingleton_middle</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.connectingLinear_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">connectingLinear_surjective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">quotientLinearEquivExtOne</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">quotientLinearEquivExtOne_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.precompQuotient"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">precompQuotient</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.precompQuotient_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">precompQuotient_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.pullbackLinear"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">pullbackLinear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.connectingLinear_precomp"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">connectingLinear_precomp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne_precompQuotient"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">quotientLinearEquivExtOne_precompQuotient</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Degree-one-Ext-from-a-short-injective-presentation" class="markdown-heading">Degree-one Ext from a short injective presentation <a class="hover-link" href="#Degree-one-Ext-from-a-short-injective-presentation">#</a></h1><p>For a short exact sequence <code>0 ⟶ T ⟶ I ⟶ C ⟶ 0</code> with injective
+middle term, this file identifies <code>Ext¹(Y,T)</code> with the quotient of
+<code>Hom(Y,C)</code> by maps which lift through <code>I</code>.  The equivalence is also proved
+natural under pullback in <code>Y</code>.</p><p>This generic routine is adapted from the clean equidistribution
+formalization.  It has no OP-specific dependency.</p></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.connectingLinear"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L31-L35">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.connectingLinear"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">connectingLinear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span>)</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">CategoryTheory.Abelian.Ext</span> <span class="fn">Y</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">1</span></span></span></div></div><p>The connecting map of a short exact sequence, as a linear map.</p><details id="instances-for-list-MagnitudeConjecture.InjectivePresentationExt.connectingLinear" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.presentationPostcompLinear"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L37-L40">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.presentationPostcompLinear"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">presentationPostcompLinear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span>)</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span></span></span></div></div><p>Postcomposition with the second map of a short complex.</p><details id="instances-for-list-MagnitudeConjecture.InjectivePresentationExt.presentationPostcompLinear" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.presentationRange"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L42-L45">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.presentationRange"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">presentationRange</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">(<span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span>)</span></span></div></div><p>The presentation coboundaries.</p><details id="instances-for-list-MagnitudeConjecture.InjectivePresentationExt.presentationRange" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.mem_presentationRange_iff"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L48-L53">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.mem_presentationRange_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">mem_presentationRange_iff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">∈</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.presentationRange">presentationRange</a> <span class="fn">S</span> <span class="fn">Y</span></span></span> <span class="fn">↔</span> <span class="fn">∃ (<span class="fn">u</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span></span>), <span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">u</span> <span class="fn"><span class="fn">S</span>.<span class="fn">g</span></span></span> <span class="fn">=</span> <span class="fn">f</span></span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.presentationRange_eq_connectingLinear_ker"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L55-L76">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.presentationRange_eq_connectingLinear_ker"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">presentationRange_eq_connectingLinear_ker</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.presentationRange">presentationRange</a> <span class="fn">S</span> <span class="fn">Y</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.connectingLinear">connectingLinear</a> <span class="fn">hS</span> <span class="fn">Y</span>)</span>.<span class="fn">ker</span></span></span></div></div><p>Exactness identifies presentation coboundaries with the kernel of the
+connecting map.</p></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.simple_to_cokernel_eq_zero_of_extOne_subsingleton"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L78-L103">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.simple_to_cokernel_eq_zero_of_extOne_subsingleton"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">simple_to_cokernel_eq_zero_of_extOne_subsingleton</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">I </span><span class="fn">S</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">S</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">I</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hessential</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html#MagnitudeConjecture.IsEssentialMono">IsEssentialMono</a> <span class="fn">f</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Subsingleton</span> <span class="fn">(<span class="fn">CategoryTheory.Abelian.Ext</span> <span class="fn">S</span> <span class="fn">X</span> <span class="fn">1</span>)</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn"><span class="fn">S</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">f</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">t</span> <span class="fn">=</span> <span class="fn">0</span></span></div></div><p>If <code>X ⟶ I</code> is essential, a simple map to its cokernel must vanish as
+soon as the corresponding degree-one Ext group is trivial.  Exactness first
+lifts the map to <code>I</code>; essentiality then forces every such simple map to die
+under the cokernel projection.</p></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.connectingLinear_injective_of_subsingleton_hom_middle"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L105-L121">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.connectingLinear_injective_of_subsingleton_hom_middle"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">connectingLinear_injective_of_subsingleton_hom_middle</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Subsingleton</span> <span class="fn">(<span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span>)</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">⇑<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.connectingLinear">connectingLinear</a> <span class="fn">hS</span> <span class="fn">Y</span>)</span></span></span></div></div><p>If there are no nonzero maps from <code>Y</code> to the middle term, the connecting
+map is injective.  This is the exact left-hand fragment of the long exact
+<code>Hom</code>--<code>Ext</code> sequence, packaged for later use without choosing an injective
+presentation.</p></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.connectingLinear_surjective_of_ext_subsingleton_middle"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L123-L136">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.connectingLinear_surjective_of_ext_subsingleton_middle"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">connectingLinear_surjective_of_ext_subsingleton_middle</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Subsingleton</span> <span class="fn">(<span class="fn">CategoryTheory.Abelian.Ext</span> <span class="fn">Y</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span> <span class="fn">1</span>)</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">⇑<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.connectingLinear">connectingLinear</a> <span class="fn">hS</span> <span class="fn">Y</span>)</span></span></span></div></div><p>Vanishing of degree-one extensions into the middle term makes the
+connecting map surjective.</p></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.connectingLinear_surjective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L138-L149">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.connectingLinear_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">connectingLinear_surjective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Injective</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">⇑<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.connectingLinear">connectingLinear</a> <span class="fn">hS</span> <span class="fn">Y</span>)</span></span></span></div></div><p>Injectivity of the middle term makes the connecting map surjective.</p></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L151-L162">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">quotientLinearEquivExtOne</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Injective</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">(<span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span>)</span> <span class="fn">⧸</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.presentationRange">presentationRange</a> <span class="fn">S</span> <span class="fn">Y</span></span>)</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">CategoryTheory.Abelian.Ext</span> <span class="fn">Y</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">1</span></span></span></div></div><p>A short injective presentation computes degree-one Ext.</p><details id="instances-for-list-MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L164-L170">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">quotientLinearEquivExtOne_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Injective</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne">quotientLinearEquivExtOne</a> <span class="fn">hS</span> <span class="fn">Y</span>)</span> <span class="fn">(<span class="fn">Submodule.Quotient.mk</span> <span class="fn">f</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">(<span class="fn">CategoryTheory.Abelian.Ext.mk₀</span> <span class="fn">f</span>)</span>.<span class="fn">comp</span></span> <span class="fn"><span class="fn">hS</span>.<span class="fn">extClass</span></span> <span class="fn">⋯</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.precompQuotient"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L172-L183">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.precompQuotient"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">precompQuotient</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y' </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">Y'</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span>)</span> <span class="fn">⧸</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.presentationRange">presentationRange</a> <span class="fn">S</span> <span class="fn">Y</span></span></span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">(<span class="fn">Y'</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span>)</span> <span class="fn">⧸</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.presentationRange">presentationRange</a> <span class="fn">S</span> <span class="fn">Y'</span></span></span></span></div></div><p>Precomposition descends to the presentation quotient.</p><details id="instances-for-list-MagnitudeConjecture.InjectivePresentationExt.precompQuotient" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.precompQuotient_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L186-L192">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.precompQuotient_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">precompQuotient_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y' </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">Y'</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.precompQuotient">precompQuotient</a> <span class="fn">S</span> <span class="fn">a</span>)</span> <span class="fn">(<span class="fn">Submodule.Quotient.mk</span> <span class="fn">f</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Submodule.Quotient.mk</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">a</span> <span class="fn">f</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.pullbackLinear"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L194-L198">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.pullbackLinear"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">pullbackLinear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y' </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">Y'</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.Abelian.Ext</span> <span class="fn">Y</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">1</span></span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">CategoryTheory.Abelian.Ext</span> <span class="fn">Y'</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">1</span></span></span></div></div><p>Pullback on degree-one Ext.</p><details id="instances-for-list-MagnitudeConjecture.InjectivePresentationExt.pullbackLinear" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.connectingLinear_precomp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L200-L212">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.connectingLinear_precomp"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">connectingLinear_precomp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y' </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">Y'</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.connectingLinear">connectingLinear</a> <span class="fn">hS</span> <span class="fn">Y'</span>)</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">a</span> <span class="fn">f</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.pullbackLinear">pullbackLinear</a> <span class="fn">S</span> <span class="fn">a</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.connectingLinear">connectingLinear</a> <span class="fn">hS</span> <span class="fn">Y</span>)</span> <span class="fn">f</span>)</span></span></span></div></div><p>The connecting map commutes with precomposition.</p></div></div><div class="decl" id="MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne_precompQuotient"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.lean#L214-L224">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne_precompQuotient"><span class="name">MagnitudeConjecture</span>.<span class="name">InjectivePresentationExt</span>.<span class="name">quotientLinearEquivExtOne_precompQuotient</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Injective</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y' </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">Y'</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">q</span> : <span class="fn"><span class="fn">(<span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span>)</span> <span class="fn">⧸</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.presentationRange">presentationRange</a> <span class="fn">S</span> <span class="fn">Y</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne">quotientLinearEquivExtOne</a> <span class="fn">hS</span> <span class="fn">Y'</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.precompQuotient">precompQuotient</a> <span class="fn">S</span> <span class="fn">a</span>)</span> <span class="fn">q</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.pullbackLinear">pullbackLinear</a> <span class="fn">S</span> <span class="fn">a</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/InjectivePresentationExt.html#MagnitudeConjecture.InjectivePresentationExt.quotientLinearEquivExtOne">quotientLinearEquivExtOne</a> <span class="fn">hS</span> <span class="fn">Y</span>)</span> <span class="fn">q</span>)</span></span></span></div></div><p>The quotient description is natural under pullback.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

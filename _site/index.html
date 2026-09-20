@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Overview · Magnitude conjecture</title><link rel="stylesheet" href="assets/site.css"></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><nav class="nav" aria-label="Main"><a class="brand" href="index.html">Magnitude conjecture</a><a href="index.html">Overview</a><a href="statement.html">Statement</a><a href="proof.html">Proof guide</a><a href="api.html">API</a><a href="verification.html">Verification</a></nav></header>
+<main id="main"><section class="hero">
+<div><p class="eyebrow">Representation theory · Lean 4</p>
+<h1>The magnitude conjecture</h1>
+<p class="lead">A lower bound for the magnitude of a module category, with an exact characterization of equality.</p>
+<p>Let <i>A</i> be a finite-dimensional algebra of finite representation type over an algebraically closed field <i>k</i>. Choose one representative of every indecomposable finite-dimensional right <i>A</i>-module. Their Hom dimensions form a matrix <i>H</i>.</p>
+<div class="math-panel">The matrix <i>H</i> is invertible. The sum of the entries of <i>H</i><sup>−1</sup> is at least the number of simple-module isomorphism classes. Equality holds exactly when the basic algebra of <i>A</i> is special biserial.</div>
+<p>The theorem has no restriction on the characteristic of <i>k</i>, and <i>A</i> need not be basic.</p>
+<div class="actions"><a class="button primary" href="statement.html">Read the statement</a><a class="button" href="proof.html">Follow the proof</a></div></div>
+<aside class="status"><h2>Formalization</h2><dl><dt>Proof assistant</dt><dd>Lean 4.33.1</dd><dt>Dependencies</dt><dd>Mathlib, with narrowly vendored categorical foundations</dd><dt>Foundations</dt><dd>propext, Classical.choice, Quot.sound</dd></dl><p><a href="verification.html">Verification and provenance</a></p></aside>
+</section>
+<h2>What is magnitude?</h2>
+<p>For indecomposable representatives <i>M</i><sub>1</sub>, …, <i>M</i><sub>n</sub>, the entry <i>H</i><sub>ij</sub> is dim<sub><i>k</i></sub> Hom<sub><i>A</i></sub>(<i>M</i><sub>i</sub>, <i>M</i><sub>j</sub>). Magnitude is the sum of all entries of its inverse, viewed over the rational numbers. The formal theorem also proves that this inverse is well defined.</p>
+<p>The original conjecture appears in <a href="https://arxiv.org/abs/2607.07555v1">Børve, Horiatakis, and Kalck’s <i>Magnitude of module categories</i></a>. This formalization follows Haruhisa Enomoto’s proof; the <a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/c57ecb0f7051075b27937e68fe703847d6a56f1d/docs/PAPER-CORRESPONDENCE.md">correspondence record</a> identifies the manuscript checkpoint.</p>
+<h2>A guide to the development</h2>
+<div class="grid"><article class="card"><h3>Readable definitions</h3><p>A small independent file states the complete result using Mathlib. The library proves the connection with every production definition.</p><a href="statement.html">Definitions and theorem</a></article><article class="card"><h3>From deletion to equality</h3><p>Finite graded intervals and a uniform surplus bound give the inequality. Separated intervals, almost-split transfer and socle reduction determine the equality case.</p><a href="proof.html">Mathematical proof guide</a></article></div>
+</main><footer class="site-footer">Source: <code>c57ecb0f7051075b27937e68fe703847d6a56f1d</code><br>API source: <code>9380dc294e2586430ff853b613918d5d9fc44375</code><br>Haruhisa Enomoto · Lean formalization · Apache-2.0</footer></body></html>

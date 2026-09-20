@@ -1,0 +1,685 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.Combinatorics.OrbitQuotientLocalDensity</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.Combinatorics.OrbitQuotientLocalDensity";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">Combinatorics</span>.<span class="name">OrbitQuotientLocalDensity</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/Combinatorics/EulerSurplus.html">MagnitudeConjecture.Combinatorics.EulerSurplus</a></li><li><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html">MagnitudeConjecture.Combinatorics.OrbitQuotientAction</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.Combinatorics.OrbitQuotientLocalDensity" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">groupOrbitQuotientMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">groupOrbitQuotientMap_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitQuotientMap"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientMap_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitQuotientMap_quotient_equivariant"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientMap_quotient_equivariant</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitTowerEquiv_naturality"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitTowerEquiv_naturality</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMapFiberEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">groupOrbitQuotientMapFiberEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitQuotientMapFiberEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientMapFiberEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.card_orbitQuotientMap_fiber_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">card_orbitQuotientMap_fiber_eq</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.card_groupOrbitQuotientMap_fiber_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">card_groupOrbitQuotientMap_fiber_eq</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.occurrenceIndegree"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceIndegree</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.arrowMultiplicityOfOccurrences"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">arrowMultiplicityOfOccurrences</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.targetFiberEquivSigmaSourceFibers"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">targetFiberEquivSigmaSourceFibers</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.indegree_arrowMultiplicityOfOccurrences_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">indegree_arrowMultiplicityOfOccurrences_eq</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.localDensity_arrowMultiplicityOfOccurrences_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">localDensity_arrowMultiplicityOfOccurrences_eq</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.OrbitQuotientProperty"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">OrbitQuotientProperty</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">GroupOrbitQuotientProperty</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitQuotientProperty_mk_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientProperty_mk_iff</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.groupOrbitQuotientProperty_mk_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">groupOrbitQuotientProperty_mk_iff</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitQuotientProperty_quotient_invariant"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientProperty_quotient_invariant</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.groupOrbitQuotientProperty_orbitTowerEquiv_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">groupOrbitQuotientProperty_orbitTowerEquiv_iff</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.occurrenceIndegree_orbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceIndegree_orbitQuotientMap_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.occurrenceIndegree_groupOrbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceIndegree_groupOrbitQuotientMap_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_orbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity_orbitQuotientMap_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_groupOrbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity_groupOrbitQuotientMap_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_invariant"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity_invariant</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.orbitInvariantDescend_occurrenceLocalDensity"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitInvariantDescend_occurrenceLocalDensity</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.sum_occurrenceLocalDensity_eq_group_card_mul_quotient"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">sum_occurrenceLocalDensity_eq_group_card_mul_quotient</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_iteratedOrbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity_iteratedOrbitQuotientMap_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_orbitTowerEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity_orbitTowerEquiv</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Incoming-occurrences-in-orbit-quotients" class="markdown-heading">Incoming occurrences in orbit quotients <a class="hover-link" href="#Incoming-occurrences-in-orbit-quotients">#</a></h1><p>An equivariant map from arrow occurrences to their target vertices descends
+to every subgroup-orbit quotient.  When the action on vertices is free, the
+arrows ending at a chosen lift are in bijection with the arrow-orbits ending
+at its quotient vertex: every orbit has a unique representative with that
+target.  This is the combinatorial content of preservation of incoming arrow
+multiplicity, and hence of the arrow term in the manuscript's local density.</p></div><div class="decl" id="MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L25-L34">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">groupOrbitQuotientMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span></span> → <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">Y</span></span></span></div></div><p>An equivariant map descends to the orbit quotient by the whole acting
+group.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L36-L43">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">groupOrbitQuotientMap_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">X</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">f</span> <span class="fn">equivariant</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Quotient.mk''</span> <span class="fn">(<span class="fn">f</span> <span class="fn">x</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitQuotientMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L45-L58">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">X</span></span> → <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">Y</span></span></span></div></div><p>An equivariant map descends to the orbit quotients by any subgroup.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.orbitQuotientMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitQuotientMap_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L60-L67">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientMap_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">X</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap">orbitQuotientMap</a> <span class="fn">N</span> <span class="fn">f</span> <span class="fn">equivariant</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Quotient.mk''</span> <span class="fn">(<span class="fn">f</span> <span class="fn">x</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitQuotientMap_quotient_equivariant"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L69-L80">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap_quotient_equivariant"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientMap_quotient_equivariant</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">q</span> : <span class="fn"><span class="fn">G</span> <span class="fn">⧸</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap">orbitQuotientMap</a> <span class="fn">N</span> <span class="fn">f</span> <span class="fn">equivariant</span> <span class="fn">(<span class="fn">q</span> <span class="fn">•</span> <span class="fn">z</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">q</span> <span class="fn">•</span> <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap">orbitQuotientMap</a> <span class="fn">N</span> <span class="fn">f</span> <span class="fn">equivariant</span> <span class="fn">z</span></span></span></span></div></div><p>The map on <code>N</code>-orbits remains equivariant for the residual <code>G / N</code>
+action.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitTowerEquiv_naturality"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L82-L97">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitTowerEquiv_naturality"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitTowerEquiv_naturality</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(<span class="fn">G</span> <span class="fn">⧸</span> <span class="fn">N</span>)</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">X</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitTowerEquiv">orbitTowerEquiv</a> <span class="fn">N</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap">orbitQuotientMap</a> <span class="fn">N</span> <span class="fn">f</span> <span class="fn">equivariant</span>)</span> <span class="fn">⋯</span> <span class="fn">z</span>)</span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">f</span> <span class="fn">equivariant</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitTowerEquiv">orbitTowerEquiv</a> <span class="fn">N</span>)</span> <span class="fn">z</span>)</span></span></span></div></div><p>The orbit-tower equivalence is natural for equivariant maps: descending
+first by <code>N</code> and then by <code>G / N</code> agrees with descending directly by <code>G</code>.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.groupOrbitQuotientMapFiberEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L99-L157">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMapFiberEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">groupOrbitQuotientMapFiberEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">{</span> <span class="fn">x</span> <span class="fn">:</span> <span class="fn">X</span> <span class="fn">//</span> <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn">y</span></span> <span class="fn">}</span></span> <span class="fn">≃</span>   <span class="fn"><span class="fn">{</span> <span class="fn">q</span> <span class="fn">:</span> <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span></span> <span class="fn">//</span> <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">f</span> <span class="fn">equivariant</span> <span class="fn">q</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Quotient.mk''</span> <span class="fn">y</span></span></span> <span class="fn">}</span></span></span></div></div><p>For a free action on the target, every whole-group orbit in a fibre of
+the descended map has a unique representative in the corresponding original
+fibre.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.groupOrbitQuotientMapFiberEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitQuotientMapFiberEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L159-L225">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMapFiberEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientMapFiberEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">{</span> <span class="fn">x</span> <span class="fn">:</span> <span class="fn">X</span> <span class="fn">//</span> <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn">y</span></span> <span class="fn">}</span></span> <span class="fn">≃</span>   <span class="fn"><span class="fn">{</span> <span class="fn">q</span> <span class="fn">:</span> <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">X</span></span> <span class="fn">//</span> <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap">orbitQuotientMap</a> <span class="fn">N</span> <span class="fn">f</span> <span class="fn">equivariant</span> <span class="fn">q</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Quotient.mk''</span> <span class="fn">y</span></span></span> <span class="fn">}</span></span></span></div></div><p>For a free action on the target, every orbit in a fibre of the descended
+map has a unique representative in the corresponding original fibre.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.orbitQuotientMapFiberEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.card_orbitQuotientMap_fiber_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L227-L238">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.card_orbitQuotientMap_fiber_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">card_orbitQuotientMap_fiber_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Nat.card</span> <span class="fn"><span class="fn">{</span> <span class="fn">q</span> <span class="fn">:</span> <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">X</span></span> <span class="fn">//</span> <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap">orbitQuotientMap</a> <span class="fn">N</span> <span class="fn">f</span> <span class="fn">equivariant</span> <span class="fn">q</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Quotient.mk''</span> <span class="fn">y</span></span></span> <span class="fn">}</span></span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">Nat.card</span> <span class="fn"><span class="fn">{</span> <span class="fn">x</span> <span class="fn">:</span> <span class="fn">X</span> <span class="fn">//</span> <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn">y</span></span> <span class="fn">}</span></span></span></span></div></div><p>Cardinal form of the fibre equivalence.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.card_groupOrbitQuotientMap_fiber_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L240-L251">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.card_groupOrbitQuotientMap_fiber_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">card_groupOrbitQuotientMap_fiber_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">x</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">f</span> <span class="fn">x</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Nat.card</span> <span class="fn"><span class="fn">{</span> <span class="fn">q</span> <span class="fn">:</span> <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">X</span></span> <span class="fn">//</span> <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">f</span> <span class="fn">equivariant</span> <span class="fn">q</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Quotient.mk''</span> <span class="fn">y</span></span></span> <span class="fn">}</span></span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">Nat.card</span> <span class="fn"><span class="fn">{</span> <span class="fn">x</span> <span class="fn">:</span> <span class="fn">X</span> <span class="fn">//</span> <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn">y</span></span> <span class="fn">}</span></span></span></span></div></div><p>Cardinal form of the whole-group fibre equivalence.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.occurrenceIndegree"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L253-L257">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceIndegree"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceIndegree</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Arrow</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Vertex</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">Arrow</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn">Arrow</span> → <span class="fn">Vertex</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">Vertex</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">ℤ</span></div></div><p>Incoming arrow occurrences at a vertex, counted with multiplicity.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.occurrenceIndegree" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.occurrenceLocalDensity"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L259-L267">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Arrow</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Vertex</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">Arrow</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn">Arrow</span> → <span class="fn">Vertex</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">IsProjective</span> : <span class="fn"><span class="fn">Vertex</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">Vertex</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">ℤ</span></div></div><p>The local density written directly in terms of incoming arrow
+occurrences.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.occurrenceLocalDensity" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.arrowMultiplicityOfOccurrences"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L269-L274">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.arrowMultiplicityOfOccurrences"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">arrowMultiplicityOfOccurrences</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Arrow</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Vertex</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">Arrow</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">source </span><span class="fn">target</span> : <span class="fn"><span class="fn">Arrow</span> → <span class="fn">Vertex</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Vertex</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">ℕ</span></div></div><p>The arrow-multiplicity matrix obtained by counting a type of arrow
+occurrences with specified source and target.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.arrowMultiplicityOfOccurrences" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.targetFiberEquivSigmaSourceFibers"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L276-L288">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.targetFiberEquivSigmaSourceFibers"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">targetFiberEquivSigmaSourceFibers</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Arrow</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Vertex</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">source </span><span class="fn">target</span> : <span class="fn"><span class="fn">Arrow</span> → <span class="fn">Vertex</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Vertex</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">{</span> <span class="fn">a</span> <span class="fn">:</span> <span class="fn">Arrow</span> <span class="fn">//</span> <span class="fn"><span class="fn"><span class="fn">target</span> <span class="fn">a</span></span> <span class="fn">=</span> <span class="fn">y</span></span> <span class="fn">}</span></span> <span class="fn">≃</span> <span class="fn">(<span class="fn">x</span> : <span class="fn">Vertex</span>) × <span class="fn"><span class="fn">{</span> <span class="fn">a</span> <span class="fn">:</span> <span class="fn">Arrow</span> <span class="fn">//</span> <span class="fn"><span class="fn"><span class="fn"><span class="fn">source</span> <span class="fn">a</span></span> <span class="fn">=</span> <span class="fn">x</span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">target</span> <span class="fn">a</span></span> <span class="fn">=</span> <span class="fn">y</span></span></span> <span class="fn">}</span></span></span></span></div></div><p>Partition the arrows ending at <code>y</code> according to their source.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.targetFiberEquivSigmaSourceFibers" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.indegree_arrowMultiplicityOfOccurrences_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L290-L305">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.indegree_arrowMultiplicityOfOccurrences_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">indegree_arrowMultiplicityOfOccurrences_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Arrow</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Vertex</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">Arrow</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Vertex</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">source </span><span class="fn">target</span> : <span class="fn"><span class="fn">Arrow</span> → <span class="fn">Vertex</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Vertex</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/EulerSurplus.html#MagnitudeConjecture.ARCount.indegree">ARCount.indegree</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.arrowMultiplicityOfOccurrences">arrowMultiplicityOfOccurrences</a> <span class="fn">source</span> <span class="fn">target</span>)</span> <span class="fn">y</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceIndegree">occurrenceIndegree</a> <span class="fn">target</span> <span class="fn">y</span></span></span></div></div><p>Summing the occurrence multiplicities over all sources gives the literal
+cardinality of the incoming-arrow fibre.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.localDensity_arrowMultiplicityOfOccurrences_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L307-L319">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.localDensity_arrowMultiplicityOfOccurrences_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">localDensity_arrowMultiplicityOfOccurrences_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Arrow</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Vertex</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">Arrow</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Vertex</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">source </span><span class="fn">target</span> : <span class="fn"><span class="fn">Arrow</span> → <span class="fn">Vertex</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">IsProjective</span> : <span class="fn"><span class="fn">Vertex</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">DecidablePred</span> <span class="fn">IsProjective</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Vertex</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/EulerSurplus.html#MagnitudeConjecture.ARCount.localDensity">ARCount.localDensity</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.arrowMultiplicityOfOccurrences">arrowMultiplicityOfOccurrences</a> <span class="fn">source</span> <span class="fn">target</span>)</span> <span class="fn">IsProjective</span> <span class="fn">y</span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">target</span> <span class="fn">IsProjective</span> <span class="fn">y</span></span></span></div></div><p>The occurrence form of local density is exactly the manuscript's
+arrow-multiplicity-matrix form.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.OrbitQuotientProperty"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L321-L325">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.OrbitQuotientProperty"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">OrbitQuotientProperty</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">q</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>An orbit has a property when one of its representatives has it.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.OrbitQuotientProperty" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L327-L332">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">GroupOrbitQuotientProperty</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">q</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>A whole-group orbit has a property when one of its representatives has
+it.</p><details id="instances-for-list-MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitQuotientProperty_mk_iff"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L334-L351">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientProperty_mk_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientProperty_mk_iff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">y</span> : <span class="fn">Y</span>), <span class="fn"><span class="fn"><span class="fn">P</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">P</span> <span class="fn">y</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.OrbitQuotientProperty">OrbitQuotientProperty</a> <span class="fn">N</span> <span class="fn">P</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">P</span> <span class="fn">y</span></span></span></div></div><p>An invariant property holds on the orbit of a point exactly when it holds
+at that point.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.groupOrbitQuotientProperty_mk_iff"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L353-L370">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientProperty_mk_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">groupOrbitQuotientProperty_mk_iff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">y</span> : <span class="fn">Y</span>), <span class="fn"><span class="fn"><span class="fn">P</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">P</span> <span class="fn">y</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty">GroupOrbitQuotientProperty</a> <span class="fn">P</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">P</span> <span class="fn">y</span></span></span></div></div><p>An invariant property holds on the whole-group orbit of a point exactly
+when it holds at that point.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitQuotientProperty_quotient_invariant"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L372-L388">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientProperty_quotient_invariant"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitQuotientProperty_quotient_invariant</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">y</span> : <span class="fn">Y</span>), <span class="fn"><span class="fn"><span class="fn">P</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">P</span> <span class="fn">y</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">q</span> : <span class="fn"><span class="fn">G</span> <span class="fn">⧸</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.OrbitQuotientProperty">OrbitQuotientProperty</a> <span class="fn">N</span> <span class="fn">P</span> <span class="fn">(<span class="fn">q</span> <span class="fn">•</span> <span class="fn">z</span>)</span></span> <span class="fn">↔</span> <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.OrbitQuotientProperty">OrbitQuotientProperty</a> <span class="fn">N</span> <span class="fn">P</span> <span class="fn">z</span></span></span></div></div><p>An invariant property on <code>Y</code> induces an invariant property of <code>N</code>-orbits
+under the residual <code>G / N</code> action.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.groupOrbitQuotientProperty_orbitTowerEquiv_iff"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L390-L409">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientProperty_orbitTowerEquiv_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">groupOrbitQuotientProperty_orbitTowerEquiv_iff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">y</span> : <span class="fn">Y</span>), <span class="fn"><span class="fn"><span class="fn">P</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">P</span> <span class="fn">y</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(<span class="fn">G</span> <span class="fn">⧸</span> <span class="fn">N</span>)</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">Y</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty">GroupOrbitQuotientProperty</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.OrbitQuotientProperty">OrbitQuotientProperty</a> <span class="fn">N</span> <span class="fn">P</span>)</span> <span class="fn">z</span></span> <span class="fn">↔</span> <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty">GroupOrbitQuotientProperty</a> <span class="fn">P</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitTowerEquiv">orbitTowerEquiv</a> <span class="fn">N</span>)</span> <span class="fn">z</span>)</span></span></span></div></div><p>The property on the two-stage orbit agrees, through orbit flattening,
+with the corresponding property on the direct whole-group orbit.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.occurrenceIndegree_orbitQuotientMap_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L411-L424">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceIndegree_orbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceIndegree_orbitQuotientMap_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target_equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">a</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">target</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">target</span> <span class="fn">a</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceIndegree">occurrenceIndegree</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap">orbitQuotientMap</a> <span class="fn">N</span> <span class="fn">target</span> <span class="fn">target_equivariant</span>)</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">y</span>)</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceIndegree">occurrenceIndegree</a> <span class="fn">target</span> <span class="fn">y</span></span></span></div></div><p>Incoming occurrence multiplicity is unchanged at a chosen lift after
+passing to a subgroup-orbit quotient.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.occurrenceIndegree_groupOrbitQuotientMap_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L426-L439">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceIndegree_groupOrbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceIndegree_groupOrbitQuotientMap_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target_equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">a</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">target</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">target</span> <span class="fn">a</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceIndegree">occurrenceIndegree</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">target</span> <span class="fn">target_equivariant</span>)</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">y</span>)</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceIndegree">occurrenceIndegree</a> <span class="fn">target</span> <span class="fn">y</span></span></span></div></div><p>Incoming occurrence multiplicity is unchanged at a chosen lift after
+passing to the whole-group orbit quotient.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_orbitQuotientMap_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L441-L460">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_orbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity_orbitQuotientMap_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target_equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">a</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">target</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">target</span> <span class="fn">a</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">IsProjective</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">projective_invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">y</span> : <span class="fn">Y</span>), <span class="fn"><span class="fn"><span class="fn">IsProjective</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">IsProjective</span> <span class="fn">y</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap">orbitQuotientMap</a> <span class="fn">N</span> <span class="fn">target</span> <span class="fn">target_equivariant</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.OrbitQuotientProperty">OrbitQuotientProperty</a> <span class="fn">N</span> <span class="fn">IsProjective</span>)</span>
+    <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">y</span>)</span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">target</span> <span class="fn">IsProjective</span> <span class="fn">y</span></span></span></div></div><p>If projectivity is invariant on vertex orbits, then the full local
+density is unchanged at a chosen lift.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_groupOrbitQuotientMap_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L462-L481">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_groupOrbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity_groupOrbitQuotientMap_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target_equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">a</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">target</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">target</span> <span class="fn">a</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">IsProjective</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">projective_invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">y</span> : <span class="fn">Y</span>), <span class="fn"><span class="fn"><span class="fn">IsProjective</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">IsProjective</span> <span class="fn">y</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">target</span> <span class="fn">target_equivariant</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty">GroupOrbitQuotientProperty</a> <span class="fn">IsProjective</span>)</span>
+    <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">y</span>)</span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">target</span> <span class="fn">IsProjective</span> <span class="fn">y</span></span></span></div></div><p>If projectivity is invariant on vertex orbits, then the full local
+density is unchanged at a chosen lift after the whole-group quotient.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_invariant"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L483-L513">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_invariant"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity_invariant</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target_equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">a</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">target</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">target</span> <span class="fn">a</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">IsProjective</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">projective_invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">y</span> : <span class="fn">Y</span>), <span class="fn"><span class="fn"><span class="fn">IsProjective</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">IsProjective</span> <span class="fn">y</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">target</span> <span class="fn">IsProjective</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">target</span> <span class="fn">IsProjective</span> <span class="fn">y</span></span></span></div></div><p>Occurrence local density is invariant under the group action whenever
+the target action is free and projectivity is invariant.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.orbitInvariantDescend_occurrenceLocalDensity"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L515-L537">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitInvariantDescend_occurrenceLocalDensity"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">orbitInvariantDescend_occurrenceLocalDensity</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target_equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">a</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">target</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">target</span> <span class="fn">a</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">IsProjective</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">projective_invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">y</span> : <span class="fn">Y</span>), <span class="fn"><span class="fn"><span class="fn">IsProjective</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">IsProjective</span> <span class="fn">y</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">q</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitInvariantDescend">orbitInvariantDescend</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">target</span> <span class="fn">IsProjective</span>)</span> <span class="fn">⋯</span> <span class="fn">q</span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">target</span> <span class="fn">target_equivariant</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty">GroupOrbitQuotientProperty</a> <span class="fn">IsProjective</span>)</span> <span class="fn">q</span></span></span></div></div><p>Descending the invariant upstairs local density gives exactly the local
+density formed from the quotient occurrence and projectivity data.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.sum_occurrenceLocalDensity_eq_group_card_mul_quotient"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L539-L567">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.sum_occurrenceLocalDensity_eq_group_card_mul_quotient"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">sum_occurrenceLocalDensity_eq_group_card_mul_quotient</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">Y</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target_equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">a</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">target</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">target</span> <span class="fn">a</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">IsProjective</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">projective_invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">y</span> : <span class="fn">Y</span>), <span class="fn"><span class="fn"><span class="fn">IsProjective</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">IsProjective</span> <span class="fn">y</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">∑ <span class="fn">y</span> : <span class="fn">Y</span>, <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">target</span> <span class="fn">IsProjective</span> <span class="fn">y</span></span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">↑<span class="fn">(<span class="fn">Fintype.card</span> <span class="fn">G</span>)</span></span> <span class="fn">*</span>     <span class="fn">∑ <span class="fn">q</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">G</span> <span class="fn">Y</span></span>,
+      <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">target</span> <span class="fn">target_equivariant</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty">GroupOrbitQuotientProperty</a> <span class="fn">IsProjective</span>)</span>
+        <span class="fn">q</span></span></span></span></span></div></div><p>Endpoint scaling in local-density form: the total upstairs occurrence
+local density is the covering degree times the total quotient density.  No
+separate free action on a chosen set of arrow bases is required.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_iteratedOrbitQuotientMap_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L569-L603">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_iteratedOrbitQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity_iteratedOrbitQuotientMap_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target_equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">a</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">target</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">target</span> <span class="fn">a</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">IsProjective</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">projective_invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">y</span> : <span class="fn">Y</span>), <span class="fn"><span class="fn"><span class="fn">IsProjective</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">IsProjective</span> <span class="fn">y</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y</span> : <span class="fn">Y</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap">orbitQuotientMap</a> <span class="fn">N</span> <span class="fn">target</span> <span class="fn">target_equivariant</span>)</span> <span class="fn">⋯</span>)</span>
+    <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty">GroupOrbitQuotientProperty</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.OrbitQuotientProperty">OrbitQuotientProperty</a> <span class="fn">N</span> <span class="fn">IsProjective</span>)</span>)</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">(<span class="fn">Quotient.mk''</span> <span class="fn">y</span>)</span>)</span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">target</span> <span class="fn">IsProjective</span> <span class="fn">y</span></span></span></div></div><p>Local density is unchanged by first quotienting by <code>N</code> and then by the
+residual <code>G / N</code> action.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_orbitTowerEquiv"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.lean#L605-L637">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity_orbitTowerEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringAction</span>.<span class="name">occurrenceLocalDensity_orbitTowerEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsCancelSMul</span> <span class="fn">G</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Finite</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Normal</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn">X</span> → <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target_equivariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">a</span> : <span class="fn">X</span>), <span class="fn"><span class="fn"><span class="fn">target</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">g</span> <span class="fn">•</span> <span class="fn"><span class="fn">target</span> <span class="fn">a</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">IsProjective</span> : <span class="fn"><span class="fn">Y</span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">projective_invariant</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>) (<span class="fn">y</span> : <span class="fn">Y</span>), <span class="fn"><span class="fn"><span class="fn">IsProjective</span> <span class="fn">(<span class="fn">g</span> <span class="fn">•</span> <span class="fn">y</span>)</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">IsProjective</span> <span class="fn">y</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn"><span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(<span class="fn">G</span> <span class="fn">⧸</span> <span class="fn">N</span>)</span> <span class="fn">(<span class="fn">MulAction.orbitRel.Quotient</span> <span class="fn">(↥<span class="fn">N</span>)</span> <span class="fn">Y</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.orbitQuotientMap">orbitQuotientMap</a> <span class="fn">N</span> <span class="fn">target</span> <span class="fn">target_equivariant</span>)</span> <span class="fn">⋯</span>)</span>
+    <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty">GroupOrbitQuotientProperty</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.OrbitQuotientProperty">OrbitQuotientProperty</a> <span class="fn">N</span> <span class="fn">IsProjective</span>)</span>)</span> <span class="fn">z</span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.occurrenceLocalDensity">occurrenceLocalDensity</a> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.groupOrbitQuotientMap">groupOrbitQuotientMap</a> <span class="fn">target</span> <span class="fn">target_equivariant</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientLocalDensity.html#MagnitudeConjecture.CoveringAction.GroupOrbitQuotientProperty">GroupOrbitQuotientProperty</a> <span class="fn">IsProjective</span>)</span>
+    <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/OrbitQuotientAction.html#MagnitudeConjecture.CoveringAction.orbitTowerEquiv">orbitTowerEquiv</a> <span class="fn">N</span>)</span> <span class="fn">z</span>)</span></span></span></div></div><p>Through orbit flattening, the two-stage occurrence local density is the
+direct whole-group occurrence local density at every quotient vertex.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

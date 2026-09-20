@@ -1,0 +1,690 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.OrbitPullupPushdownDecomposition</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.OrbitPullupPushdownDecomposition";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">OrbitPullupPushdownDecomposition</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPushdownFunctor.html">MagnitudeConjecture.CategoryTheory.OrbitPushdownFunctor</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Limits/Shapes/Products.lean">Mathlib.CategoryTheory.Limits.Shapes.Products</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.OrbitPullupPushdownDecomposition" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslate</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPushdownArrow_zero_of_hasShift"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPushdownArrow_zero_of_hasShift</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate_lof_naturality"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslate_lof_naturality</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdown"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdown</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownIso"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownIso</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdown_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdown_additive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdown_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdown_linear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateComponent"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateComponent</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_self"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_component_self</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_self_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_component_self_assoc</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_ne"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_component_ne</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_ne_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_component_ne_assoc</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofan"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateCofan</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofanAppHom"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateCofanAppHom</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateDesc"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateDesc</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_desc"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_desc</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_desc_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_desc_assoc</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofanIsColimit"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateCofanIsColimit</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslate"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">linearOrbitPullupPushdownTranslate</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofan"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">linearOrbitPullupPushdownTranslateCofan</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofanUnderlying"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">linearOrbitPullupPushdownTranslateCofanUnderlying</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofanIsColimit"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">linearOrbitPullupPushdownTranslateCofanIsColimit</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Pull-up-of-Gabriel-push-down-as-a-sum-of-translates" class="markdown-heading">Pull-up of Gabriel push-down as a sum of translates <a class="hover-link" href="#Pull-up-of-Gabriel-push-down-as-a-sum-of-translates">#</a></h1><p>The pull-up of an orbit push-down is the coproduct of all translated copies
+of the original module.  This is the displayed decomposition used at the
+start of Gabriel's Lemma 3.5.</p></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L28-L32">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslate</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">A</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span></div></div><p>The translate indexed by <code>b</code> in the pull-up of an orbit push-down.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPushdownArrow_zero_of_hasShift"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L41-L58">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPushdownArrow_zero_of_hasShift"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPushdownArrow_zero_of_hasShift</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">A</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPushdown.html#MagnitudeConjecture.CoveringHom.orbitPushdownArrow'">orbitPushdownArrow'</a> <span class="fn">⋯</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitHom.html#MagnitudeConjecture.CoveringHom.shiftHomZero">shiftHomZero</a> <span class="fn">h</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">b</span>)</span>.<span class="fn">map</span></span> <span class="fn">h</span></span></span></div></div><p>A degree-zero orbit arrow acts diagonally on every translated summand.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate_lof_naturality"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L61-L82">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate_lof_naturality"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslate_lof_naturality</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">A</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPushdown.html#MagnitudeConjecture.CoveringHom.orbitPushdownMapLinear">orbitPushdownMapLinear</a> <span class="fn">M</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitHom.html#MagnitudeConjecture.CoveringHom.shiftOrbitOf">shiftOrbitOf</a> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">0</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitHom.html#MagnitudeConjecture.CoveringHom.shiftHomZero">shiftHomZero</a> <span class="fn">h</span>)</span>)</span></span> <span class="fn">∘ₗ</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPushdown.html#MagnitudeConjecture.CoveringHom.orbitPushdownLof">orbitPushdownLof</a> <span class="fn">M</span> <span class="fn">X</span> <span class="fn">b</span></span></span> <span class="fn">=</span>   <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPushdown.html#MagnitudeConjecture.CoveringHom.orbitPushdownLof">orbitPushdownLof</a> <span class="fn">M</span> <span class="fn">Y</span> <span class="fn">b</span></span> <span class="fn">∘ₗ</span> <span class="fn"><span class="fn">ModuleCat.Hom.hom</span> <span class="fn">(<span class="fn"><span class="fn">M</span>.<span class="fn">map</span></span> <span class="fn">(<span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">b</span>)</span>.<span class="fn">map</span></span> <span class="fn">h</span>)</span>)</span></span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdown"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L84-L107">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdown"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdown</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span></div></div><p>Restrict orbit push-down to degree-zero arrows, presented with its
+objectwise direct sums definitionally visible.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.orbitPullupPushdown" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownIso"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L109-L120">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownIso"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdown">orbitPullupPushdown</a> <span class="fn">M</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitHom.html#MagnitudeConjecture.CoveringHom.ShiftOrbitCategory.identityComponentFunctor">ShiftOrbitCategory.identityComponentFunctor</a>.<span class="fn">comp</span></span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPushdown.html#MagnitudeConjecture.CoveringHom.orbitPushdown">orbitPushdown</a> <span class="fn">M</span>)</span></span></span></div></div><p>The explicit degree-zero restriction is the underlying functor of
+pull-up applied to push-down.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.orbitPullupPushdownIso" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdown_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L122-L124">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdown_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdown_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdown">orbitPullupPushdown</a> <span class="fn">M</span>)</span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdown_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L126-L128">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdown_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdown_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdown">orbitPullupPushdown</a> <span class="fn">M</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L130-L137">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">A</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate">orbitPullupPushdownTranslate</a> <span class="fn">M</span> <span class="fn">b</span></span> <span class="fn">⟶</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdown">orbitPullupPushdown</a> <span class="fn">M</span></span></span></div></div><p>Inclusion of one translate into the pull-up of the push-down.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateComponent"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L139-L173">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateComponent"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateComponent</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">A</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdown">orbitPullupPushdown</a> <span class="fn">M</span></span> <span class="fn">⟶</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate">orbitPullupPushdownTranslate</a> <span class="fn">M</span> <span class="fn">b</span></span></span></div></div><p>Projection from the pull-up direct sum to one translated summand.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateComponent" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_self"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L175-L188">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_self"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_component_self</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">A</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof">orbitPullupPushdownTranslateLof</a> <span class="fn">M</span> <span class="fn">b</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateComponent">orbitPullupPushdownTranslateComponent</a> <span class="fn">M</span> <span class="fn">b</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.id</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate">orbitPullupPushdownTranslate</a> <span class="fn">M</span> <span class="fn">b</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_self_assoc"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L175-L175">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_self_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_component_self_assoc</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">A</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Z</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate">orbitPullupPushdownTranslate</a> <span class="fn">M</span> <span class="fn">b</span></span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof">orbitPullupPushdownTranslateLof</a> <span class="fn">M</span> <span class="fn">b</span>)</span>
+    <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateComponent">orbitPullupPushdownTranslateComponent</a> <span class="fn">M</span> <span class="fn">b</span>)</span> <span class="fn">h</span>)</span></span> <span class="fn">=</span>   <span class="fn">h</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_ne"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L190-L205">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_ne"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_component_ne</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">b </span><span class="fn">c</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hbc</span> : <span class="fn"><span class="fn">b</span> <span class="fn">≠</span> <span class="fn">c</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof">orbitPullupPushdownTranslateLof</a> <span class="fn">M</span> <span class="fn">b</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateComponent">orbitPullupPushdownTranslateComponent</a> <span class="fn">M</span> <span class="fn">c</span>)</span></span> <span class="fn">=</span> <span class="fn">0</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_ne_assoc"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L190-L190">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_component_ne_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_component_ne_assoc</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">b </span><span class="fn">c</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hbc</span> : <span class="fn"><span class="fn">b</span> <span class="fn">≠</span> <span class="fn">c</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Z</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate">orbitPullupPushdownTranslate</a> <span class="fn">M</span> <span class="fn">c</span></span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof">orbitPullupPushdownTranslateLof</a> <span class="fn">M</span> <span class="fn">b</span>)</span>
+    <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateComponent">orbitPullupPushdownTranslateComponent</a> <span class="fn">M</span> <span class="fn">c</span>)</span> <span class="fn">h</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">0</span> <span class="fn">h</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofan"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L207-L211">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofan"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateCofan</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.Cofan</span> <span class="fn">fun (<span class="fn">b</span> : <span class="fn">A</span>) =&gt; <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate">orbitPullupPushdownTranslate</a> <span class="fn">M</span> <span class="fn">b</span></span></span></span></div></div><p>The canonical cocone of all translates into the pull-up of the
+push-down.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofan" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofanAppHom"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L213-L220">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofanAppHom"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateCofanAppHom</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn"><span class="fn">CategoryTheory.Limits.Cofan</span> <span class="fn">fun (<span class="fn">b</span> : <span class="fn">A</span>) =&gt; <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate">orbitPullupPushdownTranslate</a> <span class="fn">M</span> <span class="fn">b</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">A</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">↑<span class="fn">(<span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span> <span class="fn">(<span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">b</span>)</span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span>)</span></span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">↑<span class="fn">(<span class="fn"><span class="fn"><span class="fn">t</span>.<span class="fn">pt</span></span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span></span></span></div></div><p>A leg of a translate cocone at one object, with its source written in
+the literal family used by <code>orbitPushdownValue</code>.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofanAppHom" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateDesc"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L222-L273">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateDesc"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateDesc</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn"><span class="fn">CategoryTheory.Limits.Cofan</span> <span class="fn">fun (<span class="fn">b</span> : <span class="fn">A</span>) =&gt; <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate">orbitPullupPushdownTranslate</a> <span class="fn">M</span> <span class="fn">b</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofan">orbitPullupPushdownTranslateCofan</a> <span class="fn">M</span>)</span>.<span class="fn">pt</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">t</span>.<span class="fn">pt</span></span></span></div></div><p>A family of maps out of all translates extends uniquely over the
+pull-up of the push-down.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateDesc" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_desc"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L275-L294">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_desc"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_desc</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn"><span class="fn">CategoryTheory.Limits.Cofan</span> <span class="fn">fun (<span class="fn">b</span> : <span class="fn">A</span>) =&gt; <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate">orbitPullupPushdownTranslate</a> <span class="fn">M</span> <span class="fn">b</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">A</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof">orbitPullupPushdownTranslateLof</a> <span class="fn">M</span> <span class="fn">b</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateDesc">orbitPullupPushdownTranslateDesc</a> <span class="fn">M</span> <span class="fn">t</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn"><span class="fn">t</span>.<span class="fn">inj</span></span> <span class="fn">b</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_desc_assoc"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L275-L275">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof_desc_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateLof_desc_assoc</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn"><span class="fn">CategoryTheory.Limits.Cofan</span> <span class="fn">fun (<span class="fn">b</span> : <span class="fn">A</span>) =&gt; <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate">orbitPullupPushdownTranslate</a> <span class="fn">M</span> <span class="fn">b</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">A</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Z</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn"><span class="fn">t</span>.<span class="fn">pt</span></span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateLof">orbitPullupPushdownTranslateLof</a> <span class="fn">M</span> <span class="fn">b</span>)</span>
+    <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateDesc">orbitPullupPushdownTranslateDesc</a> <span class="fn">M</span> <span class="fn">t</span>)</span> <span class="fn">h</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn"><span class="fn">t</span>.<span class="fn">inj</span></span> <span class="fn">b</span>)</span> <span class="fn">h</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofanIsColimit"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L296-L323">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofanIsColimit"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">orbitPullupPushdownTranslateCofanIsColimit</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.IsColimit</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofan">orbitPullupPushdownTranslateCofan</a> <span class="fn">M</span>)</span></span></div></div><p>The canonical translate cocone is a categorical coproduct.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslateCofanIsColimit" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslate"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L328-L332">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslate"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">linearOrbitPullupPushdownTranslate</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M₀</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">A</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">LinearModuleCategory</a> <span class="fn">k</span></span></div></div><p>The translated summand, bundled again as a linear module.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslate" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofan"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L334-L342">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofan"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">linearOrbitPullupPushdownTranslateCofan</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M₀</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.Cofan</span> <span class="fn">fun (<span class="fn">b</span> : <span class="fn">A</span>) =&gt; <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslate">linearOrbitPullupPushdownTranslate</a> <span class="fn">M₀</span> <span class="fn">b</span></span></span></span></div></div><p>The translate cocone in the full category of linear modules.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofan" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofanUnderlying"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L344-L350">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofanUnderlying"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">linearOrbitPullupPushdownTranslateCofanUnderlying</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M₀</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn"><span class="fn">CategoryTheory.Limits.Cofan</span> <span class="fn">fun (<span class="fn">b</span> : <span class="fn">A</span>) =&gt; <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslate">linearOrbitPullupPushdownTranslate</a> <span class="fn">M₀</span> <span class="fn">b</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.Cofan</span> <span class="fn">fun (<span class="fn">b</span> : <span class="fn">A</span>) =&gt; <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.orbitPullupPushdownTranslate">orbitPullupPushdownTranslate</a> <span class="fn"><span class="fn">M₀</span>.<span class="fn">obj</span></span> <span class="fn">b</span></span></span></span></div></div><p>Forget the linear-module bundling from a translate cocone.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofanUnderlying" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofanIsColimit"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.lean#L352-L372">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofanIsColimit"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">linearOrbitPullupPushdownTranslateCofanIsColimit</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M₀</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.IsColimit</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPullupPushdownDecomposition.html#MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofan">linearOrbitPullupPushdownTranslateCofan</a> <span class="fn">M₀</span>)</span></span></div></div><p>The pull-up of push-down is also the coproduct of the translates inside
+the full category of linear modules.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.linearOrbitPullupPushdownTranslateCofanIsColimit" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

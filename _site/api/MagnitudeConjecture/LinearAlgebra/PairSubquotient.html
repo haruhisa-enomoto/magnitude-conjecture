@@ -1,0 +1,869 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.LinearAlgebra.PairSubquotient</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.LinearAlgebra.PairSubquotient";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Tactic/Abel.lean">Mathlib.Tactic.Abel</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/LinearAlgebra/Quotient/Basic.lean">Mathlib.LinearAlgebra.Quotient.Basic</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.LinearAlgebra.PairSubquotient" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivOfEq"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivOfEq</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivOfEq_apply_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivOfEq_apply_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">sourceNumerator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">sourceDenominator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">targetNumerator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">targetDenominator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominator_le_sourceNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">sourceDenominator_le_sourceNumerator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominator_le_targetNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">targetDenominator_le_targetNumerator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominatorInNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">sourceDenominatorInNumerator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominatorInNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">targetDenominatorInNumerator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.numeratorMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">numeratorMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.numeratorMap_coe"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">numeratorMap_coe</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.denominator_map_le"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">denominator_map_le</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientMap_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientMap_surjective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientMap_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedSourceNumerator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedSourceDenominator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedTargetNumerator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedTargetDenominator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedNumeratorMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedNumeratorMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedNumeratorMap_coe"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedNumeratorMap_coe</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominatorInNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedSourceDenominatorInNumerator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominatorInNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedTargetDenominatorInNumerator</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedDenominator_map_le"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedDenominator_map_le</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedQuotientMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedQuotientMap_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedQuotientMap_surjective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedQuotientMap_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwapped"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivSwapped</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquiv_apply_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquiv_apply_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwapped_apply_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivSwapped_apply_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivIdentified"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivIdentified</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivIdentified_apply_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivIdentified_apply_mk</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwappedIdentified"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivSwappedIdentified</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwappedIdentified_apply_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivSwappedIdentified_apply_mk</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Moving-a-two-filtration-subquotient-across-a-linear-map" class="markdown-heading">Moving a two-filtration subquotient across a linear map <a class="hover-link" href="#Moving-a-two-filtration-subquotient-across-a-linear-map">#</a></h1><p>For nested subspaces <code>A⁻ ≤ A⁺</code> in the source and <code>B⁻ ≤ B⁺</code> in the target,
+a linear map identifies the two naturally corresponding subquotients built
+from image and preimage.  This is the linear-algebra step in Ringel's proof
+that a string detector does not depend on the chosen split position.</p></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivOfEq"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L26-L34">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivOfEq"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivOfEq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">U </span><span class="fn">U' </span><span class="fn">D </span><span class="fn">D'</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hU</span> : <span class="fn"><span class="fn">U</span> <span class="fn">=</span> <span class="fn">U'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hD</span> : <span class="fn"><span class="fn">D</span> <span class="fn">=</span> <span class="fn">D'</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">↥<span class="fn">U</span></span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Submodule.comap</span> <span class="fn"><span class="fn">U</span>.<span class="fn">subtype</span></span> <span class="fn">D</span></span>)</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">↥<span class="fn">U'</span></span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Submodule.comap</span> <span class="fn"><span class="fn">U'</span>.<span class="fn">subtype</span></span> <span class="fn">D'</span></span></span></span></div></div><p>Transport a subquotient across equal numerator and denominator
+submodules.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivOfEq" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivOfEq_apply_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L36-L45">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivOfEq_apply_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivOfEq_apply_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">U </span><span class="fn">U' </span><span class="fn">D </span><span class="fn">D'</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hU</span> : <span class="fn"><span class="fn">U</span> <span class="fn">=</span> <span class="fn">U'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hD</span> : <span class="fn"><span class="fn">D</span> <span class="fn">=</span> <span class="fn">D'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">↥<span class="fn">U</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivOfEq">quotientEquivOfEq</a> <span class="fn">U</span> <span class="fn">U'</span> <span class="fn">D</span> <span class="fn">D'</span> <span class="fn">hU</span> <span class="fn">hD</span>)</span> <span class="fn">(<span class="fn">Submodule.Quotient.mk</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Submodule.Quotient.mk</span> <span class="fn"><span class="fn">⟨</span><span class="fn">↑<span class="fn">x</span></span>, <span class="fn">⋯</span><span class="fn">⟩</span></span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L47-L49">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">sourceNumerator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span></div></div><p>Numerator before moving across <code>f</code>.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L51-L53">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">sourceDenominator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span></div></div><p>Denominator before moving across <code>f</code>.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetNumerator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L55-L57">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">targetNumerator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span></div></div><p>Numerator after moving across <code>f</code>.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetNumerator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L59-L61">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">targetDenominator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span></div></div><p>Denominator after moving across <code>f</code>.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominator_le_sourceNumerator"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L63-L69">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominator_le_sourceNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">sourceDenominator_le_sourceNumerator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominator">sourceDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span> <span class="fn">≤</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator">sourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominator_le_targetNumerator"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L71-L77">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominator_le_targetNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">targetDenominator_le_targetNumerator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominator">targetDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span> <span class="fn">≤</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetNumerator">targetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominatorInNumerator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L79-L83">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominatorInNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">sourceDenominatorInNumerator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator">sourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span></span></div></div><p>The source denominator inside its numerator.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominatorInNumerator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominatorInNumerator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L85-L89">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominatorInNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">targetDenominatorInNumerator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetNumerator">targetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span></span></div></div><p>The target denominator inside its numerator.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominatorInNumerator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.numeratorMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L91-L98">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.numeratorMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">numeratorMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator">sourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetNumerator">targetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span></span></div></div><p>Restriction of <code>f</code> to the two numerators.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.numeratorMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.numeratorMap_coe"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L100-L103">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.numeratorMap_coe"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">numeratorMap_coe</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator">sourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">↑<span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.numeratorMap">numeratorMap</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">f</span> <span class="fn">↑<span class="fn">x</span></span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.denominator_map_le"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L105-L119">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.denominator_map_le"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">denominator_map_le</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">_hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">_hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Submodule.map</span> <span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.numeratorMap">numeratorMap</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominatorInNumerator">sourceDenominatorInNumerator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">≤</span>   <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominatorInNumerator">targetDenominatorInNumerator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L121-L134">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator">sourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">⧸</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominatorInNumerator">sourceDenominatorInNumerator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span></span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span>   <span class="fn"><span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetNumerator">targetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">⧸</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominatorInNumerator">targetDenominatorInNumerator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span></span></span></div></div><p>The linear map between the two subquotients.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L136-L143">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientMap_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator">sourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap">quotientMap</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span> <span class="fn">hA</span> <span class="fn">hB</span>)</span> <span class="fn">(<span class="fn">Submodule.Quotient.mk</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">Submodule.Quotient.mk</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.numeratorMap">numeratorMap</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span> <span class="fn">x</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap_surjective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L145-L162">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientMap_surjective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">⇑<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap">quotientMap</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span> <span class="fn">hA</span> <span class="fn">hB</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L164-L205">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientMap_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">⇑<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientMap">quotientMap</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span> <span class="fn">hA</span> <span class="fn">hB</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L207-L218">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator">sourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">⧸</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominatorInNumerator">sourceDenominatorInNumerator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span>)</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span>   <span class="fn"><span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetNumerator">targetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">⧸</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominatorInNumerator">targetDenominatorInNumerator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span></span></span></div></div><p>Moving the split across one linear map gives a linear equivalence of the
+two pair subquotients.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L220-L223">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedSourceNumerator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span></div></div><p>Source numerator with the two filtrations written in the opposite
+order.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L225-L228">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedSourceDenominator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span></div></div><p>Source denominator with the two filtrations written in the opposite
+order.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetNumerator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L230-L233">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedTargetNumerator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span></div></div><p>Target numerator with the two filtrations written in the opposite
+order.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetNumerator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L235-L238">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedTargetDenominator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span></div></div><p>Target denominator with the two filtrations written in the opposite
+order.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedNumeratorMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L240-L247">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedNumeratorMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedNumeratorMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator">swappedSourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetNumerator">swappedTargetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span></span></div></div><p>Restriction of <code>f</code> between the swapped numerators.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedNumeratorMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedNumeratorMap_coe"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L249-L253">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedNumeratorMap_coe"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedNumeratorMap_coe</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator">swappedSourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">↑<span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedNumeratorMap">swappedNumeratorMap</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">f</span> <span class="fn">↑<span class="fn">x</span></span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominatorInNumerator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L255-L259">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominatorInNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedSourceDenominatorInNumerator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator">swappedSourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span></span></div></div><p>Swapped source denominator inside its numerator.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominatorInNumerator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominatorInNumerator"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L261-L265">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominatorInNumerator"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedTargetDenominatorInNumerator</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetNumerator">swappedTargetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span></span></div></div><p>Swapped target denominator inside its numerator.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominatorInNumerator" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedDenominator_map_le"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L267-L283">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedDenominator_map_le"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedDenominator_map_le</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Submodule.map</span> <span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedNumeratorMap">swappedNumeratorMap</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominatorInNumerator">swappedSourceDenominatorInNumerator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">≤</span>   <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominatorInNumerator">swappedTargetDenominatorInNumerator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L285-L301">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedQuotientMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator">swappedSourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">⧸</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominatorInNumerator">swappedSourceDenominatorInNumerator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span></span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span>   <span class="fn"><span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetNumerator">swappedTargetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">⧸</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominatorInNumerator">swappedTargetDenominatorInNumerator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span></span></span></div></div><p>Explicit quotient map between the swapped pair subquotients.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L303-L309">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedQuotientMap_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator">swappedSourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap">swappedQuotientMap</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span>)</span> <span class="fn">(<span class="fn">Submodule.Quotient.mk</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">Submodule.Quotient.mk</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedNumeratorMap">swappedNumeratorMap</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span> <span class="fn">x</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap_surjective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L311-L327">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap_surjective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedQuotientMap_surjective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">⇑<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap">swappedQuotientMap</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L329-L372">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">swappedQuotientMap_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">⇑<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedQuotientMap">swappedQuotientMap</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwapped"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L374-L387">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwapped"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivSwapped</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">_hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator">swappedSourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">⧸</span>     <span class="fn"><span class="fn">Submodule.comap</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator">swappedSourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span>.<span class="fn">subtype</span></span>
+      <span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominator">swappedSourceDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span>)</span></span>)</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span>   <span class="fn"><span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetNumerator">swappedTargetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span> <span class="fn">⧸</span>     <span class="fn"><span class="fn">Submodule.comap</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetNumerator">swappedTargetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span>.<span class="fn">subtype</span></span>
+      <span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominator">swappedTargetDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span>)</span></span></span></span></div></div><p>The same image/preimage equivalence when both pair filtrations are
+written in the opposite order.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwapped" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquiv_apply_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L389-L396">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquiv_apply_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquiv_apply_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator">sourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquiv">quotientEquiv</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span> <span class="fn">hA</span> <span class="fn">hB</span>)</span> <span class="fn">(<span class="fn">Submodule.Quotient.mk</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">Submodule.Quotient.mk</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.numeratorMap">numeratorMap</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span> <span class="fn">x</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwapped_apply_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L398-L405">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwapped_apply_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivSwapped_apply_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">↥<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator">swappedSourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwapped">quotientEquivSwapped</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span> <span class="fn">hA</span> <span class="fn">hB</span>)</span> <span class="fn">(<span class="fn">Submodule.Quotient.mk</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">Submodule.Quotient.mk</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedNumeratorMap">swappedNumeratorMap</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span>)</span> <span class="fn">x</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivIdentified"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L407-L424">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivIdentified"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivIdentified</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U </span><span class="fn">D</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U' </span><span class="fn">D'</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hSourceNum</span> : <span class="fn"><span class="fn">U</span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator">sourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hSourceDen</span> : <span class="fn"><span class="fn">D</span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominator">sourceDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hTargetNum</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetNumerator">targetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span></span> <span class="fn">=</span> <span class="fn">U'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hTargetDen</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominator">targetDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span> <span class="fn">=</span> <span class="fn">D'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">↥<span class="fn">U</span></span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Submodule.comap</span> <span class="fn"><span class="fn">U</span>.<span class="fn">subtype</span></span> <span class="fn">D</span></span>)</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">↥<span class="fn">U'</span></span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Submodule.comap</span> <span class="fn"><span class="fn">U'</span>.<span class="fn">subtype</span></span> <span class="fn">D'</span></span></span></span></div></div><p>Move a pair subquotient across <code>f</code> after identifying the displayed source
+and target numerators and denominators with the generic image/preimage pair.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivIdentified" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivIdentified_apply_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L426-L472">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivIdentified_apply_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivIdentified_apply_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U </span><span class="fn">D</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U' </span><span class="fn">D'</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hSourceNum</span> : <span class="fn"><span class="fn">U</span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceNumerator">sourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hSourceDen</span> : <span class="fn"><span class="fn">D</span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.sourceDenominator">sourceDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hTargetNum</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetNumerator">targetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span></span> <span class="fn">=</span> <span class="fn">U'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hTargetDen</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.targetDenominator">targetDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span> <span class="fn">=</span> <span class="fn">D'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">↥<span class="fn">U</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivIdentified">quotientEquivIdentified</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span> <span class="fn">U</span> <span class="fn">D</span> <span class="fn">U'</span> <span class="fn">D'</span> <span class="fn">hSourceNum</span> <span class="fn">hSourceDen</span> <span class="fn">hTargetNum</span> <span class="fn">hTargetDen</span> <span class="fn">hA</span> <span class="fn">hB</span>)</span>
+    <span class="fn">(<span class="fn">Submodule.Quotient.mk</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">Submodule.Quotient.mk</span> <span class="fn"><span class="fn">⟨</span><span class="fn"><span class="fn">f</span> <span class="fn">↑<span class="fn">x</span></span></span>, <span class="fn">⋯</span><span class="fn">⟩</span></span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwappedIdentified"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L474-L490">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwappedIdentified"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivSwappedIdentified</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U </span><span class="fn">D</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U' </span><span class="fn">D'</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hSourceNum</span> : <span class="fn"><span class="fn">U</span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator">swappedSourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hSourceDen</span> : <span class="fn"><span class="fn">D</span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominator">swappedSourceDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hTargetNum</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetNumerator">swappedTargetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span></span> <span class="fn">=</span> <span class="fn">U'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hTargetDen</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominator">swappedTargetDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span> <span class="fn">=</span> <span class="fn">D'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">↥<span class="fn">U</span></span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Submodule.comap</span> <span class="fn"><span class="fn">U</span>.<span class="fn">subtype</span></span> <span class="fn">D</span></span>)</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">↥<span class="fn">U'</span></span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Submodule.comap</span> <span class="fn"><span class="fn">U'</span>.<span class="fn">subtype</span></span> <span class="fn">D'</span></span></span></span></div></div><p>The identified form of <code><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwapped">quotientEquivSwapped</a></code>.</p><details id="instances-for-list-MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwappedIdentified" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwappedIdentified_apply_mk"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/PairSubquotient.lean#L492-L532">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwappedIdentified_apply_mk"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">PairSubquotient</span>.<span class="name">quotientEquivSwappedIdentified_apply_mk</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">V </span><span class="fn">W</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">V</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Aminus </span><span class="fn">Aplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Bminus </span><span class="fn">Bplus</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U </span><span class="fn">D</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U' </span><span class="fn">D'</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hSourceNum</span> : <span class="fn"><span class="fn">U</span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceNumerator">swappedSourceNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hSourceDen</span> : <span class="fn"><span class="fn">D</span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedSourceDenominator">swappedSourceDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hTargetNum</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetNumerator">swappedTargetNumerator</a> <span class="fn">f</span> <span class="fn">Aplus</span> <span class="fn">Bplus</span></span> <span class="fn">=</span> <span class="fn">U'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hTargetDen</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.swappedTargetDenominator">swappedTargetDenominator</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span></span> <span class="fn">=</span> <span class="fn">D'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hA</span> : <span class="fn"><span class="fn">Aminus</span> <span class="fn">≤</span> <span class="fn">Aplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><span class="fn">Bminus</span> <span class="fn">≤</span> <span class="fn">Bplus</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">↥<span class="fn">U</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/LinearAlgebra/PairSubquotient.html#MagnitudeConjecture.LinearAlgebra.PairSubquotient.quotientEquivSwappedIdentified">quotientEquivSwappedIdentified</a> <span class="fn">f</span> <span class="fn">Aminus</span> <span class="fn">Aplus</span> <span class="fn">Bminus</span> <span class="fn">Bplus</span> <span class="fn">U</span> <span class="fn">D</span> <span class="fn">U'</span> <span class="fn">D'</span> <span class="fn">hSourceNum</span> <span class="fn">hSourceDen</span> <span class="fn">hTargetNum</span> <span class="fn">hTargetDen</span> <span class="fn">hA</span> <span class="fn">hB</span>)</span>
+    <span class="fn">(<span class="fn">Submodule.Quotient.mk</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">Submodule.Quotient.mk</span> <span class="fn"><span class="fn">⟨</span><span class="fn"><span class="fn">f</span> <span class="fn">↑<span class="fn">x</span></span></span>, <span class="fn">⋯</span><span class="fn">⟩</span></span></span></span></div></div></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

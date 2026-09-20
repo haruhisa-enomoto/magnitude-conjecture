@@ -1,0 +1,863 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.ObjectDeletionModuleInheritance</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.ObjectDeletionModuleInheritance";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ObjectDeletionModuleInheritance</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleLocalRepresentationFinite.html">MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleLocalRepresentationFinite</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html">MagnitudeConjecture.CategoryTheory.ObjectDeletionModuleExtension</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Abelian/SerreClass/Basic.lean">Mathlib.CategoryTheory.Abelian.SerreClass.Basic</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.ObjectDeletionModuleInheritance" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">ModuleVanishesOnDeleted</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.module_isKilledBy_of_vanishesOnDeleted"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">module_isKilledBy_of_vanishesOnDeleted</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionToDeletion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionToDeletion_additive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionToDeletion_linear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionToDeletionIso</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion_map_survivingMap"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionToDeletion_map_survivingMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIsoApp"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionExtensionIsoApp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIsoApp_of_not_mem"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionExtensionIsoApp_of_not_mem</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionExtensionIso</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">linearModuleRestrictionToDeletion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.iteratedLinearModuleRestrictionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">iteratedLinearModuleRestrictionIso</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.deletionEquivalenceOfEq_linearModuleRestrictionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletionEquivalenceOfEq_linearModuleRestrictionIso</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.iteratedLinearModuleRestrictionIsoOfSubset"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">iteratedLinearModuleRestrictionIsoOfSubset</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionExtensionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">linearModuleRestrictionExtensionIso</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.linearModuleExtensionRestrictionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">linearModuleExtensionRestrictionIso</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.linearModuleExtensionByZero_essImage_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">linearModuleExtensionByZero_essImage_iff</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion_isFiniteDimensional"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">linearModuleRestrictionToDeletion_isFiniteDimensional</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleRestrictionToDeletion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionExtensionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleRestrictionExtensionIso</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionRestrictionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleExtensionRestrictionIso</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion_indec"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleRestrictionToDeletion_indec</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero_essImage_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleExtensionByZero_essImage_iff</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleEvaluation</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesLimitFiniteDimensionalModuleCategoryLinearModuleCategoryWalkingParallelPairParallelPairOfNatHomFiniteModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesLimitFiniteDimensionalModuleCategoryLinearModuleCategoryWalkingParallelPairParallelPairOfNatHomFiniteModuleInclusion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesColimitFiniteDimensionalModuleCategoryLinearModuleCategoryWalkingParallelPairParallelPairOfNatHomFiniteModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesColimitFiniteDimensionalModuleCategoryLinearModuleCategoryWalkingParallelPairParallelPairOfNatHomFiniteModuleInclusion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesLimitLinearModuleCategoryFunctorModuleCatWalkingParallelPairParallelPairOfNatHomLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesLimitLinearModuleCategoryFunctorModuleCatWalkingParallelPairParallelPairOfNatHomLinearModuleInclusion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesColimitLinearModuleCategoryFunctorModuleCatWalkingParallelPairParallelPairOfNatHomLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesColimitLinearModuleCategoryFunctorModuleCatWalkingParallelPairParallelPairOfNatHomLinearModuleInclusion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFiniteModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFiniteModuleInclusion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFiniteModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFiniteModuleInclusion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryFunctorModuleCatIsLinearModuleLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteLimitsFullSubcategoryFunctorModuleCatIsLinearModuleLinearModuleInclusion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryFunctorModuleCatIsLinearModuleLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteColimitsFullSubcategoryFunctorModuleCatIsLinearModuleLinearModuleInclusion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFunctorModuleCatCompFiniteModuleInclusionLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFunctorModuleCatCompFiniteModuleInclusionLinearModuleInclusion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFunctorModuleCatCompFiniteModuleInclusionLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFunctorModuleCatCompFiniteModuleInclusionLinearModuleInclusion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleModuleCatCompFiniteModuleInclusionFunctorLinearModuleInclusionObjEvaluation"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleModuleCatCompFiniteModuleInclusionFunctorLinearModuleInclusionObjEvaluation</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleModuleCatCompFiniteModuleInclusionFunctorLinearModuleInclusionObjEvaluation"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleModuleCatCompFiniteModuleInclusionFunctorLinearModuleInclusionObjEvaluation</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation_preservesFiniteLimits"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleEvaluation_preservesFiniteLimits</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation_preservesFiniteColimits"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleEvaluation_preservesFiniteColimits</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteModuleVanishesOnDeleted"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteModuleVanishesOnDeleted</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteModuleVanishesOnDeleted_isSerreClass"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteModuleVanishesOnDeleted_isSerreClass</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero_essImage_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleExtensionByZero_essImage_eq</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero_essImage_isSerreClass"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleExtensionByZero_essImage_isSerreClass</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.isLocallyRepresentationFinite_deletion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">isLocallyRepresentationFinite_deletion</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Module-theoretic-inheritance-under-object-deletion" class="markdown-heading">Module-theoretic inheritance under object deletion <a class="hover-link" href="#Module-theoretic-inheritance-under-object-deletion">#</a></h1><p>Extension by zero embeds finite-dimensional modules on an object-deletion
+category fully faithfully into the ambient finite-dimensional module
+category.  Its essential image consists exactly of the ambient modules which
+vanish on the deleted objects, and that vanishing subcategory is a Serre
+class.  This file also formalizes the manuscript's first inheritance
+consequence: local representation-finiteness passes to every object-deletion
+category.</p><p>For a surviving base object, start from a finite ambient family covering all
+indecomposables nonzero there.  Keep exactly those finitely many indices whose
+ambient representative occurs in the essential image of extension by zero,
+and choose one deletion-stage preimage at each retained index.  Full
+faithfulness then reflects the ambient isomorphisms back to the deletion
+stage.</p></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L40-L43">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">ModuleVanishesOnDeleted</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>An ambient module vanishes on all objects removed by the deletion.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.module_isKilledBy_of_vanishesOnDeleted"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L45-L66">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.module_isKilledBy_of_vanishesOnDeleted"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">module_isKilledBy_of_vanishesOnDeleted</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionQuotient.html#MagnitudeConjecture.ObjectDeletion.ideal">ideal</a> <span class="fn">C</span> <span class="fn">S</span>)</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">M</span></span></div></div><p>A module which vanishes on the deleted objects kills the Hom ideal
+generated by those objects.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L68-L76">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionToDeletion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionQuotient.html#MagnitudeConjecture.ObjectDeletion.DeletionCategory">DeletionCategory</a> <span class="fn">C</span> <span class="fn">S</span>)</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span></div></div><p>Descend an ambient module which vanishes on the deleted objects to the
+object-deletion category.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L78-L83">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionToDeletion_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion">moduleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hM</span>)</span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L85-L90">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionToDeletion_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion">moduleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hM</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletionIso"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L93-L117">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionToDeletionIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M </span><span class="fn">N</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">N</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hN</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">M</span> <span class="fn">≅</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion">moduleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hM</span></span> <span class="fn">≅</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion">moduleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">N</span> <span class="fn">hN</span></span></span></div></div><p>An isomorphism of ambient vanishing modules descends to an isomorphism
+of their restrictions to the object-deletion category.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletionIso" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion_map_survivingMap"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L119-L127">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion_map_survivingMap"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionToDeletion_map_survivingMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hX</span> : <span class="fn"><span class="fn">X</span> ∉ <span class="fn">S</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hY</span> : <span class="fn"><span class="fn">Y</span> ∉ <span class="fn">S</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion">moduleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hM</span>)</span>.<span class="fn">map</span></span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionComparison.html#MagnitudeConjecture.ObjectDeletion.survivingMap">survivingMap</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">hX</span> <span class="fn">hY</span> <span class="fn">f</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">map</span></span> <span class="fn">f</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIsoApp"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L129-L144">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIsoApp"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionExtensionIsoApp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html#MagnitudeConjecture.ObjectDeletion.moduleExtensionByZero">moduleExtensionByZero</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion">moduleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hM</span>)</span>)</span>.<span class="fn">obj</span></span> <span class="fn">X</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span> <span class="fn">X</span></span></span></div></div><p>The extension of the descended module is pointwise isomorphic to the
+original ambient module.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIsoApp" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIsoApp_of_not_mem"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L146-L158">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIsoApp_of_not_mem"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionExtensionIsoApp_of_not_mem</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hX</span> : <span class="fn"><span class="fn">X</span> ∉ <span class="fn">S</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIsoApp">moduleRestrictionExtensionIsoApp</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hM</span> <span class="fn">X</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html#MagnitudeConjecture.ObjectDeletion.moduleExtensionByZeroObjIso">moduleExtensionByZeroObjIso</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion">moduleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hM</span>)</span> <span class="fn">hX</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIso"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L160-L212">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">moduleRestrictionExtensionIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">M</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html#MagnitudeConjecture.ObjectDeletion.moduleExtensionByZero">moduleExtensionByZero</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.moduleRestrictionToDeletion">moduleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hM</span>)</span></span> <span class="fn">≅</span> <span class="fn">M</span></span></div></div><p>Extension by zero after descent recovers an ambient module which vanishes
+on the deleted objects.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.moduleRestrictionExtensionIso" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L214-L221">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">linearModuleRestrictionToDeletion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">CoveringHom.LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">CoveringHom.LinearModuleCategory</a> <span class="fn">k</span></span></div></div><p>Descend a linear ambient module which vanishes on the deleted objects.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.iteratedLinearModuleRestrictionIso"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L223-L278">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.iteratedLinearModuleRestrictionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">iteratedLinearModuleRestrictionIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S </span><span class="fn">T</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">CoveringHom.LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hUnion</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">(<span class="fn">S</span> <span class="fn">∪</span> <span class="fn">T</span>)</span> <span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hT</span> :
+  <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionQuotient.html#MagnitudeConjecture.ObjectDeletion.DeletionCategory">DeletionCategory</a> <span class="fn">C</span> <span class="fn">S</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionComparison.html#MagnitudeConjecture.ObjectDeletion.AdditionalDeleted">AdditionalDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">T</span>)</span>
+    <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hS</span>)</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionComparison.html#MagnitudeConjecture.ObjectDeletion.iteratedToUnionFunctor">iteratedToUnionFunctor</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">T</span>)</span>.<span class="fn">comp</span></span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">(<span class="fn">S</span> <span class="fn">∪</span> <span class="fn">T</span>)</span> <span class="fn">M</span> <span class="fn">hUnion</span>)</span>.<span class="fn">obj</span></span></span> <span class="fn">≅</span>   <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionQuotient.html#MagnitudeConjecture.ObjectDeletion.DeletionCategory">DeletionCategory</a> <span class="fn">C</span> <span class="fn">S</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionComparison.html#MagnitudeConjecture.ObjectDeletion.AdditionalDeleted">AdditionalDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">T</span>)</span>
+      <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hS</span>)</span> <span class="fn">hT</span>)</span>.<span class="fn">obj</span></span></span></div></div><p>Restricting a vanishing linear module successively along <code>S</code> and <code>T</code>
+agrees with restricting it once along <code>S ∪ T</code>, after the canonical
+equivalence between the two deletion categories.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.iteratedLinearModuleRestrictionIso" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.deletionEquivalenceOfEq_linearModuleRestrictionIso"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L280-L291">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.deletionEquivalenceOfEq_linearModuleRestrictionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletionEquivalenceOfEq_linearModuleRestrictionIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">T</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hST</span> : <span class="fn"><span class="fn">S</span> <span class="fn">=</span> <span class="fn">T</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">CoveringHom.LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hT</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">T</span> <span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionComparison.html#MagnitudeConjecture.ObjectDeletion.deletionEquivalenceOfEq">deletionEquivalenceOfEq</a> <span class="fn">C</span> <span class="fn">hST</span>)</span>.<span class="fn">functor</span></span>.<span class="fn">comp</span></span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">T</span> <span class="fn">M</span> <span class="fn">hT</span>)</span>.<span class="fn">obj</span></span></span> <span class="fn">≅</span>   <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hS</span>)</span>.<span class="fn">obj</span></span></span></div></div><p>Restriction is unchanged when the deleted-object set is replaced by an
+equal set and the deletion category is transported by that equality.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.deletionEquivalenceOfEq_linearModuleRestrictionIso" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.iteratedLinearModuleRestrictionIsoOfSubset"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L293-L325">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.iteratedLinearModuleRestrictionIsoOfSubset"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">iteratedLinearModuleRestrictionIsoOfSubset</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S </span><span class="fn">T</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hST</span> : <span class="fn"><span class="fn">S</span> ⊆ <span class="fn">T</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">CoveringHom.LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hFull</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">T</span> <span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hAdditional</span> :
+  <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionQuotient.html#MagnitudeConjecture.ObjectDeletion.DeletionCategory">DeletionCategory</a> <span class="fn">C</span> <span class="fn">S</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionComparison.html#MagnitudeConjecture.ObjectDeletion.AdditionalDeleted">AdditionalDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">T</span>)</span>
+    <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hS</span>)</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">have <span class="fn">hEq</span> := <span class="fn">⋯</span>;
+<span class="fn">have <span class="fn">e</span> := <span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionComparison.html#MagnitudeConjecture.ObjectDeletion.iteratedDeletionEquivalence">iteratedDeletionEquivalence</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">T</span>)</span>.<span class="fn">trans</span></span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionComparison.html#MagnitudeConjecture.ObjectDeletion.deletionEquivalenceOfEq">deletionEquivalenceOfEq</a> <span class="fn">C</span> <span class="fn">hEq</span>)</span></span>;
+<span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">e</span>.<span class="fn">functor</span></span>.<span class="fn">comp</span></span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">T</span> <span class="fn">M</span> <span class="fn">hFull</span>)</span>.<span class="fn">obj</span></span></span> <span class="fn">≅</span>   <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionQuotient.html#MagnitudeConjecture.ObjectDeletion.DeletionCategory">DeletionCategory</a> <span class="fn">C</span> <span class="fn">S</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionComparison.html#MagnitudeConjecture.ObjectDeletion.AdditionalDeleted">AdditionalDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">T</span>)</span>
+      <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hS</span>)</span> <span class="fn">hAdditional</span>)</span>.<span class="fn">obj</span></span></span></span></span></div></div><p>If <code>S ⊆ T</code>, successive restriction along <code>S</code> and the surviving part of
+<code>T</code> agrees with direct restriction along <code>T</code>.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.iteratedLinearModuleRestrictionIsoOfSubset" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionExtensionIso"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L327-L336">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionExtensionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">linearModuleRestrictionExtensionIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">CoveringHom.LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html#MagnitudeConjecture.ObjectDeletion.linearModuleExtensionByZero">linearModuleExtensionByZero</a> <span class="fn">C</span> <span class="fn">S</span>)</span>.<span class="fn">obj</span></span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hM</span>)</span></span> <span class="fn">≅</span> <span class="fn">M</span></span></div></div><p>At the linear-module level, extension by zero after descent is
+isomorphic to the original vanishing module.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionExtensionIso" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.linearModuleExtensionRestrictionIso"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L338-L354">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleExtensionRestrictionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">linearModuleExtensionRestrictionIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">CoveringHom.LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">let <span class="fn">F</span> := <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html#MagnitudeConjecture.ObjectDeletion.linearModuleExtensionByZero">linearModuleExtensionByZero</a> <span class="fn">C</span> <span class="fn">S</span></span>;
+<span class="fn">have <span class="fn">hvanish</span> := <span class="fn">⋯</span>;
+<span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">M</span>)</span> <span class="fn">hvanish</span></span> <span class="fn">≅</span> <span class="fn">M</span></span></span></span></div></div><p>Restricting the extension by zero of a linear deletion module recovers
+the original module.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.linearModuleExtensionRestrictionIso" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.linearModuleExtensionByZero_essImage_iff"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L356-L372">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleExtensionByZero_essImage_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">linearModuleExtensionByZero_essImage_iff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">CoveringHom.LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html#MagnitudeConjecture.ObjectDeletion.linearModuleExtensionByZero">linearModuleExtensionByZero</a> <span class="fn">C</span> <span class="fn">S</span>)</span>.<span class="fn">essImage</span></span> <span class="fn">M</span></span> <span class="fn">↔</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span></span></span></div></div><p>The essential image of extension by zero consists exactly of the ambient
+linear modules which vanish on the deleted objects.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion_isFiniteDimensional"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L374-L396">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion_isFiniteDimensional"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">linearModuleRestrictionToDeletion_isFiniteDimensional</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">CoveringHom.LinearModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hvanish</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfinite</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">CoveringHom.IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">CoveringHom.IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.linearModuleRestrictionToDeletion">linearModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hvanish</span>)</span></span></div></div><p>Restriction of a vanishing module preserves pointwise finite dimension
+and finite object support.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L398-L407">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleRestrictionToDeletion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">CoveringHom.FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">CoveringHom.FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span></div></div><p>Descend a finite-dimensional ambient module which vanishes on the
+deleted objects.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionExtensionIso"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L409-L418">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionExtensionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleRestrictionExtensionIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">CoveringHom.FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero">finiteDimensionalModuleExtensionByZero</a> <span class="fn">C</span> <span class="fn">S</span>)</span>.<span class="fn">obj</span></span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion">finiteDimensionalModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hM</span>)</span></span> <span class="fn">≅</span> <span class="fn">M</span></span></div></div><p>At the finite-dimensional-module level, extension by zero after descent
+is isomorphic to the original vanishing module.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionExtensionIso" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionRestrictionIso"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L423-L431">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionRestrictionIso"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleExtensionRestrictionIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">CoveringHom.FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion">finiteDimensionalModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">(<span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero">finiteDimensionalModuleExtensionByZero</a> <span class="fn">C</span> <span class="fn">S</span>)</span>.<span class="fn">obj</span></span> <span class="fn">M</span>)</span> <span class="fn">⋯</span></span> <span class="fn">≅</span> <span class="fn">M</span></span></div></div><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionRestrictionIso" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion_indec"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L433-L450">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion_indec"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleRestrictionToDeletion_indec</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">CoveringHom.FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><span class="fn">CategoryTheory.Indecomposable</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hvanish</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Indecomposable</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleRestrictionToDeletion">finiteDimensionalModuleRestrictionToDeletion</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn">M</span> <span class="fn">hvanish</span>)</span></span></div></div><p>Restriction to the deletion category preserves indecomposability for an
+ambient finite module which vanishes on the deleted objects.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero_essImage_iff"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L452-L472">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero_essImage_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleExtensionByZero_essImage_iff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">CoveringHom.FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero">finiteDimensionalModuleExtensionByZero</a> <span class="fn">C</span> <span class="fn">S</span>)</span>.<span class="fn">essImage</span></span> <span class="fn">M</span></span> <span class="fn">↔</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.ModuleVanishesOnDeleted">ModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span> <span class="fn"><span class="fn"><span class="fn">M</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span></span></span></div></div><p>The essential image of extension by zero consists exactly of the ambient
+finite-dimensional modules which vanish on the deleted objects.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L474-L481">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleEvaluation</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">CoveringHom.FiniteDimensionalModuleCategory</a> <span class="fn">k</span>)</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span></div></div><p>Evaluation of a finite-dimensional linear module at an object of the
+base category.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesLimitFiniteDimensionalModuleCategoryLinearModuleCategoryWalkingParallelPairParallelPairOfNatHomFiniteModuleInclusion"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L491-L496">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesLimitFiniteDimensionalModuleCategoryLinearModuleCategoryWalkingParallelPairParallelPairOfNatHomFiniteModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesLimitFiniteDimensionalModuleCategoryLinearModuleCategoryWalkingParallelPairParallelPairOfNatHomFiniteModuleInclusion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M </span><span class="fn">N</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">CoveringHom.FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">⟶</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesLimit</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.parallelPair</span> <span class="fn">f</span> <span class="fn">0</span>)</span>
+  <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.finiteModuleInclusion✝</a> <span class="fn">C</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesColimitFiniteDimensionalModuleCategoryLinearModuleCategoryWalkingParallelPairParallelPairOfNatHomFiniteModuleInclusion"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L498-L503">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesColimitFiniteDimensionalModuleCategoryLinearModuleCategoryWalkingParallelPairParallelPairOfNatHomFiniteModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesColimitFiniteDimensionalModuleCategoryLinearModuleCategoryWalkingParallelPairParallelPairOfNatHomFiniteModuleInclusion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M </span><span class="fn">N</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">CoveringHom.FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">⟶</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesColimit</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.parallelPair</span> <span class="fn">f</span> <span class="fn">0</span>)</span>
+  <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.finiteModuleInclusion✝</a> <span class="fn">C</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesLimitLinearModuleCategoryFunctorModuleCatWalkingParallelPairParallelPairOfNatHomLinearModuleInclusion"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L505-L509">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesLimitLinearModuleCategoryFunctorModuleCatWalkingParallelPairParallelPairOfNatHomLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesLimitLinearModuleCategoryFunctorModuleCatWalkingParallelPairParallelPairOfNatHomLinearModuleInclusion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M </span><span class="fn">N</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">CoveringHom.LinearModuleCategory</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">⟶</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesLimit</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.parallelPair</span> <span class="fn">f</span> <span class="fn">0</span>)</span>
+  <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.linearModuleInclusion✝</a> <span class="fn">C</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesColimitLinearModuleCategoryFunctorModuleCatWalkingParallelPairParallelPairOfNatHomLinearModuleInclusion"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L511-L515">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesColimitLinearModuleCategoryFunctorModuleCatWalkingParallelPairParallelPairOfNatHomLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesColimitLinearModuleCategoryFunctorModuleCatWalkingParallelPairParallelPairOfNatHomLinearModuleInclusion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M </span><span class="fn">N</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">CoveringHom.LinearModuleCategory</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">⟶</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesColimit</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.parallelPair</span> <span class="fn">f</span> <span class="fn">0</span>)</span>
+  <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.linearModuleInclusion✝</a> <span class="fn">C</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFiniteModuleInclusion"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L517-L519">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFiniteModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFiniteModuleInclusion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesFiniteLimits</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.finiteModuleInclusion✝</a> <span class="fn">C</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFiniteModuleInclusion"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L521-L523">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFiniteModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFiniteModuleInclusion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesFiniteColimits</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.finiteModuleInclusion✝</a> <span class="fn">C</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryFunctorModuleCatIsLinearModuleLinearModuleInclusion"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L525-L527">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryFunctorModuleCatIsLinearModuleLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteLimitsFullSubcategoryFunctorModuleCatIsLinearModuleLinearModuleInclusion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesFiniteLimits</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.linearModuleInclusion✝</a> <span class="fn">C</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryFunctorModuleCatIsLinearModuleLinearModuleInclusion"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L529-L531">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryFunctorModuleCatIsLinearModuleLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteColimitsFullSubcategoryFunctorModuleCatIsLinearModuleLinearModuleInclusion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesFiniteColimits</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.linearModuleInclusion✝</a> <span class="fn">C</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFunctorModuleCatCompFiniteModuleInclusionLinearModuleInclusion"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L533-L538">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFunctorModuleCatCompFiniteModuleInclusionLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFunctorModuleCatCompFiniteModuleInclusionLinearModuleInclusion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesFiniteLimits</span>
+  <span class="fn">(<span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.finiteModuleInclusion✝</a> <span class="fn">C</span>)</span>.<span class="fn">comp</span></span>
+    <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.linearModuleInclusion✝</a> <span class="fn">C</span>)</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFunctorModuleCatCompFiniteModuleInclusionLinearModuleInclusion"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L540-L545">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFunctorModuleCatCompFiniteModuleInclusionLinearModuleInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleFunctorModuleCatCompFiniteModuleInclusionLinearModuleInclusion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesFiniteColimits</span>
+  <span class="fn">(<span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.finiteModuleInclusion✝</a> <span class="fn">C</span>)</span>.<span class="fn">comp</span></span>
+    <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.linearModuleInclusion✝</a> <span class="fn">C</span>)</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleModuleCatCompFiniteModuleInclusionFunctorLinearModuleInclusionObjEvaluation"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L547-L554">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleModuleCatCompFiniteModuleInclusionFunctorLinearModuleInclusionObjEvaluation"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteLimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleModuleCatCompFiniteModuleInclusionFunctorLinearModuleInclusionObjEvaluation</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesFiniteLimits</span>
+  <span class="fn">(<span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.finiteModuleInclusion✝</a> <span class="fn">C</span>)</span>.<span class="fn">comp</span></span>
+    <span class="fn">(<span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.linearModuleInclusion✝</a> <span class="fn">C</span>)</span>.<span class="fn">comp</span></span>
+      <span class="fn">(<span class="fn"><span class="fn">(<span class="fn">CategoryTheory.evaluation</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span>)</span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span>)</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleModuleCatCompFiniteModuleInclusionFunctorLinearModuleInclusionObjEvaluation"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L556-L563">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleModuleCatCompFiniteModuleInclusionFunctorLinearModuleInclusionObjEvaluation"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">instPreservesFiniteColimitsFullSubcategoryLinearModuleCategoryIsFiniteDimensionalModuleModuleCatCompFiniteModuleInclusionFunctorLinearModuleInclusionObjEvaluation</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesFiniteColimits</span>
+  <span class="fn">(<span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.finiteModuleInclusion✝</a> <span class="fn">C</span>)</span>.<span class="fn">comp</span></span>
+    <span class="fn">(<span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.ObjectDeletion.linearModuleInclusion✝</a> <span class="fn">C</span>)</span>.<span class="fn">comp</span></span>
+      <span class="fn">(<span class="fn"><span class="fn">(<span class="fn">CategoryTheory.evaluation</span> <span class="fn">C</span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span>)</span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span>)</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation_preservesFiniteLimits"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L565-L573">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation_preservesFiniteLimits"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleEvaluation_preservesFiniteLimits</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesFiniteLimits</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation">finiteDimensionalModuleEvaluation</a> <span class="fn">C</span> <span class="fn">X</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation_preservesFiniteColimits"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L575-L583">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation_preservesFiniteColimits"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleEvaluation_preservesFiniteColimits</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Limits.PreservesFiniteColimits</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleEvaluation">finiteDimensionalModuleEvaluation</a> <span class="fn">C</span> <span class="fn">X</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteModuleVanishesOnDeleted"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L587-L592">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteModuleVanishesOnDeleted"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteModuleVanishesOnDeleted</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.ObjectProperty</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">CoveringHom.FiniteDimensionalModuleCategory</a> <span class="fn">k</span>)</span></span></div></div><p>The ambient finite-dimensional modules which vanish on every deleted
+object.</p><details id="instances-for-list-MagnitudeConjecture.ObjectDeletion.finiteModuleVanishesOnDeleted" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteModuleVanishesOnDeleted_isSerreClass"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L594-L624">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteModuleVanishesOnDeleted_isSerreClass"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteModuleVanishesOnDeleted_isSerreClass</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteModuleVanishesOnDeleted">finiteModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span>)</span>.<span class="fn">IsSerreClass</span></span></div></div><p>Modules vanishing on the deleted objects are closed under subobjects,
+quotients, and extensions inside the ambient finite-dimensional module
+category.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero_essImage_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L626-L633">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero_essImage_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleExtensionByZero_essImage_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero">finiteDimensionalModuleExtensionByZero</a> <span class="fn">C</span> <span class="fn">S</span>)</span>.<span class="fn">essImage</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteModuleVanishesOnDeleted">finiteModuleVanishesOnDeleted</a> <span class="fn">C</span> <span class="fn">S</span></span></span></div></div><p>The essential image of finite-dimensional extension by zero is the
+vanishing Serre class, as an equality of object properties.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero_essImage_isSerreClass"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L635-L643">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero_essImage_isSerreClass"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">finiteDimensionalModuleExtensionByZero_essImage_isSerreClass</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleExtension.html#MagnitudeConjecture.ObjectDeletion.finiteDimensionalModuleExtensionByZero">finiteDimensionalModuleExtensionByZero</a> <span class="fn">C</span> <span class="fn">S</span>)</span>.<span class="fn">essImage</span></span>.<span class="fn">IsSerreClass</span></span></div></div><p>The essential image of finite-dimensional extension by zero is closed
+under subobjects, quotients, and extensions.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.isLocallyRepresentationFinite_deletion"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.lean#L645-L699">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html#MagnitudeConjecture.ObjectDeletion.isLocallyRepresentationFinite_deletion"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">isLocallyRepresentationFinite_deletion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hlocal</span> : <a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleLocalRepresentationFinite.html#MagnitudeConjecture.CoveringHom.IsLocallyRepresentationFinite">CoveringHom.IsLocallyRepresentationFinite</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleLocalRepresentationFinite.html#MagnitudeConjecture.CoveringHom.IsLocallyRepresentationFinite">CoveringHom.IsLocallyRepresentationFinite</a></div></div><p>Local representation-finiteness of finite-support modules passes from an
+ambient category to any object-deletion category.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

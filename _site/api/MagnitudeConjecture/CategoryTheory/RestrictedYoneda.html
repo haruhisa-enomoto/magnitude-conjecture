@@ -1,0 +1,708 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.RestrictedYoneda</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.RestrictedYoneda";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">RestrictedYoneda</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html">MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleDeckShift</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/OppositeLinear.html">MagnitudeConjecture.CategoryTheory.OppositeLinear</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Linear/Yoneda.lean">Mathlib.CategoryTheory.Linear.Yoneda</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.RestrictedYoneda" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.instFintypeOpposite_magnitudeConjecture"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">instFintypeOpposite_magnitudeConjecture</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_additive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_linear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaLinearModule</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaLinearModuleMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap_id"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaLinearModuleMap_id</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaLinearModuleMap_comp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaFunctor</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaFunctor_additive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaFunctor_linear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor_faithful_of_sourceDetection"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaFunctor_faithful_of_sourceDetection</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_obj_obj"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_obj_obj</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_map_app_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_map_app_apply</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_isFiniteDimensional_of_finite_support"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_isFiniteDimensional_of_finite_support</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_isFiniteDimensional"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_isFiniteDimensional</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteSupportRestrictedLinearYonedaFunctor</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteSupportRestrictedLinearYonedaFunctor_additive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteSupportRestrictedLinearYonedaFunctor_linear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor_faithful_of_sourceDetection"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteSupportRestrictedLinearYonedaFunctor_faithful_of_sourceDetection</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteRestrictedLinearYonedaFunctor</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteRestrictedLinearYonedaFunctor_additive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteRestrictedLinearYonedaFunctor_linear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor_faithful_of_sourceDetection"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteRestrictedLinearYonedaFunctor_faithful_of_sourceDetection</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Restricted-linear-Yoneda-modules" class="markdown-heading">Restricted linear Yoneda modules <a class="hover-link" href="#Restricted-linear-Yoneda-modules">#</a></h1><p>For a linear functor <code>J : P ⥤ C</code>, restriction of the contravariant
+representable <code>C(-, X)</code> to <code>P</code> is a covariant linear module on <code>Pᵒᵖ</code>.
+Bundling these restricted representables functorially in <code>X</code> is the formal
+core of the Bongartz--Gabriel recovery functor</p><p><code>C ⟶ mod(P),    X ↦ C(-, X)|_P</code>.</p><p>This file only constructs the functor and its finite-dimensional restriction.
+Full faithfulness and essential surjectivity are the substantive Auslander-
+category assertions and are deliberately not assumed here.</p></div><div class="decl" id="MagnitudeConjecture.CoveringHom.instFintypeOpposite_magnitudeConjecture"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L34-L35">source</a></div><div class="attributes">@[instance_reducible]</div>
+<div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.instFintypeOpposite_magnitudeConjecture"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">instFintypeOpposite_magnitudeConjecture</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Fintype</span> <span class="fn"><span class="fn">P</span><span class="fn">ᵒᵖ</span></span></span></div></div><details id="instances-for-list-MagnitudeConjecture.CoveringHom.instFintypeOpposite_magnitudeConjecture" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYoneda"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L37-L40">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn"><span class="fn">P</span><span class="fn">ᵒᵖ</span></span> <span class="fn">(<span class="fn">ModuleCat</span> <span class="fn">k</span>)</span></span></div></div><p>The contravariant representable <code>C(-, X)</code>, restricted along <code>J</code>, as a
+module on <code>Pᵒᵖ</code>.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.restrictedLinearYoneda" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L42-L45">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda">restrictedLinearYoneda</a> <span class="fn">J</span> <span class="fn">X</span>)</span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L47-L54">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda">restrictedLinearYoneda</a> <span class="fn">J</span> <span class="fn">X</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L56-L59">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaLinearModule</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">LinearModuleCategory</a> <span class="fn">k</span></span></div></div><p>Bundled additive linear-module form of a restricted representable.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L61-L67">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaLinearModuleMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule">restrictedLinearYonedaLinearModule</a> <span class="fn">J</span> <span class="fn">X</span></span> <span class="fn">⟶</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule">restrictedLinearYonedaLinearModule</a> <span class="fn">J</span> <span class="fn">Y</span></span></span></div></div><p>A map of representing objects induces the corresponding map of
+restricted representables.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap_id"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L69-L79">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap_id"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaLinearModuleMap_id</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap">restrictedLinearYonedaLinearModuleMap</a> <span class="fn">J</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.id</span> <span class="fn">X</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.id</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule">restrictedLinearYonedaLinearModule</a> <span class="fn">J</span> <span class="fn">X</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap_comp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L81-L91">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaLinearModuleMap_comp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y </span><span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap">restrictedLinearYonedaLinearModuleMap</a> <span class="fn">J</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">f</span> <span class="fn">g</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap">restrictedLinearYonedaLinearModuleMap</a> <span class="fn">J</span> <span class="fn">f</span>)</span>
+    <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap">restrictedLinearYonedaLinearModuleMap</a> <span class="fn">J</span> <span class="fn">g</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L93-L100">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaFunctor</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearModuleDeckShift.html#MagnitudeConjecture.CoveringHom.LinearModuleCategory">LinearModuleCategory</a> <span class="fn">k</span>)</span></span></div></div><p>The restricted Yoneda realization, before imposing any finiteness
+condition on its values.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L102-L112">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaFunctor_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor">restrictedLinearYonedaFunctor</a> <span class="fn">J</span>)</span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L114-L124">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaFunctor_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor">restrictedLinearYonedaFunctor</a> <span class="fn">J</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor_faithful_of_sourceDetection"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L126-L142">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor_faithful_of_sourceDetection"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYonedaFunctor_faithful_of_sourceDetection</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hdetect</span> : <span class="fn">∀ {<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>} (<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">≠</span> <span class="fn">0</span></span> → <span class="fn">∃ (<span class="fn">Z</span> : <span class="fn">P</span>) (<span class="fn">g</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">Z</span></span> <span class="fn">⟶</span> <span class="fn">X</span></span>), <span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">g</span> <span class="fn">f</span></span> <span class="fn">≠</span> <span class="fn">0</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaFunctor">restrictedLinearYonedaFunctor</a> <span class="fn">J</span>)</span>.<span class="fn">Faithful</span></span></div></div><p>Restricted Yoneda is faithful as soon as the selected source objects
+detect every nonzero ambient morphism by precomposition.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_obj_obj"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L144-L149">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_obj_obj"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_obj_obj</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn"><span class="fn">P</span><span class="fn">ᵒᵖ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule">restrictedLinearYonedaLinearModule</a> <span class="fn">J</span> <span class="fn">X</span>)</span>.<span class="fn">obj</span></span>.<span class="fn">obj</span></span> <span class="fn">Y</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">ModuleCat.of</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">(<span class="fn">Opposite.unop</span> <span class="fn">Y</span>)</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_map_app_apply"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L151-L157">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_map_app_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_map_app_apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><span class="fn">P</span><span class="fn">ᵒᵖ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">(<span class="fn">Opposite.unop</span> <span class="fn">W</span>)</span></span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn">CategoryTheory.ConcreteCategory.hom</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModuleMap">restrictedLinearYonedaLinearModuleMap</a> <span class="fn">J</span> <span class="fn">f</span>)</span>.<span class="fn">hom</span></span>.<span class="fn">app</span></span> <span class="fn">W</span>)</span>)</span> <span class="fn">h</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">h</span> <span class="fn">f</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_isFiniteDimensional_of_finite_support"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L159-L172">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_isFiniteDimensional_of_finite_support"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_isFiniteDimensional_of_finite_support</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfinite</span> : <span class="fn">∀ (<span class="fn">Y</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">Y</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">{</span><span class="fn">Y</span> <span class="fn">:</span> <span class="fn"><span class="fn">P</span><span class="fn">ᵒᵖ</span></span> <span class="fn">|</span> <span class="fn"><span class="fn">Nontrivial</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">(<span class="fn">Opposite.unop</span> <span class="fn">Y</span>)</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span><span class="fn">}</span></span>.<span class="fn">Finite</span></span> →
+  <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule">restrictedLinearYonedaLinearModule</a> <span class="fn">J</span> <span class="fn">X</span>)</span></span></span></div></div><p>Pointwise finite-dimensional ambient Hom spaces and finite incoming
+support make a restricted representable a finite-dimensional module.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_isFiniteDimensional"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L174-L182">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYoneda_isFiniteDimensional"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">restrictedLinearYoneda_isFiniteDimensional</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfinite</span> : <span class="fn">∀ (<span class="fn">Y</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">Y</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule">restrictedLinearYonedaLinearModule</a> <span class="fn">J</span> <span class="fn">X</span>)</span></span></div></div><p>On a finite source subcategory, finite-dimensional ambient Hom spaces
+make a restricted representable a finite-dimensional module.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L184-L193">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteSupportRestrictedLinearYonedaFunctor</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hproperty</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule">restrictedLinearYonedaLinearModule</a> <span class="fn">J</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span>)</span></span></div></div><p>Restricted Yoneda with a finite-dimensional target, using finite incoming
+support rather than finiteness of the entire source category.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L195-L207">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteSupportRestrictedLinearYonedaFunctor_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hproperty</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule">restrictedLinearYonedaLinearModule</a> <span class="fn">J</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor">finiteSupportRestrictedLinearYonedaFunctor</a> <span class="fn">J</span> <span class="fn">hproperty</span>)</span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L209-L220">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteSupportRestrictedLinearYonedaFunctor_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hproperty</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule">restrictedLinearYonedaLinearModule</a> <span class="fn">J</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor">finiteSupportRestrictedLinearYonedaFunctor</a> <span class="fn">J</span> <span class="fn">hproperty</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor_faithful_of_sourceDetection"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L222-L239">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor_faithful_of_sourceDetection"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteSupportRestrictedLinearYonedaFunctor_faithful_of_sourceDetection</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hproperty</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.restrictedLinearYonedaLinearModule">restrictedLinearYonedaLinearModule</a> <span class="fn">J</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hdetect</span> : <span class="fn">∀ {<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>} (<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">≠</span> <span class="fn">0</span></span> → <span class="fn">∃ (<span class="fn">Z</span> : <span class="fn">P</span>) (<span class="fn">g</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">Z</span></span> <span class="fn">⟶</span> <span class="fn">X</span></span>), <span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">g</span> <span class="fn">f</span></span> <span class="fn">≠</span> <span class="fn">0</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteSupportRestrictedLinearYonedaFunctor">finiteSupportRestrictedLinearYonedaFunctor</a> <span class="fn">J</span> <span class="fn">hproperty</span>)</span>.<span class="fn">Faithful</span></span></div></div><p>The finite-support target restriction preserves the source-detection
+criterion for faithfulness.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L241-L250">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteRestrictedLinearYonedaFunctor</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hfinite</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>) (<span class="fn">Y</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">Y</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span>)</span></span></div></div><p>The finite-dimensional restricted Yoneda realization.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L252-L263">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteRestrictedLinearYonedaFunctor_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hfinite</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>) (<span class="fn">Y</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">Y</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor">finiteRestrictedLinearYonedaFunctor</a> <span class="fn">J</span> <span class="fn">hfinite</span>)</span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L265-L275">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteRestrictedLinearYonedaFunctor_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hfinite</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>) (<span class="fn">Y</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">Y</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor">finiteRestrictedLinearYonedaFunctor</a> <span class="fn">J</span> <span class="fn">hfinite</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor_faithful_of_sourceDetection"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/RestrictedYoneda.lean#L277-L293">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor_faithful_of_sourceDetection"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteRestrictedLinearYonedaFunctor_faithful_of_sourceDetection</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, w}</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">P</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">J</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hfinite</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>) (<span class="fn">Y</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">Y</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hdetect</span> : <span class="fn">∀ {<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>} (<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>), <span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">≠</span> <span class="fn">0</span></span> → <span class="fn">∃ (<span class="fn">Z</span> : <span class="fn">P</span>) (<span class="fn">g</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">J</span>.<span class="fn">obj</span></span> <span class="fn">Z</span></span> <span class="fn">⟶</span> <span class="fn">X</span></span>), <span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">g</span> <span class="fn">f</span></span> <span class="fn">≠</span> <span class="fn">0</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/RestrictedYoneda.html#MagnitudeConjecture.CoveringHom.finiteRestrictedLinearYonedaFunctor">finiteRestrictedLinearYonedaFunctor</a> <span class="fn">J</span> <span class="fn">hfinite</span>)</span>.<span class="fn">Faithful</span></span></div></div><p>The finite-dimensional target restriction preserves the preceding
+source-detection criterion for faithfulness.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

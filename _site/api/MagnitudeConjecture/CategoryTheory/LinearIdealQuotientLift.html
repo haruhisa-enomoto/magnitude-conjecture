@@ -1,0 +1,364 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.LinearIdealQuotientLift</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.LinearIdealQuotientLift";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">LinearIdealQuotientLift</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/LinearGeneratedHomIdeal.html">QuotientSubmoduleEquidistribution.CategoryTheory.LinearGeneratedHomIdeal</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.LinearIdealQuotientLift" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientPreadditiveInstance"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientPreadditiveInstance</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLinearInstance"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLinearInstance</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.functorKernel"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">functorKernel</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.mem_functorKernel_iff"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">mem_functorKernel_iff</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">IsKilledBy</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.map_eq_of_rel"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">map_eq_of_rel</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLiftNatTrans"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLiftNatTrans</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLiftNatIso"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLiftNatIso</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_map_functor_map"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift_map_functor_map</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_additive"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift_additive</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_linear"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift_linear</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_full"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift_full</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_faithful"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift_faithful</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Linear-functors-out-of-Hom-ideal-quotients" class="markdown-heading">Linear functors out of Hom-ideal quotients <a class="hover-link" href="#Linear-functors-out-of-Hom-ideal-quotients">#</a></h1><p>An additive linear functor which kills a two-sided Hom ideal factors through
+the corresponding categorical quotient.  Fullness descends to the quotient,
+while the reverse inclusion from the functor kernel into the Hom ideal makes
+the descended functor faithful.</p><p>This is the representation-independent quotient-realization kernel migrated
+from the Cartan formalization.</p></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientPreadditiveInstance"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L29-L31">source</a></div><div class="attributes">@[instance_reducible]</div>
+<div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientPreadditiveInstance"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientPreadditiveInstance</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">(<span class="fn">CategoryTheory.Quotient</span> <span class="fn"><span class="fn">I</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/IdealQuotient.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.rel">rel</a></span>)</span></span></div></div><details id="instances-for-list-QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientPreadditiveInstance" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLinearInstance"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L33-L35">source</a></div><div class="attributes">@[instance_reducible]</div>
+<div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLinearInstance"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLinearInstance</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.Quotient</span> <span class="fn"><span class="fn">I</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/IdealQuotient.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.rel">rel</a></span>)</span></span></div></div><details id="instances-for-list-QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLinearInstance" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.functorKernel"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L37-L52">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.functorKernel"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">functorKernel</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span></div></div><p>The two-sided Hom ideal consisting of the morphisms killed by a linear
+functor.</p><details id="instances-for-list-QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.functorKernel" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.mem_functorKernel_iff"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L54-L57">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.mem_functorKernel_iff"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">mem_functorKernel_iff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">f</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.functorKernel">functorKernel</a> <span class="fn">F</span>)</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.hom">hom</a></span> <span class="fn">X</span> <span class="fn">Y</span></span></span> <span class="fn">↔</span> <span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn">0</span></span></span></div></div></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L59-L62">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">IsKilledBy</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>An additive functor kills a Hom ideal when every member of the ideal maps
+to zero.</p><details id="instances-for-list-QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.map_eq_of_rel"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L64-L70">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.map_eq_of_rel"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">map_eq_of_rel</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hI</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">F</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f </span><span class="fn">g</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfg</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/IdealQuotient.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.rel">rel</a></span> <span class="fn">f</span> <span class="fn">g</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">g</span></span></span></div></div><p>A functor which kills a Hom ideal respects congruence modulo that ideal.</p></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L72-L76">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hI</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">(<span class="fn">CategoryTheory.Quotient</span> <span class="fn"><span class="fn">I</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/IdealQuotient.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.rel">rel</a></span>)</span> <span class="fn">D</span></span></div></div><p>The functor induced on the quotient by a killed Hom ideal.</p><details id="instances-for-list-QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLiftNatTrans"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L78-L87">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLiftNatTrans"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLiftNatTrans</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">G</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hG</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn"><span class="fn">F</span> <span class="fn">⟶</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift">quotientLift</a></span> <span class="fn">F</span> <span class="fn">⋯</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift">quotientLift</a></span> <span class="fn">G</span> <span class="fn">⋯</span></span></span></div></div><p>A natural transformation between functors killing the same Hom ideal
+descends componentwise to their quotient lifts.</p><details id="instances-for-list-QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLiftNatTrans" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLiftNatIso"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L89-L96">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLiftNatIso"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLiftNatIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">G</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hG</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn"><span class="fn">F</span> <span class="fn">≅</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift">quotientLift</a></span> <span class="fn">F</span> <span class="fn">⋯</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift">quotientLift</a></span> <span class="fn">G</span> <span class="fn">⋯</span></span></span></div></div><p>A natural isomorphism between functors killing the same Hom ideal
+descends componentwise to their quotient lifts.</p><details id="instances-for-list-QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLiftNatIso" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_map_functor_map"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L98-L103">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_map_functor_map"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift_map_functor_map</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hI</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">F</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift">quotientLift</a></span> <span class="fn">F</span> <span class="fn">⋯</span>)</span>.<span class="fn">map</span></span> <span class="fn">(<span class="fn"><span class="fn">(<span class="fn">CategoryTheory.Quotient.functor</span> <span class="fn"><span class="fn">I</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/IdealQuotient.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.rel">rel</a></span>)</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span></span></span></div></div></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L105-L113">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_additive"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hI</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift">quotientLift</a></span> <span class="fn">F</span> <span class="fn">⋯</span>)</span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L115-L121">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_linear"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hI</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift">quotientLift</a></span> <span class="fn">F</span> <span class="fn">⋯</span>)</span></span></div></div></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_full"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L123-L128">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_full"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift_full</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hI</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">F</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift">quotientLift</a></span> <span class="fn">F</span> <span class="fn">⋯</span>)</span>.<span class="fn">Full</span></span></div></div></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.lean#L130-L146">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift_faithful"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">CategoricalIdeal</span>.<span class="name">HomIdeal</span>.<span class="name">quotientLift_faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal">HomIdeal</a> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hI</span> : <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.IsKilledBy">IsKilledBy</a></span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hker</span> : <span class="fn">∀ {<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>} {<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}, <span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn">0</span></span> → <span class="fn"><span class="fn">f</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">I</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.hom">hom</a></span> <span class="fn">X</span> <span class="fn">Y</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">I</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearIdealQuotientLift.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.quotientLift">quotientLift</a></span> <span class="fn">F</span> <span class="fn">⋯</span>)</span>.<span class="fn">Faithful</span></span></div></div><p>If every morphism killed by the original functor already belongs to the
+quotient ideal, the descended functor is faithful.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

@@ -1,0 +1,183 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.Magnitude</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.Magnitude";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">Magnitude</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/Magnitude.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/HomUnitEquations.html">MagnitudeConjecture.CategoryTheory.HomUnitEquations</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean">Mathlib.LinearAlgebra.Matrix.NonsingularInverse</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.Magnitude" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">rationalHomDimensionMatrix</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.rationalMeshMatrix"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">rationalMeshMatrix</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.categoryMagnitude"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">categoryMagnitude</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix_mul_rationalMeshMatrix"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">rationalHomDimensionMatrix_mul_rationalMeshMatrix</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix_inv_eq_rationalMeshMatrix"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">rationalHomDimensionMatrix_inv_eq_rationalMeshMatrix</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.categoryMagnitude_eq_eulerMagnitude"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">categoryMagnitude_eq_eulerMagnitude</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Rational-magnitude-of-a-finite-Hom-finite-category" class="markdown-heading">Rational magnitude of a finite Hom-finite category <a class="hover-link" href="#Rational-magnitude-of-a-finite-Hom-finite-category">#</a></h1><p>For a finite chosen skeleton, the Leinster magnitude is the total sum of the
+inverse of the rational Hom-dimension matrix.  The Hom--mesh inverse theorem
+identifies that inverse with the integral mesh matrix, proving the frozen
+manuscript's magnitude formula rather than merely its combinatorial analogue.</p></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/Magnitude.lean#L35-L37">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/Magnitude.html#MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">rationalHomDimensionMatrix</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> s}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Ind</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Ind</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData</a> <span class="fn">C</span> <span class="fn">Ind</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Matrix</span> <span class="fn">Ind</span> <span class="fn">Ind</span> <span class="fn">ℚ</span></span></div></div><p>Rational Hom-dimension matrix of the chosen finite skeleton.</p><details id="instances-for-list-MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.rationalMeshMatrix"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/Magnitude.lean#L39-L41">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/Magnitude.html#MagnitudeConjecture.FiniteTauMatrix.rationalMeshMatrix"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">rationalMeshMatrix</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Ind</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Ind</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">DecidableEq</span> <span class="fn">Ind</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData</a> <span class="fn">C</span> <span class="fn">Ind</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">DecidablePred</span> <span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData.IsProjective">IsProjective</a></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Matrix</span> <span class="fn">Ind</span> <span class="fn">Ind</span> <span class="fn">ℚ</span></span></div></div><p>The integral mesh matrix, regarded over the rationals.</p><details id="instances-for-list-MagnitudeConjecture.FiniteTauMatrix.rationalMeshMatrix" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.categoryMagnitude"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/Magnitude.lean#L43-L45">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/Magnitude.html#MagnitudeConjecture.FiniteTauMatrix.categoryMagnitude"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">categoryMagnitude</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> s}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Ind</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Ind</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">DecidableEq</span> <span class="fn">Ind</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData</a> <span class="fn">C</span> <span class="fn">Ind</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">ℚ</span></div></div><p>Leinster magnitude of the chosen finite Hom-dimension matrix.</p><details id="instances-for-list-MagnitudeConjecture.FiniteTauMatrix.categoryMagnitude" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix_mul_rationalMeshMatrix"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/Magnitude.lean#L47-L58">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/Magnitude.html#MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix_mul_rationalMeshMatrix"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">rationalHomDimensionMatrix_mul_rationalMeshMatrix</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> s}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Ind</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Ind</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">DecidableEq</span> <span class="fn">Ind</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData</a> <span class="fn">C</span> <span class="fn">Ind</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">DecidablePred</span> <span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData.IsProjective">IsProjective</a></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/HomMeshInverse.html#MagnitudeConjecture.FiniteTauMatrix.HomMeshInverseData">HomMeshInverseData</a> <span class="fn">T</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/Magnitude.html#MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix">rationalHomDimensionMatrix</a> <span class="fn">T</span></span> <span class="fn">*</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/Magnitude.html#MagnitudeConjecture.FiniteTauMatrix.rationalMeshMatrix">rationalMeshMatrix</a> <span class="fn">T</span></span></span> <span class="fn">=</span> <span class="fn">1</span></span></div></div><p>The integer inverse equation remains valid after passing to rational
+coefficients.</p></div></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix_inv_eq_rationalMeshMatrix"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/Magnitude.lean#L60-L67">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/Magnitude.html#MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix_inv_eq_rationalMeshMatrix"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">rationalHomDimensionMatrix_inv_eq_rationalMeshMatrix</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> s}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Ind</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Ind</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">DecidableEq</span> <span class="fn">Ind</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData</a> <span class="fn">C</span> <span class="fn">Ind</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">DecidablePred</span> <span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData.IsProjective">IsProjective</a></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/HomMeshInverse.html#MagnitudeConjecture.FiniteTauMatrix.HomMeshInverseData">HomMeshInverseData</a> <span class="fn">T</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/Magnitude.html#MagnitudeConjecture.FiniteTauMatrix.rationalHomDimensionMatrix">rationalHomDimensionMatrix</a> <span class="fn">T</span>)</span><span class="fn">⁻¹</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/Magnitude.html#MagnitudeConjecture.FiniteTauMatrix.rationalMeshMatrix">rationalMeshMatrix</a> <span class="fn">T</span></span></span></div></div><p>Hence the nonsingular inverse of the rational Hom matrix is precisely the
+rationalized mesh matrix.</p></div></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.categoryMagnitude_eq_eulerMagnitude"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/Magnitude.lean#L69-L82">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/Magnitude.html#MagnitudeConjecture.FiniteTauMatrix.categoryMagnitude_eq_eulerMagnitude"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">categoryMagnitude_eq_eulerMagnitude</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> s}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Ind</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Ind</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">DecidableEq</span> <span class="fn">Ind</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData</a> <span class="fn">C</span> <span class="fn">Ind</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">DecidablePred</span> <span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData.IsProjective">IsProjective</a></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/HomMeshInverse.html#MagnitudeConjecture.FiniteTauMatrix.HomMeshInverseData">HomMeshInverseData</a> <span class="fn">T</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/Magnitude.html#MagnitudeConjecture.FiniteTauMatrix.categoryMagnitude">categoryMagnitude</a> <span class="fn">T</span></span> <span class="fn">=</span> <span class="fn">↑<span class="fn">(<a href="../.././MagnitudeConjecture/Combinatorics/EulerSurplus.html#MagnitudeConjecture.ARCount.eulerMagnitude">ARCount.eulerMagnitude</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#MagnitudeConjecture.FiniteTauMatrix.arrowMultiplicity">arrowMultiplicity</a> <span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData.toFiniteRightTauCategoryData">toFiniteRightTauCategoryData</a></span>)</span> <span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData.IsProjective">IsProjective</a></span>)</span></span></span></div></div><p>Frozen manuscript, equations <code>(2.1)</code> and <code>(2.3)</code>: categorical magnitude is
+the Auslander--Reiten Euler expression <code>vertices - arrows + meshes</code>.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

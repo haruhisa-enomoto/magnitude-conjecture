@@ -1,0 +1,822 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.Algebra.RightModulePrimitiveArrowGain</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.Algebra.RightModulePrimitiveArrowGain";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">Algebra</span>.<span class="name">RightModulePrimitiveArrowGain</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveContragredientMultiplicity.html">MagnitudeConjecture.Algebra.RightModulePrimitiveContragredientMultiplicity</a></li><li><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveFiniteKernelFactorBoundary.html">MagnitudeConjecture.Algebra.RightModulePrimitiveFiniteKernelFactorBoundary</a></li><li><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotientSkeleton.html">MagnitudeConjecture.Algebra.RightModulePrimitiveQuotientSkeleton</a></li><li><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveRelativeMesh.html">MagnitudeConjecture.Algebra.RightModulePrimitiveRelativeMesh</a></li><li><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/LeftAROccurrenceBasis.html">QuotientSubmoduleEquidistribution.RepresentationTheory.LeftAROccurrenceBasis</a></li><li><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/RightAROccurrenceBasis.html">QuotientSubmoduleEquidistribution.RepresentationTheory.RightAROccurrenceBasis</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.Algebra.RightModulePrimitiveArrowGain" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.ambientIrreducibleArrowMultiplicity"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">ambientIrreducibleArrowMultiplicity</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotientIrreducibleArrowMultiplicity</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveArrowGain"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveArrowGain</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotient_endomorphism_eq_smul_id"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotient_endomorphism_eq_smul_id</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientMinimalRightAlmostSplitDecomposition"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotientMinimalRightAlmostSplitDecomposition</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientMinimalLeftAlmostSplitDecomposition"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotientMinimalLeftAlmostSplitDecomposition</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity_eq_relative"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotientIrreducibleArrowMultiplicity_eq_relative</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity_eq_relative_left"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotientIrreducibleArrowMultiplicity_eq_relative_left</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.finrank_irreducibleHomSpace_eq_arrowMultiplicity_of_scalarEndomorphisms"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">finrank_irreducibleHomSpace_eq_arrowMultiplicity_of_scalarEndomorphisms</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.ambientIrreducibleArrowMultiplicity_eq_arrowMultiplicity"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">ambientIrreducibleArrowMultiplicity_eq_arrowMultiplicity</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">PrimitiveGainingPair</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.positiveGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">positiveGainingPair</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.positiveGainingPair_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">positiveGainingPair_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_positiveEndpoint_le_card_primitiveGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">card_positiveEndpoint_le_card_primitiveGainingPair</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPairOfContragredientPositive"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">negativeGainingPairOfContragredientPositive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.NegativeEndpoint"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">PrimitiveNewRightMeshEndpoint</span>.<span class="name">NegativeEndpoint</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">negativeGainingPair</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPair_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">negativeGainingPair_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_negativeEndpoint_le_card_primitiveGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">card_negativeEndpoint_le_card_primitiveGainingPair</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.SignedNewMeshEndpoint"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">SignedNewMeshEndpoint</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshSignEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">newMeshSignEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.signedGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">signedGainingPair</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.signedGainingPair_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">signedGainingPair_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">newMeshGainingPair</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshGainingPair_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">newMeshGainingPair_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_primitiveNewRightMeshEndpoint_le_card_primitiveGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">card_primitiveNewRightMeshEndpoint_le_card_primitiveGainingPair</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveTotalArrowGain"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveTotalArrowGain</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveGainingPairFinite"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveGainingPairFinite</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_primitiveGainingPair_le_primitiveTotalArrowGain"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">card_primitiveGainingPair_le_primitiveTotalArrowGain</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_primitiveNewRightMeshEndpoint_le_primitiveTotalArrowGain"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">card_primitiveNewRightMeshEndpoint_le_primitiveTotalArrowGain</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Global-arrow-gains-under-primitive-deletion" class="markdown-heading">Global arrow gains under primitive deletion <a class="hover-link" href="#Global-arrow-gains-under-primitive-deletion">#</a></h1><p>The manuscript counts ordered pairs of surviving indecomposables whose
+irreducible-arrow multiplicity increases after passing from <code>A</code> to <code>A/AeA</code>.
+Both arrow multiplicities are defined intrinsically as dimensions of
+<code>Irr = rad / rad²</code>, using the literal common label type supplied by the
+primitive-quotient skeleton.</p></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.ambientIrreducibleArrowMultiplicity"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L39-L49">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.ambientIrreducibleArrowMultiplicity"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">ambientIrreducibleArrowMultiplicity</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveQuotientLabel">PrimitiveQuotientLabel</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">ℕ</span></div></div><p>Ambient irreducible-arrow multiplicity between surviving labels.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.ambientIrreducibleArrowMultiplicity" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L51-L66">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotientIrreducibleArrowMultiplicity</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveQuotientLabel">PrimitiveQuotientLabel</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">ℕ</span></div></div><p>Irreducible-arrow multiplicity inside the literal primitive quotient.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveArrowGain"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L68-L71">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveArrowGain"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveArrowGain</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveQuotientLabel">PrimitiveQuotientLabel</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">ℕ</span></div></div><p>The multiplicity gained by an ordered pair after primitive deletion.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveArrowGain" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotient_endomorphism_eq_smul_id"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L75-L96">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotient_endomorphism_eq_smul_id"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotient_endomorphism_eq_smul_id</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveQuotientLabel">PrimitiveQuotientLabel</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotientSkeleton.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientFGObj">primitiveQuotientFGObj</a></span> <span class="fn">D</span> <span class="fn">x</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotientSkeleton.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientFGObj">primitiveQuotientFGObj</a></span> <span class="fn">D</span> <span class="fn">x</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">a</span> : <span class="fn">k</span>), <span class="fn"><span class="fn"><span class="fn">a</span> <span class="fn">•</span> <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.id</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotientSkeleton.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientFGObj">primitiveQuotientFGObj</a></span> <span class="fn">D</span> <span class="fn">x</span>)</span></span></span> <span class="fn">=</span> <span class="fn">f</span></span></span></div></div><p>Every endomorphism of a quotient-skeleton representative is scalar.
+This is transported from the literal ambient representative through the
+linear quotient equivalence.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientMinimalRightAlmostSplitDecomposition"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L98-L152">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientMinimalRightAlmostSplitDecomposition"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotientMinimalRightAlmostSplitDecomposition</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint">PrimitiveNewRightMeshEndpoint</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotientSkeleton.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientAlmostSplitSkeleton">primitiveQuotientAlmostSplitSkeleton</a></span> <span class="fn">D</span>)</span>.<a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IndecomposableSkeleton.MinimalRightAlmostSplitDecomposition">MinimalRightAlmostSplitDecomposition</a></span> <span class="fn"><span class="fn">N</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.label">label</a></span></span></div></div><p>The Hoshino quotient mesh equipped with the ambient middle term's chosen
+decomposition, now relabeled by literal surviving quotient labels.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientMinimalRightAlmostSplitDecomposition" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientMinimalLeftAlmostSplitDecomposition"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L154-L215">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientMinimalLeftAlmostSplitDecomposition"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotientMinimalLeftAlmostSplitDecomposition</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint">PrimitiveNewRightMeshEndpoint</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotientSkeleton.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientAlmostSplitSkeleton">primitiveQuotientAlmostSplitSkeleton</a></span> <span class="fn">D</span>)</span>.<a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IndecomposableSkeleton.MinimalLeftAlmostSplitDecomposition">MinimalLeftAlmostSplitDecomposition</a></span>
+  <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.sourceLabel">PrimitiveNewRightMeshEndpoint.sourceLabel</a> <span class="fn">H</span> <span class="fn">he</span> <span class="fn">N</span>)</span></span></div></div><p>The same Hoshino quotient mesh equipped as a minimal left almost-split
+decomposition at its literal source label.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientMinimalLeftAlmostSplitDecomposition" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity_eq_relative"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L217-L254">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity_eq_relative"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotientIrreducibleArrowMultiplicity_eq_relative</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">source</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveQuotientLabel">PrimitiveQuotientLabel</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint">PrimitiveNewRightMeshEndpoint</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity">primitiveQuotientIrreducibleArrowMultiplicity</a></span> <span class="fn">D</span> <span class="fn">source</span> <span class="fn"><span class="fn">N</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.label">label</a></span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.relativeArrowMultiplicity">PrimitiveNewRightMeshEndpoint.relativeArrowMultiplicity</a> <span class="fn">source</span> <span class="fn">N</span></span></span></div></div><p>At a new quotient mesh, the intrinsic quotient <code>Irr</code> dimension is the
+existing relative middle-term multiplicity.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity_eq_relative_left"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L256-L296">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity_eq_relative_left"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveQuotientIrreducibleArrowMultiplicity_eq_relative_left</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint">PrimitiveNewRightMeshEndpoint</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">target</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveQuotientLabel">PrimitiveQuotientLabel</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveQuotientIrreducibleArrowMultiplicity">primitiveQuotientIrreducibleArrowMultiplicity</a></span> <span class="fn">D</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.sourceLabel">PrimitiveNewRightMeshEndpoint.sourceLabel</a> <span class="fn">H</span> <span class="fn">he</span> <span class="fn">N</span>)</span> <span class="fn">target</span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.relativeArrowMultiplicity">PrimitiveNewRightMeshEndpoint.relativeArrowMultiplicity</a> <span class="fn">target</span> <span class="fn">N</span></span></span></div></div><p>Reading the same quotient mesh from its left side identifies the
+intrinsic arrow multiplicity out of its source with the same relative middle
+multiplicity.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.finrank_irreducibleHomSpace_eq_arrowMultiplicity_of_scalarEndomorphisms"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L300-L327">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.finrank_irreducibleHomSpace_eq_arrowMultiplicity_of_scalarEndomorphisms"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">finrank_irreducibleHomSpace_eq_arrowMultiplicity_of_scalarEndomorphisms</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">source </span><span class="fn">target</span> : <span class="fn"><span class="fn">Fin</span> <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.n">n</a></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hscalar</span> :
+  <span class="fn">∀ (<span class="fn">f</span> : <span class="fn"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.fgObj">fgObj</a></span> <span class="fn">source</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.fgObj">fgObj</a></span> <span class="fn">source</span></span></span>), <span class="fn">∃ (<span class="fn">a</span> : <span class="fn">k</span>), <span class="fn"><span class="fn"><span class="fn">a</span> <span class="fn">•</span> <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.id</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.fgObj">fgObj</a></span> <span class="fn">source</span>)</span></span></span> <span class="fn">=</span> <span class="fn">f</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleAlmostSplit.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.almostSplitSkeleton">almostSplitSkeleton</a></span>.<a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/LinearIrreducibleHomSpace.html#QuotientSubmoduleEquidistribution.IndecomposableSkeleton.irreducibleHomSpace">irreducibleHomSpace</a></span> <span class="fn">source</span> <span class="fn">target</span>)</span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#MagnitudeConjecture.FiniteTauMatrix.arrowMultiplicity">FiniteTauMatrix.arrowMultiplicity</a> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleTauAssembly.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.finiteTauCategoryData">finiteTauCategoryData</a></span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData.toFiniteRightTauCategoryData">toFiniteRightTauCategoryData</a></span> <span class="fn">source</span> <span class="fn">target</span></span></span></div></div><p>The intrinsic irreducible-Hom dimension agrees with the official
+finite-tau arrow multiplicity whenever the source endomorphisms are scalar.
+This is the occurrence-basis comparison, including the projective boundary
+mesh.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.ambientIrreducibleArrowMultiplicity_eq_arrowMultiplicity"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L331-L343">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.ambientIrreducibleArrowMultiplicity_eq_arrowMultiplicity"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">ambientIrreducibleArrowMultiplicity_eq_arrowMultiplicity</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">source </span><span class="fn">target</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveQuotientLabel">PrimitiveQuotientLabel</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.ambientIrreducibleArrowMultiplicity">ambientIrreducibleArrowMultiplicity</a></span> <span class="fn">D</span> <span class="fn">source</span> <span class="fn">target</span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#MagnitudeConjecture.FiniteTauMatrix.arrowMultiplicity">FiniteTauMatrix.arrowMultiplicity</a> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleTauAssembly.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.finiteTauCategoryData">finiteTauCategoryData</a></span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteTauCategoryData.toFiniteRightTauCategoryData">toFiniteRightTauCategoryData</a></span> <span class="fn">↑<span class="fn">source</span></span> <span class="fn">↑<span class="fn">target</span></span></span></span></div></div><p>At every ambient endpoint, including the projective boundary, the
+intrinsic ambient <code>Irr</code> dimension is the manuscript's ambient arrow
+multiplicity.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L345-L350">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">PrimitiveGainingPair</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a></div></div><p>The manuscript's gaining pairs: ordered surviving labels whose arrow
+multiplicity strictly increases in the primitive quotient.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.positiveGainingPair"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L352-L368">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.positiveGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">positiveGainingPair</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveRelativeMesh.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.PositiveEndpoint">PrimitiveNewRightMeshEndpoint.PositiveEndpoint</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair">PrimitiveGainingPair</a></span> <span class="fn">D</span></span></div></div><p>The manuscript's gaining pair selected by a positive new mesh.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.positiveGainingPair" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.positiveGainingPair_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L370-L382">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.positiveGainingPair_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">positiveGainingPair_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.positiveGainingPair">positiveGainingPair</a></span> <span class="fn">D</span> <span class="fn">H</span> <span class="fn">he</span> <span class="fn">B</span>)</span></span></div></div><p>Distinct positive new meshes select distinct gaining pairs, since the
+second coordinate is the mesh endpoint.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_positiveEndpoint_le_card_primitiveGainingPair"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L384-L396">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_positiveEndpoint_le_card_primitiveGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">card_positiveEndpoint_le_card_primitiveGainingPair</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Nat.card</span> <a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveRelativeMesh.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.PositiveEndpoint">PrimitiveNewRightMeshEndpoint.PositiveEndpoint</a></span> <span class="fn">≤</span> <span class="fn"><span class="fn">Nat.card</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair">PrimitiveGainingPair</a></span> <span class="fn">D</span>)</span></span></span></div></div><p>Positive new meshes inject into the manuscript's global gaining-pair
+set.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPairOfContragredientPositive"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L398-L430">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPairOfContragredientPositive"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">negativeGainingPairOfContragredientPositive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint">PrimitiveNewRightMeshEndpoint</a></span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hpositiveOp</span> : <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveContragredient.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.contragredientNewMeshEndpoint">PrimitiveNewRightMeshEndpoint.contragredientNewMeshEndpoint</a> <span class="fn">H</span> <span class="fn">he</span> <span class="fn">N</span>)</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.IsPositive">IsPositive</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair">PrimitiveGainingPair</a></span> <span class="fn">D</span></span></div></div><p>The manuscript's gaining pair selected from a new mesh whose
+contragredient new mesh is positive.  Its source is the original new-mesh
+source; its target is the dual of the positive source selected on the
+opposite side.  This is the numerical core of the negative-mesh case, kept
+separate from the marker-complement theorem that supplies dual positivity.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPairOfContragredientPositive" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.NegativeEndpoint"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L432-L435">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.NegativeEndpoint"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">PrimitiveNewRightMeshEndpoint</span>.<span class="name">NegativeEndpoint</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a></div></div><p>The negative primitive new meshes in the manuscript's sign convention.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.NegativeEndpoint" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPair"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L437-L452">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">negativeGainingPair</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.NegativeEndpoint">PrimitiveNewRightMeshEndpoint.NegativeEndpoint</a> <span class="fn">S</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair">PrimitiveGainingPair</a></span> <span class="fn">D</span></span></div></div><p>The negative-side gaining-pair assignment.  Marker complement converts
+the negative mesh to a positive dual mesh before the numerical construction
+above is applied.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPair" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPair_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L454-L467">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPair_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">negativeGainingPair_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.negativeGainingPair">negativeGainingPair</a></span> <span class="fn">D</span> <span class="fn">H</span> <span class="fn">he</span> <span class="fn">B</span>)</span></span></div></div><p>Distinct contragredient-positive meshes select distinct negative-side
+gaining pairs, since their first coordinates are the original mesh sources.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_negativeEndpoint_le_card_primitiveGainingPair"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L469-L481">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_negativeEndpoint_le_card_primitiveGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">card_negativeEndpoint_le_card_primitiveGainingPair</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Nat.card</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint.NegativeEndpoint">PrimitiveNewRightMeshEndpoint.NegativeEndpoint</a> <span class="fn">S</span> <span class="fn">D</span>)</span></span> <span class="fn">≤</span> <span class="fn"><span class="fn">Nat.card</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair">PrimitiveGainingPair</a></span> <span class="fn">D</span>)</span></span></span></div></div><p>Negative new meshes inject into the global gaining-pair set.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.SignedNewMeshEndpoint"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L483-L486">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.SignedNewMeshEndpoint"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">SignedNewMeshEndpoint</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a></div></div><p>The sign partition of the manuscript's primitive new meshes.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.SignedNewMeshEndpoint" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshSignEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L488-L505">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshSignEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">newMeshSignEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint">PrimitiveNewRightMeshEndpoint</a></span> <span class="fn">D</span></span> <span class="fn">≃</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.SignedNewMeshEndpoint">SignedNewMeshEndpoint</a></span> <span class="fn">D</span></span></span></div></div><p>Every new mesh belongs to exactly one of the positive and negative
+parts.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshSignEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.signedGainingPair"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L507-L517">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.signedGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">signedGainingPair</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.SignedNewMeshEndpoint">SignedNewMeshEndpoint</a></span> <span class="fn">D</span></span> → <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair">PrimitiveGainingPair</a></span> <span class="fn">D</span></span></span></div></div><p>The manuscript's gaining-pair assignment on the disjoint sign
+partition.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.signedGainingPair" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.signedGainingPair_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L519-L619">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.signedGainingPair_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">signedGainingPair_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.signedGainingPair">signedGainingPair</a></span> <span class="fn">D</span> <span class="fn">H</span> <span class="fn">he</span> <span class="fn">B</span>)</span></span></div></div><p>Positive and negative meshes cannot select the same gaining pair: the
+first entry of a positive pair has a nonzero map from its inverse translate
+to the deleted simple, whereas the first entry of a negative pair has none.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshGainingPair"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L621-L630">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">newMeshGainingPair</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint">PrimitiveNewRightMeshEndpoint</a></span> <span class="fn">D</span></span> → <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair">PrimitiveGainingPair</a></span> <span class="fn">D</span></span></span></div></div><p>The manuscript's gaining-pair assignment on the original, unsigned new
+mesh type.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshGainingPair" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshGainingPair_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L632-L641">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshGainingPair_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">newMeshGainingPair_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.newMeshGainingPair">newMeshGainingPair</a></span> <span class="fn">D</span> <span class="fn">H</span> <span class="fn">he</span> <span class="fn">B</span>)</span></span></div></div><p>Distinct new meshes receive distinct gaining pairs.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_primitiveNewRightMeshEndpoint_le_card_primitiveGainingPair"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L643-L654">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_primitiveNewRightMeshEndpoint_le_card_primitiveGainingPair"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">card_primitiveNewRightMeshEndpoint_le_card_primitiveGainingPair</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Nat.card</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint">PrimitiveNewRightMeshEndpoint</a></span> <span class="fn">D</span>)</span></span> <span class="fn">≤</span> <span class="fn"><span class="fn">Nat.card</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair">PrimitiveGainingPair</a></span> <span class="fn">D</span>)</span></span></span></div></div><p>The number of new meshes is at most the number of gaining pairs.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveTotalArrowGain"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L658-L667">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveTotalArrowGain"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveTotalArrowGain</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">ℕ</span></div></div><p>The manuscript's total arrow gain <code>c</code>.  The primitive quotient algebra is
+finite-dimensional, so the routine noetherian instance is constructed
+internally rather than exposed by this numerical invariant.</p><details id="instances-for-list-MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveTotalArrowGain" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveGainingPairFinite"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L669-L671">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveGainingPairFinite"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">primitiveGainingPairFinite</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Finite</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair">PrimitiveGainingPair</a></span> <span class="fn">D</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_primitiveGainingPair_le_primitiveTotalArrowGain"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L673-L705">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_primitiveGainingPair_le_primitiveTotalArrowGain"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">card_primitiveGainingPair_le_primitiveTotalArrowGain</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Nat.card</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveGainingPair">PrimitiveGainingPair</a></span> <span class="fn">D</span>)</span></span> <span class="fn">≤</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveTotalArrowGain">primitiveTotalArrowGain</a></span> <span class="fn">D</span></span></span></div></div><p>Every gaining pair contributes at least one to the total arrow gain.</p></div></div><div class="decl" id="MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_primitiveNewRightMeshEndpoint_le_primitiveTotalArrowGain"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.lean#L707-L719">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.card_primitiveNewRightMeshEndpoint_le_primitiveTotalArrowGain"><span class="name">MagnitudeConjecture</span>.<span class="name">RightModule</span>.<span class="name">FiniteIndecomposableSkeleton</span>.<span class="name">card_primitiveNewRightMeshEndpoint_le_primitiveTotalArrowGain</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModuleFiniteType.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton">FiniteIndecomposableSkeleton</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.PrimitiveIdempotentData">PrimitiveIdempotentData</a> <span class="fn">e</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherianRing</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveQuotient.html#MagnitudeConjecture.RightModule.primitiveQuotientAlgebra">primitiveQuotientAlgebra</a> <span class="fn">e</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsAlgClosed</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModuleDirected.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.HasAcyclicNonzeroNonisomorphisms">HasAcyclicNonzeroNonisomorphisms</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><span class="fn">IsIdempotentElem</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitivePosetRealization.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveDirectedBoundaryData">PrimitiveDirectedBoundaryData</a></span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveIdempotent.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveMultiplicityInput">primitiveMultiplicityInput</a></span> <span class="fn">D</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Nat.card</span> <span class="fn">(<span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveDeletion.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.PrimitiveNewRightMeshEndpoint">PrimitiveNewRightMeshEndpoint</a></span> <span class="fn">D</span>)</span></span> <span class="fn">≤</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/RightModulePrimitiveArrowGain.html#MagnitudeConjecture.RightModule.FiniteIndecomposableSkeleton.primitiveTotalArrowGain">primitiveTotalArrowGain</a></span> <span class="fn">D</span></span></span></div></div><p>The manuscript's inequality <code>c ≥ r</code>: total arrow gain dominates the
+number of primitive new meshes.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

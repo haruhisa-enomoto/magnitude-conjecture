@@ -1,0 +1,225 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.FiniteMoritaEquivalence</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.FiniteMoritaEquivalence";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">FiniteMoritaEquivalence</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/ContragredientLinear.html">MagnitudeConjecture.CategoryTheory.ContragredientLinear</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/SubobjectEquivalence.html">MagnitudeConjecture.CategoryTheory.SubobjectEquivalence</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Order/KrullDimension.lean">Mathlib.Order.KrullDimension</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/RingTheory/HopkinsLevitzki.lean">Mathlib.RingTheory.HopkinsLevitzki</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/RingTheory/Length.lean">Mathlib.RingTheory.Length</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/RingTheory/Morita/Basic.lean">Mathlib.RingTheory.Morita.Basic</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/Category/FGModuleCat/Abelian.lean">Mathlib.Algebra.Category.FGModuleCat.Abelian</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/Category/ModuleCat/Subobject.lean">Mathlib.Algebra.Category.ModuleCat.Subobject</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.FiniteMoritaEquivalence" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MoritaEquivalence.moduleFinite_functor_obj"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">moduleFinite_functor_obj</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgModuleEquivalence</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_functor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgModuleEquivalence_functor_additive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_inverse_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgModuleEquivalence_inverse_additive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_functor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgModuleEquivalence_functor_linear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_inverse_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgModuleEquivalence_inverse_linear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgRightModuleEquivalence</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_functor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgRightModuleEquivalence_functor_additive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_functor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgRightModuleEquivalence_functor_linear</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_inverse_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgRightModuleEquivalence_inverse_additive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_inverse_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgRightModuleEquivalence_inverse_linear</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Morita-equivalences-on-finitely-generated-modules" class="markdown-heading">Morita equivalences on finitely generated modules <a class="hover-link" href="#Morita-equivalences-on-finitely-generated-modules">#</a></h1><p>A linear equivalence between the categories of all modules over two
+finite-dimensional algebras preserves finite-length objects.  Over an
+Artinian ring these are exactly the finitely generated modules, so a Mathlib
+<code>MoritaEquivalence</code> restricts to the finitely generated module categories.</p></div><div class="decl" id="MagnitudeConjecture.MoritaEquivalence.moduleFinite_functor_obj"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean#L35-L63">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.moduleFinite_functor_obj"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">moduleFinite_functor_obj</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">MoritaEquivalence</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">ModuleCat</span> <span class="fn">A</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module.Finite</span> <span class="fn">A</span> <span class="fn">↑<span class="fn">M</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Module.Finite</span> <span class="fn">B</span> <span class="fn">↑<span class="fn">(<span class="fn"><span class="fn"><span class="fn"><span class="fn">e</span>.<span class="fn">eqv</span></span>.<span class="fn">functor</span></span>.<span class="fn">obj</span></span> <span class="fn">M</span>)</span></span></span></div></div><p>A categorical equivalence carries a finite-length module over one
+finite-dimensional algebra to a finite-length module over the other.</p></div></div><div class="decl" id="MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean#L65-L88">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgModuleEquivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">MoritaEquivalence</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">FGModuleCat</span> <span class="fn">A</span></span> <span class="fn">≌</span> <span class="fn"><span class="fn">FGModuleCat</span> <span class="fn">B</span></span></span></div></div><p>A Morita equivalence between finite-dimensional algebras restricts to
+an equivalence of their finitely generated left-module categories.</p><details id="instances-for-list-MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_functor_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean#L90-L98">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_functor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgModuleEquivalence_functor_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">MoritaEquivalence</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence">fgModuleEquivalence</a> <span class="fn">e</span>)</span>.<span class="fn">functor</span></span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_inverse_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean#L100-L108">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_inverse_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgModuleEquivalence_inverse_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">MoritaEquivalence</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence">fgModuleEquivalence</a> <span class="fn">e</span>)</span>.<span class="fn">inverse</span></span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_functor_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean#L110-L118">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_functor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgModuleEquivalence_functor_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">MoritaEquivalence</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence">fgModuleEquivalence</a> <span class="fn">e</span>)</span>.<span class="fn">functor</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_inverse_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean#L120-L128">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence_inverse_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgModuleEquivalence_inverse_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">MoritaEquivalence</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgModuleEquivalence">fgModuleEquivalence</a> <span class="fn">e</span>)</span>.<span class="fn">inverse</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean#L130-L141">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgRightModuleEquivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">MoritaEquivalence</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">FGModuleCat</span> <span class="fn"><span class="fn">A</span><span class="fn">ᵐᵒᵖ</span></span></span> <span class="fn">≌</span> <span class="fn"><span class="fn">FGModuleCat</span> <span class="fn"><span class="fn">B</span><span class="fn">ᵐᵒᵖ</span></span></span></span></div></div><p>A Morita equivalence of finite-dimensional algebras also induces a
+linear equivalence between their finitely generated right-module
+categories.  Contragredient duality changes right modules to the opposites
+of the corresponding left-module categories, where the supplied Morita
+equivalence applies.</p><details id="instances-for-list-MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_functor_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean#L143-L152">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_functor_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgRightModuleEquivalence_functor_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">MoritaEquivalence</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence">fgRightModuleEquivalence</a> <span class="fn">e</span>)</span>.<span class="fn">functor</span></span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_functor_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean#L154-L163">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_functor_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgRightModuleEquivalence_functor_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">MoritaEquivalence</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence">fgRightModuleEquivalence</a> <span class="fn">e</span>)</span>.<span class="fn">functor</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_inverse_additive"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean#L165-L167">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_inverse_additive"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgRightModuleEquivalence_inverse_additive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">MoritaEquivalence</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence">fgRightModuleEquivalence</a> <span class="fn">e</span>)</span>.<span class="fn">inverse</span></span>.<span class="fn">Additive</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_inverse_linear"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.lean#L169-L171">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence_inverse_linear"><span class="name">MagnitudeConjecture</span>.<span class="name">MoritaEquivalence</span>.<span class="name">fgRightModuleEquivalence_inverse_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">MoritaEquivalence</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteMoritaEquivalence.html#MagnitudeConjecture.MoritaEquivalence.fgRightModuleEquivalence">fgRightModuleEquivalence</a> <span class="fn">e</span>)</span>.<span class="fn">inverse</span></span></span></div></div></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

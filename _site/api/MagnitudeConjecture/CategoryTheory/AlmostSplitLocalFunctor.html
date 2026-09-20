@@ -1,0 +1,219 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.AlmostSplitLocalFunctor</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.AlmostSplitLocalFunctor";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">AlmostSplitLocalFunctor</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.html">MagnitudeConjecture.CategoryTheory.AlmostSplitEquivalence</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Functor/EpiMono.lean">Mathlib.CategoryTheory.Functor.EpiMono</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.AlmostSplitLocalFunctor" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsLocallyRightObjectClosedAt"><span class="name">MagnitudeConjecture</span>.<span class="name">IsLocallyRightObjectClosedAt</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsLocallyLeftObjectClosedAt"><span class="name">MagnitudeConjecture</span>.<span class="name">IsLocallyLeftObjectClosedAt</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.rightAlmostSplit_map_of_full_faithful_of_locallyRightObjectClosed"><span class="name">MagnitudeConjecture</span>.<span class="name">rightAlmostSplit_map_of_full_faithful_of_locallyRightObjectClosed</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.leftAlmostSplit_map_of_full_faithful_of_locallyLeftObjectClosed"><span class="name">MagnitudeConjecture</span>.<span class="name">leftAlmostSplit_map_of_full_faithful_of_locallyLeftObjectClosed</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.rightAlmostSplit_of_map_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">rightAlmostSplit_of_map_full_faithful</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.leftAlmostSplit_of_map_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">leftAlmostSplit_of_map_full_faithful</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.rightMinimal_map_of_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">rightMinimal_map_of_full_faithful</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.rightMinimal_of_map_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">rightMinimal_of_map_full_faithful</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.leftMinimal_map_of_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">leftMinimal_map_of_full_faithful</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Almost-split-morphisms-under-locally-closed-functors" class="markdown-heading">Almost-split morphisms under locally closed functors <a class="hover-link" href="#Almost-split-morphisms-under-locally-closed-functors">#</a></h1><p>For preservation of a right almost-split map, essential surjectivity is needed
+only for objects carrying a nonzero nonsplit map to its endpoint.  The left
+statement is dual.  These local conditions isolate the role of the first Hom
+neighborhoods in the covering-control argument, while minimality of either
+map is preserved by full faithfulness alone.</p></div><div class="decl" id="MagnitudeConjecture.IsLocallyRightObjectClosedAt"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.lean#L27-L33">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.IsLocallyRightObjectClosedAt"><span class="name">MagnitudeConjecture</span>.<span class="name">IsLocallyRightObjectClosedAt</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasZeroMorphisms</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>Every object relevant to testing right almost-splitness at <code>F.obj Y</code> lies
+in the essential image.  The zero map is excluded because it factors
+trivially and needs no object lift.</p><details id="instances-for-list-MagnitudeConjecture.IsLocallyRightObjectClosedAt" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.IsLocallyLeftObjectClosedAt"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.lean#L35-L40">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.IsLocallyLeftObjectClosedAt"><span class="name">MagnitudeConjecture</span>.<span class="name">IsLocallyLeftObjectClosedAt</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasZeroMorphisms</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>Every object relevant to testing left almost-splitness at <code>F.obj X</code> lies
+in the essential image.</p><details id="instances-for-list-MagnitudeConjecture.IsLocallyLeftObjectClosedAt" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.rightAlmostSplit_map_of_full_faithful_of_locallyRightObjectClosed"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.lean#L42-L69">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.rightAlmostSplit_map_of_full_faithful_of_locallyRightObjectClosed"><span class="name">MagnitudeConjecture</span>.<span class="name">rightAlmostSplit_map_of_full_faithful_of_locallyRightObjectClosed</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasZeroMorphisms</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasZeroMorphisms</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">PreservesZeroMorphisms</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">QuotientSubmoduleEquidistribution.IsRightAlmostSplit</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hclosed</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.IsLocallyRightObjectClosedAt">IsLocallyRightObjectClosedAt</a> <span class="fn">F</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">QuotientSubmoduleEquidistribution.IsRightAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></div></div><p>Full faithfulness and local source-object closure preserve a right
+almost-split morphism.</p></div></div><div class="decl" id="MagnitudeConjecture.leftAlmostSplit_map_of_full_faithful_of_locallyLeftObjectClosed"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.lean#L71-L98">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.leftAlmostSplit_map_of_full_faithful_of_locallyLeftObjectClosed"><span class="name">MagnitudeConjecture</span>.<span class="name">leftAlmostSplit_map_of_full_faithful_of_locallyLeftObjectClosed</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasZeroMorphisms</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasZeroMorphisms</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">PreservesZeroMorphisms</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">QuotientSubmoduleEquidistribution.IsLeftAlmostSplit</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hclosed</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.IsLocallyLeftObjectClosedAt">IsLocallyLeftObjectClosedAt</a> <span class="fn">F</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">QuotientSubmoduleEquidistribution.IsLeftAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></div></div><p>Full faithfulness and local target-object closure preserve a left
+almost-split morphism.</p></div></div><div class="decl" id="MagnitudeConjecture.rightAlmostSplit_of_map_full_faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.lean#L100-L120">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.rightAlmostSplit_of_map_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">rightAlmostSplit_of_map_full_faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasZeroMorphisms</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasZeroMorphisms</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">PreservesZeroMorphisms</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">QuotientSubmoduleEquidistribution.IsRightAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">QuotientSubmoduleEquidistribution.IsRightAlmostSplit</a> <span class="fn">f</span></span></div></div><p>Full faithfulness reflects right almost-splitness.  This is the
+restriction direction used for a full control window containing both terms
+of an ambient sink map.</p></div></div><div class="decl" id="MagnitudeConjecture.leftAlmostSplit_of_map_full_faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.lean#L122-L140">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.leftAlmostSplit_of_map_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">leftAlmostSplit_of_map_full_faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasZeroMorphisms</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasZeroMorphisms</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">PreservesZeroMorphisms</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">QuotientSubmoduleEquidistribution.IsLeftAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">QuotientSubmoduleEquidistribution.IsLeftAlmostSplit</a> <span class="fn">f</span></span></div></div><p>Full faithfulness reflects left almost-splitness.</p></div></div><div class="decl" id="MagnitudeConjecture.rightMinimal_map_of_full_faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.lean#L143-L158">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.rightMinimal_map_of_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">rightMinimal_map_of_full_faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsRightMinimal">QuotientSubmoduleEquidistribution.IsRightMinimal</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsRightMinimal">QuotientSubmoduleEquidistribution.IsRightMinimal</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></div></div><p>Full faithfulness preserves right minimality.</p></div></div><div class="decl" id="MagnitudeConjecture.rightMinimal_of_map_full_faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.lean#L161-L170">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.rightMinimal_of_map_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">rightMinimal_of_map_full_faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsRightMinimal">QuotientSubmoduleEquidistribution.IsRightMinimal</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsRightMinimal">QuotientSubmoduleEquidistribution.IsRightMinimal</a> <span class="fn">f</span></span></div></div><p>Full faithfulness reflects right minimality.</p></div></div><div class="decl" id="MagnitudeConjecture.leftMinimal_map_of_full_faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.lean#L173-L188">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.leftMinimal_map_of_full_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">leftMinimal_map_of_full_faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsLeftMinimal">QuotientSubmoduleEquidistribution.IsLeftMinimal</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsLeftMinimal">QuotientSubmoduleEquidistribution.IsLeftMinimal</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></div></div><p>Full faithfulness preserves left minimality.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

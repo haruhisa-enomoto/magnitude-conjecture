@@ -1,0 +1,234 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.GradedGeneratorModule</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.GradedGeneratorModule";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">GradedGeneratorModule</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorHom.html">MagnitudeConjecture.CategoryTheory.GradedGeneratorHom</a></li><li><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html">MagnitudeConjecture.Graded.ModuleMapComponents</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Linear/Basic.lean">Mathlib.CategoryTheory.Linear.Basic</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Preadditive/Opposite.lean">Mathlib.CategoryTheory.Preadditive.Opposite</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.GradedGeneratorModule" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.generatorOppositeEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorOppositeEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.generatorScalarTower"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorScalarTower</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebraGrading"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorAlgebraGrading</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleGrading"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorModuleGrading</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebra_mul_mem"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorAlgebra_mul_mem</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebra_one_mem"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorAlgebra_one_mem</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.generatorHomFinite"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorHomFinite</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleMap"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorModuleMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleMap_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorModuleMap_homogeneous</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="The-graded-right-modules-represented-by-the-projective-generator" class="markdown-heading">The graded right modules represented by the projective generator <a class="hover-link" href="#The-graded-right-modules-represented-by-the-projective-generator">#</a></h1></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.generatorOppositeEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.lean#L16-L23">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorOppositeEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorOppositeEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../.././foundational_types.html">Type</a>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">ι</span> → <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">(<span class="fn">⨁</span> <span class="fn">P</span>)</span>)</span><span class="fn">ᵐᵒᵖ</span></span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn"><span class="fn">⨁</span> <span class="fn">P</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">⨁</span> <span class="fn">P</span></span></span></span></div></div><p>Coordinates for the opposite endomorphism ring acting by precomposition.</p><details id="instances-for-list-MagnitudeConjecture.GradedCategory.HomGrading.generatorOppositeEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.generatorScalarTower"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.lean#L25-L28">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorScalarTower"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorScalarTower</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../.././foundational_types.html">Type</a>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">ι</span> → <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">(<span class="fn">⨁</span> <span class="fn">P</span>)</span>)</span><span class="fn">ᵐᵒᵖ</span></span> <span class="fn">(<span class="fn"><span class="fn">⨁</span> <span class="fn">P</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebraGrading"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.lean#L32-L34">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebraGrading"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorAlgebraGrading</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../.././foundational_types.html">Type</a>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">ι</span> → <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading">HomGrading</a> <span class="fn">k</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">i</span> : <span class="fn">ι</span>) (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">P</span> <span class="fn">i</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">Graded.VectorGrading</a> <span class="fn">k</span> <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">(<span class="fn">⨁</span> <span class="fn">P</span>)</span>)</span><span class="fn">ᵐᵒᵖ</span></span></span></div></div><p>The internal grading on the opposite generator algebra.</p><details id="instances-for-list-MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebraGrading" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleGrading"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.lean#L36-L42">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleGrading"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorModuleGrading</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../.././foundational_types.html">Type</a>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">ι</span> → <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading">HomGrading</a> <span class="fn">k</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">i</span> : <span class="fn">ι</span>) (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">P</span> <span class="fn">i</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">Graded.ModuleGrading</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebraGrading">generatorAlgebraGrading</a> <span class="fn">P</span> <span class="fn">G</span>)</span></span></div></div><p>The actual Hom module, graded compatibly with the right algebra action.</p><details id="instances-for-list-MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleGrading" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebra_mul_mem"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.lean#L44-L49">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebra_mul_mem"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorAlgebra_mul_mem</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../.././foundational_types.html">Type</a>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">ι</span> → <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading">HomGrading</a> <span class="fn">k</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">i</span> : <span class="fn">ι</span>) (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">P</span> <span class="fn">i</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">d </span><span class="fn">n</span> : <span class="fn">ℤ</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">a </span><span class="fn">b</span> : <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">(<span class="fn">⨁</span> <span class="fn">P</span>)</span>)</span><span class="fn">ᵐᵒᵖ</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">ha</span> : <span class="fn"><span class="fn">a</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebraGrading">generatorAlgebraGrading</a> <span class="fn">P</span> <span class="fn">G</span>)</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">d</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hb</span> : <span class="fn"><span class="fn">b</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebraGrading">generatorAlgebraGrading</a> <span class="fn">P</span> <span class="fn">G</span>)</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">n</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">a</span> <span class="fn">*</span> <span class="fn">b</span></span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebraGrading">generatorAlgebraGrading</a> <span class="fn">P</span> <span class="fn">G</span>)</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">(<span class="fn">d</span> <span class="fn">+</span> <span class="fn">n</span>)</span></span></span></div></div><p>Multiplication in the opposite algebra adds degrees.</p></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebra_one_mem"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.lean#L51-L54">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebra_one_mem"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorAlgebra_one_mem</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../.././foundational_types.html">Type</a>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">ι</span> → <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading">HomGrading</a> <span class="fn">k</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">i</span> : <span class="fn">ι</span>) (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">P</span> <span class="fn">i</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">1</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorAlgebraGrading">generatorAlgebraGrading</a> <span class="fn">P</span> <span class="fn">G</span>)</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">0</span></span></span></div></div><p>The algebra unit has degree zero.</p></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.generatorHomFinite"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.lean#L56-L57">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorHomFinite"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorHomFinite</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../.././foundational_types.html">Type</a>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">ι</span> → <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">i</span> : <span class="fn">ι</span>) (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">P</span> <span class="fn">i</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">⨁</span> <span class="fn">P</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.lean#L59-L64">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleMap"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorModuleMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../.././foundational_types.html">Type</a>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">ι</span> → <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">⨁</span> <span class="fn">P</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span> <span class="fn">→ₗ[</span><span class="fn"><span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">(<span class="fn">⨁</span> <span class="fn">P</span>)</span>)</span><span class="fn">ᵐᵒᵖ</span></span><span class="fn">]</span> <span class="fn"><span class="fn"><span class="fn">⨁</span> <span class="fn">P</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span></span></div></div><p>Postcomposition is a map of the actual right modules.</p><details id="instances-for-list-MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleMap_homogeneous"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.lean#L66-L72">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleMap_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">generatorModuleMap_homogeneous</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../.././foundational_types.html">Type</a>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">ι</span> → <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading">HomGrading</a> <span class="fn">k</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">i</span> : <span class="fn">ι</span>) (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">(<span class="fn"><span class="fn">P</span> <span class="fn">i</span></span> <span class="fn">⟶</span> <span class="fn">X</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">d</span> : <span class="fn">ℤ</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn">f</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading.component">component</a></span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">d</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleGrading">generatorModuleGrading</a> <span class="fn">P</span> <span class="fn">G</span> <span class="fn">X</span>)</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.Homogeneous">Homogeneous</a></span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleGrading">generatorModuleGrading</a> <span class="fn">P</span> <span class="fn">G</span> <span class="fn">Y</span>)</span> <span class="fn">d</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/GradedGeneratorModule.html#MagnitudeConjecture.GradedCategory.HomGrading.generatorModuleMap">generatorModuleMap</a> <span class="fn">P</span> <span class="fn">f</span>)</span></span></div></div><p>The represented module map has the degree of its original morphism.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

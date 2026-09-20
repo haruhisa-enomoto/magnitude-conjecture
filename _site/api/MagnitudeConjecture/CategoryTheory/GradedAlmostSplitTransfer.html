@@ -1,0 +1,115 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.GradedAlmostSplitTransfer</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.GradedAlmostSplitTransfer";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">GradedAlmostSplitTransfer</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedAlmostSplitTransfer.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/GradedHomInverse.html">MagnitudeConjecture.CategoryTheory.GradedHomInverse</a></li><li><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html">QuotientSubmoduleEquidistribution.CategoryTheory.MinimalMorphism</a></li><li><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html">QuotientSubmoduleEquidistribution.RepresentationTheory.AlmostSplitCofinite</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.GradedAlmostSplitTransfer" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.part_comp_right_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">part_comp_right_homogeneous</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.isSplitEpi_of_underlying_isSplitEpi"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">isSplitEpi_of_underlying_isSplitEpi</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.isSplitEpi_iff_underlying"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">isSplitEpi_iff_underlying</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.rightAlmostSplit_of_underlying"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">rightAlmostSplit_of_underlying</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.GradedCategory.HomGrading.rightMinimal_of_underlying"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">rightMinimal_of_underlying</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Almost-split-maps-and-minimality-after-taking-homogeneous-components" class="markdown-heading">Almost-split maps and minimality after taking homogeneous components <a class="hover-link" href="#Almost-split-maps-and-minimality-after-taking-homogeneous-components">#</a></h1></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.part_comp_right_homogeneous"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedAlmostSplitTransfer.lean#L16-L35">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedAlmostSplitTransfer.html#MagnitudeConjecture.GradedCategory.HomGrading.part_comp_right_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">part_comp_right_homogeneous</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading">HomGrading</a> <span class="fn">k</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y </span><span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">d</span> : <span class="fn">ℤ</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hg</span> : <span class="fn"><span class="fn">g</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading.component">component</a></span> <span class="fn">Y</span> <span class="fn">Z</span> <span class="fn">d</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn">ℤ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/GradedHomComponents.html#MagnitudeConjecture.GradedCategory.HomGrading.part">part</a></span> <span class="fn">X</span> <span class="fn">Z</span> <span class="fn">t</span>)</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">f</span> <span class="fn">g</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/GradedHomComponents.html#MagnitudeConjecture.GradedCategory.HomGrading.part">part</a></span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">(<span class="fn">t</span> <span class="fn">-</span> <span class="fn">d</span>)</span>)</span> <span class="fn">f</span>)</span> <span class="fn">g</span></span></span></div></div><p>If the last factor is homogeneous, one component of the first factor
+computes any prescribed component of their composite.</p></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.isSplitEpi_of_underlying_isSplitEpi"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedAlmostSplitTransfer.lean#L37-L48">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedAlmostSplitTransfer.html#MagnitudeConjecture.GradedCategory.HomGrading.isSplitEpi_of_underlying_isSplitEpi"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">isSplitEpi_of_underlying_isSplitEpi</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading">HomGrading</a> <span class="fn">k</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.DegreeObject">DegreeObject</a> <span class="fn">G</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn">CategoryTheory.IsSplitEpi</span> <span class="fn">↑<span class="fn">f</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.IsSplitEpi</span> <span class="fn">f</span></span></div></div><p>A section of a homogeneous map can be replaced by its opposite-degree component.</p></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.isSplitEpi_iff_underlying"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedAlmostSplitTransfer.lean#L50-L57">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedAlmostSplitTransfer.html#MagnitudeConjecture.GradedCategory.HomGrading.isSplitEpi_iff_underlying"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">isSplitEpi_iff_underlying</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading">HomGrading</a> <span class="fn">k</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.DegreeObject">DegreeObject</a> <span class="fn">G</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.IsSplitEpi</span> <span class="fn">f</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">CategoryTheory.IsSplitEpi</span> <span class="fn">↑<span class="fn">f</span></span></span></span></div></div><p>Forgetting degrees preserves and reflects whether a homogeneous map splits.</p></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.rightAlmostSplit_of_underlying"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedAlmostSplitTransfer.lean#L59-L75">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedAlmostSplitTransfer.html#MagnitudeConjecture.GradedCategory.HomGrading.rightAlmostSplit_of_underlying"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">rightAlmostSplit_of_underlying</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading">HomGrading</a> <span class="fn">k</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.DegreeObject">DegreeObject</a> <span class="fn">G</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">QuotientSubmoduleEquidistribution.IsRightAlmostSplit</a> <span class="fn">↑<span class="fn">f</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">QuotientSubmoduleEquidistribution.IsRightAlmostSplit</a> <span class="fn">f</span></span></div></div><p>An ungraded almost-split map remains almost split in the degree category
+when the given map is homogeneous.</p></div></div><div class="decl" id="MagnitudeConjecture.GradedCategory.HomGrading.rightMinimal_of_underlying"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/GradedAlmostSplitTransfer.lean#L77-L83">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/GradedAlmostSplitTransfer.html#MagnitudeConjecture.GradedCategory.HomGrading.rightMinimal_of_underlying"><span class="name">MagnitudeConjecture</span>.<span class="name">GradedCategory</span>.<span class="name">HomGrading</span>.<span class="name">rightMinimal_of_underlying</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w, v}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.HomGrading">HomGrading</a> <span class="fn">k</span> <span class="fn">C</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/GradedDegreeCategory.html#MagnitudeConjecture.GradedCategory.DegreeObject">DegreeObject</a> <span class="fn">G</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsRightMinimal">QuotientSubmoduleEquidistribution.IsRightMinimal</a> <span class="fn">↑<span class="fn">f</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsRightMinimal">QuotientSubmoduleEquidistribution.IsRightMinimal</a> <span class="fn">f</span></span></div></div><p>Right minimality passes because a homogeneous invertible endomorphism
+has a homogeneous inverse.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

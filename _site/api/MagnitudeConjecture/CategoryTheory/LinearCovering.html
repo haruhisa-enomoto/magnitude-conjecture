@@ -1,0 +1,898 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.LinearCovering</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.LinearCovering";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">LinearCovering</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/QuiverPathCostar.html">MagnitudeConjecture.CategoryTheory.QuiverPathCostar</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/DirectSum/Module.lean">Mathlib.Algebra.DirectSum.Module</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Linear/LinearFunctor.lean">Mathlib.CategoryTheory.Linear.LinearFunctor</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.LinearCovering" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.bijective_of_surjective_quotient_square"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">bijective_of_surjective_quotient_square</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.Fiber"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">Fiber</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.targetFiberHomMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberHomMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.sourceFiberHomMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberHomMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.targetFiberLof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberLof</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.sourceFiberLof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberLof</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.targetFiberPrecomp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberPrecomp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberPostcomp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.targetFiberHomMap_lof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberHomMap_lof</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.sourceFiberHomMap_lof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberHomMap_lof</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.targetFiberPrecomp_lof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberPrecomp_lof</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.targetFiberPrecomp_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberPrecomp_apply</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp_lof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberPostcomp_lof</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberPostcomp_apply</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.targetFiberHomMap_targetFiberPrecomp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberHomMap_targetFiberPrecomp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.sourceFiberHomMap_sourceFiberPostcomp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberHomMap_sourceFiberPostcomp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberPostcomp_comp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.targetFiberPrecomp_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberPrecomp_comp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.IsCovering"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.IsCovering.targetFiberHomLinearEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">targetFiberHomLinearEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.IsCovering.sourceFiberHomLinearEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">sourceFiberHomLinearEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.IsCovering.targetFiberHomLinearEquiv_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">targetFiberHomLinearEquiv_apply</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.IsCovering.sourceFiberHomLinearEquiv_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">sourceFiberHomLinearEquiv_apply</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.IsCovering.map_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">map_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.IsCovering.faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">faithful</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.IsCovering.map_bijective_of_obj_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">map_bijective_of_obj_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.IsCovering.fullyFaithfulOfObjInjective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">fullyFaithfulOfObjInjective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.LinearCovering.IsCovering.isEquivalenceOfObjBijective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">isEquivalenceOfObjBijective</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Linear-covering-functors" class="markdown-heading">Linear covering functors <a class="hover-link" href="#Linear-covering-functors">#</a></h1><p>This file records the direct-sum Hom-space definition of a covering functor.
+For a fixed lift of either endpoint, mapping morphisms and summing over all
+lifts of the other endpoint must give a bijection onto the Hom space
+downstairs.  This is the categorical covering notion used in the
+Bongartz--Gabriel argument; surjectivity on objects is kept as a separate
+property.</p></div><div class="decl" id="MagnitudeConjecture.LinearCovering.bijective_of_surjective_quotient_square"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L31-L60">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.bijective_of_surjective_quotient_square"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">bijective_of_surjective_quotient_square</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A'</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B'</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">A'</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">B'</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">A'</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">B'</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">A</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">qA</span> : <span class="fn"><span class="fn">A</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">A'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">qB</span> : <span class="fn"><span class="fn">B</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">B'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn"><span class="fn">A'</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">B'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hqA</span> : <span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">⇑<span class="fn">qA</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hqB</span> : <span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">⇑<span class="fn">qB</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hsquare</span> : <span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn"><span class="fn">g</span> <span class="fn">(<span class="fn">qA</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">qB</span> <span class="fn">(<span class="fn">e</span> <span class="fn">a</span>)</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hker</span> : <span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">qB</span> <span class="fn">(<span class="fn">e</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn">0</span></span> → <span class="fn"><span class="fn"><span class="fn">qA</span> <span class="fn">a</span></span> <span class="fn">=</span> <span class="fn">0</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Bijective</span> <span class="fn">⇑<span class="fn">g</span></span></span></div></div><p>A bijective linear map remains bijective after passing through a
+surjective quotient square, provided that every element which becomes zero
+downstairs already becomes zero in the source quotient.  This is the linear
+algebra core used to descend covering-functor Hom equivalences through
+relation ideals.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.Fiber"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L62-L63">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">Fiber</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a> v₁</div></div><p>The objects upstairs mapping literally to a chosen target object.</p><details id="instances-for-list-MagnitudeConjecture.LinearCovering.Fiber" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.targetFiberHomMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L65-L79">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberHomMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberHomMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span>)</span> <span class="fn">fun (<span class="fn">Z</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>) =&gt; <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">Z</span></span></span></span>)</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">X</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span></span></div></div><p>Map the summand with fixed source <code>X</code> and varying lifted target into the
+corresponding Hom space downstairs.</p><details id="instances-for-list-MagnitudeConjecture.LinearCovering.targetFiberHomMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.sourceFiberHomMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L81-L95">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberHomMap"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberHomMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span>)</span> <span class="fn">fun (<span class="fn">Z</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>) =&gt; <span class="fn"><span class="fn">↑<span class="fn">Z</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span></span>)</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">Y</span></span></span></span></div></div><p>Map the summand with fixed target <code>Y</code> and varying lifted source into the
+corresponding Hom space downstairs.</p><details id="instances-for-list-MagnitudeConjecture.LinearCovering.sourceFiberHomMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.targetFiberLof"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L97-L102">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberLof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberLof</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Z</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">Z</span></span>)</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span>)</span> <span class="fn">fun (<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>) =&gt; <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">W</span></span></span></span></span></span></div></div><p>Inclusion of one fixed-source lifted Hom space into the target-fibre
+direct sum.</p><details id="instances-for-list-MagnitudeConjecture.LinearCovering.targetFiberLof" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.sourceFiberLof"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L104-L109">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberLof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberLof</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Z</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">↑<span class="fn">Z</span></span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span>)</span> <span class="fn">fun (<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>) =&gt; <span class="fn"><span class="fn">↑<span class="fn">W</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span></span></span></span></div></div><p>Inclusion of one fixed-target lifted Hom space into the source-fibre
+direct sum.</p><details id="instances-for-list-MagnitudeConjecture.LinearCovering.sourceFiberLof" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.targetFiberPrecomp"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L111-L126">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberPrecomp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberPrecomp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X' </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">X'</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span>)</span> <span class="fn">fun (<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>) =&gt; <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">W</span></span></span></span>)</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span>)</span> <span class="fn">fun (<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>) =&gt; <span class="fn"><span class="fn">X'</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">W</span></span></span></span></span></span></div></div><p>Precompose every fixed-target-fibre summand by one morphism upstairs.</p><details id="instances-for-list-MagnitudeConjecture.LinearCovering.targetFiberPrecomp" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.sourceFiberPostcomp"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L128-L143">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberPostcomp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">D</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y </span><span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span>)</span> <span class="fn">fun (<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>) =&gt; <span class="fn"><span class="fn">↑<span class="fn">W</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span></span>)</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span>)</span> <span class="fn">fun (<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>) =&gt; <span class="fn"><span class="fn">↑<span class="fn">W</span></span> <span class="fn">⟶</span> <span class="fn">Z</span></span></span></span></span></div></div><p>Postcompose every fixed-source-fibre summand by one morphism upstairs.</p><details id="instances-for-list-MagnitudeConjecture.LinearCovering.sourceFiberPostcomp" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.targetFiberHomMap_lof"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L145-L152">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberHomMap_lof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberHomMap_lof</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Z</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">Z</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberHomMap">targetFiberHomMap</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberLof">targetFiberLof</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">Z</span>)</span> <span class="fn">f</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span> <span class="fn">(<span class="fn">CategoryTheory.eqToHom</span> <span class="fn">⋯</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.sourceFiberHomMap_lof"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L154-L161">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberHomMap_lof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberHomMap_lof</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Z</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">↑<span class="fn">Z</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberHomMap">sourceFiberHomMap</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberLof">sourceFiberLof</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">Z</span>)</span> <span class="fn">f</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.eqToHom</span> <span class="fn">⋯</span>)</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.targetFiberPrecomp_lof"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L164-L171">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberPrecomp_lof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberPrecomp_lof</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X' </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">X'</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">W</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberPrecomp">targetFiberPrecomp</a> <span class="fn">F</span> <span class="fn">Y</span> <span class="fn">e</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberLof">targetFiberLof</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">W</span>)</span> <span class="fn">f</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberLof">targetFiberLof</a> <span class="fn">F</span> <span class="fn">X'</span> <span class="fn">Y</span> <span class="fn">W</span>)</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">e</span> <span class="fn">f</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.targetFiberPrecomp_apply"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L174-L197">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberPrecomp_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberPrecomp_apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X' </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">X'</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span>)</span> <span class="fn">fun (<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>) =&gt; <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">W</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberPrecomp">targetFiberPrecomp</a> <span class="fn">F</span> <span class="fn">Y</span> <span class="fn">e</span>)</span> <span class="fn">a</span>)</span> <span class="fn">V</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">e</span> <span class="fn">(<span class="fn">a</span> <span class="fn">V</span>)</span></span></span></div></div><p>Precomposition in a target fibre acts componentwise.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.sourceFiberPostcomp_lof"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L200-L207">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp_lof"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberPostcomp_lof</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">D</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y </span><span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">↑<span class="fn">W</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp">sourceFiberPostcomp</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">e</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberLof">sourceFiberLof</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">W</span>)</span> <span class="fn">f</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberLof">sourceFiberLof</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Z</span> <span class="fn">W</span>)</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">f</span> <span class="fn">e</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.sourceFiberPostcomp_apply"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L210-L233">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberPostcomp_apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">D</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y </span><span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span>)</span> <span class="fn">fun (<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>) =&gt; <span class="fn"><span class="fn">↑<span class="fn">W</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp">sourceFiberPostcomp</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">e</span>)</span> <span class="fn">a</span>)</span> <span class="fn">V</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">a</span> <span class="fn">V</span>)</span> <span class="fn">e</span></span></span></div></div><p>Postcomposition in a source fibre acts componentwise.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.targetFiberHomMap_targetFiberPrecomp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L235-L259">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberHomMap_targetFiberPrecomp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberHomMap_targetFiberPrecomp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X' </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">X'</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span>)</span> <span class="fn">fun (<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>) =&gt; <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">W</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberHomMap">targetFiberHomMap</a> <span class="fn">F</span> <span class="fn">X'</span> <span class="fn">Y</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberPrecomp">targetFiberPrecomp</a> <span class="fn">F</span> <span class="fn">Y</span> <span class="fn">e</span>)</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">e</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberHomMap">targetFiberHomMap</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span>)</span> <span class="fn">a</span>)</span></span></span></div></div><p>The fixed-source fibre map intertwines precomposition upstairs with
+precomposition by the mapped morphism downstairs.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.sourceFiberHomMap_sourceFiberPostcomp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L261-L285">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberHomMap_sourceFiberPostcomp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberHomMap_sourceFiberPostcomp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">D</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y </span><span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span>)</span> <span class="fn">fun (<span class="fn">W</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>) =&gt; <span class="fn"><span class="fn">↑<span class="fn">W</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberHomMap">sourceFiberHomMap</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Z</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp">sourceFiberPostcomp</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">e</span>)</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberHomMap">sourceFiberHomMap</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span>)</span> <span class="fn">a</span>)</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">e</span>)</span></span></span></div></div><p>The fixed-target fibre map intertwines postcomposition upstairs with
+postcomposition by the mapped morphism downstairs.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.sourceFiberPostcomp_comp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L288-L310">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">sourceFiberPostcomp_comp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">D</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y </span><span class="fn">Z </span><span class="fn">W</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">Z</span> <span class="fn">⟶</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span>)</span> <span class="fn">fun (<span class="fn">V</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>) =&gt; <span class="fn"><span class="fn">↑<span class="fn">V</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp">sourceFiberPostcomp</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">f</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp">sourceFiberPostcomp</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">e</span>)</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberPostcomp">sourceFiberPostcomp</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">e</span> <span class="fn">f</span>)</span>)</span> <span class="fn">a</span></span></span></div></div><p>Successive postcomposition of a source-fibre family is postcomposition
+by the composite upstairs.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.targetFiberPrecomp_comp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L313-L335">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberPrecomp_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">targetFiberPrecomp_comp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X'' </span><span class="fn">X' </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">X''</span> <span class="fn">⟶</span> <span class="fn">X'</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X'</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span>)</span> <span class="fn">fun (<span class="fn">V</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>) =&gt; <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">V</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberPrecomp">targetFiberPrecomp</a> <span class="fn">F</span> <span class="fn">Y</span> <span class="fn">e</span>)</span> <span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberPrecomp">targetFiberPrecomp</a> <span class="fn">F</span> <span class="fn">Y</span> <span class="fn">f</span>)</span> <span class="fn">a</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberPrecomp">targetFiberPrecomp</a> <span class="fn">F</span> <span class="fn">Y</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">e</span> <span class="fn">f</span>)</span>)</span> <span class="fn">a</span></span></span></div></div><p>Successive precomposition of a target-fibre family is precomposition by
+the composite upstairs.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.IsCovering"><div class="structure"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L337-L344">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>A linear covering functor: after fixing either lifted endpoint, the Hom
+space downstairs is the direct sum of the Hom spaces over all lifts of the
+other endpoint.</p><ul class="structure_fields" id="MagnitudeConjecture.LinearCovering.IsCovering.mk"><li id="MagnitudeConjecture.LinearCovering.IsCovering.target_bijective" class="structure_field"><div class="structure_field_info">target_bijective<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+ : <span class="fn"><span class="fn">Function.Bijective</span> <span class="fn">⇑<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberHomMap">targetFiberHomMap</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span>)</span></span></span></div></li><li id="MagnitudeConjecture.LinearCovering.IsCovering.source_bijective" class="structure_field"><div class="structure_field_info">source_bijective<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+ : <span class="fn"><span class="fn">Function.Bijective</span> <span class="fn">⇑<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberHomMap">sourceFiberHomMap</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span>)</span></span></span></div></li></ul><details id="instances-for-list-MagnitudeConjecture.LinearCovering.IsCovering" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.IsCovering.targetFiberHomLinearEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L350-L357">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering.targetFiberHomLinearEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">targetFiberHomLinearEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering">IsCovering</a> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span>)</span> <span class="fn">fun (<span class="fn">Z</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>) =&gt; <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">Z</span></span></span></span>)</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">X</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span></span></div></div><p>The fixed-source direct-sum Hom equivalence supplied by a covering
+functor.</p><details id="instances-for-list-MagnitudeConjecture.LinearCovering.IsCovering.targetFiberHomLinearEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.IsCovering.sourceFiberHomLinearEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L359-L366">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering.sourceFiberHomLinearEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">sourceFiberHomLinearEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering">IsCovering</a> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span>)</span> <span class="fn">fun (<span class="fn">Z</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>) =&gt; <span class="fn"><span class="fn">↑<span class="fn">Z</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span></span>)</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">Y</span></span></span></span></div></div><p>The fixed-target direct-sum Hom equivalence supplied by a covering
+functor.</p><details id="instances-for-list-MagnitudeConjecture.LinearCovering.IsCovering.sourceFiberHomLinearEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.IsCovering.targetFiberHomLinearEquiv_apply"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L368-L374">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering.targetFiberHomLinearEquiv_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">targetFiberHomLinearEquiv_apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering">IsCovering</a> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span>)</span> <span class="fn">fun (<span class="fn">Z</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">Y</span></span>) =&gt; <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">↑<span class="fn">Z</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">hF</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering.targetFiberHomLinearEquiv">targetFiberHomLinearEquiv</a></span> <span class="fn">X</span> <span class="fn">Y</span>)</span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.targetFiberHomMap">targetFiberHomMap</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span>)</span> <span class="fn">f</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.IsCovering.sourceFiberHomLinearEquiv_apply"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L376-L382">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering.sourceFiberHomLinearEquiv_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">sourceFiberHomLinearEquiv_apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering">IsCovering</a> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">D</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">DirectSum</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span>)</span> <span class="fn">fun (<span class="fn">Z</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.Fiber">Fiber</a> <span class="fn">F</span> <span class="fn">X</span></span>) =&gt; <span class="fn"><span class="fn">↑<span class="fn">Z</span></span> <span class="fn">⟶</span> <span class="fn">Y</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">hF</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering.sourceFiberHomLinearEquiv">sourceFiberHomLinearEquiv</a></span> <span class="fn">X</span> <span class="fn">Y</span>)</span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.sourceFiberHomMap">sourceFiberHomMap</a> <span class="fn">F</span> <span class="fn">X</span> <span class="fn">Y</span>)</span> <span class="fn">f</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.IsCovering.map_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L384-L401">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering.map_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">map_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering">IsCovering</a> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span></span></div></div><p>Every linear covering functor is faithful: an individual Hom space is
+one summand of either covering decomposition.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.IsCovering.faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L403-L405">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering.faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering">IsCovering</a> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span></div></div><p>The faithful structure carried by a linear covering functor.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.IsCovering.map_bijective_of_obj_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L407-L442">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering.map_bijective_of_obj_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">map_bijective_of_obj_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering">IsCovering</a> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hobj</span> : <span class="fn"><span class="fn">Function.Injective</span> <span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Bijective</span> <span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span></span></div></div><p>A covering functor which is injective on objects is fully faithful.</p><p>Indeed, the fibre over <code>F.obj Y</code> then consists only of <code>Y</code>, so the
+fixed-source covering isomorphism is just the ordinary map on the Hom space
+<code>X ⟶ Y</code>.</p></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.IsCovering.fullyFaithfulOfObjInjective"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L444-L453">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering.fullyFaithfulOfObjInjective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">fullyFaithfulOfObjInjective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering">IsCovering</a> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hobj</span> : <span class="fn"><span class="fn">Function.Injective</span> <span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">F</span>.<span class="fn">FullyFaithful</span></span></div></div><p>A covering functor which is injective on objects, packaged as a fully
+faithful functor.</p><details id="instances-for-list-MagnitudeConjecture.LinearCovering.IsCovering.fullyFaithfulOfObjInjective" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.LinearCovering.IsCovering.isEquivalenceOfObjBijective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/LinearCovering.lean#L455-L463">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering.isEquivalenceOfObjBijective"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearCovering</span>.<span class="name">IsCovering</span>.<span class="name">isEquivalenceOfObjBijective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> v₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₁, v₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> v₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{w₂, v₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/LinearCovering.html#MagnitudeConjecture.LinearCovering.IsCovering">IsCovering</a> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hobj</span> : <span class="fn"><span class="fn">Function.Bijective</span> <span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">F</span>.<span class="fn">IsEquivalence</span></span></div></div><p>A covering functor which is bijective on objects is an equivalence of
+categories.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

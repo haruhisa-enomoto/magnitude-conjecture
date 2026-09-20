@@ -1,0 +1,36 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.ObjectDeletionStageAdmissible</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.ObjectDeletionStageAdmissible";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ObjectDeletionStageAdmissible</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionStageAdmissible.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/AdmissibleModuleCategory.html">MagnitudeConjecture.CategoryTheory.AdmissibleModuleCategory</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionStage.html">MagnitudeConjecture.CategoryTheory.ObjectDeletionStage</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.ObjectDeletionStageAdmissible" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.isAdmissible_stage"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">isAdmissible_stage</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Admissibility-of-the-finite-cover-deletion-stages" class="markdown-heading">Admissibility of the finite-cover deletion stages <a class="hover-link" href="#Admissibility-of-the-finite-cover-deletion-stages">#</a></h1><p>Every intermediate stage in the ordered deletion of a deck orbit is a
+literal object-deletion quotient, hence remains admissible.</p></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.isAdmissible_stage"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionStageAdmissible.lean#L27-L35">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionStageAdmissible.html#MagnitudeConjecture.ObjectDeletion.isAdmissible_stage"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">isAdmissible_stage</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">G</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <span class="fn"><span class="fn">Subgroup</span> <span class="fn">G</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <a href="../.././MagnitudeConjecture/CategoryTheory/AdmissibleModuleCategory.html#MagnitudeConjecture.CoveringHom.IsAdmissible">CoveringHom.IsAdmissible</a>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">m</span> : <span class="fn">ℕ</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">representative</span> : <span class="fn"><span class="fn"><span class="fn">Fin</span> <span class="fn">m</span></span> → <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">j</span> : <span class="fn"><span class="fn">Fin</span> <span class="fn">(<span class="fn">m</span> <span class="fn">+</span> <span class="fn">1</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././MagnitudeConjecture/CategoryTheory/AdmissibleModuleCategory.html#MagnitudeConjecture.CoveringHom.IsAdmissible">CoveringHom.IsAdmissible</a></div></div><p>Every ordered subgroup-orbit deletion stage inherits admissibility from
+the ambient covering category.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

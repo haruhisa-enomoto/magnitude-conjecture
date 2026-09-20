@@ -1,0 +1,197 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.ShiftOrbitWindow</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.ShiftOrbitWindow";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ShiftOrbitWindow</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/HomInteractionSeparation.html">MagnitudeConjecture.CategoryTheory.HomInteractionSeparation</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitDecomposition.html">MagnitudeConjecture.CategoryTheory.ShiftOrbitDecomposition</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.ShiftOrbitWindow" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.windowInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowInclusion</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowIdentityComponentFunctor</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.windowMultiplicativeShiftHom"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowMultiplicativeShiftHom</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctorOrbitHomDecomposition"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowIdentityComponentFunctorOrbitHomDecomposition</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.WindowShiftHomOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">WindowShiftHomOrthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.windowMultiplicativeShiftHom_translateHomOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowMultiplicativeShiftHom_translateHomOrthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor_fullOfShiftHomOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowIdentityComponentFunctor_fullOfShiftHomOrthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowIdentityComponentFunctor_faithful</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.ShiftObjectActionCompatibility"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">ShiftObjectActionCompatibility</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.windowShiftHomOrthogonal_of_pairwise_windowSeparated"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowShiftHomOrthogonal_of_pairwise_windowSeparated</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Shift-orbit-functors-on-finite-control-windows" class="markdown-heading">Shift-orbit functors on finite control windows <a class="hover-link" href="#Shift-orbit-functors-on-finite-control-windows">#</a></h1><p>The manuscript uses the orbit functor only on a finite full window, which is
+not itself invariant under deck transformations.  This file restricts the
+source of the ambient shift-orbit functor to such a window while retaining
+ambient shifted Hom summands.  It also connects pairwise separation for a
+strict object action to the exact shifted-Hom orthogonality predicate.</p></div><div class="decl" id="MagnitudeConjecture.CoveringHom.windowInclusion"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.lean#L30-L32">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowInclusion"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowInclusion</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/HomInteractionSeparation.html#MagnitudeConjecture.CoveringSeparation.WindowCategory">CoveringSeparation.WindowCategory</a> <span class="fn">W</span>)</span> <span class="fn">C</span></span></div></div><p>The inclusion of a full set-valued window into the ambient category.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.windowInclusion" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.lean#L34-L39">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowIdentityComponentFunctor</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/HomInteractionSeparation.html#MagnitudeConjecture.CoveringSeparation.WindowCategory">CoveringSeparation.WindowCategory</a> <span class="fn">W</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitHom.html#MagnitudeConjecture.CoveringHom.ShiftOrbitCategory">ShiftOrbitCategory</a> <span class="fn">C</span> <span class="fn">A</span>)</span></span></div></div><p>The ambient degree-zero orbit functor restricted to a full control
+window.  The target remains the ambient orbit category because the window
+need not be shift-invariant.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.windowMultiplicativeShiftHom"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.lean#L41-L45">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowMultiplicativeShiftHom"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowMultiplicativeShiftHom</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/HomInteractionSeparation.html#MagnitudeConjecture.CoveringSeparation.WindowCategory">CoveringSeparation.WindowCategory</a> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">Multiplicative</span> <span class="fn">A</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a> v</div></div><p>Ambient shifted Homs between two objects of a full window, indexed by the
+multiplicative wrapper of the additive shift group.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.windowMultiplicativeShiftHom" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctorOrbitHomDecomposition"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.lean#L47-L60">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctorOrbitHomDecomposition"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowIdentityComponentFunctorOrbitHomDecomposition</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommSemiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor">windowIdentityComponentFunctor</a> <span class="fn">W</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowMultiplicativeShiftHom">windowMultiplicativeShiftHom</a> <span class="fn">W</span>)</span></span></div></div><p>The restricted concrete orbit functor has the same tautological Gabriel
+Hom decomposition as the ambient functor.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctorOrbitHomDecomposition" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.WindowShiftHomOrthogonal"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.lean#L62-L66">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.WindowShiftHomOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">WindowShiftHomOrthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>Every nonzero ambient shift Hom between objects of the chosen window
+vanishes.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.WindowShiftHomOrthogonal" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.windowMultiplicativeShiftHom_translateHomOrthogonal"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.lean#L69-L76">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowMultiplicativeShiftHom_translateHomOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowMultiplicativeShiftHom_translateHomOrthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.WindowShiftHomOrthogonal">WindowShiftHomOrthogonal</a> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal">TranslateHomOrthogonal</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowMultiplicativeShiftHom">windowMultiplicativeShiftHom</a> <span class="fn">W</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor_fullOfShiftHomOrthogonal"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.lean#L78-L87">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor_fullOfShiftHomOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowIdentityComponentFunctor_fullOfShiftHomOrthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommSemiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">CategoryTheory.Functor.Linear</span> <span class="fn">k</span> <span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.WindowShiftHomOrthogonal">WindowShiftHomOrthogonal</a> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor">windowIdentityComponentFunctor</a> <span class="fn">W</span>)</span>.<span class="fn">Full</span></span></div></div><p>Shift-Hom orthogonality on a window makes the restricted concrete orbit
+functor full.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor_faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.lean#L89-L99">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor_faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowIdentityComponentFunctor_faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">a</span> : <span class="fn">A</span>), <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">Additive</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowIdentityComponentFunctor">windowIdentityComponentFunctor</a> <span class="fn">W</span>)</span>.<span class="fn">Faithful</span></span></div></div><p>The restricted concrete window orbit functor is faithful without any
+orthogonality hypothesis.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.ShiftObjectActionCompatibility"><div class="structure"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.lean#L101-L109">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.ShiftObjectActionCompatibility"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">ShiftObjectActionCompatibility</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">(<span class="fn">Multiplicative</span> <span class="fn">A</span>)</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a> (max (max u v) w)</div></div><p>Compatibility between a coherent additive right shift and a strict left
+multiplicative action on objects.  The inverse converts the two action
+conventions.  Only the objectwise comparison is needed to transfer
+Hom-orthogonality; the eventual universal-cover construction must supply it
+from its deck functors.</p><ul class="structure_fields" id="MagnitudeConjecture.CoveringHom.ShiftObjectActionCompatibility.mk"><li id="MagnitudeConjecture.CoveringHom.ShiftObjectActionCompatibility.objIso" class="structure_field"><div class="structure_field_info">objIso<span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn">A</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn"><span class="fn">(<span class="fn">CategoryTheory.shiftFunctor</span> <span class="fn">C</span> <span class="fn">a</span>)</span>.<span class="fn">obj</span></span> <span class="fn">X</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn"><span class="fn">(<span class="fn">Multiplicative.ofAdd</span> <span class="fn">a</span>)</span><span class="fn">⁻¹</span></span> <span class="fn">•</span> <span class="fn">X</span></span></span></div></li></ul><details id="instances-for-list-MagnitudeConjecture.CoveringHom.ShiftObjectActionCompatibility" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.windowShiftHomOrthogonal_of_pairwise_windowSeparated"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.lean#L114-L140">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.windowShiftHomOrthogonal_of_pairwise_windowSeparated"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">windowShiftHomOrthogonal_of_pairwise_windowSeparated</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddGroup</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasShift</span> <span class="fn">C</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">MulAction</span> <span class="fn">(<span class="fn">Multiplicative</span> <span class="fn">A</span>)</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.ShiftObjectActionCompatibility">ShiftObjectActionCompatibility</a>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">separated</span> :
+  <span class="fn">∀ {<span class="fn">g₁ </span><span class="fn">g₂</span> : <span class="fn"><span class="fn">Multiplicative</span> <span class="fn">A</span></span>},
+    <span class="fn"><span class="fn"><span class="fn">g₁</span> <span class="fn">≠</span> <span class="fn">g₂</span></span> → <span class="fn">∀ {<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}, <span class="fn"><span class="fn"><span class="fn">X</span> <span class="fn">∈</span> <span class="fn">W</span></span> → <span class="fn"><span class="fn"><span class="fn">Y</span> <span class="fn">∈</span> <span class="fn">W</span></span> → <span class="fn"><span class="fn">¬</span><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/HomInteractionSeparation.html#MagnitudeConjecture.CoveringSeparation.homInteraction">CoveringSeparation.homInteraction</a> <span class="fn">(<span class="fn">g₁</span> <span class="fn">•</span> <span class="fn">X</span>)</span> <span class="fn">(<span class="fn">g₂</span> <span class="fn">•</span> <span class="fn">Y</span>)</span></span></span></span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ShiftOrbitWindow.html#MagnitudeConjecture.CoveringHom.WindowShiftHomOrthogonal">WindowShiftHomOrthogonal</a> <span class="fn">W</span></span></div></div><p>Pairwise Hom-interaction separation of distinct translates of a window
+implies the exact shifted-Hom orthogonality needed by its orbit functor.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

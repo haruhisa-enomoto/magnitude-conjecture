@@ -1,0 +1,69 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.LinearAlgebra.ScalarCornerGeneratedCoordinate</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.LinearAlgebra.ScalarCornerGeneratedCoordinate";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">LinearAlgebra</span>.<span class="name">ScalarCornerGeneratedCoordinate</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/ScalarCornerGeneratedCoordinate.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/LinearAlgebra/BilinearMap.lean">Mathlib.LinearAlgebra.BilinearMap</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/Algebra/Tower.lean">Mathlib.Algebra.Algebra.Tower</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/LinearAlgebra/Span/Basic.lean">Mathlib.LinearAlgebra.Span.Basic</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.LinearAlgebra.ScalarCornerGeneratedCoordinate" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ScalarCorner.smul_mem_of_mem_span"><span class="name">MagnitudeConjecture</span>.<span class="name">ScalarCorner</span>.<span class="name">smul_mem_of_mem_span</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ScalarCorner.mem_span_and_fixed_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">ScalarCorner</span>.<span class="name">mem_span_and_fixed_iff</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Coordinates-of-a-generated-submodule-at-a-scalar-corner" class="markdown-heading">Coordinates of a generated submodule at a scalar corner <a class="hover-link" href="#Coordinates-of-a-generated-submodule-at-a-scalar-corner">#</a></h1></div><div class="decl" id="MagnitudeConjecture.ScalarCorner.smul_mem_of_mem_span"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/ScalarCornerGeneratedCoordinate.lean#L13-L38">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/ScalarCornerGeneratedCoordinate.html#MagnitudeConjecture.ScalarCorner.smul_mem_of_mem_span"><span class="name">MagnitudeConjecture</span>.<span class="name">ScalarCorner</span>.<span class="name">smul_mem_of_mem_span</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn">R</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfix</span> : <span class="fn">∀ <span class="fn">x</span> ∈ <span class="fn">W</span>, <span class="fn"><span class="fn"><span class="fn">p</span> <span class="fn">•</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn">x</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hcorner</span> : <span class="fn">∀ (<span class="fn">a</span> : <span class="fn">R</span>), <span class="fn">∃ (<span class="fn">c</span> : <span class="fn">k</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">p</span> <span class="fn">*</span> <span class="fn">a</span></span> <span class="fn">*</span> <span class="fn">p</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">(<span class="fn">algebraMap</span> <span class="fn">k</span> <span class="fn">R</span>)</span> <span class="fn">c</span></span> <span class="fn">*</span> <span class="fn">p</span></span></span></span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x</span> : <span class="fn">M</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hx</span> : <span class="fn"><span class="fn">x</span> <span class="fn">∈</span> <span class="fn"><span class="fn">Submodule.span</span> <span class="fn">R</span> <span class="fn">↑<span class="fn">W</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">p</span> <span class="fn">•</span> <span class="fn">x</span></span> <span class="fn">∈</span> <span class="fn">W</span></span></div></div><p>Multiplying a generated relation back into the corner stays in the
+original vector-space relation subspace.</p></div></div><div class="decl" id="MagnitudeConjecture.ScalarCorner.mem_span_and_fixed_iff"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/LinearAlgebra/ScalarCornerGeneratedCoordinate.lean#L40-L52">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/LinearAlgebra/ScalarCornerGeneratedCoordinate.html#MagnitudeConjecture.ScalarCorner.mem_span_and_fixed_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">ScalarCorner</span>.<span class="name">mem_span_and_fixed_iff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> w}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn">R</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfix</span> : <span class="fn">∀ <span class="fn">x</span> ∈ <span class="fn">W</span>, <span class="fn"><span class="fn"><span class="fn">p</span> <span class="fn">•</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn">x</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hcorner</span> : <span class="fn">∀ (<span class="fn">a</span> : <span class="fn">R</span>), <span class="fn">∃ (<span class="fn">c</span> : <span class="fn">k</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">p</span> <span class="fn">*</span> <span class="fn">a</span></span> <span class="fn">*</span> <span class="fn">p</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">(<span class="fn">algebraMap</span> <span class="fn">k</span> <span class="fn">R</span>)</span> <span class="fn">c</span></span> <span class="fn">*</span> <span class="fn">p</span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">x</span> <span class="fn">∈</span> <span class="fn"><span class="fn">Submodule.span</span> <span class="fn">R</span> <span class="fn">↑<span class="fn">W</span></span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">p</span> <span class="fn">•</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn">x</span></span></span> <span class="fn">↔</span> <span class="fn"><span class="fn">x</span> <span class="fn">∈</span> <span class="fn">W</span></span></span></div></div><p>The p-fixed vectors in the generated module are exactly the original
+relations, viewed inside the ambient module.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

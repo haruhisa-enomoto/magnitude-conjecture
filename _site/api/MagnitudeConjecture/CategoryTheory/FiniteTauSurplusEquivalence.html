@@ -1,0 +1,364 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.FiniteTauSurplusEquivalence</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.FiniteTauSurplusEquivalence";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">FiniteTauSurplusEquivalence</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.html">MagnitudeConjecture.CategoryTheory.AlmostSplitEquivalence</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauBeta.html">MagnitudeConjecture.CategoryTheory.FiniteTauBeta</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauLocalDensity.html">MagnitudeConjecture.CategoryTheory.FiniteTauLocalDensity</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/IndecomposableOfLocalEnd.html">MagnitudeConjecture.CategoryTheory.IndecomposableOfLocalEnd</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.FiniteTauSurplusEquivalence" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.rightMiddleArity_eq_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">rightMiddleArity_eq_of_equivalence</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.isProjective_equivalence_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">isProjective_equivalence_iff</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.betaAt_eq_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">betaAt_eq_of_equivalence</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.beta_le_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">beta_le_of_equivalence</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.beta_le_iff_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">beta_le_iff_of_equivalence</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.localDensity_eq_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">localDensity_eq_of_equivalence</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.FiniteTauMatrix.surplus_eq_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">surplus_eq_of_equivalence</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Auslander-Reiten-surplus-under-equivalence" class="markdown-heading">Auslander--Reiten surplus under equivalence <a class="hover-link" href="#Auslander-Reiten-surplus-under-equivalence">#</a></h1><p>An additive equivalence between abelian categories preserves the total
+Auslander--Reiten surplus of two finite right-tau presentations when their
+indecomposable labels and represented objects are matched.  This is the
+category-independent transport lemma needed to compare finite category
+modules with finitely generated modules over a category algebra.</p></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.rightMiddleArity_eq_of_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.lean#L46-L66">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.html#MagnitudeConjecture.FiniteTauMatrix.rightMiddleArity_eq_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">rightMiddleArity_eq_of_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <a href="../.././foundational_types.html">Type</a> w₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">I</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">C</span> <span class="fn">I</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">D</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">labelEquiv</span> : <span class="fn"><span class="fn">I</span> <span class="fn">≃</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">objIso</span> : <span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>) → <span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">obj</span></span> <span class="fn">(<span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">i</span>)</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn"><span class="fn">U</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">(<span class="fn">labelEquiv</span> <span class="fn">i</span>)</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#MagnitudeConjecture.FiniteTauMatrix.rightMiddleArity">rightMiddleArity</a> <span class="fn">T</span> <span class="fn">i</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#MagnitudeConjecture.FiniteTauMatrix.rightMiddleArity">rightMiddleArity</a> <span class="fn">U</span> <span class="fn">(<span class="fn">labelEquiv</span> <span class="fn">i</span>)</span></span></span></div></div><p>Incoming right-mesh arity is preserved by an additive equivalence after
+matching the indecomposable endpoint labels.</p></div></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.isProjective_equivalence_iff"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.lean#L72-L84">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.html#MagnitudeConjecture.FiniteTauMatrix.isProjective_equivalence_iff"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">isProjective_equivalence_iff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <a href="../.././foundational_types.html">Type</a> w₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">I</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">C</span> <span class="fn">I</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">D</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">labelEquiv</span> : <span class="fn"><span class="fn">I</span> <span class="fn">≃</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">objIso</span> : <span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>) → <span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">obj</span></span> <span class="fn">(<span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">i</span>)</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn"><span class="fn">U</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">(<span class="fn">labelEquiv</span> <span class="fn">i</span>)</span></span></span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">T</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.IsProjective">IsProjective</a></span> <span class="fn">i</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn"><span class="fn">U</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.IsProjective">IsProjective</a></span> <span class="fn">(<span class="fn">labelEquiv</span> <span class="fn">i</span>)</span></span></span></div></div><p>The finite-right-tau projectivity predicate is preserved at matched
+indecomposable labels.</p></div></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.betaAt_eq_of_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.lean#L87-L140">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.html#MagnitudeConjecture.FiniteTauMatrix.betaAt_eq_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">betaAt_eq_of_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <a href="../.././foundational_types.html">Type</a> w₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">I</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">C</span> <span class="fn">I</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">D</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">labelEquiv</span> : <span class="fn"><span class="fn">I</span> <span class="fn">≃</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">objIso</span> : <span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>) → <span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">obj</span></span> <span class="fn">(<span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">i</span>)</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn"><span class="fn">U</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">(<span class="fn">labelEquiv</span> <span class="fn">i</span>)</span></span></span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauBeta.html#MagnitudeConjecture.FiniteTauMatrix.betaAt">betaAt</a> <span class="fn">T</span> <span class="fn">i</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauBeta.html#MagnitudeConjecture.FiniteTauMatrix.betaAt">betaAt</a> <span class="fn">U</span> <span class="fn">(<span class="fn">labelEquiv</span> <span class="fn">i</span>)</span></span></span></div></div><p>The number of nonprojective occurrences in a right almost-split middle
+term is preserved at matched labels.</p></div></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.beta_le_of_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.lean#L143-L157">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.html#MagnitudeConjecture.FiniteTauMatrix.beta_le_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">beta_le_of_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <a href="../.././foundational_types.html">Type</a> w₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">I</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">C</span> <span class="fn">I</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">D</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">labelEquiv</span> : <span class="fn"><span class="fn">I</span> <span class="fn">≃</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">objIso</span> : <span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>) → <span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">obj</span></span> <span class="fn">(<span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">i</span>)</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn"><span class="fn">U</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">(<span class="fn">labelEquiv</span> <span class="fn">i</span>)</span></span></span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">bound</span> : <span class="fn">ℕ</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauBeta.html#MagnitudeConjecture.FiniteTauMatrix.beta">beta</a> <span class="fn">T</span></span> <span class="fn">≤</span> <span class="fn">bound</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauBeta.html#MagnitudeConjecture.FiniteTauMatrix.beta">beta</a> <span class="fn">U</span></span> <span class="fn">≤</span> <span class="fn">bound</span></span></div></div><p>A uniform bound on the nonprojective right-middle multiplicity is
+transported by an additive equivalence.</p></div></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.beta_le_iff_of_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.lean#L160-L176">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.html#MagnitudeConjecture.FiniteTauMatrix.beta_le_iff_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">beta_le_iff_of_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <a href="../.././foundational_types.html">Type</a> w₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">I</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">C</span> <span class="fn">I</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">D</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">labelEquiv</span> : <span class="fn"><span class="fn">I</span> <span class="fn">≃</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">objIso</span> : <span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>) → <span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">obj</span></span> <span class="fn">(<span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">i</span>)</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn"><span class="fn">U</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">(<span class="fn">labelEquiv</span> <span class="fn">i</span>)</span></span></span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">bound</span> : <span class="fn">ℕ</span>}</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauBeta.html#MagnitudeConjecture.FiniteTauMatrix.beta">beta</a> <span class="fn">T</span></span> <span class="fn">≤</span> <span class="fn">bound</span></span> <span class="fn">↔</span> <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauBeta.html#MagnitudeConjecture.FiniteTauMatrix.beta">beta</a> <span class="fn">U</span></span> <span class="fn">≤</span> <span class="fn">bound</span></span></span></div></div><p>A uniform <code>beta</code> bound is invariant under an additive equivalence with a
+bijective matching of indecomposable labels.</p></div></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.localDensity_eq_of_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.lean#L179-L192">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.html#MagnitudeConjecture.FiniteTauMatrix.localDensity_eq_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">localDensity_eq_of_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <a href="../.././foundational_types.html">Type</a> w₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">I</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">C</span> <span class="fn">I</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">D</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">labelEquiv</span> : <span class="fn"><span class="fn">I</span> <span class="fn">≃</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">objIso</span> : <span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>) → <span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">obj</span></span> <span class="fn">(<span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">i</span>)</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn"><span class="fn">U</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">(<span class="fn">labelEquiv</span> <span class="fn">i</span>)</span></span></span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/EulerSurplus.html#MagnitudeConjecture.ARCount.localDensity">ARCount.localDensity</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#MagnitudeConjecture.FiniteTauMatrix.arrowMultiplicity">arrowMultiplicity</a> <span class="fn">T</span>)</span> <span class="fn"><span class="fn">T</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.IsProjective">IsProjective</a></span> <span class="fn">i</span></span> <span class="fn">=</span>   <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/EulerSurplus.html#MagnitudeConjecture.ARCount.localDensity">ARCount.localDensity</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#MagnitudeConjecture.FiniteTauMatrix.arrowMultiplicity">arrowMultiplicity</a> <span class="fn">U</span>)</span> <span class="fn"><span class="fn">U</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.IsProjective">IsProjective</a></span> <span class="fn">(<span class="fn">labelEquiv</span> <span class="fn">i</span>)</span></span></span></div></div><p>Matrix local density is preserved at every matched label.</p></div></div><div class="decl" id="MagnitudeConjecture.FiniteTauMatrix.surplus_eq_of_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.lean#L195-L208">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauSurplusEquivalence.html#MagnitudeConjecture.FiniteTauMatrix.surplus_eq_of_equivalence"><span class="name">MagnitudeConjecture</span>.<span class="name">FiniteTauMatrix</span>.<span class="name">surplus_eq_of_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₁, u₁}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v₂, u₂}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasFiniteBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.IsIdempotentComplete</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <a href="../.././foundational_types.html">Type</a> w₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">I</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">J</span> : <a href="../.././foundational_types.html">Type</a> w₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">J</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">C</span> <span class="fn">I</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData">QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData</a> <span class="fn">D</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">Additive</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">labelEquiv</span> : <span class="fn"><span class="fn">I</span> <span class="fn">≃</span> <span class="fn">J</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">objIso</span> : <span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>) → <span class="fn"><span class="fn"><span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">obj</span></span> <span class="fn">(<span class="fn"><span class="fn">T</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">i</span>)</span></span> <span class="fn">≅</span> <span class="fn"><span class="fn"><span class="fn">U</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/FiniteTauCategory.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.obj">obj</a></span> <span class="fn">(<span class="fn">labelEquiv</span> <span class="fn">i</span>)</span></span></span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.EnoughProjectives</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/EulerSurplus.html#MagnitudeConjecture.ARCount.surplus">ARCount.surplus</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#MagnitudeConjecture.FiniteTauMatrix.arrowMultiplicity">arrowMultiplicity</a> <span class="fn">T</span>)</span> <span class="fn"><span class="fn">T</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.IsProjective">IsProjective</a></span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/Combinatorics/EulerSurplus.html#MagnitudeConjecture.ARCount.surplus">ARCount.surplus</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#MagnitudeConjecture.FiniteTauMatrix.arrowMultiplicity">arrowMultiplicity</a> <span class="fn">U</span>)</span> <span class="fn"><span class="fn">U</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/FiniteTauMatrix.html#QuotientSubmoduleEquidistribution.Iyama.FiniteRightTauCategoryData.IsProjective">IsProjective</a></span></span></span></div></div><p>Matched finite right-tau presentations in equivalent abelian categories
+have the same Auslander--Reiten surplus.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

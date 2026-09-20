@@ -1,0 +1,494 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.EssentialUniserialExtension</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.EssentialUniserialExtension";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">EssentialUniserialExtension</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDecomposition.html">MagnitudeConjecture.CategoryTheory.FiniteDimensionalModuleDecomposition</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html">MagnitudeConjecture.CategoryTheory.InjectiveEnvelope</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html">MagnitudeConjecture.CategoryTheory.UniserialObject</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Abelian/CommSq.lean">Mathlib.CategoryTheory.Abelian.CommSq</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.EssentialUniserialExtension" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.cokernelInclusionOfComp"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernelInclusionOfComp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.cokernelInclusionOfComp_mono"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernelInclusionOfComp_mono</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.cokernel_π_comp_cokernelInclusionOfComp"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_cokernelInclusionOfComp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.cokernel_π_comp_cokernelInclusionOfComp_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_cokernelInclusionOfComp_assoc</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.cokernelTowerDesc"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernelTowerDesc</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.cokernel_π_comp_cokernel_π_comp_cokernelTowerDesc"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_cokernel_π_comp_cokernelTowerDesc</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.cokernel_π_comp_cokernel_π_comp_cokernelTowerDesc_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_cokernel_π_comp_cokernelTowerDesc_assoc</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.comp_cokernel_π_eq_of_comp_cokernelTower_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">comp_cokernel_π_eq_of_comp_cokernelTower_eq</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.cokernel_π_comp_eqToIso_of_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_eqToIso_of_eq</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.cokernel_π_comp_eqToIso_of_eq_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_eqToIso_of_eq_assoc</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.IsWaistSubobject"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">IsWaistSubobject</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.isEssentialMono_of_comp_iso"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isEssentialMono_of_comp_iso</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.of_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">of_simple</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.simple_le_nonzero_subobject_of_essential"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">simple_le_nonzero_subobject_of_essential</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.isWaistSubobject_of_simple_essential"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isWaistSubobject_of_simple_essential</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.isWaistSubobject_of_essentialSimpleTop"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isWaistSubobject_of_essentialSimpleTop</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.isWaistSubobject_restrict"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isWaistSubobject_restrict</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.essential_restrict_of_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">essential_restrict_of_simple</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.of_essential_simple_cokernel"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">of_essential_simple_cokernel</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.isRadicalSubobject_of_waist_simple_cokernel"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isRadicalSubobject_of_waist_simple_cokernel</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.isRadicalSubobject_of_uniserial_simple_cokernel"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isRadicalSubobject_of_uniserial_simple_cokernel</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.of_waist_simple_cokernel"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">of_waist_simple_cokernel</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsUniserialObject.isRadicalSubobject_of_essential_simple_cokernel"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isRadicalSubobject_of_essential_simple_cokernel</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.moduleTotalDimension_lt_of_epi_not_isIso"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">moduleTotalDimension_lt_of_epi_not_isIso</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.finiteDimensionalModule_isUniserial_of_essentialSimpleCokernelSuccessors"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteDimensionalModule_isUniserial_of_essentialSimpleCokernelSuccessors</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Uniserial-essential-extensions" class="markdown-heading">Uniserial essential extensions <a class="hover-link" href="#Uniserial-essential-extensions">#</a></h1><p>A simple essential subobject is contained in every nonzero subobject.  Hence,
+if the quotient by that subobject is uniserial, the whole object is
+uniserial.  This is the categorical induction step for an ascending socle
+series.</p></div><div class="decl" id="MagnitudeConjecture.cokernelInclusionOfComp"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L32-L37">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelInclusionOfComp"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernelInclusionOfComp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">H </span><span class="fn">G</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">H</span> <span class="fn">⟶</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">r</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">r</span> <span class="fn">l</span>)</span></span></span></div></div><p>The inclusion of the first quotient in the quotient by a composite
+monomorphism.</p><details id="instances-for-list-MagnitudeConjecture.cokernelInclusionOfComp" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.cokernelInclusionOfComp_mono"><div class="instance"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L39-L42">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelInclusionOfComp_mono"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernelInclusionOfComp_mono</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">H </span><span class="fn">G</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">H</span> <span class="fn">⟶</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelInclusionOfComp">cokernelInclusionOfComp</a> <span class="fn">r</span> <span class="fn">l</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.cokernel_π_comp_cokernelInclusionOfComp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L44-L49">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernel_π_comp_cokernelInclusionOfComp"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_cokernelInclusionOfComp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">H </span><span class="fn">G</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">H</span> <span class="fn">⟶</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">r</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelInclusionOfComp">cokernelInclusionOfComp</a> <span class="fn">r</span> <span class="fn">l</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">l</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">r</span> <span class="fn">l</span>)</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.cokernel_π_comp_cokernelInclusionOfComp_assoc"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L44-L44">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernel_π_comp_cokernelInclusionOfComp_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_cokernelInclusionOfComp_assoc</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">H </span><span class="fn">G</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">H</span> <span class="fn">⟶</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn"><span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">r</span> <span class="fn">l</span>)</span></span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">r</span>)</span>
+    <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelInclusionOfComp">cokernelInclusionOfComp</a> <span class="fn">r</span> <span class="fn">l</span>)</span> <span class="fn">h</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">l</span>
+    <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">r</span> <span class="fn">l</span>)</span>)</span> <span class="fn">h</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.cokernelTowerDesc"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L51-L71">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelTowerDesc"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernelTowerDesc</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">H </span><span class="fn">G</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">H</span> <span class="fn">⟶</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelInclusionOfComp">cokernelInclusionOfComp</a> <span class="fn">r</span> <span class="fn">l</span>)</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">l</span></span></span></div></div><p>Collapsing the two successive quotients by <code>R ⊆ H</code> gives the direct
+quotient by <code>H</code>.</p><details id="instances-for-list-MagnitudeConjecture.cokernelTowerDesc" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.cokernel_π_comp_cokernel_π_comp_cokernelTowerDesc"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L73-L81">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernel_π_comp_cokernel_π_comp_cokernelTowerDesc"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_cokernel_π_comp_cokernelTowerDesc</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">H </span><span class="fn">G</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">H</span> <span class="fn">⟶</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">r</span> <span class="fn">l</span>)</span>)</span>
+    <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelInclusionOfComp">cokernelInclusionOfComp</a> <span class="fn">r</span> <span class="fn">l</span>)</span>)</span>
+      <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelTowerDesc">cokernelTowerDesc</a> <span class="fn">r</span> <span class="fn">l</span>)</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">l</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.cokernel_π_comp_cokernel_π_comp_cokernelTowerDesc_assoc"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L73-L73">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernel_π_comp_cokernel_π_comp_cokernelTowerDesc_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_cokernel_π_comp_cokernelTowerDesc_assoc</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">H </span><span class="fn">G</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">H</span> <span class="fn">⟶</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn"><span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">l</span></span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">r</span> <span class="fn">l</span>)</span>)</span>
+    <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelInclusionOfComp">cokernelInclusionOfComp</a> <span class="fn">r</span> <span class="fn">l</span>)</span>)</span>
+      <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelTowerDesc">cokernelTowerDesc</a> <span class="fn">r</span> <span class="fn">l</span>)</span> <span class="fn">h</span>)</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">l</span>)</span> <span class="fn">h</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.comp_cokernel_π_eq_of_comp_cokernelTower_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L83-L96">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.comp_cokernel_π_eq_of_comp_cokernelTower_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">comp_cokernel_π_eq_of_comp_cokernelTower_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">H </span><span class="fn">G </span><span class="fn">P</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">H</span> <span class="fn">⟶</span> <span class="fn">G</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f </span><span class="fn">g</span> : <span class="fn"><span class="fn">P</span> <span class="fn">⟶</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> :
+  <span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span>
+      <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">f</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">r</span> <span class="fn">l</span>)</span>)</span>)</span>
+      <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelInclusionOfComp">cokernelInclusionOfComp</a> <span class="fn">r</span> <span class="fn">l</span>)</span>)</span></span> <span class="fn">=</span>     <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span>
+      <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">g</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">r</span> <span class="fn">l</span>)</span>)</span>)</span>
+      <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelInclusionOfComp">cokernelInclusionOfComp</a> <span class="fn">r</span> <span class="fn">l</span>)</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">f</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">l</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">g</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">l</span>)</span></span></span></div></div><p>Equality after the two successive quotients by <code>R ⊆ H</code> descends to
+equality after the direct quotient by <code>H</code>.</p></div></div><div class="decl" id="MagnitudeConjecture.cokernel_π_comp_eqToIso_of_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L98-L107">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernel_π_comp_eqToIso_of_eq"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_eqToIso_of_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f </span><span class="fn">g</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn">f</span> <span class="fn">=</span> <span class="fn">g</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">f</span>)</span> <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.eqToIso</span> <span class="fn">⋯</span>)</span>.<span class="fn">hom</span></span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">g</span></span></span></div></div><p>The quotient map commutes with the canonical transport between cokernels
+of equal morphisms.</p></div></div><div class="decl" id="MagnitudeConjecture.cokernel_π_comp_eqToIso_of_eq_assoc"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L100-L100">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernel_π_comp_eqToIso_of_eq_assoc"><span class="name">MagnitudeConjecture</span>.<span class="name">cokernel_π_comp_eqToIso_of_eq_assoc</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f </span><span class="fn">g</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn">f</span> <span class="fn">=</span> <span class="fn">g</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h✝</span> : <span class="fn"><span class="fn"><span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">g</span></span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">f</span>)</span>
+    <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn"><span class="fn">(<span class="fn">CategoryTheory.eqToIso</span> <span class="fn">⋯</span>)</span>.<span class="fn">hom</span></span> <span class="fn">h✝</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel.π</span> <span class="fn">g</span>)</span> <span class="fn">h✝</span></span></span></div></div><p>The quotient map commutes with the canonical transport between cokernels
+of equal morphisms.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.IsWaistSubobject"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L111-L115">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.IsWaistSubobject"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">IsWaistSubobject</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">CategoryTheory.Subobject</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>A subobject is a waist when it is comparable with every subobject of the
+ambient object.  Successive terms of an ascending uniserial socle series have
+this stronger ambient property.</p><details id="instances-for-list-MagnitudeConjecture.IsUniserialObject.IsWaistSubobject" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.isEssentialMono_of_comp_iso"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L117-L136">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.isEssentialMono_of_comp_iso"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isEssentialMono_of_comp_iso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y </span><span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">≅</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html#MagnitudeConjecture.IsEssentialMono">IsEssentialMono</a> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">f</span> <span class="fn"><span class="fn">e</span>.<span class="fn">hom</span></span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html#MagnitudeConjecture.IsEssentialMono">IsEssentialMono</a> <span class="fn">f</span></span></div></div><p>Essentiality is unchanged by composing the target with an isomorphism.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.of_simple"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L138-L146">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.of_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">of_simple</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject">IsUniserialObject</a> <span class="fn">X</span></span></div></div><p>A simple object is uniserial.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.simple_le_nonzero_subobject_of_essential"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L148-L170">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.simple_le_nonzero_subobject_of_essential"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">simple_le_nonzero_subobject_of_essential</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">L </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">L</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hl</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html#MagnitudeConjecture.IsEssentialMono">IsEssentialMono</a> <span class="fn">l</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">CategoryTheory.Subobject</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hP</span> : <span class="fn"><span class="fn">P</span> <span class="fn">≠</span> <span class="fn">⊥</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">l</span></span> <span class="fn">≤</span> <span class="fn">P</span></span></div></div><p>A nonzero subobject of an essential extension of a simple object contains
+that simple subobject.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.isWaistSubobject_of_simple_essential"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L172-L181">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.isWaistSubobject_of_simple_essential"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isWaistSubobject_of_simple_essential</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">L </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">L</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hl</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html#MagnitudeConjecture.IsEssentialMono">IsEssentialMono</a> <span class="fn">l</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.IsWaistSubobject">IsWaistSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">l</span>)</span></span></div></div><p>A simple essential subobject is a waist in its ambient object.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.isWaistSubobject_of_essentialSimpleTop"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L183-L262">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.isWaistSubobject_of_essentialSimpleTop"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isWaistSubobject_of_essentialSimpleTop</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R </span><span class="fn">H </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <span class="fn"><span class="fn">R</span> <span class="fn">⟶</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">r</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">m</span> : <span class="fn"><span class="fn">H</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">m</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hR</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.IsWaistSubobject">IsWaistSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">r</span> <span class="fn">m</span>)</span>)</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">r</span>)</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">ht</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html#MagnitudeConjecture.IsEssentialMono">IsEssentialMono</a> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.cokernelInclusionOfComp">cokernelInclusionOfComp</a> <span class="fn">r</span> <span class="fn">m</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.IsWaistSubobject">IsWaistSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">m</span>)</span></span></div></div><p>A waist remains a waist after adjoining a simple layer which is essential
+in the quotient by the old waist.  This is the abstract propagation step for
+an ascending uniserial socle series.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.isWaistSubobject_restrict"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L264-L295">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.isWaistSubobject_restrict"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isWaistSubobject_restrict</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">L </span><span class="fn">H </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">L</span> <span class="fn">⟶</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">a</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">m</span> : <span class="fn"><span class="fn">H</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">m</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hL</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.IsWaistSubobject">IsWaistSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">a</span> <span class="fn">m</span>)</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.IsWaistSubobject">IsWaistSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">a</span>)</span></span></div></div><p>Restricting an ambient waist to an intermediate subobject preserves the
+waist property.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.essential_restrict_of_simple"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L297-L330">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.essential_restrict_of_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">essential_restrict_of_simple</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">L </span><span class="fn">H </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">L</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hl</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html#MagnitudeConjecture.IsEssentialMono">IsEssentialMono</a> <span class="fn">l</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">L</span> <span class="fn">⟶</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">a</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">m</span> : <span class="fn"><span class="fn">H</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">m</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">ham</span> : <span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">a</span> <span class="fn">m</span></span> <span class="fn">=</span> <span class="fn">l</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html#MagnitudeConjecture.IsEssentialMono">IsEssentialMono</a> <span class="fn">a</span></span></div></div><p>A simple essential subobject remains essential in every intermediate
+subobject through which its inclusion factors.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.of_essential_simple_cokernel"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L332-L423">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.of_essential_simple_cokernel"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">of_essential_simple_cokernel</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">L </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">L</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hl</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html#MagnitudeConjecture.IsEssentialMono">IsEssentialMono</a> <span class="fn">l</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hQ</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject">IsUniserialObject</a> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">l</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject">IsUniserialObject</a> <span class="fn">X</span></span></div></div><p>A simple essential subobject with uniserial cokernel has uniserial
+ambient object.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.isRadicalSubobject_of_waist_simple_cokernel"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L425-L490">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.isRadicalSubobject_of_waist_simple_cokernel"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isRadicalSubobject_of_waist_simple_cokernel</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">L </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">L</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">l</span>)</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hl</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.IsWaistSubobject">IsWaistSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">l</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject.IsRadicalSubobject">IsRadicalSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">l</span>)</span></span></div></div><p>A waist subobject with simple cokernel is the unique maximal subobject and
+hence contains every proper subobject.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.isRadicalSubobject_of_uniserial_simple_cokernel"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L492-L499">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.isRadicalSubobject_of_uniserial_simple_cokernel"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isRadicalSubobject_of_uniserial_simple_cokernel</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">L </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hX</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject">IsUniserialObject</a> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">L</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">l</span>)</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject.IsRadicalSubobject">IsRadicalSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">l</span>)</span></span></div></div><p>In a uniserial object, a subobject with simple cokernel is the unique
+maximal subobject and hence contains every proper subobject.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.of_waist_simple_cokernel"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L501-L510">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.of_waist_simple_cokernel"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">of_waist_simple_cokernel</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">L </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hL</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject">IsUniserialObject</a> <span class="fn">L</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">L</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">l</span>)</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hl</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.IsWaistSubobject">IsWaistSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">l</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject">IsUniserialObject</a> <span class="fn">X</span></span></div></div><p>Extending a uniserial object across a waist inclusion with simple
+cokernel again gives a uniserial object.</p></div></div><div class="decl" id="MagnitudeConjecture.IsUniserialObject.isRadicalSubobject_of_essential_simple_cokernel"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L512-L579">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.IsUniserialObject.isRadicalSubobject_of_essential_simple_cokernel"><span class="name">MagnitudeConjecture</span>.<span class="name">IsUniserialObject</span>.<span class="name">isRadicalSubobject_of_essential_simple_cokernel</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">L </span><span class="fn">X</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn"><span class="fn">L</span> <span class="fn">⟶</span> <span class="fn">X</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hl</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html#MagnitudeConjecture.IsEssentialMono">IsEssentialMono</a> <span class="fn">l</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">l</span>)</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject.IsRadicalSubobject">IsRadicalSubobject</a> <span class="fn">(<span class="fn">CategoryTheory.Subobject.mk</span> <span class="fn">l</span>)</span></span></div></div><p>A simple essential subobject with simple quotient contains every proper
+subobject of its ambient object.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.moduleTotalDimension_lt_of_epi_not_isIso"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L591-L659">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.CoveringHom.moduleTotalDimension_lt_of_epi_not_isIso"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">moduleTotalDimension_lt_of_epi_not_isIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{uK, uC}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M </span><span class="fn">N</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><span class="fn">M</span> <span class="fn">⟶</span> <span class="fn">N</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Epi</span> <span class="fn">p</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hp</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">CategoryTheory.IsIso</span> <span class="fn">p</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDecomposition.html#MagnitudeConjecture.CoveringHom.moduleTotalDimension">moduleTotalDimension</a> <span class="fn">N</span></span> <span class="fn">&lt;</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDecomposition.html#MagnitudeConjecture.CoveringHom.moduleTotalDimension">moduleTotalDimension</a> <span class="fn">M</span></span></span></div></div><p>A proper quotient of a finite module has strictly smaller total
+pointwise dimension.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.finiteDimensionalModule_isUniserial_of_essentialSimpleCokernelSuccessors"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.lean#L661-L707">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/EssentialUniserialExtension.html#MagnitudeConjecture.CoveringHom.finiteDimensionalModule_isUniserial_of_essentialSimpleCokernelSuccessors"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">finiteDimensionalModule_isUniserial_of_essentialSimpleCokernelSuccessors</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uK}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{uK, uC}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">Good</span> : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span> → <a href="../.././foundational_types.html">Prop</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hsuccessor</span> :
+  <span class="fn">∀ (<span class="fn">F</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>),
+    <span class="fn"><span class="fn"><span class="fn">Good</span> <span class="fn">F</span></span> →
+      <span class="fn"><span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">CategoryTheory.Limits.IsZero</span> <span class="fn">F</span></span></span> →
+        <span class="fn">∃ (<span class="fn">L</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>) (<span class="fn">l</span> : <span class="fn"><span class="fn">L</span> <span class="fn">⟶</span> <span class="fn">F</span></span>),
+          <span class="fn"><span class="fn"><span class="fn">CategoryTheory.Simple</span> <span class="fn">L</span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">CategoryTheory.Mono</span> <span class="fn">l</span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/InjectiveEnvelope.html#MagnitudeConjecture.IsEssentialMono">IsEssentialMono</a> <span class="fn">l</span></span> <span class="fn">∧</span> <span class="fn"><span class="fn">Good</span> <span class="fn">(<span class="fn">CategoryTheory.Limits.cokernel</span> <span class="fn">l</span>)</span></span></span></span></span></span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.FiniteDimensionalModuleCategory">FiniteDimensionalModuleCategory</a> <span class="fn">k</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hF</span> : <span class="fn"><span class="fn">Good</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/UniserialObject.html#MagnitudeConjecture.IsUniserialObject">IsUniserialObject</a> <span class="fn">F</span></span></div></div><p>Finite ascending-socle induction.  If every nonzero object in a class has
+a simple essential subobject whose cokernel remains in the class, then every
+object in the class is uniserial.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

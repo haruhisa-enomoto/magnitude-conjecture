@@ -1,0 +1,656 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.Algebra.StringArrowIdeal</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.Algebra.StringArrowIdeal";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">Algebra</span>.<span class="name">StringArrowIdeal</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/Algebra/StringPathCombinatorics.html">MagnitudeConjecture.Algebra.StringPathCombinatorics</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.Algebra.StringArrowIdeal" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">RightContinuationAt</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCompositionLinearMap"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightArrowCompositionLinearMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToSurviving"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAtToSurviving</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToSurviving_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAtToSurviving_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToPath"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAtToPath</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToPath_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAtToPath_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAt_finite"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAt_finite</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtLengthEmbedding"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAtLengthEmbedding</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAt_pathMap"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAt_pathMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAt_linearIndependent"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAt_linearIndependent</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.span_rightContinuationAt_eq_range"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">span_rightContinuationAt_eq_range</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCoordinateBasis"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightArrowCoordinateBasis</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.finrank_rightArrowCompositionRange_eq_natCard"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">finrank_rightArrowCompositionRange_eq_natCard</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">LeftContinuationAt</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCompositionLinearMap"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftArrowCompositionLinearMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToSurviving"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAtToSurviving</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToSurviving_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAtToSurviving_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToPath"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAtToPath</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToPath_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAtToPath_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAt_finite"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAt_finite</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtLengthEmbedding"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAtLengthEmbedding</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAt_pathMap"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAt_pathMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAt_linearIndependent"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAt_linearIndependent</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.span_leftContinuationAt_eq_range"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">span_leftContinuationAt_eq_range</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCoordinateBasis"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftArrowCoordinateBasis</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCoordinateBasis_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftArrowCoordinateBasis_apply</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringPresentation.finrank_leftArrowCompositionRange_eq_natCard"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">finrank_leftArrowCompositionRange_eq_natCard</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Path-bases-for-arrow-generated-ideals" class="markdown-heading">Path bases for arrow-generated ideals <a class="hover-link" href="#Path-bases-for-arrow-generated-ideals">#</a></h1><p>For a monomial special-biserial presentation, composition with one displayed
+arrow has a basis indexed by the surviving continuations of that arrow.  The
+continuation basis has at most one vector in every path length by
+<code>StringPathCombinatorics</code>.  These are the pointwise path bases underlying the
+uniserial modules <code>aA</code> in the string-algebra argument of the frozen manuscript.</p></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L28-L35">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">RightContinuationAt</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a> u</div></div><p>Surviving continuations from the endpoint of <code>a</code> to a fixed vertex <code>z</code>.
+They index the <code>z</code>-coordinate of the right ideal generated by <code>a</code>.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCompositionLinearMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L37-L51">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCompositionLinearMap"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightArrowCompositionLinearMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.obj">obj</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">z</span></span> <span class="fn">⟶</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.obj">obj</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">y</span></span>)</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.obj">obj</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">z</span></span> <span class="fn">⟶</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.obj">obj</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">x</span></span></span></span></div></div><p>Postcomposition by the image of <code>a</code>, in the reversed categorical
+orientation of the bound-quiver category.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCompositionLinearMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToSurviving"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L53-L61">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToSurviving"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAtToSurviving</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt">RightContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span> → <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.SurvivingPath">SurvivingPath</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">x</span> <span class="fn">z</span></span></span></div></div><p>A continuation indexes its concatenated surviving path.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToSurviving" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToSurviving_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L63-L71">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToSurviving_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAtToSurviving_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToSurviving">rightContinuationAtToSurviving</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span></span></div></div><p>Concatenation with a fixed initial arrow is injective.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToPath"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L73-L79">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToPath"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAtToPath</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt">RightContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span> → <span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPathCombinatorics.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.RightContinuationPath">RightContinuationPath</a></span> <span class="fn">a</span></span></span></div></div><p>A fixed-endpoint continuation is a continuation with varying endpoint.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToPath" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToPath_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L81-L91">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToPath_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAtToPath_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToPath">rightContinuationAtToPath</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span></span></div></div><p>Forgetting a fixed endpoint is injective.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAt_finite"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L93-L102">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAt_finite"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAt_finite</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Finite</span> <span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt">RightContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span></span></div></div><p>Fixed-endpoint continuations form a finite type.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtLengthEmbedding"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L104-L114">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtLengthEmbedding"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAtLengthEmbedding</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt">RightContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span> <span class="fn">↪</span> <span class="fn">ℕ</span></span></div></div><p>Path length embeds the fixed-endpoint continuation basis into the natural
+numbers.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtLengthEmbedding" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAt_pathMap"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L116-L130">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAt_pathMap"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAt_pathMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">q</span> : <span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt">RightContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.pathMap">pathMap</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">↑<span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAtToSurviving">rightContinuationAtToSurviving</a></span> <span class="fn">a</span> <span class="fn">z</span> <span class="fn">q</span>)</span></span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCompositionLinearMap">rightArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.pathMap">pathMap</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">↑<span class="fn">q</span></span>)</span></span></span></div></div><p>The concatenated path map is the corresponding arrow-composition image.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAt_linearIndependent"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L132-L155">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightContinuationAt_linearIndependent"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightContinuationAt_linearIndependent</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">LinearIndependent</span> <span class="fn">k</span> <span class="fn">fun (<span class="fn">q</span> : <span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt">RightContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span>) =&gt;
+  <span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCompositionLinearMap">rightArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.pathMap">pathMap</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">↑<span class="fn">q</span></span>)</span></span></span></span></div></div><p>Concatenated surviving continuations of an arrow are linearly
+independent.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.span_rightContinuationAt_eq_range"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L157-L197">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.span_rightContinuationAt_eq_range"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">span_rightContinuationAt_eq_range</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Submodule.span</span> <span class="fn">k</span>
+    <span class="fn">(<span class="fn">Set.range</span> <span class="fn">fun (<span class="fn">q</span> : <span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt">RightContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span>) =&gt; <span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCompositionLinearMap">rightArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.pathMap">pathMap</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">↑<span class="fn">q</span></span>)</span></span></span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCompositionLinearMap">rightArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span>.<span class="fn">range</span></span></span></div></div><p>The surviving continuations span the image of composition with <code>a</code>.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCoordinateBasis"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L199-L226">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCoordinateBasis"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">rightArrowCoordinateBasis</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Module.Basis</span> <span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt">RightContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span> <span class="fn">k</span> <span class="fn">↥<span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCompositionLinearMap">rightArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span>.<span class="fn">range</span></span></span></span></div></div><p>The pointwise arrow-generated subspace has its literal continuation-path
+basis.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCoordinateBasis" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.finrank_rightArrowCompositionRange_eq_natCard"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L228-L240">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.finrank_rightArrowCompositionRange_eq_natCard"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">finrank_rightArrowCompositionRange_eq_natCard</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">↥<span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.rightArrowCompositionLinearMap">rightArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span>.<span class="fn">range</span></span></span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Nat.card</span> <span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.RightContinuationAt">RightContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span></span></span></div></div><p>The dimension of one coordinate of the arrow-generated ideal is the
+number of surviving paths ending there which begin with the chosen arrow.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L242-L250">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">LeftContinuationAt</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a> u</div></div><p>Surviving continuations from a fixed vertex <code>z</code> to the source of <code>a</code>.
+They index the <code>z</code>-coordinate of the categorical right ideal represented by
+the displayed arrow.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCompositionLinearMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L252-L266">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCompositionLinearMap"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftArrowCompositionLinearMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.obj">obj</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">x</span></span> <span class="fn">⟶</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.obj">obj</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">z</span></span>)</span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.obj">obj</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">y</span></span> <span class="fn">⟶</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.obj">obj</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">z</span></span></span></span></div></div><p>Precomposition by the image of <code>a</code>, in the reversed categorical
+orientation of the bound-quiver category.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCompositionLinearMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToSurviving"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L268-L276">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToSurviving"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAtToSurviving</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt">LeftContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span> → <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.SurvivingPath">SurvivingPath</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">z</span> <span class="fn">y</span></span></span></div></div><p>A left continuation indexes its concatenated surviving path.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToSurviving" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToSurviving_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L278-L286">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToSurviving_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAtToSurviving_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToSurviving">leftContinuationAtToSurviving</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span></span></div></div><p>Concatenation with a fixed final arrow is injective.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToPath"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L288-L295">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToPath"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAtToPath</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt">LeftContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span> → <span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPathCombinatorics.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.LeftContinuationPath">LeftContinuationPath</a></span> <span class="fn">a</span></span></span></div></div><p>A fixed-startpoint left continuation is a continuation with varying
+startpoint.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToPath" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToPath_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L297-L307">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToPath_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAtToPath_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToPath">leftContinuationAtToPath</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span></span></div></div><p>Forgetting a fixed startpoint is injective.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAt_finite"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L309-L318">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAt_finite"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAt_finite</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Finite</span> <span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt">LeftContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span></span></div></div><p>Fixed-startpoint left continuations form a finite type.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtLengthEmbedding"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L320-L330">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtLengthEmbedding"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAtLengthEmbedding</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt">LeftContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span> <span class="fn">↪</span> <span class="fn">ℕ</span></span></div></div><p>Path length embeds the fixed-startpoint left continuation basis into the
+natural numbers.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtLengthEmbedding" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAt_pathMap"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L332-L346">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAt_pathMap"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAt_pathMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt">LeftContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.pathMap">pathMap</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">↑<span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAtToSurviving">leftContinuationAtToSurviving</a></span> <span class="fn">a</span> <span class="fn">z</span> <span class="fn">p</span>)</span></span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCompositionLinearMap">leftArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.pathMap">pathMap</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">↑<span class="fn">p</span></span>)</span></span></span></div></div><p>The concatenated path map is the corresponding left-composition image.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAt_linearIndependent"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L348-L371">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftContinuationAt_linearIndependent"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftContinuationAt_linearIndependent</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">LinearIndependent</span> <span class="fn">k</span> <span class="fn">fun (<span class="fn">p</span> : <span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt">LeftContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span>) =&gt; <span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCompositionLinearMap">leftArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.pathMap">pathMap</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">↑<span class="fn">p</span></span>)</span></span></span></span></div></div><p>Concatenated surviving left continuations of an arrow are linearly
+independent.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.span_leftContinuationAt_eq_range"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L373-L414">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.span_leftContinuationAt_eq_range"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">span_leftContinuationAt_eq_range</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Submodule.span</span> <span class="fn">k</span>
+    <span class="fn">(<span class="fn">Set.range</span> <span class="fn">fun (<span class="fn">p</span> : <span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt">LeftContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span>) =&gt; <span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCompositionLinearMap">leftArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.pathMap">pathMap</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">↑<span class="fn">p</span></span>)</span></span></span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCompositionLinearMap">leftArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span>.<span class="fn">range</span></span></span></div></div><p>The surviving left continuations span the image of composition with
+<code>a</code>.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCoordinateBasis"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L416-L443">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCoordinateBasis"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftArrowCoordinateBasis</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Module.Basis</span> <span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt">LeftContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span> <span class="fn">k</span> <span class="fn">↥<span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCompositionLinearMap">leftArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span>.<span class="fn">range</span></span></span></span></div></div><p>The pointwise categorical arrow-generated subspace has its literal left
+continuation-path basis.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCoordinateBasis" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCoordinateBasis_apply"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L445-L454">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCoordinateBasis_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">leftArrowCoordinateBasis_apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt">LeftContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCoordinateBasis">leftArrowCoordinateBasis</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span> <span class="fn">p</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">⟨</span><span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCompositionLinearMap">leftArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.pathMap">pathMap</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">↑<span class="fn">p</span></span>)</span></span>, <span class="fn">⋯</span><span class="fn">⟩</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringPresentation.finrank_leftArrowCompositionRange_eq_natCard"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringArrowIdeal.lean#L456-L469">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.finrank_leftArrowCompositionRange_eq_natCard"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringPresentation</span>.<span class="name">finrank_leftArrowCompositionRange_eq_natCard</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringBoundQuiver.html#MagnitudeConjecture.BoundQuiver.StringPresentation">StringPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">z</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.finrank</span> <span class="fn">k</span> <span class="fn">↥<span class="fn"><span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.leftArrowCompositionLinearMap">leftArrowCompositionLinearMap</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span>.<span class="fn">range</span></span></span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Nat.card</span> <span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringArrowIdeal.html#MagnitudeConjecture.BoundQuiver.StringPresentation.LeftContinuationAt">LeftContinuationAt</a></span> <span class="fn">a</span> <span class="fn">z</span>)</span></span></span></div></div><p>The dimension of one coordinate of the categorical right arrow ideal is
+the number of surviving paths starting there which end with the chosen
+arrow.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

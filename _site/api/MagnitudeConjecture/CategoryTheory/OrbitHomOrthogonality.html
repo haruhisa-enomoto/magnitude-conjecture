@@ -1,0 +1,747 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.OrbitHomOrthogonality</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.OrbitHomOrthogonality";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">OrbitHomOrthogonality</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html">MagnitudeConjecture.CategoryTheory.AlmostSplitLocalFunctor</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/IndecomposableOfLocalEnd.html">MagnitudeConjecture.CategoryTheory.IndecomposableOfLocalEnd</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.html">MagnitudeConjecture.CategoryTheory.IrreducibleLocalFunctor</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/DirectSum/Module.lean">Mathlib.Algebra.DirectSum.Module</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/CategoryTheory/Linear/LinearFunctor.lean">Mathlib.CategoryTheory.Linear.LinearFunctor</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.OrbitHomOrthogonality" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.identityLof"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">identityLof</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.uniqueComponentLinearEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">uniqueComponentLinearEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span>.<span class="name">lift_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift_surjective_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span>.<span class="name">lift_surjective_of_orthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.liftLinearEquivOfOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span>.<span class="name">liftLinearEquivOfOrthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.liftLinearEquivOfOrthogonal_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span>.<span class="name">liftLinearEquivOfOrthogonal_apply</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift_bijective_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span>.<span class="name">lift_bijective_of_orthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">TranslateHomOrthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.endRingEquivOfEndOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">endRingEquivOfEndOrthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.endRingEquivOfEndOrthogonal_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">endRingEquivOfEndOrthogonal_apply</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.indecomposable_map_of_end_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">indecomposable_map_of_end_orthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.mapLinearEquivOfOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">mapLinearEquivOfOrthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.mapLinearEquivOfOrthogonal_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">mapLinearEquivOfOrthogonal_apply</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.map_bijective_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">map_bijective_of_orthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.fullOfOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">fullOfOrthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.map_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">map_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">faithful</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.isIrreducibleMorphism_map_iff_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">isIrreducibleMorphism_map_iff_of_orthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.rightAlmostSplit_map_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">rightAlmostSplit_map_of_orthogonal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.leftAlmostSplit_map_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">leftAlmostSplit_map_of_orthogonal</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Orbit-Hom-formulas-under-translate-orthogonality" class="markdown-heading">Orbit Hom formulas under translate orthogonality <a class="hover-link" href="#Orbit-Hom-formulas-under-translate-orthogonality">#</a></h1><p>Gabriel's orbit Hom formula expresses a downstairs Hom space as the direct
+sum of the Hom spaces from one lift to all translates of the other.  If every
+nonidentity translated Hom vanishes, the direct sum has only its identity
+component.  This file proves that the canonical map from the original Hom
+space is then a linear equivalence.  It is the linear-algebraic mechanism by
+which separated covering windows make push-down fully faithful locally.</p></div><div class="decl" id="MagnitudeConjecture.CoveringHom.identityLof"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L33-L37">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.identityLof"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">identityLof</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">H</span> <span class="fn">1</span></span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">DirectSum</span> <span class="fn">G</span> <span class="fn">fun (<span class="fn">g</span> : <span class="fn">G</span>) =&gt; <span class="fn"><span class="fn">H</span> <span class="fn">g</span></span></span></span></span></div></div><p>The inclusion of the identity-indexed summand, without exposing a
+<code>DecidableEq G</code> parameter in later covering data.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.identityLof" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.uniqueComponentLinearEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L39-L59">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.uniqueComponentLinearEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">uniqueComponentLinearEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><span class="fn">I</span> → <a href="../.././foundational_types.html">Type</a> w</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">M</span> <span class="fn">i</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">i</span> : <span class="fn">I</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">M</span> <span class="fn">i</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">i₀</span> : <span class="fn">I</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn">∀ (<span class="fn">i</span> : <span class="fn">I</span>), <span class="fn"><span class="fn"><span class="fn">i</span> <span class="fn">≠</span> <span class="fn">i₀</span></span> → <span class="fn"><span class="fn">Subsingleton</span> <span class="fn">(<span class="fn">M</span> <span class="fn">i</span>)</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">M</span> <span class="fn">i₀</span></span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">DirectSum</span> <span class="fn">I</span> <span class="fn">fun (<span class="fn">i</span> : <span class="fn">I</span>) =&gt; <span class="fn"><span class="fn">M</span> <span class="fn">i</span></span></span></span></span></div></div><p>A direct sum whose components away from <code>i₀</code> are subsingletons is
+linearly equivalent to its <code>i₀</code>-component.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.uniqueComponentLinearEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.OrbitHomDecomposition"><div class="structure"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L61-L68">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">Downstairs</span> : <a href="../.././foundational_types.html">Type</a> w')</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a> (max (max v w) w')</div></div><p>The data of an orbit Hom formula together with its compatibility with the
+canonical map from the identity translate.</p><ul class="structure_fields" id="MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.mk"><li id="MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.homEquiv" class="structure_field"><div class="structure_field_info">homEquiv : <span class="fn"><span class="fn">Downstairs</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">DirectSum</span> <span class="fn">G</span> <span class="fn">fun (<span class="fn">g</span> : <span class="fn">G</span>) =&gt; <span class="fn"><span class="fn">H</span> <span class="fn">g</span></span></span></span></span></div></li><li id="MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift" class="structure_field"><div class="structure_field_info">lift : <span class="fn"><span class="fn"><span class="fn">H</span> <span class="fn">1</span></span> <span class="fn">→ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">Downstairs</span></span></div></li><li id="MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.homEquiv_lift" class="structure_field"><div class="structure_field_info">homEquiv_lift<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">H</span> <span class="fn">1</span></span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.homEquiv">homEquiv</a></span> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift">lift</a></span> <span class="fn">f</span>)</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.identityLof">identityLof</a> <span class="fn">f</span></span></span></div></li></ul><details id="instances-for-list-MagnitudeConjecture.CoveringHom.OrbitHomDecomposition" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L75-L86">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span>.<span class="name">lift_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Downstairs</span> : <a href="../.././foundational_types.html">Type</a> w'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition">OrbitHomDecomposition</a> <span class="fn">Downstairs</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">⇑<span class="fn"><span class="fn">D</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift">lift</a></span></span></span></div></div><p>Translate orthogonality makes the canonical identity-component map
+injective.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift_surjective_of_orthogonal"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L88-L100">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift_surjective_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span>.<span class="name">lift_surjective_of_orthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Downstairs</span> : <a href="../.././foundational_types.html">Type</a> w'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition">OrbitHomDecomposition</a> <span class="fn">Downstairs</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn"><span class="fn">g</span> <span class="fn">≠</span> <span class="fn">1</span></span> → <span class="fn"><span class="fn">Subsingleton</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Surjective</span> <span class="fn">⇑<span class="fn"><span class="fn">D</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift">lift</a></span></span></span></div></div><p>If all nonidentity translated Hom spaces vanish, the canonical
+identity-component map is surjective.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.liftLinearEquivOfOrthogonal"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L102-L109">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.liftLinearEquivOfOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span>.<span class="name">liftLinearEquivOfOrthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Downstairs</span> : <a href="../.././foundational_types.html">Type</a> w'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition">OrbitHomDecomposition</a> <span class="fn">Downstairs</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn"><span class="fn">g</span> <span class="fn">≠</span> <span class="fn">1</span></span> → <span class="fn"><span class="fn">Subsingleton</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">H</span> <span class="fn">1</span></span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn">Downstairs</span></span></div></div><p>Under translate orthogonality, the canonical map appearing in the orbit
+Hom formula is a linear equivalence.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.liftLinearEquivOfOrthogonal" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.liftLinearEquivOfOrthogonal_apply"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L111-L116">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.liftLinearEquivOfOrthogonal_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span>.<span class="name">liftLinearEquivOfOrthogonal_apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Downstairs</span> : <a href="../.././foundational_types.html">Type</a> w'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition">OrbitHomDecomposition</a> <span class="fn">Downstairs</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn"><span class="fn">g</span> <span class="fn">≠</span> <span class="fn">1</span></span> → <span class="fn"><span class="fn">Subsingleton</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">H</span> <span class="fn">1</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">D</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.liftLinearEquivOfOrthogonal">liftLinearEquivOfOrthogonal</a></span> <span class="fn">orthogonal</span>)</span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">D</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift">lift</a></span> <span class="fn">f</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift_bijective_of_orthogonal"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L118-L124">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift_bijective_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">OrbitHomDecomposition</span>.<span class="name">lift_bijective_of_orthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Downstairs</span> : <a href="../.././foundational_types.html">Type</a> w'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">Downstairs</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition">OrbitHomDecomposition</a> <span class="fn">Downstairs</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn"><span class="fn">g</span> <span class="fn">≠</span> <span class="fn">1</span></span> → <span class="fn"><span class="fn">Subsingleton</span> <span class="fn">(<span class="fn">H</span> <span class="fn">g</span>)</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Bijective</span> <span class="fn">⇑<span class="fn"><span class="fn">D</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift">lift</a></span></span></span></div></div><p>Bijective form used to install local fullness and faithfulness of a
+push-down functor on a separated window.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition"><div class="structure"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L139-L148">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a> (max (max (max (max uC v) vC) vD) w)</div></div><p>A Gabriel-shaped orbit Hom formula for every pair of objects of a source
+category.  <code><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.sourceEquiv">sourceEquiv</a></code> identifies the identity summand with the original
+Hom space, and <code><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.map_compat">map_compat</a></code> says that inclusion of that summand is the functor's
+map on morphisms.</p><ul class="structure_fields" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.mk"><li id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.sourceEquiv" class="structure_field"><div class="structure_field_info">sourceEquiv<span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+ : <span class="fn"><span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">1</span></span></span></div></li><li id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.homDecomposition" class="structure_field"><div class="structure_field_info">homDecomposition<span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+ : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition">OrbitHomDecomposition</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">X</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">Y</span></span>)</span></span></div></li><li id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.map_compat" class="structure_field"><div class="structure_field_info">map_compat<span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.homDecomposition">homDecomposition</a></span> <span class="fn">X</span> <span class="fn">Y</span>)</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.OrbitHomDecomposition.lift">lift</a></span> <span class="fn">(<span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.sourceEquiv">sourceEquiv</a></span> <span class="fn">X</span> <span class="fn">Y</span>)</span> <span class="fn">f</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span></span></span></div></li></ul><details id="instances-for-list-MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L150-L154">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">TranslateHomOrthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>Every nonidentity translate Hom summand vanishes.  When <code>C</code> is the full
+subcategory on a covering window, this is the pairwise separation condition
+needed for local full faithfulness.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.endRingEquivOfEndOrthogonal"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L160-L201">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.endRingEquivOfEndOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">endRingEquivOfEndOrthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn"><span class="fn">g</span> <span class="fn">≠</span> <span class="fn">1</span></span> → <span class="fn"><span class="fn">Subsingleton</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">X</span> <span class="fn">g</span>)</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.End</span> <span class="fn">X</span></span> <span class="fn">≃+*</span> <span class="fn"><span class="fn">CategoryTheory.End</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span></span></span></div></div><p>If the nonidentity summands in the orbit formula for <code>End(X)</code> vanish,
+then the functor identifies the endomorphism rings of <code>X</code> and <code>F.obj X</code>.
+Unlike global local full faithfulness, this needs orthogonality only for the
+single pair <code>(X, X)</code>.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.endRingEquivOfEndOrthogonal" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.endRingEquivOfEndOrthogonal_apply"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L203-L209">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.endRingEquivOfEndOrthogonal_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">endRingEquivOfEndOrthogonal_apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn"><span class="fn">g</span> <span class="fn">≠</span> <span class="fn">1</span></span> → <span class="fn"><span class="fn">Subsingleton</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">X</span> <span class="fn">g</span>)</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">CategoryTheory.End</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">E</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.endRingEquivOfEndOrthogonal">endRingEquivOfEndOrthogonal</a></span> <span class="fn">X</span> <span class="fn">orthogonal</span>)</span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.indecomposable_map_of_end_orthogonal"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L211-L222">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.indecomposable_map_of_end_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">indecomposable_map_of_end_orthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn">∀ (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn"><span class="fn">g</span> <span class="fn">≠</span> <span class="fn">1</span></span> → <span class="fn"><span class="fn">Subsingleton</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">X</span> <span class="fn">g</span>)</span></span></span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsLocalRing</span> <span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">X</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Limits.HasBinaryBiproducts</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Indecomposable</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">X</span>)</span></span></div></div><p>Self-translate orthogonality preserves an object with local endomorphism
+ring as an indecomposable object downstairs.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.mapLinearEquivOfOrthogonal"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L224-L232">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.mapLinearEquivOfOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">mapLinearEquivOfOrthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal">TranslateHomOrthogonal</a> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span>)</span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">X</span></span> <span class="fn">⟶</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">obj</span></span> <span class="fn">Y</span></span></span></span></div></div><p>Pairwise translate orthogonality turns the orbit Hom formula into a linear
+equivalence between each source and image Hom space.</p><details id="instances-for-list-MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.mapLinearEquivOfOrthogonal" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.mapLinearEquivOfOrthogonal_apply"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L234-L239">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.mapLinearEquivOfOrthogonal_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">mapLinearEquivOfOrthogonal_apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal">TranslateHomOrthogonal</a> <span class="fn">K</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">E</span>.<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.mapLinearEquivOfOrthogonal">mapLinearEquivOfOrthogonal</a></span> <span class="fn">orthogonal</span> <span class="fn">X</span> <span class="fn">Y</span>)</span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.map_bijective_of_orthogonal"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L241-L253">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.map_bijective_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">map_bijective_of_orthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal">TranslateHomOrthogonal</a> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Bijective</span> <span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span></span></div></div><p>On every pair of source objects, the functor map is bijective.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.fullOfOrthogonal"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L255-L261">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.fullOfOrthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">fullOfOrthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal">TranslateHomOrthogonal</a> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span></div></div><p>The actual Mathlib fullness instance supplied by an orthogonal orbit Hom
+decomposition.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.map_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L263-L271">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.map_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">map_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span></span></div></div><p>Inclusion of the identity translate is injective before any orthogonality
+hypothesis is imposed.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L273-L277">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.faithful"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span></div></div><p>Every functor carrying a Gabriel-shaped orbit Hom decomposition is
+faithful; translate orthogonality is needed only for fullness.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.isIrreducibleMorphism_map_iff_of_orthogonal"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L279-L291">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.isIrreducibleMorphism_map_iff_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">isIrreducibleMorphism_map_iff_of_orthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal">TranslateHomOrthogonal</a> <span class="fn">K</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hclosed</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/IrreducibleLocalFunctor.html#MagnitudeConjecture.IsLocallyFactorizationClosedAt">IsLocallyFactorizationClosedAt</a> <span class="fn">F</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/IrreducibleCofinite.html#QuotientSubmoduleEquidistribution.IsIrreducibleMorphism">QuotientSubmoduleEquidistribution.IsIrreducibleMorphism</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span> <span class="fn">↔</span>   <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/IrreducibleCofinite.html#QuotientSubmoduleEquidistribution.IsIrreducibleMorphism">QuotientSubmoduleEquidistribution.IsIrreducibleMorphism</a> <span class="fn">f</span></span></span></div></div><p>The orbit Hom formula and translate orthogonality feed directly into the
+local irreducibility-transport theorem.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.rightAlmostSplit_map_of_orthogonal"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L293-L306">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.rightAlmostSplit_map_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">rightAlmostSplit_map_of_orthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal">TranslateHomOrthogonal</a> <span class="fn">K</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">QuotientSubmoduleEquidistribution.IsRightAlmostSplit</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hclosed</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.IsLocallyRightObjectClosedAt">IsLocallyRightObjectClosedAt</a> <span class="fn">F</span> <span class="fn">Y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">QuotientSubmoduleEquidistribution.IsRightAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></div></div><p>The same local full-faithfulness mechanism preserves a right almost-split
+map once the relevant incoming objects lie in the controlled image.</p></div></div><div class="decl" id="MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.leftAlmostSplit_map_of_orthogonal"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.lean#L308-L320">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition.leftAlmostSplit_map_of_orthogonal"><span class="name">MagnitudeConjecture</span>.<span class="name">CoveringHom</span>.<span class="name">FunctorOrbitHomDecomposition</span>.<span class="name">leftAlmostSplit_map_of_orthogonal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Semiring</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Group</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> uC}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vC, uC}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> uD}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{vD, uD}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">K</span> : <span class="fn"><span class="fn">C</span> → <span class="fn">C</span> → <span class="fn"><span class="fn">G</span> → <a href="../.././foundational_types.html">Type</a> w</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">AddCommMonoid</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>) → <span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>) → <span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">(<span class="fn">K</span> <span class="fn">X</span> <span class="fn">Y</span> <span class="fn">g</span>)</span></span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.FunctorOrbitHomDecomposition">FunctorOrbitHomDecomposition</a> <span class="fn">F</span> <span class="fn">K</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">orthogonal</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitHomOrthogonality.html#MagnitudeConjecture.CoveringHom.TranslateHomOrthogonal">TranslateHomOrthogonal</a> <span class="fn">K</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">QuotientSubmoduleEquidistribution.IsLeftAlmostSplit</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hclosed</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitLocalFunctor.html#MagnitudeConjecture.IsLocallyLeftObjectClosedAt">IsLocallyLeftObjectClosedAt</a> <span class="fn">F</span> <span class="fn">X</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">QuotientSubmoduleEquidistribution.IsLeftAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></div></div><p>Dual local almost-split transport from the orthogonal orbit Hom formula.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

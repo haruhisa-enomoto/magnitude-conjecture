@@ -1,0 +1,168 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.AlmostSplitEquivalence</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.AlmostSplitEquivalence";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">AlmostSplitEquivalence</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitUniqueness.html">QuotientSubmoduleEquidistribution.RepresentationTheory.AlmostSplitUniqueness</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.AlmostSplitEquivalence" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.IsRightAlmostSplit.map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsRightAlmostSplit</span>.<span class="name">map_equivalence</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.IsRightAlmostSplit.of_map_fully_faithful"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsRightAlmostSplit</span>.<span class="name">of_map_fully_faithful</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.IsRightAlmostSplit.of_map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsRightAlmostSplit</span>.<span class="name">of_map_equivalence</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsLeftAlmostSplit</span>.<span class="name">map_equivalence</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.of_map_fully_faithful"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsLeftAlmostSplit</span>.<span class="name">of_map_fully_faithful</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.of_map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsLeftAlmostSplit</span>.<span class="name">of_map_equivalence</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.postcomp_iso"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsLeftAlmostSplit</span>.<span class="name">postcomp_iso</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.IsRightMinimal.map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsRightMinimal</span>.<span class="name">map_equivalence</span></a></div><div class="nav_link"><a class="break_within" href="#QuotientSubmoduleEquidistribution.IsLeftMinimal.map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsLeftMinimal</span>.<span class="name">map_equivalence</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Almost-split-morphisms-under-equivalence" class="markdown-heading">Almost-split morphisms under equivalence <a class="hover-link" href="#Almost-split-morphisms-under-equivalence">#</a></h1><p>An ordinary categorical equivalence preserves right and left almost-split
+morphisms and their minimality.  The proof uses essential surjectivity to
+pull an arbitrary test object back across the equivalence and full
+faithfulness to reflect splittings.</p><p>This is the covariant companion of the anti-equivalence argument in
+<code>QuotientSubmoduleEquidistribution.RepresentationTheory.AlmostSplitDuality</code>;
+only the two transport lemmas required by the support-algebra passage are
+included here.</p></div><div class="decl" id="QuotientSubmoduleEquidistribution.IsRightAlmostSplit.map_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.lean#L29-L56">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit.map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsRightAlmostSplit</span>.<span class="name">map_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">IsRightAlmostSplit</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">IsRightAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></div></div><p>A right almost-split morphism remains right almost split after applying
+an equivalence.</p></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.IsRightAlmostSplit.of_map_fully_faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.lean#L58-L75">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit.of_map_fully_faithful"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsRightAlmostSplit</span>.<span class="name">of_map_fully_faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">IsRightAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">IsRightAlmostSplit</a> <span class="fn">f</span></span></div></div><p>Right almost-splitness is reflected by a fully faithful functor.</p></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.IsRightAlmostSplit.of_map_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.lean#L77-L82">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit.of_map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsRightAlmostSplit</span>.<span class="name">of_map_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">IsRightAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsRightAlmostSplit">IsRightAlmostSplit</a> <span class="fn">f</span></span></div></div><p>Right almost-splitness is reflected by an equivalence.</p></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.map_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.lean#L84-L111">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsLeftAlmostSplit</span>.<span class="name">map_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">IsLeftAlmostSplit</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">IsLeftAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></div></div><p>A left almost-split morphism remains left almost split after applying an
+equivalence.</p></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.of_map_fully_faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.lean#L113-L130">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.of_map_fully_faithful"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsLeftAlmostSplit</span>.<span class="name">of_map_fully_faithful</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><span class="fn">CategoryTheory.Functor</span> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Full</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<span class="fn">Faithful</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">IsLeftAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">IsLeftAlmostSplit</a> <span class="fn">f</span></span></div></div><p>Left almost-splitness is reflected by a fully faithful functor.</p></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.of_map_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.lean#L132-L137">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.of_map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsLeftAlmostSplit</span>.<span class="name">of_map_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">IsLeftAlmostSplit</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">IsLeftAlmostSplit</a> <span class="fn">f</span></span></div></div><p>Left almost-splitness is reflected by an equivalence.</p></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.postcomp_iso"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.lean#L139-L154">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit.postcomp_iso"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsLeftAlmostSplit</span>.<span class="name">postcomp_iso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y </span><span class="fn">Y'</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">IsLeftAlmostSplit</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">≅</span> <span class="fn">Y'</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/RepresentationTheory/AlmostSplitCofinite.html#QuotientSubmoduleEquidistribution.IsLeftAlmostSplit">IsLeftAlmostSplit</a> <span class="fn">(<span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">f</span> <span class="fn"><span class="fn">e</span>.<span class="fn">hom</span></span>)</span></span></div></div><p>Postcomposition by an isomorphism preserves left almost-splitness.</p></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.IsRightMinimal.map_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.lean#L156-L170">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.html#QuotientSubmoduleEquidistribution.IsRightMinimal.map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsRightMinimal</span>.<span class="name">map_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsRightMinimal">IsRightMinimal</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsRightMinimal">IsRightMinimal</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></div></div><p>Right minimality is preserved after applying an equivalence.</p></div></div><div class="decl" id="QuotientSubmoduleEquidistribution.IsLeftMinimal.map_equivalence"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.lean#L172-L186">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/AlmostSplitEquivalence.html#QuotientSubmoduleEquidistribution.IsLeftMinimal.map_equivalence"><span class="name">QuotientSubmoduleEquidistribution</span>.<span class="name">IsLeftMinimal</span>.<span class="name">map_equivalence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../.././foundational_types.html">Type</a> u'}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v', u'}</span> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">Y</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsLeftMinimal">IsLeftMinimal</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <span class="fn"><span class="fn">C</span> <span class="fn">≌</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/MinimalMorphism.html#QuotientSubmoduleEquidistribution.IsLeftMinimal">IsLeftMinimal</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">E</span>.<span class="fn">functor</span></span>.<span class="fn">map</span></span> <span class="fn">f</span>)</span></span></div></div><p>Left minimality is preserved after applying an equivalence.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

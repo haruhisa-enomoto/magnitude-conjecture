@@ -1,0 +1,119 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.ObjectDeletionFiniteStructure</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.ObjectDeletionFiniteStructure";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ObjectDeletionFiniteStructure</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionFiniteStructure.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteKrullSchmidtMatrix.html">MagnitudeConjecture.CategoryTheory.FiniteKrullSchmidtMatrix</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionModuleInheritance.html">MagnitudeConjecture.CategoryTheory.ObjectDeletionModuleInheritance</a></li><li><a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPushdownCorepresentable.html">MagnitudeConjecture.CategoryTheory.OrbitPushdownCorepresentable</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.ObjectDeletionFiniteStructure" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.deletion_linearCoyoneda_isFiniteDimensional"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletion_linearCoyoneda_isFiniteDimensional</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.deletion_dualLinearYoneda_isFiniteDimensional"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletion_dualLinearYoneda_isFiniteDimensional</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.deletionIdeal_end_isRadical"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletionIdeal_end_isRadical</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.deletion_skeletal"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletion_skeletal</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ObjectDeletion.deletion_end_isLocalRing"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletion_end_isLocalRing</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Finite-structural-data-inherited-by-object-deletion" class="markdown-heading">Finite structural data inherited by object deletion <a class="hover-link" href="#Finite-structural-data-inherited-by-object-deletion">#</a></h1><p>The finite-cover push-down theorem needs finite representables, finite dual
+corepresentables, and local vertex endomorphism rings at every intermediate
+deletion stage.  These properties descend from the ambient locally bounded
+skeletal category.  Hom spaces downstairs are quotients of ambient Hom
+spaces, while the deletion ideal at a surviving object lies in its categorical
+radical and hence cannot kill the identity.</p></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.deletion_linearCoyoneda_isFiniteDimensional"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionFiniteStructure.lean#L49-L107">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionFiniteStructure.html#MagnitudeConjecture.ObjectDeletion.deletion_linearCoyoneda_isFiniteDimensional"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletion_linearCoyoneda_isFiniteDimensional</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hP</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">CoveringHom.IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPushdownRepresentable.html#MagnitudeConjecture.CoveringHom.linearCoyonedaLinearModule">CoveringHom.linearCoyonedaLinearModule</a> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionQuotient.html#MagnitudeConjecture.ObjectDeletion.DeletionCategory">DeletionCategory</a> <span class="fn">C</span> <span class="fn">S</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">CoveringHom.IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPushdownRepresentable.html#MagnitudeConjecture.CoveringHom.linearCoyonedaLinearModule">CoveringHom.linearCoyonedaLinearModule</a> <span class="fn">X</span>)</span></span></div></div><p>Finite-dimensionality and finite support of covariant representables
+pass to an object-deletion quotient.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.deletion_dualLinearYoneda_isFiniteDimensional"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionFiniteStructure.lean#L109-L187">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionFiniteStructure.html#MagnitudeConjecture.ObjectDeletion.deletion_dualLinearYoneda_isFiniteDimensional"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletion_dualLinearYoneda_isFiniteDimensional</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hI</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">CoveringHom.IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPushdownCorepresentable.html#MagnitudeConjecture.CoveringHom.dualLinearYonedaLinearModule">CoveringHom.dualLinearYonedaLinearModule</a> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionQuotient.html#MagnitudeConjecture.ObjectDeletion.DeletionCategory">DeletionCategory</a> <span class="fn">C</span> <span class="fn">S</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/FiniteDimensionalModuleDeckShift.html#MagnitudeConjecture.CoveringHom.IsFiniteDimensionalModule">CoveringHom.IsFiniteDimensionalModule</a> <span class="fn">k</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/OrbitPushdownCorepresentable.html#MagnitudeConjecture.CoveringHom.dualLinearYonedaLinearModule">CoveringHom.dualLinearYonedaLinearModule</a> <span class="fn">X</span>)</span></span></div></div><p>Finite-dimensionality and finite support of coefficient-dual
+corepresentables pass to an object-deletion quotient.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.deletionIdeal_end_isRadical"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionFiniteStructure.lean#L228-L274">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionFiniteStructure.html#MagnitudeConjecture.ObjectDeletion.deletionIdeal_end_isRadical"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletionIdeal_end_isRadical</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hC</span> : <span class="fn"><span class="fn">CategoryTheory.Skeletal</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hlocal</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">IsLocalRing</span> <span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hX</span> : <span class="fn"><span class="fn">X</span> ∉ <span class="fn">S</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">X</span> <span class="fn">⟶</span> <span class="fn">X</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn">f</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionQuotient.html#MagnitudeConjecture.ObjectDeletion.ideal">ideal</a> <span class="fn">C</span> <span class="fn">S</span>)</span>.<a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/HomIdeal.html#QuotientSubmoduleEquidistribution.CategoricalIdeal.HomIdeal.hom">hom</a></span> <span class="fn">X</span> <span class="fn">X</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/CategoryTheory/CategoricalRadical.html#QuotientSubmoduleEquidistribution.CategoricalRadical.IsRadicalMorphism">QuotientSubmoduleEquidistribution.CategoricalRadical.IsRadicalMorphism</a> <span class="fn">f</span></span></div></div><p>At a surviving object, every endomorphism in the deletion ideal is
+radical.  Each spanning term factors through a deleted object, which cannot
+be isomorphic to the surviving source in a skeletal category.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.deletion_skeletal"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionFiniteStructure.lean#L277-L336">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionFiniteStructure.html#MagnitudeConjecture.ObjectDeletion.deletion_skeletal"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletion_skeletal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hC</span> : <span class="fn"><span class="fn">CategoryTheory.Skeletal</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hlocal</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">IsLocalRing</span> <span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">CategoryTheory.Skeletal</span> <span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionQuotient.html#MagnitudeConjecture.ObjectDeletion.DeletionCategory">DeletionCategory</a> <span class="fn">C</span> <span class="fn">S</span>)</span></span></div></div><p>Deleting objects from a skeletal category with local endomorphism rings
+does not identify two surviving objects up to isomorphism.</p></div></div><div class="decl" id="MagnitudeConjecture.ObjectDeletion.deletion_end_isLocalRing"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ObjectDeletionFiniteStructure.lean#L351-L417">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionFiniteStructure.html#MagnitudeConjecture.ObjectDeletion.deletion_end_isLocalRing"><span class="name">MagnitudeConjecture</span>.<span class="name">ObjectDeletion</span>.<span class="name">deletion_end_isLocalRing</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Preadditive</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hC</span> : <span class="fn"><span class="fn">CategoryTheory.Skeletal</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hlocal</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">C</span>), <span class="fn"><span class="fn">IsLocalRing</span> <span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">X</span>)</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">Set</span> <span class="fn">C</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn"><a href="../.././MagnitudeConjecture/CategoryTheory/ObjectDeletionQuotient.html#MagnitudeConjecture.ObjectDeletion.DeletionCategory">DeletionCategory</a> <span class="fn">C</span> <span class="fn">S</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">IsLocalRing</span> <span class="fn">(<span class="fn">CategoryTheory.End</span> <span class="fn">X</span>)</span></span></div></div><p>Local endomorphism rings descend to every surviving vertex of an
+object-deletion quotient of a skeletal category.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

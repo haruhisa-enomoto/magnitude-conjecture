@@ -1,0 +1,450 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.Algebra.BiserialModule</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.Algebra.BiserialModule";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">Algebra</span>.<span class="name">BiserialModule</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html">MagnitudeConjecture.Algebra.UniserialModule</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/RingTheory/Length.lean">Mathlib.RingTheory.Length</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/RingTheory/Jacobson/Radical.lean">Mathlib.RingTheory.Jacobson.Radical</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.Algebra.BiserialModule" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsSimpleOrZeroModule"><span class="name">MagnitudeConjecture</span>.<span class="name">IsSimpleOrZeroModule</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsSimpleOrZeroModule.of_subsingleton"><span class="name">MagnitudeConjecture</span>.<span class="name">IsSimpleOrZeroModule</span>.<span class="name">of_subsingleton</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsSimpleOrZeroModule.of_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">IsSimpleOrZeroModule</span>.<span class="name">of_simple</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsSimpleOrZeroModule.congr"><span class="name">MagnitudeConjecture</span>.<span class="name">IsSimpleOrZeroModule</span>.<span class="name">congr</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.congr"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">congr</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.of_uniserial_jacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_uniserial_jacobson</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.of_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_uniserial</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.of_jacobson_eq_bot"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_jacobson_eq_bot</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.submoduleToQuotientLinearMap"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">submoduleToQuotientLinearMap</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.submoduleToQuotientLinearMap_injective_of_inf_eq_bot"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">submoduleToQuotientLinearMap_injective_of_inf_eq_bot</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.uniserial_submodule_of_uniserial_quotient_of_inf_eq_bot"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_submodule_of_uniserial_quotient_of_inf_eq_bot</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.of_jacobson_eq_sup_of_inf_eq_bot_of_quotients_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_jacobson_eq_sup_of_inf_eq_bot_of_quotients_uniserial</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.jacobson_quotient_eq_map_of_jacobson_eq_sup"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">jacobson_quotient_eq_map_of_jacobson_eq_sup</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.uniserial_quotient_of_jacobson_eq_sup_of_inf_eq_bot"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_quotient_of_jacobson_eq_sup_of_inf_eq_bot</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.uniserial_of_biserial_of_simple_top_of_jacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_biserial_of_simple_top_of_jacobson</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.uniserial_of_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_simple</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.simple_map_of_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">simple_map_of_injective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.uniserial_of_length_eq_one"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_length_eq_one</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.uniserial_of_simple_top_of_length_eq_two"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_simple_top_of_length_eq_two</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.simple_isCompl_of_length_eq_two_of_incomparable"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">simple_isCompl_of_length_eq_two_of_incomparable</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.uniserial_of_indec_of_length_eq_two"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_indec_of_length_eq_two</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.jacobson_length_eq_two_of_simple_top_of_length_eq_three"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">jacobson_length_eq_two_of_simple_top_of_length_eq_three</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.uniserial_of_simple_top_of_length_eq_three_of_jacobson_indec"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_simple_top_of_length_eq_three_of_jacobson_indec</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.IsBiserialModule.of_simple_top_of_length_eq_three"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_simple_top_of_length_eq_three</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Biserial-modules" class="markdown-heading">Biserial modules <a class="hover-link" href="#Biserial-modules">#</a></h1><p>The radical of a biserial module is the sum of at most two uniserial
+submodules whose intersection is simple or zero.  Zero summands are allowed,
+so the definition also covers uniserial and semisimple local modules without
+separate edge cases.</p></div><div class="decl" id="MagnitudeConjecture.IsSimpleOrZeroModule"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L22-L27">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsSimpleOrZeroModule"><span class="name">MagnitudeConjecture</span>.<span class="name">IsSimpleOrZeroModule</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>A module is simple or zero.  The <code>Subsingleton</code> branch is the literal
+zero-module alternative and does not require a chosen zero object.</p><details id="instances-for-list-MagnitudeConjecture.IsSimpleOrZeroModule" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.IsSimpleOrZeroModule.of_subsingleton"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L34-L35">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsSimpleOrZeroModule.of_subsingleton"><span class="name">MagnitudeConjecture</span>.<span class="name">IsSimpleOrZeroModule</span>.<span class="name">of_subsingleton</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Subsingleton</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsSimpleOrZeroModule">IsSimpleOrZeroModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.IsSimpleOrZeroModule.of_simple"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L37-L39">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsSimpleOrZeroModule.of_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">IsSimpleOrZeroModule</span>.<span class="name">of_simple</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsSimpleOrZeroModule">IsSimpleOrZeroModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.IsSimpleOrZeroModule.congr"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L41-L51">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsSimpleOrZeroModule.congr"><span class="name">MagnitudeConjecture</span>.<span class="name">IsSimpleOrZeroModule</span>.<span class="name">congr</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">M</span> <span class="fn">≃ₗ[</span><span class="fn">R</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsSimpleOrZeroModule">IsSimpleOrZeroModule</a> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsSimpleOrZeroModule">IsSimpleOrZeroModule</a> <span class="fn">R</span> <span class="fn">N</span></span></div></div><p>Simplicity-or-zero is invariant under a linear equivalence.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L55-L64">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>The radical of <code>M</code> is a sum of at most two uniserial submodules with
+simple or zero intersection.</p><details id="instances-for-list-MagnitudeConjecture.IsBiserialModule" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.congr"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L71-L87">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.congr"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">congr</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">M</span> <span class="fn">≃ₗ[</span><span class="fn">R</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule">IsBiserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule">IsBiserialModule</a> <span class="fn">R</span> <span class="fn">N</span></span></div></div><p>Biseriality is invariant under a linear equivalence.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.of_uniserial_jacobson"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L89-L97">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.of_uniserial_jacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_uniserial_jacobson</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hJ</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule">IsBiserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>A module with uniserial radical is biserial, using the zero module as
+the second branch.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.of_uniserial"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L99-L102">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.of_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_uniserial</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule">IsBiserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>Every uniserial module is biserial.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.of_jacobson_eq_bot"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L104-L110">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.of_jacobson_eq_bot"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_jacobson_eq_bot</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hJ</span> : <span class="fn"><span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">=</span> <span class="fn">⊥</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule">IsBiserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>A module with zero radical is biserial.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.submoduleToQuotientLinearMap"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L112-L116">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.submoduleToQuotientLinearMap"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">submoduleToQuotientLinearMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P </span><span class="fn">Q</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">↥<span class="fn">P</span></span> <span class="fn">→ₗ[</span><span class="fn">R</span><span class="fn">]</span> <span class="fn"><span class="fn">M</span> <span class="fn">⧸</span> <span class="fn">Q</span></span></span></div></div><p>The canonical map from a submodule <code>P</code> to the quotient by another
+submodule <code>Q</code>.</p><details id="instances-for-list-MagnitudeConjecture.IsBiserialModule.submoduleToQuotientLinearMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.submoduleToQuotientLinearMap_injective_of_inf_eq_bot"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L118-L135">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.submoduleToQuotientLinearMap_injective_of_inf_eq_bot"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">submoduleToQuotientLinearMap_injective_of_inf_eq_bot</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P </span><span class="fn">Q</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hinf</span> : <span class="fn"><span class="fn"><span class="fn">P</span> ⊓ <span class="fn">Q</span></span> <span class="fn">=</span> <span class="fn">⊥</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Injective</span> <span class="fn">⇑<span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.submoduleToQuotientLinearMap">submoduleToQuotientLinearMap</a> <span class="fn">P</span> <span class="fn">Q</span>)</span></span></span></div></div><p>If two submodules meet trivially, the canonical map from either one to
+the quotient by the other is injective.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.uniserial_submodule_of_uniserial_quotient_of_inf_eq_bot"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L137-L145">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.uniserial_submodule_of_uniserial_quotient_of_inf_eq_bot"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_submodule_of_uniserial_quotient_of_inf_eq_bot</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P </span><span class="fn">Q</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hinf</span> : <span class="fn"><span class="fn"><span class="fn">P</span> ⊓ <span class="fn">Q</span></span> <span class="fn">=</span> <span class="fn">⊥</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hquot</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn">Q</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">↥<span class="fn">P</span></span></span></div></div><p>A branch disjoint from <code>Q</code> is uniserial whenever the ambient quotient
+by <code>Q</code> is uniserial.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.of_jacobson_eq_sup_of_inf_eq_bot_of_quotients_uniserial"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L147-L163">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.of_jacobson_eq_sup_of_inf_eq_bot_of_quotients_uniserial"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_jacobson_eq_sup_of_inf_eq_bot_of_quotients_uniserial</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P </span><span class="fn">Q</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hsup</span> : <span class="fn"><span class="fn"><span class="fn">P</span> ⊔ <span class="fn">Q</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hinf</span> : <span class="fn"><span class="fn"><span class="fn">P</span> ⊓ <span class="fn">Q</span></span> <span class="fn">=</span> <span class="fn">⊥</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hquotQ</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn">Q</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hquotP</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn">P</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule">IsBiserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>Zero-intersection branch of the local biserial induction.  If the
+radical is the sum of two disjoint branches and both cross-quotients are
+uniserial, then the module is biserial.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.jacobson_quotient_eq_map_of_jacobson_eq_sup"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L165-L176">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.jacobson_quotient_eq_map_of_jacobson_eq_sup"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">jacobson_quotient_eq_map_of_jacobson_eq_sup</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P </span><span class="fn">Q</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hsup</span> : <span class="fn"><span class="fn"><span class="fn">P</span> ⊔ <span class="fn">Q</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn">Q</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Submodule.map</span> <span class="fn"><span class="fn">Q</span>.<span class="fn">mkQ</span></span> <span class="fn">P</span></span></span></div></div><p>If the radical is <code>P + Q</code>, quotienting by <code>Q</code> leaves precisely the image
+of <code>P</code> as the radical.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.uniserial_quotient_of_jacobson_eq_sup_of_inf_eq_bot"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L178-L216">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.uniserial_quotient_of_jacobson_eq_sup_of_inf_eq_bot"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_quotient_of_jacobson_eq_sup_of_inf_eq_bot</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P </span><span class="fn">Q</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">htop</span> : <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hsup</span> : <span class="fn"><span class="fn"><span class="fn">P</span> ⊔ <span class="fn">Q</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hinf</span> : <span class="fn"><span class="fn"><span class="fn">P</span> ⊓ <span class="fn">Q</span></span> <span class="fn">=</span> <span class="fn">⊥</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hP</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">↥<span class="fn">P</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn">Q</span>)</span></span></div></div><p>A simple-top module whose radical is <code>P + Q</code> has a uniserial quotient
+by <code>Q</code> when <code>P</code> is uniserial and the two branches are disjoint.  The image
+of <code>P</code> is then the full radical of the quotient.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.uniserial_of_biserial_of_simple_top_of_jacobson"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L218-L287">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.uniserial_of_biserial_of_simple_top_of_jacobson"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_biserial_of_simple_top_of_jacobson</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">htop</span> : <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hbis</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule">IsBiserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hJacTop</span> : <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">(<span class="fn">↥<span class="fn">(<span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span>)</span></span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span>)</span></span></span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>If a simple-top module is biserial and its radical again has simple
+top, then it is uniserial.  Indeed, the two biserial branches cannot both be
+proper in the radical, since every proper submodule of a simple-top module
+lies in its Jacobson radical.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.uniserial_of_simple"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L289-L298">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.uniserial_of_simple"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_simple</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>A simple module is uniserial.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.simple_map_of_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L300-L315">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.simple_map_of_injective"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">simple_map_of_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">R</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn">Function.Injective</span> <span class="fn">⇑<span class="fn">f</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hP</span> : <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">P</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<span class="fn">Submodule.map</span> <span class="fn">f</span> <span class="fn">P</span>)</span></span></span></div></div><p>The image of a simple submodule under an injective linear map is simple.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.uniserial_of_length_eq_one"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L317-L321">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.uniserial_of_length_eq_one"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_length_eq_one</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hM</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">=</span> <span class="fn">1</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>A finite-length module of composition length one is uniserial.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.uniserial_of_simple_top_of_length_eq_two"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L323-L345">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.uniserial_of_simple_top_of_length_eq_two"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_simple_top_of_length_eq_two</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">htop</span> : <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hlength</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">=</span> <span class="fn">2</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>A finite-length module with simple top and composition length two is
+uniserial.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.simple_isCompl_of_length_eq_two_of_incomparable"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L347-L417">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.simple_isCompl_of_length_eq_two_of_incomparable"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">simple_isCompl_of_length_eq_two_of_incomparable</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hlength</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">=</span> <span class="fn">2</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P </span><span class="fn">Q</span> : <span class="fn"><span class="fn">Submodule</span> <span class="fn">R</span> <span class="fn">M</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hPQ</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">P</span> <span class="fn">≤</span> <span class="fn">Q</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hQP</span> : <span class="fn"><span class="fn">¬</span><span class="fn"><span class="fn">Q</span> <span class="fn">≤</span> <span class="fn">P</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">P</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">Q</span></span></span> <span class="fn">∧</span> <span class="fn"><span class="fn">IsCompl</span> <span class="fn">P</span> <span class="fn">Q</span></span></span></span></div></div><p>Two incomparable submodules of a finite-length module of composition
+length two are complementary simple submodules.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.uniserial_of_indec_of_length_eq_two"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L419-L439">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.uniserial_of_indec_of_length_eq_two"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_indec_of_length_eq_two</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hindec</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/Foundation/RingTheory/KrullSchmidt/Indecomposable.html#QuotientSubmoduleEquidistribution.Foundation.IsIndecomposableModule">QuotientSubmoduleEquidistribution.Foundation.IsIndecomposableModule</a> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hlength</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">=</span> <span class="fn">2</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>An indecomposable finite-length module of composition length two is
+uniserial.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.jacobson_length_eq_two_of_simple_top_of_length_eq_three"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L441-L459">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.jacobson_length_eq_two_of_simple_top_of_length_eq_three"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">jacobson_length_eq_two_of_simple_top_of_length_eq_three</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">htop</span> : <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hlength</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">=</span> <span class="fn">3</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span>)</span></span></span> <span class="fn">=</span> <span class="fn">2</span></span></div></div><p>A composition-length-three module with simple top has radical of
+composition length two.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.uniserial_of_simple_top_of_length_eq_three_of_jacobson_indec"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L461-L473">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.uniserial_of_simple_top_of_length_eq_three_of_jacobson_indec"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">uniserial_of_simple_top_of_length_eq_three_of_jacobson_indec</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">htop</span> : <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hlength</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">=</span> <span class="fn">3</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hradIndec</span> : <span class="fn"><a href="../.././QuotientSubmoduleEquidistribution/Foundation/RingTheory/KrullSchmidt/Indecomposable.html#QuotientSubmoduleEquidistribution.Foundation.IsIndecomposableModule">QuotientSubmoduleEquidistribution.Foundation.IsIndecomposableModule</a> <span class="fn">R</span> <span class="fn">↥<span class="fn">(<span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/UniserialModule.html#MagnitudeConjecture.IsUniserialModule">IsUniserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>A composition-length-three module with simple top and indecomposable
+radical is uniserial.</p></div></div><div class="decl" id="MagnitudeConjecture.IsBiserialModule.of_simple_top_of_length_eq_three"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/BiserialModule.lean#L475-L512">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule.of_simple_top_of_length_eq_three"><span class="name">MagnitudeConjecture</span>.<span class="name">IsBiserialModule</span>.<span class="name">of_simple_top_of_length_eq_three</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> v}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsNoetherian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsArtinian</span> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">htop</span> : <span class="fn"><span class="fn">IsSimpleModule</span> <span class="fn">R</span> <span class="fn">(<span class="fn">M</span> <span class="fn">⧸</span> <span class="fn"><span class="fn">Module.jacobson</span> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hlength</span> : <span class="fn"><span class="fn"><span class="fn">Module.length</span> <span class="fn">R</span> <span class="fn">M</span></span> <span class="fn">=</span> <span class="fn">3</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BiserialModule.html#MagnitudeConjecture.IsBiserialModule">IsBiserialModule</a> <span class="fn">R</span> <span class="fn">M</span></span></div></div><p>A finite-length module of composition length three with simple top is
+biserial.  If its radical is not already uniserial, its two incomparable
+submodules are complementary simples.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

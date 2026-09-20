@@ -1,0 +1,114 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.CategoryTheory.ProjectiveMiddleDimensionShift</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.CategoryTheory.ProjectiveMiddleDimensionShift";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">CategoryTheory</span>.<span class="name">ProjectiveMiddleDimensionShift</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/Homology/DerivedCategory/Ext/EnoughProjectives.lean">Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughProjectives</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/Homology/DerivedCategory/Ext/ExactSequences.lean">Mathlib.Algebra.Homology.DerivedCategory.Ext.ExactSequences</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Algebra/Homology/DerivedCategory/Ext/Linear.lean">Mathlib.Algebra.Homology.DerivedCategory.Ext.Linear</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.CategoryTheory.ProjectiveMiddleDimensionShift" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ProjectiveMiddleDimensionShift.connecting_bijective"><span class="name">MagnitudeConjecture</span>.<span class="name">ProjectiveMiddleDimensionShift</span>.<span class="name">connecting_bijective</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">ProjectiveMiddleDimensionShift</span>.<span class="name">linearEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">ProjectiveMiddleDimensionShift</span>.<span class="name">linearEquiv_apply</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv_postcomp"><span class="name">MagnitudeConjecture</span>.<span class="name">ProjectiveMiddleDimensionShift</span>.<span class="name">linearEquiv_postcomp</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Dimension-shifting-across-a-projective-middle-term" class="markdown-heading">Dimension shifting across a projective middle term <a class="hover-link" href="#Dimension-shifting-across-a-projective-middle-term">#</a></h1><p>A short exact sequence <code>0 ⟶ K ⟶ P ⟶ X ⟶ 0</code> with projective middle term
+induces the natural linear equivalence</p><p><code>Extⁿ⁺¹(K,Y) ≃ Extⁿ⁺²(X,Y)</code>.</p></div><div class="decl" id="MagnitudeConjecture.ProjectiveMiddleDimensionShift.connecting_bijective"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.lean#L27-L52">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.html#MagnitudeConjecture.ProjectiveMiddleDimensionShift.connecting_bijective"><span class="name">MagnitudeConjecture</span>.<span class="name">ProjectiveMiddleDimensionShift</span>.<span class="name">connecting_bijective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Projective</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Function.Bijective</span> <span class="fn">⇑<span class="fn">(<span class="fn"><span class="fn"><span class="fn">hS</span>.<span class="fn">extClass</span></span>.<span class="fn">precompOfLinear</span></span> <span class="fn">k</span> <span class="fn">Y</span> <span class="fn">⋯</span>)</span></span></span></div></div><p>The connecting map in positive degree is bijective when the middle term
+of the short exact sequence is projective.</p></div></div><div class="decl" id="MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.lean#L54-L63">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.html#MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv"><span class="name">MagnitudeConjecture</span>.<span class="name">ProjectiveMiddleDimensionShift</span>.<span class="name">linearEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Projective</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">CategoryTheory.Abelian.Ext</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">Y</span> <span class="fn">(<span class="fn">n</span> <span class="fn">+</span> <span class="fn">1</span>)</span></span> <span class="fn">≃ₗ[</span><span class="fn">k</span><span class="fn">]</span> <span class="fn"><span class="fn">CategoryTheory.Abelian.Ext</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₃</span></span> <span class="fn">Y</span> <span class="fn">(<span class="fn">n</span> <span class="fn">+</span> <span class="fn">2</span>)</span></span></span></div></div><p>Dimension shifting, in the variance and normalization used by
+Auslander's coherent duality.</p><details id="instances-for-list-MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv_apply"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.lean#L65-L71">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.html#MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv_apply"><span class="name">MagnitudeConjecture</span>.<span class="name">ProjectiveMiddleDimensionShift</span>.<span class="name">linearEquiv_apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Projective</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn"><span class="fn">CategoryTheory.Abelian.Ext</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">Y</span> <span class="fn">(<span class="fn">n</span> <span class="fn">+</span> <span class="fn">1</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.html#MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv">linearEquiv</a> <span class="fn">hS</span> <span class="fn">Y</span> <span class="fn">n</span>)</span> <span class="fn">x</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn"><span class="fn">hS</span>.<span class="fn">extClass</span></span>.<span class="fn">comp</span></span> <span class="fn">x</span> <span class="fn">⋯</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv_postcomp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.lean#L73-L85">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.html#MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv_postcomp"><span class="name">MagnitudeConjecture</span>.<span class="name">ProjectiveMiddleDimensionShift</span>.<span class="name">linearEquiv_postcomp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> uk}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CommRing</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Category.{v, u}</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Abelian</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Linear</span> <span class="fn">k</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.HasExt</span> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">CategoryTheory.ShortComplex</span> <span class="fn">C</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hS</span> : <span class="fn"><span class="fn">S</span>.<span class="fn">ShortExact</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">CategoryTheory.Projective</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₂</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Y </span><span class="fn">Z</span> : <span class="fn">C</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">Y</span> <span class="fn">⟶</span> <span class="fn">Z</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">n</span> : <span class="fn">ℕ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn"><span class="fn">CategoryTheory.Abelian.Ext</span> <span class="fn"><span class="fn">S</span>.<span class="fn">X₁</span></span> <span class="fn">Y</span> <span class="fn">(<span class="fn">n</span> <span class="fn">+</span> <span class="fn">1</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.html#MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv">linearEquiv</a> <span class="fn">hS</span> <span class="fn">Z</span> <span class="fn">n</span>)</span> <span class="fn">(<span class="fn"><span class="fn">x</span>.<span class="fn">comp</span></span> <span class="fn">(<span class="fn">CategoryTheory.Abelian.Ext.mk₀</span> <span class="fn">a</span>)</span> <span class="fn">⋯</span>)</span></span> <span class="fn">=</span>   <span class="fn"><span class="fn"><span class="fn">(<span class="fn">(<a href="../.././MagnitudeConjecture/CategoryTheory/ProjectiveMiddleDimensionShift.html#MagnitudeConjecture.ProjectiveMiddleDimensionShift.linearEquiv">linearEquiv</a> <span class="fn">hS</span> <span class="fn">Y</span> <span class="fn">n</span>)</span> <span class="fn">x</span>)</span>.<span class="fn">comp</span></span> <span class="fn">(<span class="fn">CategoryTheory.Abelian.Ext.mk₀</span> <span class="fn">a</span>)</span> <span class="fn">⋯</span></span></span></div></div><p>Dimension shifting is natural under postcomposition in the second Ext
+variable.</p></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

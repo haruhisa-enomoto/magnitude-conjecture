@@ -1,0 +1,611 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.Graded.ModuleMapComponents</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.Graded.ModuleMapComponents";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleMapComponents</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/Graded/LinearMapComponents.html">MagnitudeConjecture.Graded.LinearMapComponents</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/LinearAlgebra/BilinearMap.lean">Mathlib.LinearAlgebra.BilinearMap</a></li><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Lean/Elab/Tactic/Omega.lean">Lean.Elab.Tactic.Omega</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.Graded.ModuleMapComponents" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.projection_smul"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">projection_smul</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.mapPart_smul_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">mapPart_smul_homogeneous</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.mapPart_smul"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">mapPart_smul</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.homPart"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.homPart_mem"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart_mem</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.Homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">Homogeneous</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.homPart_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart_homogeneous</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.homPart_of_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart_of_homogeneous</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.homPart_of_homogeneous_ne"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart_of_homogeneous_ne</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.sum_homPart"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">sum_homPart</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.homPart_eq_zero_outside"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart_eq_zero_outside</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.id_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">id_homogeneous</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.Graded.ModuleGrading.homogeneous_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homogeneous_comp</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Homogeneous-components-of-module-maps" class="markdown-heading">Homogeneous components of module maps <a class="hover-link" href="#Homogeneous-components-of-module-maps">#</a></h1><p>Projection of an algebra-linear map to a homogeneous degree is again
+algebra-linear. We work with left modules; applying the construction to the
+opposite algebra gives the project's right-module convention.</p></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading"><div class="structure"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L24-L28">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>)</span></span>
+<span class="decl_extends">extends</span> <span id="MagnitudeConjecture.Graded.ModuleGrading.toVectorGrading"><span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">MagnitudeConjecture.Graded.VectorGrading</a> <span class="fn">k</span> <span class="fn">M</span></span></span><span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a> u_3</div></div><p>An internal vector-space grading compatible with the homogeneous algebra
+action. Multiplicativity of the algebra grading is not needed for this lemma.</p><ul class="structure_fields" id="MagnitudeConjecture.Graded.ModuleGrading.mk"><li class="structure_field inherited_field"><div class="structure_field_info"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a> : <span class="fn"><span class="fn">ℤ</span> → <span class="fn"><span class="fn">Submodule</span> <span class="fn">k</span> <span class="fn">M</span></span></span></div></li><li class="structure_field inherited_field"><div class="structure_field_info"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.internal">internal</a> : <span class="fn"><span class="fn">DirectSum.IsInternal</span> <span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span></span></div></li><li id="MagnitudeConjecture.Graded.ModuleGrading.smul_mem" class="structure_field"><div class="structure_field_info">smul_mem<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">i </span><span class="fn">j</span> : <span class="fn">ℤ</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">a</span> : <span class="fn">A</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x</span> : <span class="fn">M</span>}</span></span>
+</span> : <span class="fn"><span class="fn"><span class="fn">a</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">R</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">i</span></span></span> → <span class="fn"><span class="fn"><span class="fn">x</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">j</span></span></span> → <span class="fn"><span class="fn"><span class="fn">a</span> <span class="fn">•</span> <span class="fn">x</span></span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">(<span class="fn">i</span> <span class="fn">+</span> <span class="fn">j</span>)</span></span></span></span></span></div></li></ul><details id="instances-for-list-MagnitudeConjecture.Graded.ModuleGrading" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.projection_smul"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L34-L51">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.projection_smul"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">projection_smul</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">i</span> : <span class="fn">ℤ</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">a</span> : <span class="fn">A</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">ha</span> : <span class="fn"><span class="fn">a</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">R</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">i</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">j</span> : <span class="fn">ℤ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.projection">projection</a></span> <span class="fn">(<span class="fn">i</span> <span class="fn">+</span> <span class="fn">j</span>)</span>)</span> <span class="fn">(<span class="fn">a</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">a</span> <span class="fn">•</span> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.projection">projection</a></span> <span class="fn">j</span>)</span> <span class="fn">x</span></span></span></span></div></div><p>Multiplication by a homogeneous algebra element shifts the projections.</p></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.mapPart_smul_homogeneous"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L56-L64">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.mapPart_smul_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">mapPart_smul_homogeneous</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">d</span> : <span class="fn">ℤ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">i </span><span class="fn">j</span> : <span class="fn">ℤ</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">a</span> : <span class="fn">A</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x</span> : <span class="fn">M</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">ha</span> : <span class="fn"><span class="fn">a</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">R</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">i</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hx</span> : <span class="fn"><span class="fn">x</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">j</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/LinearMapComponents.html#MagnitudeConjecture.Graded.VectorGrading.mapPart">mapPart</a></span> <span class="fn"><span class="fn">H</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.toVectorGrading">toVectorGrading</a></span> <span class="fn">d</span> <span class="fn">(<span class="fn">↑<span class="fn">k</span></span> <span class="fn">f</span>)</span>)</span> <span class="fn">(<span class="fn">a</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">a</span> <span class="fn">•</span> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/LinearMapComponents.html#MagnitudeConjecture.Graded.VectorGrading.mapPart">mapPart</a></span> <span class="fn"><span class="fn">H</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.toVectorGrading">toVectorGrading</a></span> <span class="fn">d</span> <span class="fn">(<span class="fn">↑<span class="fn">k</span></span> <span class="fn">f</span>)</span>)</span> <span class="fn">x</span></span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.mapPart_smul"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L66-L87">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.mapPart_smul"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">mapPart_smul</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">d</span> : <span class="fn">ℤ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn">A</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/LinearMapComponents.html#MagnitudeConjecture.Graded.VectorGrading.mapPart">mapPart</a></span> <span class="fn"><span class="fn">H</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.toVectorGrading">toVectorGrading</a></span> <span class="fn">d</span> <span class="fn">(<span class="fn">↑<span class="fn">k</span></span> <span class="fn">f</span>)</span>)</span> <span class="fn">(<span class="fn">a</span> <span class="fn">•</span> <span class="fn">x</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">a</span> <span class="fn">•</span> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/LinearMapComponents.html#MagnitudeConjecture.Graded.VectorGrading.mapPart">mapPart</a></span> <span class="fn"><span class="fn">H</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.toVectorGrading">toVectorGrading</a></span> <span class="fn">d</span> <span class="fn">(<span class="fn">↑<span class="fn">k</span></span> <span class="fn">f</span>)</span>)</span> <span class="fn">x</span></span></span></span></div></div><p>Every homogeneous component of an algebra-linear map commutes with all
+algebra elements, not just homogeneous ones.</p></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.homPart"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L89-L93">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">d</span> : <span class="fn">ℤ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span></div></div><p>The degree component as an actual algebra-linear map.</p><details id="instances-for-list-MagnitudeConjecture.Graded.ModuleGrading.homPart" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.homPart_mem"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L95-L98">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart_mem"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart_mem</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">d</span> : <span class="fn">ℤ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">i</span> : <span class="fn">ℤ</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x</span> : <span class="fn">M</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hx</span> : <span class="fn"><span class="fn">x</span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">i</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart">homPart</a></span> <span class="fn">H</span> <span class="fn">d</span> <span class="fn">f</span>)</span> <span class="fn">x</span></span> <span class="fn">∈</span> <span class="fn"><span class="fn"><span class="fn">H</span>.<a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading.component">component</a></span> <span class="fn">(<span class="fn">i</span> <span class="fn">+</span> <span class="fn">d</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.Homogeneous"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L100-L102">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.Homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">Homogeneous</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">d</span> : <span class="fn">ℤ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>A degree-preserving condition stated directly for algebra-linear maps.</p><details id="instances-for-list-MagnitudeConjecture.Graded.ModuleGrading.Homogeneous" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.homPart_homogeneous"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L104-L106">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart_homogeneous</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">d</span> : <span class="fn">ℤ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.Homogeneous">Homogeneous</a></span> <span class="fn">H</span> <span class="fn">d</span> <span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart">homPart</a></span> <span class="fn">H</span> <span class="fn">d</span> <span class="fn">f</span>)</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.homPart_of_homogeneous"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L108-L121">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart_of_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart_of_homogeneous</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">d</span> : <span class="fn">ℤ</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.Homogeneous">Homogeneous</a></span> <span class="fn">H</span> <span class="fn">d</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart">homPart</a></span> <span class="fn">H</span> <span class="fn">d</span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn">f</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.homPart_of_homogeneous_ne"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L123-L136">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart_of_homogeneous_ne"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart_of_homogeneous_ne</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">d </span><span class="fn">e</span> : <span class="fn">ℤ</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.Homogeneous">Homogeneous</a></span> <span class="fn">H</span> <span class="fn">d</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hde</span> : <span class="fn"><span class="fn">d</span> <span class="fn">≠</span> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart">homPart</a></span> <span class="fn">H</span> <span class="fn">e</span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn">0</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.sum_homPart"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L138-L145">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.sum_homPart"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">sum_homPart</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">∑ <span class="fn">d</span> ∈ <span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/LinearMapComponents.html#MagnitudeConjecture.Graded.VectorGrading.mapDegreeSupport">mapDegreeSupport</a></span> <span class="fn"><span class="fn">H</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.toVectorGrading">toVectorGrading</a></span></span>, <span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart">homPart</a></span> <span class="fn">H</span> <span class="fn">d</span> <span class="fn">f</span></span></span> <span class="fn">=</span> <span class="fn">f</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.homPart_eq_zero_outside"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L147-L153">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart_eq_zero_outside"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homPart_eq_zero_outside</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">d</span> : <span class="fn">ℤ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hd</span> : <span class="fn"><span class="fn">d</span> ∉ <span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/LinearMapComponents.html#MagnitudeConjecture.Graded.VectorGrading.mapDegreeSupport">mapDegreeSupport</a></span> <span class="fn"><span class="fn">H</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.toVectorGrading">toVectorGrading</a></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homPart">homPart</a></span> <span class="fn">H</span> <span class="fn">d</span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn">0</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.id_homogeneous"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L155-L157">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.id_homogeneous"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">id_homogeneous</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.Homogeneous">Homogeneous</a></span> <span class="fn">G</span> <span class="fn">0</span> <span class="fn">LinearMap.id</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.Graded.ModuleGrading.homogeneous_comp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Graded/ModuleMapComponents.lean#L161-L167">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.homogeneous_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">Graded</span>.<span class="name">ModuleGrading</span>.<span class="name">homogeneous_comp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/FiniteVectorGrading.html#MagnitudeConjecture.Graded.VectorGrading">VectorGrading</a> <span class="fn">k</span> <span class="fn">A</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">FiniteDimensional</span> <span class="fn">k</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../.././foundational_types.html">Type</a> u_5}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">AddCommGroup</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">k</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Module</span> <span class="fn">A</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">IsScalarTower</span> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">J</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading">ModuleGrading</a> <span class="fn">R</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">d </span><span class="fn">e</span> : <span class="fn">ℤ</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">M</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">N</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">g</span> : <span class="fn"><span class="fn">N</span> <span class="fn">→ₗ[</span><span class="fn">A</span><span class="fn">]</span> <span class="fn">P</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.Homogeneous">Homogeneous</a></span> <span class="fn">H</span> <span class="fn">d</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hg</span> : <span class="fn"><span class="fn"><span class="fn">H</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.Homogeneous">Homogeneous</a></span> <span class="fn">J</span> <span class="fn">e</span> <span class="fn">g</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../.././MagnitudeConjecture/Graded/ModuleMapComponents.html#MagnitudeConjecture.Graded.ModuleGrading.Homogeneous">Homogeneous</a></span> <span class="fn">J</span> <span class="fn">(<span class="fn">d</span> <span class="fn">+</span> <span class="fn">e</span>)</span> <span class="fn">(<span class="fn">g</span> <span class="fn">∘ₗ</span> <span class="fn">f</span>)</span></span></div></div></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

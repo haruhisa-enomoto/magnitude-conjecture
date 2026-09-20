@@ -1,0 +1,906 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../.././style.css"></link><link rel="icon" href="../.././favicon.svg"></link><link rel="mask-icon" href="../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../.././/declarations/declaration-data.bmp" as="image"></link><title>MagnitudeConjecture.Algebra.StringPolarization</title><script defer="true" src="../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../.././";</script><script>const MODULE_NAME="MagnitudeConjecture.Algebra.StringPolarization";</script><script type="module" src="../.././jump-src.js"></script><script type="module" src="../.././search.js"></script><script type="module" src="../.././expand-nav.js"></script><script type="module" src="../.././how-about.js"></script><script type="module" src="../.././instances.js"></script><script type="module" src="../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span><a href="../../../index.html">Magnitude conjecture</a></span></h1><h2 class="header_filename break_within"><span class="name">MagnitudeConjecture</span>.<span class="name">Algebra</span>.<span class="name">StringPolarization</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="https://github.com/leanprover/lean4/blob/v4.33.1/src/Init.lean">Init</a></li><li><a href="../.././MagnitudeConjecture/Algebra/StringPathCombinatorics.html">MagnitudeConjecture.Algebra.StringPathCombinatorics</a></li><li><a href="../.././MagnitudeConjecture/Algebra/StringWord.html">MagnitudeConjecture.Algebra.StringWord</a></li><li><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/Logic/Equiv/Defs.lean">Mathlib.Logic.Equiv.Defs</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-MagnitudeConjecture.Algebra.StringPolarization" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.CompatibleAt"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">CompatibleAt</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">VertexPolarization</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span>.<span class="name">sourceSign</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span>.<span class="name">targetSign</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign_ne"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span>.<span class="name">sourceSign_ne</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign_ne"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span>.<span class="name">targetSign_ne</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign_eq_not_targetSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span>.<span class="name">sourceSign_eq_not_targetSign</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.exists_vertexPolarization"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">exists_vertexPolarization</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.nonempty_arrowPolarization"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">nonempty_arrowPolarization</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.arrowPolarization"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">arrowPolarization</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowSourceSign</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowTargetSign</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_positive"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowSourceSign_positive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_negative"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowSourceSign_negative</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign_positive"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowTargetSign_positive</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign_negative"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowTargetSign_negative</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign_reverse"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowTargetSign_reverse</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_reverse"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowSourceSign_reverse</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_eq_not_targetSign_of_isString"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowSourceSign_eq_not_targetSign_of_isString</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSign</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSign</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_nil"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSign_nil</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_cons"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSign_cons</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_nil"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSign_nil</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_reverse"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSign_reverse</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_reverse"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSign_reverse</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_toPath_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSign_toPath_comp</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_eq_not_targetSign_of_isString_prepend"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSign_eq_not_targetSign_of_isString_prepend</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_eq_not_sourceSign_of_isString_append"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSign_eq_not_sourceSign_of_isString_append</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSignOr"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSignOr</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSignOr"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSignOr</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">EndpointWord</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.word"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">EndpointWord</span>.<span class="name">word</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.sourceSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">EndpointWord</span>.<span class="name">sourceSign</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.vertex"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">EndpointWord</span>.<span class="name">vertex</span></a></div><div class="nav_link"><a class="break_within" href="#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.vertex_sourceSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">EndpointWord</span>.<span class="name">vertex_sourceSign</span></a></div></nav><main>
+<div class="mod_doc"><h1 id="Butler-Ringel-arrow-polarizations" class="markdown-heading">Butler--Ringel arrow polarizations <a class="hover-link" href="#Butler-Ringel-arrow-polarizations">#</a></h1><p>Butler and Ringel choose two signs on the arrows of a string quiver.  Arrows
+with a common source have distinct source signs, arrows with a common target
+have distinct target signs, and a surviving two-arrow path has opposite signs
+at its middle vertex.  The special-biserial degree and continuation bounds
+are exactly what is needed to make such a choice.</p><p>We encode the two signs by <code>Bool</code>; Boolean negation is the source's change of
+sign.  This file proves that every special-biserial presentation admits the
+choice, so polarization is data derived from the presentation rather than an
+extra hypothesis on later detector theorems.</p></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.CompatibleAt"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L35-L41">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.CompatibleAt"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">CompatibleAt</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">u</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">out</span> : <span class="fn"><span class="fn">Quiver.Star</span> <span class="fn">u</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">inc</span> : <span class="fn"><span class="fn">Quiver.Costar</span> <span class="fn">u</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Prop</a></div></div><p>An outgoing and an incoming arrow at <code>u</code> are compatible when their
+two-arrow path survives the relation quotient.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.CompatibleAt" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization"><div class="structure"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L43-L51">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">VertexPolarization</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">u</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a> u</div></div><p>A choice of Butler--Ringel signs at one vertex.</p><ul class="structure_fields" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization.mk"><li id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization.sourceSign" class="structure_field"><div class="structure_field_info">sourceSign : <span class="fn"><span class="fn"><span class="fn">Quiver.Star</span> <span class="fn">u</span></span> → <span class="fn">Bool</span></span></div></li><li id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization.targetSign" class="structure_field"><div class="structure_field_info">targetSign : <span class="fn"><span class="fn"><span class="fn">Quiver.Costar</span> <span class="fn">u</span></span> → <span class="fn">Bool</span></span></div></li><li id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization.sourceSign_injective" class="structure_field"><div class="structure_field_info">sourceSign_injective : <span class="fn"><span class="fn">Function.Injective</span> <span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization.sourceSign">sourceSign</a></span></span></div></li><li id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization.targetSign_injective" class="structure_field"><div class="structure_field_info">targetSign_injective : <span class="fn"><span class="fn">Function.Injective</span> <span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization.targetSign">targetSign</a></span></span></div></li><li id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization.compatible_sign" class="structure_field"><div class="structure_field_info">compatible_sign<span class="decl_args">
+<span class="fn">(<span class="fn">out</span> : <span class="fn"><span class="fn">Quiver.Star</span> <span class="fn">u</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">inc</span> : <span class="fn"><span class="fn">Quiver.Costar</span> <span class="fn">u</span></span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.CompatibleAt">CompatibleAt</a></span> <span class="fn">out</span> <span class="fn">inc</span></span> → <span class="fn"><span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization.sourceSign">sourceSign</a></span> <span class="fn">out</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">!</span><span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization.targetSign">targetSign</a></span> <span class="fn">inc</span></span></span></span></span></div></li></ul><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization"><div class="structure"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L53-L57">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a> u</div></div><p>A Butler--Ringel arrow polarization, assembled independently at every
+displayed vertex.</p><ul class="structure_fields" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.mk"><li id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.atVertex" class="structure_field"><div class="structure_field_info">atVertex<span class="decl_args">
+<span class="fn">(<span class="fn">u</span> : <span class="fn">Q</span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization">VertexPolarization</a></span> <span class="fn">u</span></span></div></li></ul><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L63-L65">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span>.<span class="name">sourceSign</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">Bool</span></div></div><p>The source sign <code>sigma(a)</code> of an ordinary arrow.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L67-L69">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span>.<span class="name">targetSign</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">Bool</span></div></div><p>The target sign <code>epsilon(a)</code> of an ordinary arrow.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign_ne"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L71-L78">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign_ne"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span>.<span class="name">sourceSign_ne</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y </span><span class="fn">z</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">b</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">z</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hab</span> : <span class="fn"><span class="fn"><span class="fn">⟨</span><span class="fn">y</span>, <span class="fn">a</span><span class="fn">⟩</span></span> <span class="fn">≠</span> <span class="fn"><span class="fn">⟨</span><span class="fn">z</span>, <span class="fn">b</span><span class="fn">⟩</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign">sourceSign</a></span> <span class="fn">a</span></span> <span class="fn">≠</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign">sourceSign</a></span> <span class="fn">b</span></span></span></div></div><p>Distinct arrows with a common source have distinct source signs.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign_ne"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L80-L87">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign_ne"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span>.<span class="name">targetSign_ne</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y </span><span class="fn">z</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">z</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">b</span> : <span class="fn"><span class="fn">y</span> <span class="fn">⟶</span> <span class="fn">z</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hab</span> : <span class="fn"><span class="fn"><span class="fn">⟨</span><span class="fn">x</span>, <span class="fn">a</span><span class="fn">⟩</span></span> <span class="fn">≠</span> <span class="fn"><span class="fn">⟨</span><span class="fn">y</span>, <span class="fn">b</span><span class="fn">⟩</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign">targetSign</a></span> <span class="fn">a</span></span> <span class="fn">≠</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign">targetSign</a></span> <span class="fn">b</span></span></span></div></div><p>Distinct arrows with a common target have distinct target signs.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign_eq_not_targetSign"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L89-L96">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign_eq_not_targetSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">ArrowPolarization</span>.<span class="name">sourceSign_eq_not_targetSign</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y </span><span class="fn">z</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn"><span class="fn">y</span> <span class="fn">⟶</span> <span class="fn">z</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hcomp</span> : <span class="fn"><span class="fn"><span class="fn">CategoryTheory.CategoryStruct.comp</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.arrowMap">arrowMap</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">b</span>)</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.arrowMap">arrowMap</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">a</span>)</span></span> <span class="fn">≠</span> <span class="fn">0</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign">sourceSign</a></span> <span class="fn">b</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">!</span><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign">targetSign</a></span> <span class="fn">a</span></span></span></span></div></div><p>A surviving composition has opposite signs at its middle vertex.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.exists_vertexPolarization"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L147-L201">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.exists_vertexPolarization"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">exists_vertexPolarization</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">u</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Nonempty</span> <span class="fn">(<span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.VertexPolarization">VertexPolarization</a></span> <span class="fn">u</span>)</span></span></div></div><p>The degree-two and unique-continuation axioms produce a polarization at
+each vertex.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.nonempty_arrowPolarization"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L203-L210">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.nonempty_arrowPolarization"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">nonempty_arrowPolarization</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Nonempty</span> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span></span></div></div><p>Every special-biserial presentation admits Butler--Ringel arrow signs.
+The choice is noncanonical, as in the source.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.arrowPolarization"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L212-L216">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.arrowPolarization"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">SpecialBiserialPresentation</span>.<span class="name">arrowPolarization</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span></div></div><p>A fixed noncanonical Butler--Ringel polarization of a special-biserial
+presentation.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.arrowPolarization" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L224-L230">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowSourceSign</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedArrow">SignedArrow</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">Bool</span></div></div><p>Butler--Ringel's source sign of a signed arrow.  Formal inversion swaps
+the source and target signs of the underlying ordinary arrow.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L232-L237">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowTargetSign</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedArrow">SignedArrow</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">Bool</span></div></div><p>Butler--Ringel's target sign of a signed arrow.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_positive"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L239-L243">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_positive"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowSourceSign_positive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign">signedArrowSourceSign</a> <span class="fn">S</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.positiveArrow">positiveArrow</a> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign">sourceSign</a></span> <span class="fn">a</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_negative"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L245-L249">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_negative"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowSourceSign_negative</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign">signedArrowSourceSign</a> <span class="fn">S</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.negativeArrow">negativeArrow</a> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign">targetSign</a></span> <span class="fn">a</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign_positive"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L251-L255">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign_positive"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowTargetSign_positive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign">signedArrowTargetSign</a> <span class="fn">S</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.positiveArrow">positiveArrow</a> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.targetSign">targetSign</a></span> <span class="fn">a</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign_negative"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L257-L261">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign_negative"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowTargetSign_negative</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">a</span> : <span class="fn"><span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign">signedArrowTargetSign</a> <span class="fn">S</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.negativeArrow">negativeArrow</a> <span class="fn">a</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization.sourceSign">sourceSign</a></span> <span class="fn">a</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign_reverse"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L263-L268">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign_reverse"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowTargetSign_reverse</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedArrow">SignedArrow</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign">signedArrowTargetSign</a> <span class="fn">S</span> <span class="fn">(<span class="fn">Quiver.reverse</span> <span class="fn">e</span>)</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign">signedArrowSourceSign</a> <span class="fn">S</span> <span class="fn">e</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_reverse"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L270-L275">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_reverse"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowSourceSign_reverse</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedArrow">SignedArrow</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign">signedArrowSourceSign</a> <span class="fn">S</span> <span class="fn">(<span class="fn">Quiver.reverse</span> <span class="fn">e</span>)</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign">signedArrowTargetSign</a> <span class="fn">S</span> <span class="fn">e</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_eq_not_targetSign_of_isString"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L277-L331">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign_eq_not_targetSign_of_isString"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedArrowSourceSign_eq_not_targetSign_of_isString</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y </span><span class="fn">z</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedArrow">SignedArrow</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedArrow">SignedArrow</a> <span class="fn">y</span> <span class="fn">z</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hstring</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.IsString">IsString</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">(<span class="fn"><span class="fn">(<span class="fn">Quiver.Hom.toPath</span> <span class="fn">e</span>)</span>.<span class="fn">comp</span></span> <span class="fn">(<span class="fn">Quiver.Hom.toPath</span> <span class="fn">f</span>)</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign">signedArrowSourceSign</a> <span class="fn">S</span> <span class="fn">f</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">!</span><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign">signedArrowTargetSign</a> <span class="fn">S</span> <span class="fn">e</span></span></span></span></div></div><p>Consecutive letters of a string have opposite Butler--Ringel signs at
+their common vertex.  For equally oriented letters this is the polarization
+condition on a surviving ordinary two-arrow path.  For oppositely oriented
+letters, reducedness and injectivity of the relevant endpoint signs give the
+same conclusion.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L333-L339">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSign</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedPath">SignedPath</a> <span class="fn">x</span> <span class="fn">y</span></span> → <span class="fn"><span class="fn">Option</span> <span class="fn">Bool</span></span></span></div></div><p>Target sign of a nonempty signed path.  The empty path has no intrinsic
+sign; its two Butler--Ringel polarizations are supplied separately below.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L341-L345">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSign</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedPath">SignedPath</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">Option</span> <span class="fn">Bool</span></span></div></div><p>Source sign of a nonempty signed path, defined as the target sign of its
+formal inverse.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_nil"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L347-L351">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_nil"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSign_nil</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign">signedPathTargetSign</a> <span class="fn">S</span> <span class="fn">Quiver.Path.nil</span></span> <span class="fn">=</span> <span class="fn">none</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_cons"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L353-L359">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_cons"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSign_cons</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y </span><span class="fn">z</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedPath">SignedPath</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedArrow">SignedArrow</a> <span class="fn">y</span> <span class="fn">z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign">signedPathTargetSign</a> <span class="fn">S</span> <span class="fn">(<span class="fn">Quiver.Path.cons</span> <span class="fn">p</span> <span class="fn">e</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">some</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign">signedArrowTargetSign</a> <span class="fn">S</span> <span class="fn">e</span>)</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_nil"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L361-L365">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_nil"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSign_nil</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign">signedPathSourceSign</a> <span class="fn">S</span> <span class="fn">Quiver.Path.nil</span></span> <span class="fn">=</span> <span class="fn">none</span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_reverse"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L367-L371">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_reverse"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSign_reverse</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedPath">SignedPath</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign">signedPathTargetSign</a> <span class="fn">S</span> <span class="fn">(<span class="fn">Quiver.Path.reverse</span> <span class="fn">p</span>)</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign">signedPathSourceSign</a> <span class="fn">S</span> <span class="fn">p</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_reverse"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L373-L377">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_reverse"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSign_reverse</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedPath">SignedPath</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign">signedPathSourceSign</a> <span class="fn">S</span> <span class="fn">(<span class="fn">Quiver.Path.reverse</span> <span class="fn">p</span>)</span></span> <span class="fn">=</span> <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign">signedPathTargetSign</a> <span class="fn">S</span> <span class="fn">p</span></span></span></div></div></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_toPath_comp"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L379-L391">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_toPath_comp"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSign_toPath_comp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y </span><span class="fn">z</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedArrow">SignedArrow</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedPath">SignedPath</a> <span class="fn">y</span> <span class="fn">z</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign">signedPathSourceSign</a> <span class="fn">S</span> <span class="fn">(<span class="fn"><span class="fn">(<span class="fn">Quiver.Hom.toPath</span> <span class="fn">e</span>)</span>.<span class="fn">comp</span></span> <span class="fn">p</span>)</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">some</span> <span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign">signedArrowSourceSign</a> <span class="fn">S</span> <span class="fn">e</span>)</span></span></span></div></div><p>The source sign of a path displayed as its first letter followed by a
+tail is the source sign of that first letter.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_eq_not_targetSign_of_isString_prepend"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L393-L414">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign_eq_not_targetSign_of_isString_prepend"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSign_eq_not_targetSign_of_isString_prepend</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y </span><span class="fn">z</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedArrow">SignedArrow</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedPath">SignedPath</a> <span class="fn">y</span> <span class="fn">z</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hp</span> : <span class="fn"><span class="fn">0</span> <span class="fn">&lt;</span> <span class="fn"><span class="fn">Quiver.Path.length</span> <span class="fn">p</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hstring</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.IsString">IsString</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">(<span class="fn"><span class="fn">(<span class="fn">Quiver.Hom.toPath</span> <span class="fn">e</span>)</span>.<span class="fn">comp</span></span> <span class="fn">p</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSign">signedPathSourceSign</a> <span class="fn">S</span> <span class="fn">p</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">some</span> <span class="fn"><span class="fn">!</span><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowTargetSign">signedArrowTargetSign</a> <span class="fn">S</span> <span class="fn">e</span></span></span></span></span></div></div><p>If a letter is prefixed to a nonempty string, its target sign is
+opposite to the intrinsic source sign of that string.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_eq_not_sourceSign_of_isString_append"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L416-L436">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign_eq_not_sourceSign_of_isString_append"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSign_eq_not_sourceSign_of_isString_append</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y </span><span class="fn">z</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedPath">SignedPath</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedArrow">SignedArrow</a> <span class="fn">y</span> <span class="fn">z</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hp</span> : <span class="fn"><span class="fn">0</span> <span class="fn">&lt;</span> <span class="fn"><span class="fn">Quiver.Path.length</span> <span class="fn">p</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hstring</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.IsString">IsString</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn">(<span class="fn">Quiver.Path.comp</span> <span class="fn">p</span> <span class="fn">(<span class="fn">Quiver.Hom.toPath</span> <span class="fn">e</span>)</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSign">signedPathTargetSign</a> <span class="fn">S</span> <span class="fn">p</span></span> <span class="fn">=</span> <span class="fn"><span class="fn">some</span> <span class="fn"><span class="fn">!</span><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedArrowSourceSign">signedArrowSourceSign</a> <span class="fn">S</span> <span class="fn">e</span></span></span></span></span></div></div><p>Dually, if a letter is appended to a nonempty string, its source sign is
+opposite to the intrinsic target sign of that string.</p></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSignOr"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L438-L442">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSignOr"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathTargetSignOr</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn">Bool</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedPath">SignedPath</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">Bool</span></div></div><p>The target sign of a path, using <code>t</code> for the empty path.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSignOr" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSignOr"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L444-L448">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSignOr"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">signedPathSourceSignOr</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn">Bool</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedPath">SignedPath</a> <span class="fn">x</span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">Bool</span></div></div><p>The source sign of a path, using <code>t</code> for the empty path.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringWord.signedPathSourceSignOr" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord"><div class="structure"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L450-L458">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">EndpointWord</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">u</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn">Bool</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../.././foundational_types.html">Type</a> u</div></div><p>Butler--Ringel's <code>W(u,t)</code>: a string ending at <code>u</code> with target sign <code>t</code>.
+For a length-zero word, <code>t</code> chooses one of the two formal trivial strings;
+for a nonempty word, its last signed arrow determines <code>t</code>.</p><ul class="structure_fields" id="MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.mk"><li id="MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.source" class="structure_field"><div class="structure_field_info">source : <span class="fn">Q</span></div></li><li id="MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.path" class="structure_field"><div class="structure_field_info">path : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.SignedPath">SignedPath</a> <span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.source">source</a></span> <span class="fn">u</span></span></div></li><li id="MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.isString" class="structure_field"><div class="structure_field_info">isString : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.IsString">IsString</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span> <span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.path">path</a></span></span></div></li><li id="MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.targetSign_eq" class="structure_field"><div class="structure_field_info">targetSign_eq : <span class="fn"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.signedPathTargetSignOr">signedPathTargetSignOr</a> <span class="fn">S</span> <span class="fn">t</span> <span class="fn"><span class="fn">self</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.path">path</a></span></span> <span class="fn">=</span> <span class="fn">t</span></span></div></li></ul><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.word"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L464-L469">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.word"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">EndpointWord</span>.<span class="name">word</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">u</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">t</span> : <span class="fn">Bool</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord">EndpointWord</a> <span class="fn">S</span> <span class="fn">u</span> <span class="fn">t</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringWord.html#MagnitudeConjecture.BoundQuiver.StringWord.Word">Word</a> <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.Presentation.relations">relations</a></span></span></div></div><p>Forget the endpoint polarization and recover the underlying string word.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.word" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.sourceSign"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L471-L474">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.sourceSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">EndpointWord</span>.<span class="name">sourceSign</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">u</span> : <span class="fn">Q</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">t</span> : <span class="fn">Bool</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord">EndpointWord</a> <span class="fn">S</span> <span class="fn">u</span> <span class="fn">t</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">Bool</span></div></div><p>Butler--Ringel's source sign.  For the trivial word <code>1_(u,t)</code> it is
+<code>not t</code>; otherwise it is the sign of the first signed arrow.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.sourceSign" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.vertex"><div class="def"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L476-L484">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.vertex"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">EndpointWord</span>.<span class="name">vertex</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">u</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn">Bool</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord">EndpointWord</a> <span class="fn">S</span> <span class="fn">u</span> <span class="fn">t</span></span></div></div><p>The two formal length-zero strings at a vertex.</p><details id="instances-for-list-MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.vertex" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.vertex_sourceSign"><div class="theorem"><div class="gh_link"><a href="https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/9380dc294e2586430ff853b613918d5d9fc44375/MagnitudeConjecture/Algebra/StringPolarization.lean#L486-L491">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.vertex_sourceSign"><span class="name">MagnitudeConjecture</span>.<span class="name">BoundQuiver</span>.<span class="name">StringWord</span>.<span class="name">EndpointWord</span>.<span class="name">vertex_sourceSign</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k </span><span class="fn">A </span><span class="fn">Q</span> : <a href="../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Field</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Ring</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Algebra</span> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Fintype</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">Quiver</span> <span class="fn">Q</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">Q</span>) → <span class="fn"><span class="fn">Fintype</span> <span class="fn">(<span class="fn">x</span> <span class="fn">⟶</span> <span class="fn">y</span>)</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../.././MagnitudeConjecture/Algebra/BoundQuiverPresentation.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation">SpecialBiserialPresentation</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">Q</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><span class="fn">P</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.SpecialBiserialPresentation.ArrowPolarization">ArrowPolarization</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">u</span> : <span class="fn">Q</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">t</span> : <span class="fn">Bool</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">(<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.vertex">vertex</a> <span class="fn">P</span> <span class="fn">S</span> <span class="fn">u</span> <span class="fn">t</span>)</span>.<a href="../.././MagnitudeConjecture/Algebra/StringPolarization.html#MagnitudeConjecture.BoundQuiver.StringWord.EndpointWord.sourceSign">sourceSign</a></span> <span class="fn">=</span> <span class="fn"><span class="fn">!</span><span class="fn">t</span></span></span></div></div></div></div></main>
+<nav class="nav"><iframe src="../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>
