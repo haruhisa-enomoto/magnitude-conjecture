@@ -1,0 +1,201 @@
+{
+  "checked_at": "2026-09-21T00:20:20+09:00",
+  "standalone_proof_source_commit": "2396fb995e094666693b7c7c326816ade207c9b7",
+  "canonical_source_commit": "62b5468c300e6b53f01849b1ea58ffb1519124ca",
+  "build_type": "incremental serial dependency-validating full-library build",
+  "cache_note": "Existing current dependency and project artifacts were reused; no lake clean and no copied compiled artifacts.",
+  "invocation": {
+    "package": "/home/italing/work/magnitude-conjecture",
+    "targets": [
+      "MagnitudeConjecture",
+      "MagnitudeConjecture.AxiomAudit",
+      "Challenge",
+      "Solution"
+    ],
+    "lean_version": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)"
+  },
+  "rebuilt_targets": 356,
+  "maximum_process_peak_rss_kib": 8696052,
+  "maximum_sampled_lean_peak_rss_kib": 8696296,
+  "maximum_sampled_process_tree_peak_rss_kib": 9631440,
+  "maximum_memory_target": "MagnitudeConjecture.Algebra.RightModuleStandardGradedRepresentatives",
+  "maximum_sampled_lean_processes": 1,
+  "summed_step_elapsed_seconds": 4529.65,
+  "slowest_steps": [
+    {
+      "peak_rss_kib": 4914452,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardIntervalBetaTransfer",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardIntervalBetaTransfer"
+      ],
+      "sampled_tree_peak_rss_kib": 5853788,
+      "sampled_lean_peak_rss_kib": 4911224,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 486.67
+    },
+    {
+      "peak_rss_kib": 6452204,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardIntervalCategorySurplus",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardIntervalCategorySurplus"
+      ],
+      "sampled_tree_peak_rss_kib": 7376764,
+      "sampled_lean_peak_rss_kib": 6448836,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 201.7
+    },
+    {
+      "peak_rss_kib": 6202276,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardIntervalClassification",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardIntervalClassification"
+      ],
+      "sampled_tree_peak_rss_kib": 7125932,
+      "sampled_lean_peak_rss_kib": 6182832,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 167.59
+    },
+    {
+      "peak_rss_kib": 7057680,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardInteriorIrreducibleSpace",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardInteriorIrreducibleSpace"
+      ],
+      "sampled_tree_peak_rss_kib": 7994176,
+      "sampled_lean_peak_rss_kib": 7057652,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 133.48
+    },
+    {
+      "peak_rss_kib": 5698024,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardSupportedIncomingBounds",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardSupportedIncomingBounds"
+      ],
+      "sampled_tree_peak_rss_kib": 6614412,
+      "sampled_lean_peak_rss_kib": 5681644,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 127.48
+    },
+    {
+      "peak_rss_kib": 8454360,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardIntervalBiserial",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardIntervalBiserial"
+      ],
+      "sampled_tree_peak_rss_kib": 9381792,
+      "sampled_lean_peak_rss_kib": 8441040,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 117.42
+    },
+    {
+      "peak_rss_kib": 6663948,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardIntervalDirected",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardIntervalDirected"
+      ],
+      "sampled_tree_peak_rss_kib": 7596624,
+      "sampled_lean_peak_rss_kib": 6664108,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 115.4
+    },
+    {
+      "peak_rss_kib": 7591460,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardIntervalIndegreeBound",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardIntervalIndegreeBound"
+      ],
+      "sampled_tree_peak_rss_kib": 8529628,
+      "sampled_lean_peak_rss_kib": 7591704,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 114.4
+    },
+    {
+      "peak_rss_kib": 5684676,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardSupportedCategory",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardSupportedCategory"
+      ],
+      "sampled_tree_peak_rss_kib": 6615452,
+      "sampled_lean_peak_rss_kib": 5678116,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 109.4
+    },
+    {
+      "peak_rss_kib": 6281384,
+      "exit": 0,
+      "target": "MagnitudeConjecture.Algebra.RightModuleStandardIntervalIrreducible",
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--log-level=error",
+        "build",
+        "+MagnitudeConjecture.Algebra.RightModuleStandardIntervalIrreducible"
+      ],
+      "sampled_tree_peak_rss_kib": 7209276,
+      "sampled_lean_peak_rss_kib": 6269512,
+      "sampled_max_lean_processes": 1,
+      "elapsed_seconds": 108.39
+    }
+  ],
+  "metrics_sha256": "528782afc65be02c30838fd963ca19e95ecf0f96876a351e5f1e67dfff8d14a5",
+  "metrics_path": ".build-audit/graded-interval/run-4wowdbb1/metrics.jsonl",
+  "validation_command": [
+    "lake",
+    "--no-ansi",
+    "--log-level=error",
+    "--no-build",
+    "build",
+    "MagnitudeConjecture",
+    "MagnitudeConjecture.AxiomAudit",
+    "Challenge",
+    "Solution"
+  ],
+  "exit": 0,
+  "qualification": "Not a fresh hosted Palomar-profile build or a cross-machine resource guarantee."
+}

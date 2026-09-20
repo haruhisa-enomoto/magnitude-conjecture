@@ -1,0 +1,19 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "-j1",
+    "-M14000",
+    "MagnitudeConjecture/AxiomAudit.lean"
+  ],
+  "source": "MagnitudeConjecture/AxiomAudit.lean",
+  "expected_queries": 4090,
+  "reported_declarations": 4090,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "exit": 0
+}
