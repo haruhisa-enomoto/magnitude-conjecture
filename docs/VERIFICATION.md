@@ -9,14 +9,16 @@ All use only `propext`, `Classical.choice`, `Quot.sound`, or no axioms.
 The independent Challenge has one deliberate placeholder and is not imported
 by the production proof.
 
-The standalone rebuild, replay with the current Palomar Comparator pin, and
-regenerated documentation checks are in progress. This page will record their
-results when complete. The earlier `verification/2026-09-15/` evidence describes
+The standalone full-library build and both axiom audits also pass. Replay
+with the current Palomar Comparator pin and regenerated documentation checks
+are in progress. This page will record their results when complete. The earlier `verification/2026-09-15/` evidence describes
 the superseded F1 proof and is retained only as history.
 
-The complete canonical build was incremental, not from an empty cache.
-The concrete interval beta transfer took 483.61 seconds and 4.69 GiB; the
-interval biseriality bridge took 116.39 seconds and 8.06 GiB. Cached checks
+Both full-library builds were incremental, not from an empty cache. The
+standalone build rebuilt 356 targets in 4,529.65 seconds of summed step time;
+its highest compiler memory was 8.29 GiB. Its concrete interval beta transfer
+took 486.67 seconds and 4.69 GiB. The canonical interval biseriality bridge
+took 116.39 seconds and 8.06 GiB. Cached checks
 cannot be used to estimate a first source build. All project resource limits
 and dependency pins are unchanged.
 

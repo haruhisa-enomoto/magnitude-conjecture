@@ -1,13 +1,14 @@
 {
-  "summary": "The graded-interval proof passes the canonical full-library, source and 4,090-declaration axiom audits. Standalone rebuild, current Comparator replay and regenerated API checks are in progress.",
+  "summary": "The graded-interval proof passes the canonical and standalone full-library builds and 4,090-declaration axiom audits. Replay with the current Comparator and regenerated API checks are in progress.",
   "research_source_commit": "62b5468c3",
   "manuscript_source_commit": "4404dea52deec5a0dc20dddf1ac8204b620ecb6a",
   "standalone_source_commit": "2396fb9",
-  "build": "in progress",
-  "axiom_audits": "canonical passed; standalone pending",
+  "build": "passed: incremental serial full-library build",
+  "axiom_audits": "passed: 7 public and 4090 supporting declarations",
   "comparator": "in progress",
   "api": "pending",
   "website": "pending",
-  "palomar": "Not submitted; current exporter resolution passes.",
-  "source_sync_result": "verification/2026-09-20/source-sync.json"
+  "palomar": "Not submitted; current local metadata, licence, configuration, toolchain and exporter-resolution checks pass.",
+  "source_sync_result": "verification/2026-09-20/source-sync.json",
+  "build_result": "verification/2026-09-20/build-summary.json"
 }
