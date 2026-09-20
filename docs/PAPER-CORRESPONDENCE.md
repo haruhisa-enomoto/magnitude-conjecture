@@ -83,6 +83,9 @@ census covers 1,183 development files and finds no banned production token.
 The expanded audit checks 4,090 declarations, all with standard axioms only
 or no axioms. The seven public checks have the same permitted boundary.
 The generated Mathlib-only Challenge is unchanged at 298 lines. Independent
-kernel replay and standalone delivery are recorded separately in the final
-verification checkpoint; a successful build alone does not imply registry
-acceptance.
+replay also passes: current Comparator checks the statement and axiom boundary,
+and NanoDa and Lean's kernel accept the solution. The exact standalone source
+is `9380dc294e2586430ff853b613918d5d9fc44375`; its verification record is
+`verification/2026-09-20/comparator.json` in the standalone repository. The run
+took 38.1 minutes. These local checks do not claim a fresh hosted Palomar-profile
+preflight, editorial review or registry acceptance.
