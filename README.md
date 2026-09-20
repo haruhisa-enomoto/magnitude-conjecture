@@ -7,7 +7,8 @@ inverse entries is at least the number of simple-module isomorphism classes,
 with equality exactly when the basic algebra of A is special biserial.
 There is no characteristic or basicness restriction on A.
 
-This repository contains the complete Lean proof and a mathematical website.
+This repository contains the complete Lean proof and its
+[mathematical website and searchable API](https://haruhisa-enomoto.github.io/magnitude-conjecture/).
 The result resolves the magnitude conjecture of
 [Børve, Horiatakis, and Kalck](https://arxiv.org/abs/2607.07555v1),
 as proved in Haruhisa Enomoto's manuscript *The magnitude conjecture for module
@@ -84,5 +85,7 @@ The website reads the actual Challenge source and records the source commit.
 Generate the API through the separate [docbuild project](docbuild/README.md),
 then rebuild the site. The doc-gen4 dependency does not enter the proof package.
 
-The repository remains private during preparation. Public release, website
-deployment, and optional Palomar registration are separate later steps.
+The repository is public. The website is published through the
+[Pages workflow](.github/workflows/pages.yml); see
+[publication instructions](website/README.md). Palomar registration has not
+been requested or performed.

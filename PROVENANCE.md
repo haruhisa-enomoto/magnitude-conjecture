@@ -45,4 +45,8 @@ PalomarRegistry/PalomarTemplate commit
 the project's exact Lean patch toolchain; the exporter qualification is
 recorded in `docs/VERIFICATION.md`.
 
-No public release, website deployment, or Palomar registration has been made.
+The owner made the repository public on September 21, 2026, and authorized
+GitHub Pages publication. The [website](https://haruhisa-enomoto.github.io/magnitude-conjecture/)
+is delivered by the Pages workflow from checked generated files on `gh-pages`.
+The website records its source and API revisions. No Palomar registration has
+been made.

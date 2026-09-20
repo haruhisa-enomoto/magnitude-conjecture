@@ -98,17 +98,18 @@ metadata validator checks required sections, version, licence, description,
 and retained placeholders; this is not a mathematical review or a complete
 registry acceptance test.
 
-The repository remains private. No public release, website deployment, or
-Palomar registration has been performed. Registration requires a public
-GitHub repository and an exact commit.
+The repository is public, and website publication is authorized. Palomar
+registration has not been performed; it would identify an exact public commit.
 
 ## Continuous integration
 
 Pushes and pull requests run source, metadata, helper, and website checks.
-During private preparation, the workflow's manual dispatch performs the
-substantial full proof build, with optional documentation and independent
-replay. The workflow uploads evidence and website artifacts; it does not
-deploy. Private standard Linux runners have less memory than public runners,
-so the workflow adds swap on smaller machines. Independent replay has a larger
+Public pushes and pull requests that change Lean source, dependency pins or
+proof-verification scripts also run the substantial full proof build and axiom
+audits. Documentation-only updates skip that build. Manual dispatch always
+requests the full build, with optional documentation and independent replay.
+The separate Pages workflow deploys checked generated files from `gh-pages`;
+publication does not repeat Lean compilation. The proof workflow adds swap
+on smaller machines. Independent replay has a larger
 total memory footprint than an individual Lean compilation; use a machine with
 at least 16 GiB RAM for that optional step.

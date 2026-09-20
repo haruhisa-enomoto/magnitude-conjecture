@@ -20,4 +20,30 @@ Run `python3 scripts/build_website.py` from the repository root, then
 The statement page reads the actual Challenge file and checks its generator.
 A separate [docbuild project](../docbuild/README.md) keeps documentation
 tooling outside the proof library's dependency graph. Generate its API first
-to include searchable declarations in the preview. No site has been deployed.
+to include searchable declarations in the preview.
+
+## Publish
+
+The public URL is <https://haruhisa-enomoto.github.io/magnitude-conjecture/>.
+Repository **Settings → Pages → Source** must be **GitHub Actions**.
+The [Deploy Pages workflow](../.github/workflows/pages.yml) publishes the
+complete checked website, including the API, from the `gh-pages` branch.
+It runs when that branch is updated; it can also be run manually from Actions.
+
+After committing and pushing source changes to `main`, run:
+
+```sh
+python3 scripts/publish_website.py
+```
+
+The publisher rebuilds and checks the website, requires a complete API matching
+the current Lean source, and pushes the generated output and Pages workflow
+from an isolated temporary checkout. It preserves the source working tree and
+uses an ordinary fast-forward push. A push to `gh-pages` starts deployment;
+check its result in Actions. No Lean compilation is performed during publication.
+
+Handwritten-page changes reuse the checked API. If Lean source or pins change,
+first rebuild the proof and regenerate the API as described in
+[docbuild](../docbuild/README.md); the publisher rejects a stale API.
+The site records both source revisions, so documentation can be refreshed
+without attributing a new date to the earlier proof verification.
