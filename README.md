@@ -29,7 +29,9 @@ It has one deliberate theorem placeholder for Comparator. [Solution](Solution.le
 supplies its proof and never imports the Challenge. All production definitions
 and proofs are complete, with only `propext`, `Classical.choice`, and `Quot.sound`.
 
-The implementation follows the frozen September 20 graded-interval proof.
+The implementation follows the revised graded-interval manuscript
+[frozen on September 21](docs/manuscript/README.md), including the direct
+structural proofs retained in Appendix A.
 Finite kernels bound the primitive-factor boundaries. Direct heights and an
 explicit poset realization prove directed deletion. Graded classification
 then gives finite interval algebras with a uniform surplus estimate. Separated

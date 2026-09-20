@@ -1,5 +1,12 @@
 # Verification
 
+The current manuscript target is the revised exposition frozen on September 21
+in [docs/manuscript](manuscript/README.md). Its correspondence was checked
+against the unchanged Lean source. The previous build and replay dates below
+remain their actual dates; changing the manuscript target does not constitute
+a new proof run. The [exposition migration record](../verification/2026-09-21/exposition-migration.json)
+records the snapshot, source-identity and documentation checks separately.
+
 The September 20 source checkpoint `2396fb9` synchronizes the frozen
 graded-interval proof from research commit `62b5468c3`. The source has 1,106
 owned development modules and 77 vendored modules. The complete canonical

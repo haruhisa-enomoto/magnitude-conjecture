@@ -12,13 +12,16 @@ The standalone repository was initially extracted from research commit
 `20ebfbcf9f83e359425a89bf5b8980e3ad7054e6` on 2026-09-07. Compiled artifacts
 are not transferred as source; this checkout builds its own project modules.
 
-The manuscript target is the September 20 snapshot at research commit
-`4404dea52deec5a0dc20dddf1ac8204b620ecb6a`, TeX blob
-`3f2273a3faf11d226ec2a131a902ff05664f9ebf`. Its SHA-256 is
-`8941be673f965879cae99484353ce50f6a05a6b8f3649229570976eedab5e5b8`.
-The [paper correspondence](docs/PAPER-CORRESPONDENCE.md) maps this fixed proof
-to Lean and describes the final-map formulation of almost-split transfer.
-Later exposition revisions do not change the recorded target.
+The manuscript target is the September 21 revised-exposition snapshot from research
+commit `8c01dab074320c81a87b7094351cc3a41b3be53a`, TeX blob
+`fe59cb133871162b2a9777e697b3d47fd6aa1466`. Its SHA-256 is
+`8255d1f669586781393b5b235238e0e260e0a85f90a7bdb24b6786b2131c2eec`.
+The [frozen manuscript](docs/manuscript/README.md) contains the exact TeX, PDF
+and manifest. The [paper correspondence](docs/PAPER-CORRESPONDENCE.md) maps
+this target's five sections and Appendix A to Lean and describes the final-map
+formulation of almost-split transfer. It supersedes the September 20 target;
+the checked Lean source and historical verification records are unchanged.
+Later live revisions do not change this recorded target.
 
 The owner and responsible maintainer is Haruhisa Enomoto. The formalization was
 developed using AI coding agents under his direction. The independent

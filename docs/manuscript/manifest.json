@@ -1,0 +1,17 @@
+{
+  "source_commit": "8c01dab074320c81a87b7094351cc3a41b3be53a",
+  "manuscript_commit": "781560011ef76c07943d7f4887cae5e5cf603a74",
+  "frozen_at": "2026-09-21T08:30:20+09:00",
+  "files": {
+    "main.tex": {
+      "source": "paper/magnitude-conjecture/main.tex",
+      "sha256": "8255d1f669586781393b5b235238e0e260e0a85f90a7bdb24b6786b2131c2eec",
+      "git_blob": "fe59cb133871162b2a9777e697b3d47fd6aa1466"
+    },
+    "main.pdf": {
+      "source": "paper/magnitude-conjecture/main.pdf",
+      "sha256": "5ea50e45c5ebc016f399bb4f41fc41b88fe946ba9b14f93aa8d0e526f895a2ac",
+      "git_blob": "8f119e177c639e89ecbdfb3ce8c0775e921e4ede"
+    }
+  }
+}

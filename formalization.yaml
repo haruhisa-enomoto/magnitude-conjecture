@@ -25,7 +25,7 @@ sources:
     authors: ["Haruhisa Enomoto"]
     type: "manuscript"
     relationship: "formalizes"
-    note: "Frozen September 20 manuscript and exact proof correspondence are recorded in docs/PAPER-CORRESPONDENCE.md."
+    note: "Revised manuscript frozen September 21 in docs/manuscript/; exact proof correspondence is recorded in docs/PAPER-CORRESPONDENCE.md."
   - title: "An equidistribution conjecture for quotient-closed and submodule-closed subcategories: Lean formalization"
     authors: ["Haruhisa Enomoto"]
     type: "formalization"

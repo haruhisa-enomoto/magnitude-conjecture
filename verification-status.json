@@ -1,7 +1,7 @@
 {
   "summary": "The frozen graded-interval proof passes both full-library builds, all 4,090 axiom checks, and independent NanoDa and Lean-kernel replay with the current Comparator. The complete API covers 1,183 modules; all 1,196 pages pass local checks, and browser search, navigation and desktop/mobile checks pass.",
   "research_source_commit": "62b5468c3",
-  "manuscript_source_commit": "4404dea52deec5a0dc20dddf1ac8204b620ecb6a",
+  "manuscript_source_commit": "8c01dab074320c81a87b7094351cc3a41b3be53a",
   "standalone_source_commit": "2396fb9",
   "build": "passed: incremental serial full-library build",
   "axiom_audits": "passed: 7 public and 4090 supporting declarations",
@@ -12,5 +12,8 @@
   "source_sync_result": "verification/2026-09-20/source-sync.json",
   "build_result": "verification/2026-09-20/build-summary.json",
   "comparator_result": "verification/2026-09-20/comparator.json",
-  "documentation_result": "verification/2026-09-20/documentation.json"
+  "documentation_result": "verification/2026-09-20/documentation.json",
+  "manuscript_tex_blob": "fe59cb133871162b2a9777e697b3d47fd6aa1466",
+  "manuscript_manifest": "docs/manuscript/manifest.json",
+  "exposition_migration_result": "verification/2026-09-21/exposition-migration.json"
 }
