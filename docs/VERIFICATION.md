@@ -15,7 +15,12 @@ matches, only the permitted axioms occur, and both NanoDa and Lean's kernel
 accept the exported proof. The run took 2,288.61 seconds (38.1 minutes), with a
 reported peak process RSS of 4.21 GiB. Exact source hashes, tool pins and results
 are in [the replay record](../verification/2026-09-20/comparator.json).
-Complete API generation and final website checks are in progress. The earlier `verification/2026-09-15/` evidence describes
+The complete API covers all 1,183 development modules. All 1,196 generated
+pages pass local-target checks, and the displayed Challenge matches its source.
+Browser checks pass for five public theorem links, theorem search and result
+navigation, API return navigation, and all five main pages at desktop and mobile
+widths. No JavaScript errors or mobile horizontal overflow were found. The 200
+removed module pages are absent. Results are in [the documentation record](../verification/2026-09-20/documentation.json). The earlier `verification/2026-09-15/` evidence describes
 the superseded F1 proof and is retained only as history.
 
 Both full-library builds were incremental, not from an empty cache. The
