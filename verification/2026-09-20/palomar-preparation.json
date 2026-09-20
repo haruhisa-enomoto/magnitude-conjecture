@@ -1,0 +1,47 @@
+{
+  "official_verifier_commit": "3561d237dcc4b28482558ad28a64d767d7cc8615",
+  "metadata_minimum": "passed",
+  "metadata_sha256": "7ff3105acaf7f16f36516ee81ad020d6e5aa103fe17960cc5a7d2d2d076ddd5e",
+  "exporter_resolution": {
+    "submission_commit": "3561d237dcc4b28482558ad28a64d767d7cc8615",
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "resolved_exporter": "15f6055e299ad5b89345e533cc2192f4cc00f659",
+    "compatible": true
+  },
+  "profile": {
+    "schema_version": 1,
+    "id": "palomar-standard-v1",
+    "runner": {
+      "provider": "github-hosted",
+      "label": "ubuntu-24.04",
+      "architecture": "x86_64"
+    },
+    "limits": {
+      "job_timeout_minutes": 350,
+      "execution_budget_seconds": 19800,
+      "minimum_workspace_free_bytes": 21474836480,
+      "tasks_max": 32768,
+      "open_files_max": 1048576,
+      "file_size_max_bytes": 1099511627776,
+      "memory_high_percent": 95,
+      "memory_max_percent": 98,
+      "minimum_host_memory_bytes": 15032385536
+    },
+    "trusted_tools": {
+      "comparator_commit": "575674928e239f5bc452aab72d1dd7b0f1326494",
+      "landrun_commit": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+      "nanoda_commit": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+      "lean4export": "release derived from the submitted Lean toolchain"
+    },
+    "cache_policy": "fresh submitted .lake state; pinned Mathlib cache artifacts when available"
+  },
+  "profile_sha256": "4131827553c344dc2bd49853ed3c1e651cdf74c5fb9cb2034ad90a38b9385c99",
+  "challenge_lines": 298,
+  "challenge_bytes": 13402,
+  "license_sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+  "scope": "Local structural and exporter checks; current Comparator replay recorded separately. Not a hosted-profile preflight or submission.",
+  "upstream_v04_schema": "passed at 99c678e569c7c4c0772db297c5ddd5e4c9b6322e",
+  "template_metadata_validator": "passed",
+  "helper_regressions": "6 passed",
+  "license_detector": "Not run: local Ruby 3.0 cannot install the current pinned bundle (locked nokogiri artifact unavailable); hosted licence detection not claimed."
+}

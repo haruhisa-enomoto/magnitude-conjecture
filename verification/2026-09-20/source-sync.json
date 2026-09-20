@@ -1185,9 +1185,21 @@
     "QuotientSubmoduleEquidistribution/Foundation/RingTheory/LocalRing/Basic.lean": "bea7e6929ab0208814922891bbaedc068ab8613782399e3211fd4e001b985492",
     "QuotientSubmoduleEquidistribution/Foundation/RingTheory/KrullSchmidt/Indecomposable.lean": "1499f1bb5dc7eccf8664ff17a104e4b1d4062df21485070c3c0abf573db9b5ce",
     "vendor/quotient-submodule-equidistribution.sha256": "afebb92b59a05d957c054c4987f52d3ded0587973fb4afb4b214274797b539ac",
-    "vendor/quotient-submodule-equidistribution-LICENSE": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+    "vendor/quotient-submodule-equidistribution-LICENSE": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+    "MagnitudeConjecture.lean": "dd7c47bf38ffe82eba83faca6c9c1c45db1a5848bc11134e9f54ac1342af721e",
+    "Challenge.lean": "0da003b9397a756e9426af6d663c624902008d6dd11ae70ce745d46b86290ef3",
+    "Solution.lean": "9bc4f17928e2fa87aa660e686a671cca5f20c81138785b64e9b247b6c7a79713",
+    "VENDORED.md": "d825f955171177aee3b7b7a5e27bd53c9bee4228de91fec80e2d76f2f9d90c04",
+    "comparator.json": "fceb35b4a8facf201a1351a03b8fb739f1c51eee1d0dc7938d8f168411a8d100",
+    "lake-manifest.json": "2f58214020268509c6050b8bc93a24cab6fda8564eb8eb5a925dfa21fa532f90",
+    "lakefile.toml": "6d3088db459f1bd802f86288b13d91dd8704a7e3d2eb2c1cb9edc40cdbdbdb19",
+    "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "scripts/generate_challenge.py": "26ea7e7de473cd0d80619dc5f5edd19a204eb264e53c95c81f183fb6c4a41225"
   },
   "missing": [],
   "extra": [],
-  "mismatched": []
+  "mismatched": [],
+  "owned_development_modules": 1106,
+  "vendored_modules": 77,
+  "deletion_note": "199 dependency-exclusive obsolete modules plus the old RightModuleF1Proof path, replaced by RightModuleIntervalProof."
 }

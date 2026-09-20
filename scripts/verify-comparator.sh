@@ -8,7 +8,7 @@ comparator_dir="$cache_root/comparator"
 lean4export_dir="$cache_root/lean4export"
 nanoda_dir="$cache_root/nanoda"
 
-comparator_commit=68a064109f01c08f47c8edc9f51d6a2bbffaa188
+comparator_commit=575674928e239f5bc452aab72d1dd7b0f1326494
 lean4export_commit=15f6055e299ad5b89345e533cc2192f4cc00f659
 landrun_commit=811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
 nanoda_commit=68d5ca9db226849b41a6fff59d796ff19d0a8840
@@ -64,9 +64,9 @@ fi
 
 project_toolchain=$(tr -d '[:space:]' < "$repository_root/lean-toolchain")
 lean4export_toolchain=$(tr -d '[:space:]' < "$lean4export_dir/lean-toolchain")
-# Upstream has no v4.33.1 exporter tag at this checkpoint. Use its v4.33.0
-# source, rebuilt with the project's exact patch toolchain. This local replay
-# does not claim acceptance by Palomar's release-tag resolver.
+# PalomarSubmission 3561d237 accepts the same-release-line patch-zero
+# exporter source, rebuilt with the project's exact patch toolchain.
+# The project pin is unchanged; this is the resolver-selected exporter.
 if [ "$project_toolchain" != "$lean4export_toolchain" ]; then
   if [ "$project_toolchain" != "leanprover/lean4:v4.33.1" ] ||
      [ "$lean4export_toolchain" != "leanprover/lean4:v4.33.0" ]; then
@@ -81,8 +81,12 @@ checkout_exact https://github.com/robsimmons/nanoda_lib.git "$nanoda_dir" "$nano
 
 GOBIN="$bin_dir" go install "github.com/zouuup/landrun/cmd/landrun@$landrun_commit"
 
-(cd "$comparator_dir" && lake "+$project_toolchain" build comparator)
-(cd "$lean4export_dir" && lake "+$project_toolchain" build lean4export)
+python3 "$repository_root/scripts/build_lean_serial.py" \
+  --package "$comparator_dir" --output "$repository_root/.build-audit/comparator-tool" \
+  --max-rss-kib 12582912 comparator
+ELAN_TOOLCHAIN="$project_toolchain" python3 "$repository_root/scripts/build_lean_serial.py" \
+  --package "$lean4export_dir" --output "$repository_root/.build-audit/exporter-tool" \
+  --max-rss-kib 12582912 lean4export
 (cd "$nanoda_dir" && cargo build --release --locked)
 
 cd "$repository_root"

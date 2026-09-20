@@ -12,7 +12,7 @@ The result resolves the magnitude conjecture of
 [Børve, Horiatakis, and Kalck](https://arxiv.org/abs/2607.07555v1),
 as proved in Haruhisa Enomoto's manuscript *The magnitude conjecture for module
 categories*. See [paper correspondence](docs/PAPER-CORRESPONDENCE.md) for the
-recorded manuscript revision and known exposition discrepancies.
+frozen manuscript revision and exact proof correspondence.
 
 ## Start reading
 
@@ -29,13 +29,13 @@ It has one deliberate theorem placeholder for Comparator. [Solution](Solution.le
 supplies its proof and never imports the Challenge. All production definitions
 and proofs are complete, with only `propext`, `Classical.choice`, and `Quot.sound`.
 
-The implementation follows the frozen September 10 F1 manuscript route. Its
-central step is a finite-support incidence argument: local deletion changes are
-averaged over deletion orders and transported through source-orbit
-representatives. The F1 inequality and equality layers then connect this
-positive average to the primitive quotient and special-biserial
-characterization. The earlier algebra-level covering-average and
-finite-convex equality modules have been removed; Git retains their history.
+The implementation follows the frozen September 20 graded-interval proof.
+Finite kernels bound the primitive-factor boundaries. Direct heights and an
+explicit poset realization prove directed deletion. Graded classification
+then gives finite interval algebras with a uniform surplus estimate. Separated
+intervals force thinness at equality, and one-sided almost-split transfer
+bounds the original beta count. The checked socle/string converse completes
+the equality characterization. The obsolete F1 route has been removed.
 
 ## Build and verify
 
@@ -62,8 +62,9 @@ python3 scripts/audit_axioms.py --full
 Run one build at a time. The helper compiles Lake's dependency frontier
 serially and records memory and timing. A fresh full build is substantial;
 subsequent builds reuse current artifacts. The 12 GiB process guard leaves
-room above the largest measured F1 compilation while still detecting runaway
-steps; use a machine with at least 16 GiB RAM. Do not commit `.lake/`.
+room above the measured compiler processes while still detecting runaway
+steps. The new beta-transfer module took about eight minutes in the canonical
+run, so a quiet compiler need not be stuck; use a machine with at least 16 GiB RAM. Do not commit `.lake/`.
 
 [Comparator configuration](comparator.json) requests statement matching and
 NanoDa replay, with only the three standard axioms permitted. The current

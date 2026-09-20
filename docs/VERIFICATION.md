@@ -1,55 +1,24 @@
 # Verification
 
-This checkpoint verifies the standalone synchronization of the frozen F1 proof
-route at source commit `317a6e27a5be03c720dc4238b92c74d1d6037e07`.
-The Lean tree is byte-for-byte equal to the 995-file magnitude package at
-canonical research commit `d0831ee92`; there are no missing, extra, mismatched,
-or legacy-imported source modules. The frozen manuscript identifiers are in
-[`PROVENANCE.md`](../PROVENANCE.md), and the proof map is in
-[`PAPER-CORRESPONDENCE.md`](PAPER-CORRESPONDENCE.md).
+The September 20 source checkpoint `2396fb9` synchronizes the frozen
+graded-interval proof from research commit `62b5468c3`. The source has 1,106
+owned development modules and 77 vendored modules. The complete canonical
+library, Challenge/Solution, source and dependency audits pass. Its expanded
+axiom audit checks 4,090 declarations; public checks cover seven declarations.
+All use only `propext`, `Classical.choice`, `Quot.sound`, or no axioms.
+The independent Challenge has one deliberate placeholder and is not imported
+by the production proof.
 
-The production main theorem and its independent presentation equivalence
-compile using only `propext`, `Classical.choice`, and `Quot.sound`. The
-independent Challenge contains one deliberate theorem placeholder. It is not
-imported by the production proof or Solution.
+The standalone rebuild, replay with the current Palomar Comparator pin, and
+regenerated documentation checks are in progress. This page will record their
+results when complete. The earlier `verification/2026-09-15/` evidence describes
+the superseded F1 proof and is retained only as history.
 
-## Current results
-
-The fresh standalone build began after `lake clean` and passed all 4,501 serial
-compilation steps. It built the complete `MagnitudeConjecture` library, the
-full axiom-audit umbrella, Challenge, and Solution, then passed Lake's
-`--no-build` validation. The largest process peak was 9,683,212 KiB (9.23 GiB),
-and the largest sampled process-tree peak was 10,623,112 KiB (10.13 GiB), both
-for `RightModuleF1CoveringPrimitive`. Only one Lean compiler process was active
-at a time. These measurements come from one Linux/WSL2 run and are not memory
-guarantees for other machines.
-
-The public and full axiom audits checked 7 and 3,675 declarations respectively.
-Every reported declaration used only the three standard axioms. The
-Challenge generator check, selected import graph check, metadata validation,
-six verification-helper regression tests, shell syntax checks, and Git
-whitespace check also passed.
-
-Comparator passed on 2026-09-15. Exact statement comparison, permitted-axiom
-checking, NanoDa verification, and Lean's default kernel replay all succeeded
-with exit code 0 and the final verdict `Your solution is okay!`. The
-[`Comparator record`](../verification/2026-09-15/comparator.json) contains the
-exact tool pins, Challenge and Solution hashes, and the checksum of the local
-2,888,445-byte replay log. The exporter-version qualification below applies.
-
-The searchable API covers 1,072 tracked modules: the 995-file production tree
-and 77 vendored quotient-submodule modules. The generated site check examined
-1,103 HTML pages; all local targets resolved, and the displayed statement
-matched Challenge exactly. The API and site both identify source commit
-`317a6e27a5be03c720dc4238b92c74d1d6037e07`.
-
-Evidence: [source synchronization](../verification/2026-09-15/source-sync.json),
-[fresh build summary](../verification/2026-09-15/fresh-build-summary.json),
-[public axioms](../verification/2026-09-15/public-axioms.json),
-[full axioms](../verification/2026-09-15/full-axioms.json), and
-[website checks](../verification/2026-09-15/website-summary.json). The older
-`verification/2026-09-07/` checkpoint remains as historical evidence for the
-superseded proof route.
+The complete canonical build was incremental, not from an empty cache.
+The concrete interval beta transfer took 483.61 seconds and 4.69 GiB; the
+interval biseriality bridge took 116.39 seconds and 8.06 GiB. Cached checks
+cannot be used to estimate a first source build. All project resource limits
+and dependency pins are unchanged.
 
 ## Reproduce the checks
 
@@ -76,16 +45,18 @@ permits only the three standard axioms. It pins these tool sources:
 
 | Tool | Source commit |
 | --- | --- |
-| Comparator | `68a064109f01c08f47c8edc9f51d6a2bbffaa188` |
+| Comparator | `575674928e239f5bc452aab72d1dd7b0f1326494` |
 | lean4export | `15f6055e299ad5b89345e533cc2192f4cc00f659` |
 | NanoDa | `68d5ca9db226849b41a6fff59d796ff19d0a8840` |
 | Landrun | `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4` |
 
-Comparator and lean4export are compiled with the project's Lean 4.33.1.
-The exporter source is its v4.33.0 release. Upstream has no v4.33.1 exporter
-tag at this checkpoint. This local compatibility choice means that a
-successful local replay does not establish that Palomar's release-tag resolver
-accepts the project unchanged.
+Comparator uses the toolchain pinned by its own source, Lean 4.34.0-rc1.
+The exporter source is v4.33.0, rebuilt with the project's unchanged Lean
+4.33.1. The current official verifier's resolver selects that exact exporter
+commit and accepts this toolchain pair. The resolver check used
+[PalomarSubmission commit 3561d237](https://github.com/PalomarRegistry/PalomarSubmission/blob/3561d237dcc4b28482558ad28a64d767d7cc8615/scripts/verify_submission.py).
+A local replay still does not claim execution of the full hosted profile,
+editorial review or registry acceptance.
 
 Build the generated documentation and website with:
 

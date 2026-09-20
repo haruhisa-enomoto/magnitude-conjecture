@@ -1,16 +1,13 @@
 {
-  "summary": "The frozen F1 source synchronization, fresh 4,501-step full build, public and 3,675-declaration full axiom audits, exact statement comparison, NanoDa verification, Lean kernel replay, complete API, and website checks passed.",
-  "research_source_commit": "d0831ee92",
-  "manuscript_source_commit": "6d9095121c8cafac4b97e9dfabf1f6bc9b6519e5",
-  "standalone_source_commit": "317a6e27a5be03c720dc4238b92c74d1d6037e07",
-  "comparator_result": "verification/2026-09-15/comparator.json",
-  "fresh_build": "passed",
-  "axiom_audits": "passed",
-  "comparator": "passed",
-  "api": "passed",
-  "website": "passed",
-  "palomar": "Not submitted; the exact Lean v4.33.1 exporter release tag remains unavailable.",
-  "fresh_build_result": "verification/2026-09-15/fresh-build-summary.json",
-  "source_sync_result": "verification/2026-09-15/source-sync.json",
-  "website_result": "verification/2026-09-15/website-summary.json"
+  "summary": "The graded-interval proof passes the canonical full-library, source and 4,090-declaration axiom audits. Standalone rebuild, current Comparator replay and regenerated API checks are in progress.",
+  "research_source_commit": "62b5468c3",
+  "manuscript_source_commit": "4404dea52deec5a0dc20dddf1ac8204b620ecb6a",
+  "standalone_source_commit": "2396fb9",
+  "build": "in progress",
+  "axiom_audits": "canonical passed; standalone pending",
+  "comparator": "in progress",
+  "api": "pending",
+  "website": "pending",
+  "palomar": "Not submitted; current exporter resolution passes.",
+  "source_sync_result": "verification/2026-09-20/source-sync.json"
 }

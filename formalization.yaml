@@ -25,7 +25,7 @@ sources:
     authors: ["Haruhisa Enomoto"]
     type: "manuscript"
     relationship: "formalizes"
-    note: "Read-only manuscript checkpoint and known discrepancies are recorded in docs/PAPER-CORRESPONDENCE.md."
+    note: "Frozen September 20 manuscript and exact proof correspondence are recorded in docs/PAPER-CORRESPONDENCE.md."
   - title: "An equidistribution conjecture for quotient-closed and submodule-closed subcategories: Lean formalization"
     authors: ["Haruhisa Enomoto"]
     type: "formalization"
@@ -58,16 +58,17 @@ automation:
       prompting_notes: "Audit the exact main theorem, expose independent definitions, prove their connections, and prepare a private standalone repository."
   spend_usd: "Not tracked"
   notes: >-
-    The model listed is recorded for the independent-interface and extraction
+    The model listed is recorded for the independent-interface, extraction and graded-interval migration
     work. The full inherited development's model inventory has not been
     reconstructed. No subagents were used in this preparation pass.
 fidelity:
   divergences: >-
-    The formal proof uses the correct stable Hom quotients where the recorded
-    manuscript reverses the bars, and supplies a direct left/right beta
-    comparison. The appendix's middle-term description also requires a prose
-    correction. See docs/PAPER-CORRESPONDENCE.md. No weakening of the main
-    theorem's hypotheses or conclusion is known.
+    The proof follows the frozen graded-interval manuscript. Almost-split
+    transfer is expressed using its last map, middle-term decomposition and
+    nonsplit epimorphisms; the displayed graded kernel is not separately named.
+    The public statement includes Morita reduction for nonbasic input algebras.
+    Examples are not separately certified. See docs/PAPER-CORRESPONDENCE.md.
+    No weakening of the theorem's hypotheses or conclusion is known.
 review:
   status: "Agent-audited; independent human review not claimed"
   reviewers: ["Codex"]

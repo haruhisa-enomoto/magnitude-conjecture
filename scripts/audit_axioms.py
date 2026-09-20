@@ -28,7 +28,7 @@ def main():
     expected = set(re.findall(r"^#print axioms (\S+)", source.read_text(), re.M))
     if not expected:
         raise SystemExit("No axiom queries found")
-    command = ["lake", "env", "lean", str(source.relative_to(ROOT))]
+    command = ["lake", "env", "lean", "-j1", "-M14000", str(source.relative_to(ROOT))]
     result = subprocess.run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     args.output.mkdir(parents=True, exist_ok=True)
     label = "full" if args.full else "public"

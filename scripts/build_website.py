@@ -38,7 +38,10 @@ def main():
             subprocess.run(["git", "diff", "--exit-code", *revisions, "--", "*.lean",
                             "lean-toolchain", "lake-manifest.json", "lakefile.toml"],
                            cwd=ROOT, check=True)
-        shutil.copytree(api, output / "api", dirs_exist_ok=True)
+        # A source migration can delete modules; discard stale generated pages.
+        if (output / "api").exists():
+            shutil.rmtree(output / "api")
+        shutil.copytree(api, output / "api")
         for page in (output / "api").rglob("*.html"):
             overview = Path(os.path.relpath(output / "index.html", page.parent)).as_posix()
             page.write_text(page.read_text().replace(

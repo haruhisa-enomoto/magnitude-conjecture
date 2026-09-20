@@ -11,10 +11,11 @@ SELECTED = [
     "MainResults", "Statement", "Algebra.StatementTheorem",
     "Algebra.StatementFiniteModules", "Algebra.StatementPresentation",
     "Algebra.RightModuleMagnitudePublic", "Algebra.RightModuleSimpleCount",
-    "Algebra.RightModuleF1Proof", "Algebra.RightModuleF1Inequality",
-    "Algebra.RightModuleF1EqualityCharacterization",
-    "Algebra.RightModuleF1CoveringBridge",
-    "CategoryTheory.F1FiniteSupportIncidence",
+    "Algebra.RightModuleIntervalProof", "Algebra.RightModuleMagnitudeSurplus",
+    "Algebra.RightModuleIntervalInequality", "Algebra.RightModuleIntervalEquality",
+    "Algebra.RightModuleStandardIntervalBetaTransfer",
+    "Algebra.RightModuleStandardIntervalBiserial",
+    "Algebra.RightModuleStandardIntervalThin", "Algebra.RightModuleStandardIntervalPacking",
 ]
 
 
