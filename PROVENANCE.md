@@ -12,16 +12,19 @@ The standalone repository was initially extracted from research commit
 `20ebfbcf9f83e359425a89bf5b8980e3ad7054e6` on 2026-09-07. Compiled artifacts
 are not transferred as source; this checkout builds its own project modules.
 
-The manuscript target is the September 21 revised-exposition snapshot from research
-commit `8c01dab074320c81a87b7094351cc3a41b3be53a`, TeX blob
-`fe59cb133871162b2a9777e697b3d47fd6aa1466`. Its SHA-256 is
-`8255d1f669586781393b5b235238e0e260e0a85f90a7bdb24b6786b2131c2eec`.
-The [frozen manuscript](docs/manuscript/README.md) contains the exact TeX, PDF
-and manifest. The [paper correspondence](docs/PAPER-CORRESPONDENCE.md) maps
-this target's five sections and Appendix A to Lean and describes the final-map
-formulation of almost-split transfer. It supersedes the September 20 target;
-the checked Lean source and historical verification records are unchanged.
-Later live revisions do not change this recorded target.
+The manuscript target is *Magnitude of module categories and special biserial
+algebras*, frozen September 29 from research commit
+`e091a2d056470e49366a64650e1504d3d151df85`, manuscript commit
+`ea7d79800044d5a007679ced5bf7115b62140631` and TeX blob
+`7fa94a158b16b701cd1b315793ca6d56d85a9a3e`. Its SHA-256 is
+`1e76449d38b7884215ff02d7b41c39227b670b469902013b5b97aadb3f27ae36`.
+The [frozen manuscript](docs/manuscript/README.md) contains the exact TeX,
+33-page PDF and manifest. The [paper correspondence](docs/PAPER-CORRESPONDENCE.md)
+maps the main theorem's dependencies in six sections and Appendix A to Lean.
+It explicitly limits generalized manuscript statements to the special cases
+needed by the main theorem, including beta transfer to one control interval.
+This target supersedes September 21; the Lean source and its historical build
+and replay records are unchanged. Later live revisions do not move the target.
 
 The owner and responsible maintainer is Haruhisa Enomoto. The formalization was
 developed using AI coding agents under his direction. The independent

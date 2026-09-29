@@ -11,8 +11,8 @@ This repository contains the complete Lean proof and its
 [mathematical website and searchable API](https://haruhisa-enomoto.github.io/magnitude-conjecture/).
 The result resolves the magnitude conjecture of
 [Børve, Horiatakis, and Kalck](https://arxiv.org/abs/2607.07555v1),
-as proved in Haruhisa Enomoto's manuscript *The magnitude conjecture for module
-categories*. See [paper correspondence](docs/PAPER-CORRESPONDENCE.md) for the
+as proved in Haruhisa Enomoto's manuscript *Magnitude of module categories and
+special biserial algebras*. See [paper correspondence](docs/PAPER-CORRESPONDENCE.md) for the
 frozen manuscript revision and exact proof correspondence.
 
 ## Start reading
@@ -31,8 +31,10 @@ supplies its proof and never imports the Challenge. All production definitions
 and proofs are complete, with only `propext`, `Classical.choice`, and `Quot.sound`.
 
 The implementation follows the revised graded-interval manuscript
-[frozen on September 21](docs/manuscript/README.md), including the direct
-structural proofs retained in Appendix A.
+[frozen on September 29](docs/manuscript/README.md), including the direct
+structural proofs retained in Appendix A. Coverage is the main theorem and
+its required special cases; the broader Serre, poset, grading and invariant
+results in the manuscript are not claimed in their full generality.
 Finite kernels bound the primitive-factor boundaries. Direct heights and an
 explicit poset realization prove directed deletion. Graded classification
 then gives finite interval algebras with a uniform surplus estimate. Separated

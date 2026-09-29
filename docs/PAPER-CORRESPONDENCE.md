@@ -1,136 +1,163 @@
 # Manuscript–Lean correspondence
 
-The current target is the revised manuscript frozen on September 21 from
-research commit `8c01dab074320c81a87b7094351cc3a41b3be53a`, manuscript commit
-`781560011ef76c07943d7f4887cae5e5cf603a74`. Its TeX blob is
-`fe59cb133871162b2a9777e697b3d47fd6aa1466` and SHA-256 is
-`8255d1f669586781393b5b235238e0e260e0a85f90a7bdb24b6786b2131c2eec`.
-The research snapshot is `frozen-exposition-2026-09-21/`; the standalone copy
-is `docs/manuscript/`. Both contain the exact TeX, 29-page PDF and hash manifest.
-This target supersedes the September 20 snapshot. Later live exposition edits
-do not move it automatically.
+The target is the main theorem of *Magnitude of module categories and special
+biserial algebras*, frozen on September 29, 2026 from research commit
+`e091a2d056470e49366a64650e1504d3d151df85`, manuscript commit
+`ea7d79800044d5a007679ced5bf7115b62140631`. Its TeX blob is
+`7fa94a158b16b701cd1b315793ca6d56d85a9a3e` and SHA-256 is
+`1e76449d38b7884215ff02d7b41c39227b670b469902013b5b97aadb3f27ae36`.
+The research snapshot is `frozen-exposition-2026-09-29/`; the standalone copy
+is `docs/manuscript/`. Both contain the exact TeX, 33-page PDF and manifest.
+This supersedes the September 21 target. Later live edits do not move it.
 
-The revised text has five main sections and Appendix A. Its graded-interval
-proof is covered by the existing Lean implementation at research commit
-`62b5468c3`; no Lean source, theorem statement, dependency or toolchain changed
-in this exposition migration. Evidence status remains `proved/agent`, with
-Lean checking; this does not claim owner verification.
+The manuscript has six main sections and Appendix A. The formalization covers
+its main theorem and the special cases needed to prove it, using Appendix A's
+direct structural arguments. It does not claim every generalized theorem in
+the manuscript. No Lean source, public theorem, dependency or toolchain changed
+in this synchronization. Evidence remains `proved/agent`, with Lean checking;
+owner verification is not claimed.
 
-Lean remains `v4.33.1`, with Mathlib
+Lean is `v4.33.1`, with Mathlib
 `0df444a360eaa60ab8c11dca51a86af692955474` as the only external Lake dependency.
 Right modules are modules over the opposite algebra. Magnitude is the inverse
-rational Hom-matrix sum on a complete finite indecomposable family. Multiplicities
-are retained. The public theorem includes Morita reduction, so it needs no
-basicness hypothesis on the input algebra and no characteristic restriction.
+rational Hom-matrix sum on a complete finite indecomposable family. Arrow and
+middle-term multiplicities are retained. The public theorem includes Morita
+reduction and needs no basicness or characteristic restriction on the input.
+The manuscript's `sigma(A)` is Lean's ambient AR surplus. The quotient's
+`chi(D) - 1` is its intrinsic excess; `|A|` counts simple isomorphism classes,
+whereas `|M|` in the manuscript counts indecomposable summands with multiplicity.
 
-## Proof correspondence
+## Main theorem dependencies
 
-Module names below are relative to `MagnitudeConjecture`. Each row identifies
-checked source, rather than an assumed mathematical input.
+Module names are relative to `MagnitudeConjecture`. Section numbers and labels
+refer to this snapshot. A row marked as a special case does not assert the
+full generality of the corresponding manuscript statement.
 
-| Current frozen passage | Principal Lean modules | Content |
+| Frozen passage | Principal Lean modules | Coverage needed for the main theorem |
 | --- | --- | --- |
-| §§1–2, `lem:count`, `prop:ar-duality` | `CategoryTheory.Magnitude`, `Algebra.RightModuleMagnitudeSurplus`, `Algebra.RightModuleCoherentDuality` | Hom-matrix inverse, magnitude/surplus identity and AR foundations |
-| §§3.1–3.2, `lem:evaluation`, `lem:surviving-arrows`, `prop:quotient-sequences`, `lem:quotient-identities` | `Algebra.RightModulePrimitiveDirectedDeletion`, `Algebra.RightModulePrimitiveRelativeMesh`, `Algebra.RightModulePrimitiveCrossingMesh` | Primitive quotient, inherited approximation sequences and surviving irreducibles |
-| §3.3 and Appendix A.1, `lem:finite-kernel`, `prop:boundary-one`, `cor:boundary-arrows` | `CategoryTheory.FiniteKernelBound`, `Algebra.RightModuleFiniteKernelBound`, `Algebra.RightModulePrimitiveFiniteKernelBoundary`, `Algebra.RightModulePrimitiveFiniteKernelDualBoundary`, `Algebra.RightModulePrimitiveFiniteKernelFactorBoundary` | Finitely many kernels and multiplicity-one boundary estimates on both sides |
-| §3.4 and Appendix A.2, `prop:height`, `lem:height-count` | `Algebra.RightModuleDirectFactorHeight`, `Algebra.RightModuleDirectHeightExcess`, `Algebra.RightModuleDirectRadicalConcentration` | Direct height, arrow and translation increments, exact excess count; Hom = rad^ell and rad^(ell+1) = 0 for distinct labels with nonzero Hom |
-| §3.5 and Appendix A.3, `con:poset`, `prop:poset-equivalence` | `Algebra.RightModuleGeneratedRelationsQuotient`, `Algebra.RightModuleGeneratedRelationsRealization`, `Algebra.RightModuleGeneratedRelationsFactorLift`, `Algebra.RightModuleGeneratedCoordinateEquality` | Explicit generated-relations realization, Ext vanishing, lifting and compatibility of the indexed images |
-| §3.6 and Appendix A.4, `prop:intrinsic` | `Algebra.RightModuleDirectPosetExcess`, `Algebra.RightModuleDirectUpperSetSquare`, `Algebra.RightModuleDirectPosetThinness` | Nonnegative intrinsic excess; commutative-square obstruction and two-filtration equality argument |
-| §4, `lem:relative-ar`, `lem:new-sequence-terms`, `prop:compensation`, `thm:directed-deletion`, `cor:directed` | `Algebra.RightModulePrimitiveRelativeMesh`, `Algebra.RightModulePrimitiveDirectedDeletion`, `Algebra.RightModuleDirectedSurplus`, `CategoryTheory.FiniteCategoryDirectedSurplus` | Relative sequences, Ext compensation, directed deletion and zero-surplus thinness |
-| §5.1, `thm:standard`, `con:hom-grading`, `lem:standard-grading`, `set:grading`, `prop:graded-classification` | `Algebra.RightModuleStandardFormUniversalCovering`, `Algebra.RightModuleStandardGradedRepresentatives`, `Algebra.RightModuleStandardGradedClassification`, `Algebra.RightModuleStandardGradedIrreducible` | Retained standard-form theorem, graded representatives, unique shifts and homogeneous Hom/irreducible spaces |
-| §5.2, `con:interval`, `prop:interval-modules` | `Algebra.RightModuleStandardIntervalAlgebra`, `Algebra.RightModuleStandardIntervalSkeleton`, `Algebra.RightModuleStandardIntervalSkeletonDirected`, `Algebra.RightModuleStandardIntervalSimpleCount` | Actual finite interval algebras, complete finite indecomposable families, directedness and simple counts |
-| §5.2, `prop:interval-count`, `thm:lower-bound` | `Algebra.RightModuleStandardIntervalArrowError`, `Algebra.RightModuleStandardIntervalSurplusError`, `Algebra.RightModuleIntervalInequality` | Exact interior arrow counts, uniform boundary error and the unconditional ambient inequality |
-| §5.3, `prop:interval-equality` | `CategoryTheory.GradedPrincipalSeparatedDeletion`, `CategoryTheory.GradedPrincipalPackedSurplus`, `Algebra.RightModuleStandardIntervalPacking`, `Algebra.RightModuleStandardIntervalThin`, `Algebra.RightModuleStandardIntervalBiserial` | Literal gap deletion, orthogonal blocks, packing, zero interval surplus, thinness and two-sided interval biseriality |
-| §5.4, `prop:ar-transfer` | `Algebra.RightModuleStandardGradedIncomingAlmostSplit`, `Algebra.RightModuleStandardIntervalIncoming`, `Algebra.RightModuleStandardIntervalIncomingDecomposition`, `Algebra.RightModuleStandardIntervalBetaTransfer` | Degree-one incoming maps, supported middle decomposition, second-shift nonprojectivity and beta transfer |
-| §5.4, `prop:equality-forward`, `prop:equality-converse`, `thm:main` | `Algebra.RightModuleIntervalEquality`, `Algebra.RightModuleSocleReductionString`, `Algebra.RightModuleIntervalProof`, `Algebra.RightModuleMagnitudePublic`, `Algebra.StatementTheorem` | Equality implication, retained proved string/socle converse, Morita reduction and unchanged independent public statement |
+| §2, `lem:count`, `prop:ar-duality`, `prop:ar-multiplicity` | `CategoryTheory.Magnitude`, `Algebra.RightModuleMagnitudeSurplus`, `Algebra.RightModuleCoherentDuality`, `Algebra.RightModulePrimitiveArrowGain` | Hom-matrix inverse, magnitude/surplus formula, AR duality and multiplicities for module categories |
+| §§3.1–3.3 and §§4.2–4.3, `lem:surviving-arrows`, `prop:quotient-sequences`, `lem:relative-ar`, `lem:quotient-closure`, `lem:evaluation`, `lem:quotient-identities` | `Algebra.RightModulePrimitiveQuotient`, `Algebra.RightModulePrimitiveQuotientFiniteSkeleton`, `Algebra.RightModulePrimitiveTorsion`, `Algebra.RightModuleHoshinoTorsion`, `Algebra.RightModulePrimitiveRelativeMesh`, `Algebra.RightModulePrimitiveMultiplicity`, `Algebra.RightModulePrimitiveCrossingMesh` | Primitive quotient family, surviving irreducibles, torsion factorizations and restricted almost-split sequences in the required setting |
+| §4.4 and Appendix A.1, `lem:finite-kernel`, `prop:boundary-one`, `cor:boundary-arrows` | `CategoryTheory.FiniteKernelBound`, `Algebra.RightModuleFiniteKernelBound`, `Algebra.RightModulePrimitiveFiniteKernelBoundary`, `Algebra.RightModulePrimitiveFiniteKernelDualBoundary`, `Algebra.RightModulePrimitiveFiniteKernelFactorBoundary` | Direct finite-kernel proof and multiplicity-one boundary estimates on both sides |
+| §4.5 and Appendix A.2, `prop:height`, `lem:height-count` | `Algebra.RightModuleDirectFactorHeight`, `Algebra.RightModuleDirectHeightExcess`, `Algebra.RightModuleDirectRadicalConcentration` | Direct heights, exact excess count and radical concentration |
+| §4.6 and Appendix A.3, `con:poset`, `prop:poset-equivalence` | `Algebra.RightModuleGeneratedRelationsQuotient`, `Algebra.RightModuleGeneratedRelationsRealization`, `Algebra.RightModuleGeneratedRelationsFactorLift`, `Algebra.RightModuleGeneratedCoordinateEquality` | Explicit generated-relations realization for the directed primitive quotient |
+| §4.6 and Appendix A.4, `prop:intrinsic`, `lem:two-chains` | `Algebra.RightModuleDirectPosetExcess`, `Algebra.RightModuleDirectUpperSetSquare`, `Algebra.RightModuleDirectPosetThinness` | Nonnegative intrinsic excess, commutative-square obstruction and two-filtration equality thinness |
+| §§3.4–3.5 and §4.7, `thm:serre-magnitude`, `prop:compensation`, `cor:directed-compensation`, `thm:directed-deletion`, `eq:directed-deletion` | `Algebra.RightModulePrimitiveDirectCount`, `Algebra.RightModulePrimitiveBoundaryCorrespondence`, `Algebra.RightModulePrimitiveArrowGain`, `Algebra.RightModulePrimitiveContragredientMultiplicity`, `Algebra.RightModulePrimitiveDirectedDeletion` | Directed primitive specialization: crossing correction is zero, new sequences have distinct gaining pairs, exact deletion identity and equality thinness |
+| §4.8, `cor:directed`, `prop:thin-biserial`, `thm:biserial-special` | `Algebra.RightModuleDirectedSurplus`, `CategoryTheory.FiniteCategoryDirectedSurplus`, `Algebra.RightModuleStandardIntervalThin`, `Algebra.RightModuleStandardIntervalBiserial` | Directed lower bound, zero-surplus thinness, and the resulting two-sided biseriality needed for the interval algebras |
+| §§5.2–5.3, `thm:standard`, `con:hom-grading`, `lem:standard-grading`, `set:grading`, `prop:graded-classification` | `Algebra.RightModuleStandardFormUniversalCovering`, `Algebra.RightModuleStandardGradedRepresentatives`, `Algebra.RightModuleStandardGradedClassification`, `Algebra.RightModuleStandardGradedHom`, `Algebra.RightModuleStandardGradedDirected`, `Algebra.RightModuleStandardGradedIrreducible` | Standard-form construction, concrete graded lifts, unique shifts, directedness and homogeneous Hom/irreducible spaces |
+| §5.1, `con:interval`, `prop:interval-modules`, `prop:interval-count` | `Algebra.RightModuleStandardIntervalAlgebra`, `Algebra.RightModuleStandardIntervalSkeleton`, `Algebra.RightModuleStandardIntervalSkeletonDirected`, `Algebra.RightModuleStandardIntervalSimpleCount`, `Algebra.RightModuleStandardIntervalArrowError`, `Algebra.RightModuleStandardIntervalSurplusError` | Actual standard-form interval algebras, complete indecomposable families, counts and uniform surplus error |
+| §5.3, `thm:lower-bound` | `Algebra.RightModuleIntervalInequality` | Nonnegative interval surplus implies the unconditional ambient inequality |
+| §6.1, `lem:separated-intervals`, `prop:interval-equality` | `CategoryTheory.GradedPrincipalSeparatedDeletion`, `CategoryTheory.GradedPrincipalPackedSurplus`, `Algebra.RightModuleStandardIntervalPacking`, `Algebra.RightModuleStandardIntervalThin`, `Algebra.RightModuleStandardIntervalBiserial` | Surplus specialization: separated quotient, quantitative packing bound, zero interval surplus, thinness and biseriality |
+| §6.2, `prop:ar-transfer` | `Algebra.RightModuleStandardGradedIncomingAlmostSplit`, `Algebra.RightModuleStandardIntervalIncoming`, `Algebra.RightModuleStandardIntervalIncomingDecomposition`, `Algebra.RightModuleStandardIntervalBetaTransfer` | Standard-form beta transfer to one control interval, sufficient for the equality implication |
+| §§6.2–6.3, `thm:biserial-ar`, `prop:equality-forward`, `prop:equality-converse`, `thm:main` | `Algebra.RightModuleIntervalEquality`, `Algebra.RightModuleSocleReductionString`, `Algebra.RightModuleIntervalProof`, `Algebra.RightModuleMagnitudePublic`, `Algebra.StatementTheorem` | Proved beta characterization, socle/string converse, Morita reduction and the full independent public theorem |
 
-## Newly separated statements and source attribution
+## Why the specialized results suffice
 
-The revised statements organize arguments already present in the proof.
-The correspondences below identify their existing mathematical implementation;
-Lean need not package every numbered assertion as one declaration.
+**Appendix A replaces the arbitrary-poset detour.** The direct boundary,
+height, realization and two-filtration arguments prove the intrinsic estimate
+and its equality consequence for the directed primitive quotient. The main
+theorem does not require §4.1's `thm:poset-magnitude` for every
+representation-finite poset over an arbitrary field. Ringel–Vossieck is cited
+in the main text; its relevant directed structural inputs have direct checked
+proofs in the package.
 
-| Current passage | Existing implementation |
-| --- | --- |
-| §2, `prop:ar-multiplicity` | `finrank_irreducibleHomSpace_eq_arrowMultiplicity_of_scalarEndomorphisms` in `Algebra.RightModulePrimitiveArrowGain`, with its left/right occurrence-basis imports. Multiplicities are dimensions over the algebraically closed base field. |
-| §3, `lem:quotient-closure` | `Algebra.RightModulePrimitiveQuotient`, `Algebra.RightModulePrimitiveQuotientSkeleton`, `Algebra.RightModulePrimitiveQuotientFiniteSkeleton` and the closure arguments in `Algebra.RightModulePrimitiveCrossingMesh` implement annihilation by the primitive ideal, the literal quotient family and preservation of directedness. |
-| §3.2, `lem:quotient-identities` | `Algebra.RightModulePrimitiveMultiplicity` supplies `meshUnitEquations`; `Algebra.RightModulePrimitiveDirectCount` supplies surviving middle decompositions and the mesh/vertex partitions. `CategoryTheory.FiniteTauTranslationMultiplicity` proves `arrowMultiplicity_eq_translation`. |
-| §4.1, `lem:relative-ar` | `Algebra.RightModulePrimitiveTorsion` constructs the torsion functor, canonical `primitiveTorsionLift`, its factorization identity and `hom_to_primitiveTorsionQuotient_eq_zero`. `Algebra.RightModuleHoshinoTorsion` proves minimality; `Algebra.RightModulePrimitiveRelativeMesh` gives short exactness and both almost-split maps. Opposite-module duality supplies the other side. Universal factorizations are used directly, rather than a separately named pair of adjunctions. |
-| §4.1, `lem:new-sequence-terms` | `Algebra.RightModulePrimitiveCrossingMesh` proves the unique non-killed middle occurrence; `Algebra.RightModulePrimitiveBoundaryCorrespondence` identifies the opposite endpoint and its unit multiplicity. `Algebra.RightModulePrimitiveArrowGain` identifies relative arrow multiplicities; `Algebra.RightModulePrimitiveContragredientMultiplicity` proves their dual compatibility. |
-| §4, `thm:directed-deletion`, `eq:directed-deletion` | `ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost` in `Algebra.RightModulePrimitiveDirectedDeletion` already states the exact difference identity; its cost is the intrinsic excess plus arrow gain minus new mesh count. |
-| §5.1, `con:hom-grading`, `lem:standard-grading`, `prop:graded-classification` | The standard-form graded functor and representatives supply the concrete grading. `standardFormGradedHomEquiv` in `Algebra.RightModuleStandardGradedHom` uses source shift minus target shift. `Algebra.RightModuleStandardGradedClassification`, `Algebra.RightModuleStandardGradedDirected` and `Algebra.RightModuleStandardGradedIrreducible` prove uniqueness, directedness and irreducible dimensions. |
-| §5.3, successive deletion in `prop:interval-equality` | `CategoryTheory.GradedPrincipalSeparatedDeletion` and `Algebra.RightModuleStandardIntervalPacking` construct the actual separated quotient and apply directed deletion through the intermediate quotients. |
-| §5.4, `thm:main` | `Algebra.RightModuleMagnitudePublic` and `Algebra.StatementTheorem` already include Morita reduction and the theorem for nonbasic input algebras. |
+**Directed deletion uses the zero-correction crossing identity.**
+`ambientARSurplus_sub_primitiveQuotientARSurplus_eq_cost` in
+`Algebra.RightModulePrimitiveDirectedDeletion` states the exact difference
+identity. Its cost is intrinsic excess plus arrow gain minus new mesh count.
+The boundary and crossing modules prove the unique non-killed middle
+occurrence needed to make the manuscript's general correction `delta` zero.
+Thus the general Serre identity is not an additional assumed input.
 
-The manuscript now cites Ringel–Vossieck for the structural statements in §3
-and retains their direct proofs in Appendix A. Lean retains the checked direct
-finite-kernel, height, generated-relations and two-filtration arguments; no
-literature assertion is introduced as an axiom. The citation revisions identify
-Assem–Simson–Skowroński IV.2.13 for AR duality, the original Iyama sources for
-tau-category structure and notation, and Skowroński–Waschbüsch for finite
-biserial implies special biserial, with Pogorzały–Skowroński as a restatement.
-Gabriel's left/right observation is explicitly credited. These changes do not
-alter the corresponding Lean theorems or their assumptions.
+**Compensation already constructs distinct pairs.** In
+`Algebra.RightModulePrimitiveArrowGain`, `newMeshGainingPair` and
+`newMeshGainingPair_injective` assign distinct gaining pairs to new sequences;
+`card_primitiveNewRightMeshEndpoint_le_primitiveTotalArrowGain` gives the
+numerical bound. Directedness and the proved primitive boundary data are
+available at the call site. This covers `cor:directed-compensation` and the
+needed instance of `prop:compensation`, without claiming the latter under
+its more general disjoint-extension-support hypothesis alone.
 
-Section numbers in this table refer exclusively to the current snapshot.
-Historical manuscript locators in retained supporting-module comments are not
-current section references; use this correspondence for navigation.
+**Concrete standard-form lifts suffice.** The standard-form classification
+constructs graded representatives directly and proves uniqueness up to shift.
+The general Gordon–Green gradability and graded almost-split results cited in
+§§5–6 are not extra axioms or missing hypotheses of the public theorem.
+The implementation proves the required standard-form instances, rather than
+the manuscript's statements for arbitrary nonnegatively graded algebras.
 
-## Exact almost-split formulation
+**The quantitative packing conclusion is already proved.**
+`standardFormInterval_surplus_le_length_mul` in
+`Algebra.RightModuleStandardIntervalPacking` bounds the interval surplus by
+`(r + h + 1)` times the ambient surplus, where `h` is the implementation's
+control height, a bound on the grading. Together with
+`standardFormInterval_surplus_nonnegative` in
+`Algebra.RightModuleIntervalInequality`, this gives the required two-sided
+bound. `standardFormInterval_surplus_eq_zero_of_ambient_eq_zero` gives the
+zero-surplus consequence. The abstract real-valued invariant formulation with
+an `o(m)` error in `lem:separated-intervals` is outside scope; the proved
+surplus specialization uses a uniform error bound.
 
-For `prop:ar-transfer`, the checked endpoint is
-`RightModule.FiniteIndecomposableSkeleton.beta_le_standardFormInterval_beta`.
-The supporting code constructs the actual homogeneous incoming map, proves
-right almost-splitness and right minimality after restriction, identifies its
-source with the direct sum indexed by incoming arrow occurrences, and proves
-that each originally nonprojective summand stays nonprojective in the control
-interval. The supported maps at shifts zero and one are nonsplit epimorphisms;
-the second shift is the required witness for middle summands. The resulting
-beta inequality counts occurrences, including repeated isomorphic summands.
+**One control interval is enough for beta transfer.** The endpoint
+`RightModule.FiniteIndecomposableSkeleton.beta_le_standardFormInterval_beta`
+compares the original algebra's beta with that of the standard-form interval
+`[0,h+2]`. The original and standard-form counts are identified through arrow
+occurrence labels. Supporting code constructs homogeneous incoming maps,
+proves right almost-splitness and right minimality after restriction, and
+identifies the source with the direct sum of incoming occurrences.
+The second shift supplies nonsplit epimorphisms witnessing nonprojectivity
+of the relevant middle summands, with multiplicities retained.
+At zero ambient surplus every interval is biserial, so this particular
+interval supplies the beta bound required in `prop:equality-forward`.
+No eventual transfer theorem for all sufficiently long intervals of an
+arbitrary graded algebra, or separately named graded kernel, is claimed.
 
-This is the final-map formulation of the displayed almost-split sequence
-`eq:graded-ar`. Lean does not separately name the manuscript's graded kernel
-`N_X` or assert its displayed support interval as a standalone theorem. Neither
-is an extra hypothesis of the beta transfer: the checked argument uses the
-last map, its actual source decomposition and the nonsplit epimorphisms.
-No injectivity transfer or complete identification of the interval AR quiver
-is used. The shift convention puts the incoming source one degree above its
-target, and both shifts fit in `[0,h+2]`.
+## Scope, attribution and retained foundations
 
-## Retained foundations and removed route
+The public endpoint is `Statement.mainClaim`, reached through
+`Algebra.RightModuleIntervalProof`. It proves the full conjecture, including
+nonsingularity, over any algebraically closed field and for nonbasic inputs.
+All load-bearing mathematical inputs are proved in the package or Mathlib;
+none is introduced as a project-local axiom. In particular, the beta
+characterization and special-biserial socle reduction are proved, even though
+the manuscript cites external sources for them.
 
-The standard-form input retains its checked covering-theoretic foundations,
-as the manuscript's imported theorem does. The subsequent inequality and
-equality proofs use finite graded intervals. The public import closure has
-1,089 local modules and no F1 or averaging module. The 199 old-route-exclusive
-modules were deleted after checking all retained callers. Shared foundations
-and supplementary checked results remain; Git preserves the removed source.
-The root also includes full radical concentration and supplementary results
-that need not occur in the final theorem's import closure.
+Current source attributions include Assem–Simson–Skowroński IV.2.13 for AR
+duality, Iyama for tau-categories and ideal quotients, Hoshino for relative
+sequences, Ringel–Vossieck for the directed structural results, Gordon–Green
+for general graded statements, Auslander–Reiten and Skowroński–Waschbüsch
+for the beta characterization, and Børve–Horiatakis–Kalck for the converse.
+These citations describe the manuscript; they do not enlarge formal coverage.
+The general strict tau-category magnitude result, arbitrary Serre crossing
+formula, disjoint-support compensation, arbitrary-poset theorem, arbitrary
+grading results and abstract invariant packing lemma are not claimed in their
+full manuscript generality. Illustrative examples have no separate certificates.
 
-This correspondence covers the main proof and its supporting constructions.
-The manuscript's illustrative examples are not asserted to have separate Lean
-certificates. Imported mathematical results used by the production theorem
-are proved in the package or Mathlib; they are not added as local axioms.
+The standard-form theorem retains its checked covering foundations. The
+subsequent inequality and equality proofs use finite graded intervals.
+The public import closure contains 1,089 local modules and no F1 or averaging
+module. The 199 old-route-exclusive modules were removed after checking
+retained callers; Git preserves them. Shared and supplementary foundations
+remain. Historical manuscript locators in supporting-module comments are not
+current section references; this correspondence supplies current navigation.
 
 ## Verification
 
-The complete library, public endpoint, Challenge/Solution, dependency and
-vendored audits pass under the existing serial build settings. The source
-census covers 1,183 development files and finds no banned production token.
-The expanded audit checks 4,090 declarations, all with standard axioms only
-or no axioms. The seven public checks have the same permitted boundary.
-The generated Mathlib-only Challenge is unchanged at 298 lines. Independent
-replay also passes: current Comparator checks the statement and axiom boundary,
-and NanoDa and Lean's kernel accept the solution. The exact standalone source
-is `9380dc294e2586430ff853b613918d5d9fc44375`; its verification record is
-`verification/2026-09-20/comparator.json` in the standalone repository. The run
-took 38.1 minutes. These local checks do not claim a fresh hosted Palomar-profile
-preflight, editorial review or registry acceptance.
+The unchanged complete library, public endpoint, Challenge/Solution, dependency
+and vendored audits passed in the September 20–21 verification. The source
+census covers 1,183 development files. Public and expanded axiom checks cover
+7 and 4,090 declarations respectively, using only standard axioms or none.
+The Mathlib-only Challenge remains 298 lines with its deliberate comparison
+placeholder excluded from the production proof.
 
-The September 21 exposition migration checks exact source equality against
-that replayed proof and both repository copies, the new snapshot hashes,
-current manuscript labels and cited Lean modules, and the refreshed metadata
-and website. It does not rerun the unchanged proof or redate the original
-build, axiom and replay evidence. The new migration record is
-`verification/2026-09-21/exposition-migration.json` in the standalone repository.
+Independent Comparator statement/axiom checking, NanoDa and Lean-kernel
+replay passed for standalone source
+`9380dc294e2586430ff853b613918d5d9fc44375`. The run took 38.1 minutes; its
+record is `verification/2026-09-20/comparator.json`. These local results do
+not claim a fresh hosted Palomar-profile run or registry acceptance.
+
+The September 29 synchronization checks all 1,193 source-manifest files in
+both repositories against their verified hashes, unchanged source sets and
+pins, the new snapshot hashes, current manuscript labels and cited Lean
+modules/declarations, metadata and website. Its separate record is
+`verification/2026-09-29/exposition-migration.json`. The existing proof
+verification is retained by exact source identity, without rerunning or
+redating the expensive build and replay.

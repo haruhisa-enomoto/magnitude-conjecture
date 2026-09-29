@@ -1,7 +1,7 @@
 {
-  "summary": "The frozen graded-interval proof passes both full-library builds, all 4,090 axiom checks, and independent NanoDa and Lean-kernel replay with the current Comparator. The complete API covers 1,183 modules; all 1,196 pages pass local checks, and browser search, navigation and desktop/mobile checks pass.",
+  "summary": "The main theorem has a complete Lean proof. The unchanged proof passed both full-library builds, all 4,090 supporting axiom checks, and independent NanoDa and Lean-kernel replay in September 20–21 verification. The September 29 manuscript correspondence uses Appendix A and the necessary special cases; broader manuscript results are outside scope. The complete API covers 1,183 modules.",
   "research_source_commit": "62b5468c3",
-  "manuscript_source_commit": "8c01dab074320c81a87b7094351cc3a41b3be53a",
+  "manuscript_source_commit": "e091a2d056470e49366a64650e1504d3d151df85",
   "standalone_source_commit": "2396fb9",
   "build": "passed: incremental serial full-library build",
   "axiom_audits": "passed: 7 public and 4090 supporting declarations",
@@ -13,7 +13,8 @@
   "build_result": "verification/2026-09-20/build-summary.json",
   "comparator_result": "verification/2026-09-20/comparator.json",
   "documentation_result": "verification/2026-09-20/documentation.json",
-  "manuscript_tex_blob": "fe59cb133871162b2a9777e697b3d47fd6aa1466",
+  "manuscript_tex_blob": "7fa94a158b16b701cd1b315793ca6d56d85a9a3e",
   "manuscript_manifest": "docs/manuscript/manifest.json",
-  "exposition_migration_result": "verification/2026-09-21/exposition-migration.json"
+  "exposition_migration_result": "verification/2026-09-29/exposition-migration.json",
+  "formalization_scope": "Main theorem and required special cases, using Appendix A; broader Serre, poset, arbitrary-grading and abstract invariant results are outside scope."
 }

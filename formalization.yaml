@@ -21,11 +21,11 @@ sources:
     relationship: "background"
     location: "https://arxiv.org/abs/2607.07555v1"
     note: "Source of the magnitude conjecture resolved by the formalized theorem."
-  - title: "The magnitude conjecture for module categories"
+  - title: "Magnitude of module categories and special biserial algebras"
     authors: ["Haruhisa Enomoto"]
     type: "manuscript"
     relationship: "formalizes"
-    note: "Revised manuscript frozen September 21 in docs/manuscript/; exact proof correspondence is recorded in docs/PAPER-CORRESPONDENCE.md."
+    note: "Main theorem of the manuscript frozen September 29 in docs/manuscript/; required special cases and Appendix A are mapped in docs/PAPER-CORRESPONDENCE.md."
   - title: "An equidistribution conjecture for quotient-closed and submodule-closed subcategories: Lean formalization"
     authors: ["Haruhisa Enomoto"]
     type: "formalization"
@@ -63,9 +63,11 @@ automation:
     reconstructed. No subagents were used in this preparation pass.
 fidelity:
   divergences: >-
-    The proof follows the frozen graded-interval manuscript. Almost-split
-    transfer is expressed using its last map, middle-term decomposition and
-    nonsplit epimorphisms; the displayed graded kernel is not separately named.
+    The main theorem follows the frozen manuscript through the direct proofs
+    in Appendix A and specialized directed and standard-form results. General
+    Serre, poset, grading and abstract invariant statements are outside scope.
+    Almost-split transfer uses incoming maps and middle-term decompositions
+    in one control interval; eventual transfer for arbitrary gradings is not claimed.
     The public statement includes Morita reduction for nonbasic input algebras.
     Examples are not separately certified. See docs/PAPER-CORRESPONDENCE.md.
     No weakening of the theorem's hypotheses or conclusion is known.
@@ -76,7 +78,7 @@ review:
 alignment:
   namespace: "MagnitudeConjecture"
   statements:
-    - source: "The magnitude conjecture for module categories, thm:main"
+    - source: "Magnitude of module categories and special biserial algebras, thm:main"
       lean: "MagnitudeConjecture.Statement.mainClaim"
       module: "MagnitudeConjecture.Algebra.StatementTheorem"
       status: "proved"
