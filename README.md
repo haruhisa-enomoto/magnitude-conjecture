@@ -1,5 +1,9 @@
 # The magnitude conjecture for module categories
 
+[Website](https://haruhisa-enomoto.github.io/magnitude-conjecture/) ·
+[Paper](docs/manuscript/main.pdf) ·
+[Lean theorem](MagnitudeConjecture/Algebra/StatementTheorem.lean)
+
 Let A be a finite-dimensional representation-finite algebra over an
 algebraically closed field k. Its rational Hom-dimension matrix on
 indecomposable right-module representatives is invertible. The sum of its
@@ -13,7 +17,7 @@ The result resolves the magnitude conjecture of
 [Børve, Horiatakis, and Kalck](https://arxiv.org/abs/2607.07555v1),
 as proved in Haruhisa Enomoto's manuscript *Magnitude of module categories and
 special biserial algebras*. See [paper correspondence](docs/PAPER-CORRESPONDENCE.md) for the
-frozen manuscript revision and exact proof correspondence.
+manuscript revision and exact Lean coverage.
 
 ## Start reading
 
@@ -30,8 +34,8 @@ It has one deliberate theorem placeholder for Comparator. [Solution](Solution.le
 supplies its proof and never imports the Challenge. All production definitions
 and proofs are complete, with only `propext`, `Classical.choice`, and `Quot.sound`.
 
-The implementation follows the revised graded-interval manuscript
-[frozen on September 29](docs/manuscript/README.md), including the direct
+The proof follows the graded-interval argument in the manuscript
+[revision of September 30](docs/manuscript/README.md), including the direct
 structural proofs retained in Appendix A. Coverage is the main theorem and
 its required special cases; the broader Serre, poset, grading and invariant
 results in the manuscript are not claimed in their full generality.
@@ -40,7 +44,7 @@ explicit poset realization prove directed deletion. Graded classification
 then gives finite interval algebras with a uniform surplus estimate. Separated
 intervals force thinness at equality, and one-sided almost-split transfer
 bounds the original beta count. The checked socle/string converse completes
-the equality characterization. The obsolete F1 route has been removed.
+the equality characterization.
 
 ## Build and verify
 
@@ -68,8 +72,8 @@ Run one build at a time. The helper compiles Lake's dependency frontier
 serially and records memory and timing. A fresh full build is substantial;
 subsequent builds reuse current artifacts. The 12 GiB process guard leaves
 room above the measured compiler processes while still detecting runaway
-steps. The new beta-transfer module took about eight minutes in the canonical
-run, so a quiet compiler need not be stuck; use a machine with at least 16 GiB RAM. Do not commit `.lake/`.
+steps. The beta-transfer module took about eight minutes in the recorded build;
+use a machine with at least 16 GiB RAM.
 
 [Comparator configuration](comparator.json) requests statement matching and
 NanoDa replay, with only the three standard axioms permitted. The current
@@ -87,7 +91,5 @@ The website reads the actual Challenge source and records the source commit.
 Generate the API through the separate [docbuild project](docbuild/README.md),
 then rebuild the site. The doc-gen4 dependency does not enter the proof package.
 
-The repository is public. The website is published through the
-[Pages workflow](.github/workflows/pages.yml); see
-[publication instructions](website/README.md). Palomar registration has not
-been requested or performed.
+The [Pages workflow](.github/workflows/pages.yml) publishes the website; see
+[publication instructions](website/README.md).

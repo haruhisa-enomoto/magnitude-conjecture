@@ -1,7 +1,7 @@
 # Mathematical website
 
-The site follows the quotient-submodule equidistribution project's
-mathematical pages and separate doc-gen4 documentation build.
+The site presents the main theorem, its proof and the searchable Lean API.
+It also serves the manuscript PDF at `paper.pdf`.
 
 | Page | Content |
 | --- | --- |
@@ -9,10 +9,10 @@ mathematical pages and separate doc-gen4 documentation build.
 | Formal statement | Mathematical statement beside the Lean statement generated from its source |
 | Proof guide | Principal arguments, a curated dependency diagram, and links to Lean declarations |
 | API | Generated searchable documentation |
-| Verification and provenance | Build instructions, checks, source correspondence, contributions, and any registered Palomar version |
+| Verification and provenance | Build instructions, checks, source correspondence, contributions and source revisions |
 
-The documentation identifies its source revision. Stable LaTeX labels and
-Lean declaration names will anchor the paper-to-code correspondence.
+The documentation identifies its source revision. LaTeX labels and
+Lean declaration names anchor the paper-to-code correspondence.
 
 Run `python3 scripts/build_website.py` from the repository root, then
 `python3 scripts/check_website.py`. Preview with

@@ -1,13 +1,12 @@
 # Verification
 
-The current manuscript target is the main theorem of the revision frozen on September 29
-in [docs/manuscript](manuscript/README.md). Its correspondence was checked
-against the unchanged Lean source. The previous build and replay dates below
-remain their actual dates; changing the manuscript target does not constitute
-a new proof run. The [exposition migration record](../verification/2026-09-29/exposition-migration.json)
-records the snapshot, source-identity and documentation checks separately.
-The correspondence uses Appendix A and the necessary specialized results;
-coverage does not extend to every generalized theorem in the manuscript.
+The full Lean proof has passed library builds, axiom checks and independent
+kernel replay. The [manuscript correspondence](PAPER-CORRESPONDENCE.md)
+covers the main theorem of the September 30 revision, using Appendix A and
+the required special cases. The
+[documentation record](../verification/2026-09-30/exposition-migration.json)
+checks manuscript hashes and exact source identity separately from the
+September 20–21 proof verification below.
 
 The September 20 source checkpoint `2396fb9` synchronizes the frozen
 graded-interval proof from research commit `62b5468c3`. The source has 1,106
@@ -28,9 +27,8 @@ The complete API covers all 1,183 development modules. All 1,196 generated
 pages pass local-target checks, and the displayed Challenge matches its source.
 Browser checks pass for five public theorem links, theorem search and result
 navigation, API return navigation, and all five main pages at desktop and mobile
-widths. No JavaScript errors or mobile horizontal overflow were found. The 200
-removed module pages are absent. Results are in [the documentation record](../verification/2026-09-20/documentation.json). The earlier `verification/2026-09-15/` evidence describes
-the superseded F1 proof and is retained only as history.
+widths. No JavaScript errors or mobile horizontal overflow were found. Results
+are in the [API verification record](../verification/2026-09-20/documentation.json).
 
 Both full-library builds were incremental, not from an empty cache. The
 standalone build rebuilt 356 targets in 4,529.65 seconds of summed step time;
@@ -72,8 +70,8 @@ permits only the three standard axioms. It pins these tool sources:
 
 Comparator uses the toolchain pinned by its own source, Lean 4.34.0-rc1.
 The exporter source is v4.33.0, rebuilt with the project's unchanged Lean
-4.33.1. The current official verifier's resolver selects that exact exporter
-commit and accepts this toolchain pair. The resolver check used
+4.33.1. The recorded resolver check accepted that exporter commit and
+toolchain pair, using
 [PalomarSubmission commit 3561d237](https://github.com/PalomarRegistry/PalomarSubmission/blob/3561d237dcc4b28482558ad28a64d767d7cc8615/scripts/verify_submission.py).
 A local replay still does not claim execution of the full hosted profile,
 editorial review or registry acceptance.
@@ -90,7 +88,7 @@ python3 scripts/build_website.py
 python3 scripts/check_website.py
 ```
 
-## Palomar preparation
+## Independent statement and registry metadata
 
 `Challenge.lean` is generated from the Mathlib-only `Statement.lean`, with one
 target theorem appended. It contains the actual admissible-quiver
@@ -100,8 +98,8 @@ metadata validator checks required sections, version, licence, description,
 and retained placeholders; this is not a mathematical review or a complete
 registry acceptance test.
 
-The repository is public, and website publication is authorized. Palomar
-registration has not been performed; it would identify an exact public commit.
+These are local verification results. The project has not been submitted to
+the Palomar registry.
 
 ## Continuous integration
 

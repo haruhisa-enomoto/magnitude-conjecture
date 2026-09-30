@@ -1,17 +1,17 @@
 {
-  "source_commit": "e091a2d056470e49366a64650e1504d3d151df85",
-  "manuscript_commit": "ea7d79800044d5a007679ced5bf7115b62140631",
-  "frozen_at": "2026-09-29T23:23:46+09:00",
+  "source_commit": "e327fbcf1b75a3f6986f4f29d5afe5089e384297",
+  "manuscript_commit": "e327fbcf1b75a3f6986f4f29d5afe5089e384297",
+  "frozen_at": "2026-09-30T23:14:02+09:00",
   "files": {
     "main.tex": {
       "source": "paper/magnitude-conjecture/main.tex",
-      "sha256": "1e76449d38b7884215ff02d7b41c39227b670b469902013b5b97aadb3f27ae36",
-      "git_blob": "7fa94a158b16b701cd1b315793ca6d56d85a9a3e"
+      "sha256": "becf31a8aaf15a6fd3104486065364049ef58bd4233fb0396e67e436e7cefe49",
+      "git_blob": "a4c2b5b788a0f607285e6d14edbd2e4830c7021a"
     },
     "main.pdf": {
       "source": "paper/magnitude-conjecture/main.pdf",
-      "sha256": "ec786e5dc726603be564d9a874cbb8f4db8c9379fc262191f2086c94eba61abc",
-      "git_blob": "ad49626326fda57004f5bdffa6ed1703358969d4"
+      "sha256": "5ccbe7f306ea609f6a69d570dd599b1bc7787dc0cca4cd806679770fa5d99a4e",
+      "git_blob": "263589c40a4e7a5ca9ea6cf007ca8a748dd18a96"
     }
   }
 }

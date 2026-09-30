@@ -1,7 +1,7 @@
 {
-  "summary": "The main theorem has a complete Lean proof. The unchanged proof passed both full-library builds, all 4,090 supporting axiom checks, and independent NanoDa and Lean-kernel replay in September 20–21 verification. The September 29 manuscript correspondence uses Appendix A and the necessary special cases; broader manuscript results are outside scope. The complete API covers 1,183 modules.",
+  "summary": "The full proof passed library builds, checks of 7 public and 4,090 supporting declarations, and independent NanoDa and Lean-kernel replay. The permitted axioms are propext, Classical.choice and Quot.sound. The proof sources match the September 20–21 verification records. The searchable API covers 1,183 modules.",
   "research_source_commit": "62b5468c3",
-  "manuscript_source_commit": "e091a2d056470e49366a64650e1504d3d151df85",
+  "manuscript_source_commit": "e327fbcf1b75a3f6986f4f29d5afe5089e384297",
   "standalone_source_commit": "2396fb9",
   "build": "passed: incremental serial full-library build",
   "axiom_audits": "passed: 7 public and 4090 supporting declarations",
@@ -13,8 +13,8 @@
   "build_result": "verification/2026-09-20/build-summary.json",
   "comparator_result": "verification/2026-09-20/comparator.json",
   "documentation_result": "verification/2026-09-20/documentation.json",
-  "manuscript_tex_blob": "7fa94a158b16b701cd1b315793ca6d56d85a9a3e",
+  "manuscript_tex_blob": "a4c2b5b788a0f607285e6d14edbd2e4830c7021a",
   "manuscript_manifest": "docs/manuscript/manifest.json",
-  "exposition_migration_result": "verification/2026-09-29/exposition-migration.json",
+  "exposition_migration_result": "verification/2026-09-30/exposition-migration.json",
   "formalization_scope": "Main theorem and required special cases, using Appendix A; broader Serre, poset, arbitrary-grading and abstract invariant results are outside scope."
 }

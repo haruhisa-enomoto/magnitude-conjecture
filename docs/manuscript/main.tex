@@ -24,6 +24,7 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem*{organization}{Organization}
 \newtheorem*{conventions}{Conventions and notation}
+\newtheorem*{formalization}{Formalization}
 \newtheorem*{aiuse}{Use of AI}
 \numberwithin{equation}{section}
 \DeclareMathOperator{\moduleCategory}{\mathsf{mod}}
@@ -68,19 +69,19 @@
 \begin{abstract}
 B{\o}rve, Horiatakis, and Kalck defined the magnitude of the module
 category of a representation-finite algebra as the sum of the entries of
-the inverse of the matrix of Hom dimensions between its indecomposable
-modules. They conjectured that it is at least the number of simple
-modules, with equality precisely for special biserial algebras. We prove
-this conjecture over an algebraically closed field. For a
+the inverse of the matrix of Hom dimensions between indecomposable
+modules. They showed it is an Euler characteristic, the alternating
+count of vertices, arrows, and meshes of the Auslander--Reiten quiver,
+and conjectured that it is at least the number of simple modules, with
+equality precisely for special biserial algebras. We prove this
+conjecture over an algebraically closed field. For a
 representation-directed algebra, we relate the magnitudes of the module
-category, the Serre subcategory of modules without a given simple
-composition factor, and the ideal quotient by this subcategory. By the
-theory of hammocks of Ringel and Vossieck, the ideal quotient is
-equivalent to a category of representations of a finite poset, whose
-magnitude we compute. This proves the conjecture for
-representation-directed algebras. The general case is reduced to this
-one through representation-directed algebras obtained from a grading of a
-standard form of the algebra.
+category, the subcategory of modules without a given simple composition
+factor, and the ideal quotient by it. By the theory of
+hammocks of Ringel and Vossieck, this quotient is equivalent to a
+category of representations of a finite poset, whose magnitude we
+compute. The general case reduces to the representation-directed case through algebras obtained
+by grading a standard form.
 \end{abstract}
 \maketitle
 \setcounter{tocdepth}{1}
@@ -88,7 +89,7 @@ standard form of the algebra.
 
 \section{Introduction}\label{sec:introduction}
 Magnitude is an invariant of enriched categories introduced by Leinster
-\cite{Lei13}; for finite categories it generalizes the Euler characteristic
+\cite[Section~1.3]{Lei13}; for finite categories it generalizes the Euler characteristic
 of the classifying space \cite{Lei08}. Chuang, King, and Leinster studied the
 magnitude of finite-dimensional algebras \cite{CKL}. B{\o}rve, Horiatakis,
 and Kalck recently defined the magnitude of the module category of a
@@ -100,13 +101,13 @@ algebra \cite{BHK}. Over an algebraically closed field \(k\), it is
 \]
 the sum of the entries of the inverse of the invertible Hom matrix between the
 indecomposable modules. They showed that it is the Euler characteristic of
-the Auslander--Reiten quiver \(\Gamma_A\), counting vertices, arrows, and
-meshes \cite[Lemma~1.9]{BHK}:
+the Auslander--Reiten quiver \(\Gamma_A\): the alternating sum of the
+numbers of vertices, arrows, and meshes, which correspond to cells of
+dimensions \(0\), \(1\), and \(2\) \cite[Lemma~1.9]{BHK}:
 \begin{equation}\label{eq:intro-count}
  \chi(\mod A)=|\ind A|-a(A)+\bigl(|\ind A|-|A|\bigr).
 \end{equation}
-Here \(a(A)\) is the number of arrows of \(\Gamma_A\), counted with
-multiplicity, and \(|A|\) is the
+Here \(a(A)\) is the number of arrows of \(\Gamma_A\), and \(|A|\) is the
 number of simple \(A\)-modules up to isomorphism, so that
 \(|\ind A|-|A|\) counts the meshes, one for each nonprojective
 indecomposable.
@@ -118,9 +119,9 @@ Dynkin quiver \(Q\) with Coxeter number \(h_Q\) \cite[Theorem~4.3]{BHK}.
 They conjectured that \(\chi(\mod A)\geq|A|\) for every
 representation-finite bound path algebra over a field, with equality
 precisely for special biserial algebras \cite[Conjecture~A]{BHK}. They
-proved this for representation-finite hereditary algebras, as a
-consequence of \cite[Theorem~4.3]{BHK}, for radical square zero algebras
-\cite[Corollary~4.6]{BHK}, and for self-injective algebras
+proved this for representation-finite hereditary algebras (a consequence
+of \cite[Theorem~4.3]{BHK}), radical square zero algebras
+\cite[Corollary~4.6]{BHK}, and self-injective algebras
 \cite[Theorem~5.8 and Corollary~5.9]{BHK}. We prove the conjecture over an
 algebraically closed field.
 
@@ -145,55 +146,40 @@ the \emph{magnitude surplus}.
 \medskip\noindent\textbf{Strategy of the proof.}
 The proof first treats representation-directed algebras by removing one
 simple module at a time. For a primitive idempotent \(e\) of \(A\), we
-call the passage from \(A\) to \(A/AeA\) \emph{primitive deletion} of
-\(e\). For a basic representation-directed algebra \(A\), we show that
-primitive deletion does not increase the surplus,
+call the algebra \(A/AeA\) the \emph{primitive deletion} of \(e\). For a basic, representation-finite, and representation-directed
+algebra \(A\), we show that
 \[
  \sigma(A/AeA)\leq\sigma(A),
 \]
-and that equality forces \(\dim_k Xe\leq1\) for every indecomposable
+with equality only if \(\dim_k Xe\leq1\) for every indecomposable
 \(A\)-module \(X\) (Proposition~\ref{thm:directed-deletion}).
 
-This inequality comes from a general identity
-(Theorem~\ref{thm:serre-magnitude}). For an idempotent \(e\) of \(A\),
-the modules over \(B=A/AeA\) form a Serre subcategory \(\mod B\) of
-\(\mod A\), and every Serre subcategory arises in this way. Let
-\(\cD=(\mod A)/[\mod B]\) be the \emph{ideal quotient}, in which the maps
-factoring through \(\mod B\) become zero. Its magnitude \(\chi(\cD)\) is
-defined by the same formula as for \(\mod A\), using the Hom matrix between
-the indecomposables of \(\cD\). The
-quotient \(\cD\) need not be abelian, but it has Iyama's \(\tau\)-sequences in
-place of almost split sequences, and its magnitude is again a count of
-vertices, arrows, and meshes (Proposition~\ref{thm:categorical-magnitude}).
-The identity reads
+This comes from a general identity (Theorem~\ref{thm:serre-magnitude}).
+For an idempotent \(e\) of \(A\), put \(B=A/AeA\), and let
+\(\cD=(\mod A)/[\mod B]\) be the \emph{ideal quotient} by the maps
+factoring through \(\mod B\). Like \(\chi(\mod A)\), the magnitude of \(\cD\) is
+the Euler characteristic of its translation quiver \(\Gamma_{\cD}\)
+(Proposition~\ref{thm:categorical-magnitude} and
+Definition~\ref{def:boundary}), and
 \[
- \chi(\mod A)-\chi(\mod B)-\chi(\cD)=c-r-\delta.
+ \chi(\mod A)-\chi(\mod B)-\chi(\cD)=c-r-\delta,
 \]
-Here
-\[
- c=\sum_{V,W\in\ind B}\bigl(\dim_k\Irr_B(V,W)-\dim_k\Irr_A(V,W)\bigr)\geq0
-\]
-counts the irreducible maps between \(B\)-modules that factor in
-\(\mod A\), \(r\) is the number of almost split sequences of \(\mod B\) that
-are not almost split in \(\mod A\), and \(\delta\geq0\) counts, over the
-almost split sequences of \(\mod A\) with exactly one endpoint in
-\(\mod B\), the indecomposable middle summands outside \(\mod B\), counted
-with multiplicity, beyond one for each sequence.
-
-When \(A\) is representation-directed and \(e\) is primitive, we show that
-\(\delta=0\) and \(r\leq c\). Since \(|A|=|B|+1\), the identity becomes
-\[
- \sigma(A)-\sigma(B)=\chi(\cD)-1+c-r.
-\]
-In this case Ringel and Vossieck identified \(\cD\) with the
-category \(\TSp\) of representations of a finite poset \(T\) by subspaces
-of a vector space \cite[Section~10, Theorem, p.~243]{RV}. Here \(T\) is the
-set of indecomposables of \(\cD\) other than \(eA\) whose translate in the
-sense of Iyama is zero, the \(\tau\)-projectives, with \(s\leq t\) when
-there is a nonzero map from the object \(t\) to the object \(s\); a
-representation consists of a vector space \(W\) with subspaces \(W_t\)
-such that \(W_s\subseteq W_t\) for \(s\leq t\). We compute the magnitude
-of these categories.
+where \(c\) is the sum, over pairs of indecomposable \(B\)-modules, of
+the difference between the numbers of arrows between them in \(\Gamma_B\)
+and in \(\Gamma_A\), \(r\) is the number of almost split sequences of
+\(\mod B\) that are not almost split in \(\mod A\), and \(\delta\geq0\)
+counts, for each almost split sequence of \(\mod A\) with exactly one end
+term in \(\mod B\), all but one of its middle summands outside
+\(\mod B\). When \(A\) is representation-finite
+and representation-directed and \(e\) is primitive, \(\delta=0\) and
+\(r\leq c\); since \(|A|=|B|+1\), it then suffices to show
+\(\chi(\cD)\geq1\). In this case
+Ringel and Vossieck identified \(\cD\) with the category \(\TSp\) of
+representations of a finite poset \(T\) by subspaces
+\cite[Section~10, Theorem, p.~243]{RV}: such a representation is a vector
+space \(W\), its \emph{total space}, with subspaces \(W_t\) for \(t\in T\)
+such that \(W_s\subseteq W_t\) whenever \(s\leq t\). We compute the magnitude of these
+categories.
 
 \begin{theoremB}[= Theorem~\ref{thm:poset-magnitude}]
 Let \(T\) be a finite poset such that \(\TSp\) is representation-finite.
@@ -210,34 +196,50 @@ every indecomposable has one-dimensional total space.
 The inequality \(L\geq|T|\) and the equivalence of \(L=|T|\) with the two
 conditions of Theorem~B are due to Ringel and Vossieck
 \cite[Section~8, p.~237]{RV}; the new part of Theorem~B is the formula for
-\(\chi(\TSp)\). Applied to \(\cD\simeq\TSp\), Theorem~B gives
-\(\chi(\cD)\geq1\), and hence
-\(\sigma(A/AeA)\leq\sigma(A)\). For the posets arising from \(\cD\),
-Appendix~\ref{app:structural} proves \(\chi(\cD)\geq1\) directly.
-
-Since \(A/AeA\) is again representation-directed, applying this inequality
-to one simple module at a time gives \(\sigma(A)\geq0\) for a basic
-representation-directed algebra \(A\). If \(\sigma(A)=0\), every
-indecomposable \(A\)-module is thin, that is, each simple module occurs
-in it at most once as a composition factor. Then \(A\) is biserial by a
-theorem of Pogorza{\l}y and Skowro\'nski \cite{PS}, and hence special
-biserial by a theorem of Skowro\'nski and Waschb\"usch on basic
-representation-finite biserial algebras \cite{SW}.
+\(\chi(\TSp)\). For a basic, representation-finite, and
+representation-directed algebra \(A\),
+deleting simple modules one at a time then gives \(\sigma(A)\geq0\). If
+\(\sigma(A)=0\), then \(\sigma(A/AeA)=\sigma(A)\) for every primitive
+idempotent \(e\), so \(\dim_k Xe\leq1\) for all \(e\) and all
+indecomposable \(X\). Thus every indecomposable \(A\)-module
+is thin, that is, has each simple module at most once as a composition
+factor. Hence \(A\) is biserial by
+Proposition~\ref{prop:thin-biserial}, due to Pogorza{\l}y and
+Skowro\'nski, and special biserial by Theorem~\ref{thm:biserial-special},
+due to Skowro\'nski and Waschb\"usch.
 
 For a general \(A\), we pass to a standard form \(S\) of \(A\)
-\cite{BG,BrG}. It has the same Auslander--Reiten quiver as \(A\), so
-\(\sigma(S)=\sigma(A)\), and path length in this quiver grades \(S\). The
-graded \(S\)-modules concentrated in degrees \(0,\ldots,m\) are the modules
-over a representation-directed algebra \(S_m\), and the surplus of \(S_m\)
-grows linearly in \(m\) with slope \(\sigma(A)\). This gives
-\(\sigma(A)\geq0\) (Section~\ref{sec:general}).
+\cite{BG,BrG}: an algebra with the same Auslander--Reiten quiver, whose
+indecomposable modules and maps between them are given by paths in this
+quiver modulo the mesh relations. Path length grades the Hom spaces
+between indecomposable \(S\)-modules, and hence \(S\). The graded \(S\)-modules in degrees
+\(0,\ldots,m\) are the modules over a representation-directed algebra
+\(S_m\), which we call an interval algebra. One has
+\(\sigma(S_m)=(m+1)\sigma(A)+O(1)\) as \(m\to\infty\)
+(Theorem~\ref{prop:interval-count}, with \(\sigma(S)=\sigma(A)\)), and
+\(\sigma(S_m)\geq0\) by Corollary~\ref{cor:directed}; hence \(\sigma(A)\geq0\)
+(Section~\ref{sec:general}).
 
-If \(\sigma(A)=0\), a comparison of long interval algebras with products of
-short ones shows that every \(S_m\) has zero surplus, and hence is
-biserial. The almost split sequences of \(S\) occur, up to shift, in long
-interval algebras, and this passes biseriality back to \(A\). Hence \(A\)
-is special biserial (Section~\ref{sec:equality}).
-Figure~\ref{fig:proof-overview} shows how these steps fit together.
+Now suppose \(\sigma(A)=0\). The interval algebra \(S_M\) is block upper
+triangular, with one diagonal block for each degree in \([0,M]\). For
+every \(q\geq1\) and suitable \(M\), deleting the degrees in the gaps
+between \(q\) well separated copies of \([0,m]\), that is, factoring out
+their diagonal idempotents, leaves a product of \(q\) copies of \(S_m\). The surplus is additive on products and does not
+increase under deletion, so \(q\,\sigma(S_m)\leq\sigma(S_M)\), and
+\(\sigma(S_M)=O(1)\) as \(q\) grows because \(\sigma(A)=0\).
+Hence \(\sigma(S_m)=0\) for every \(m\)
+(Lemma~\ref{lem:separated-intervals}), and every \(S_m\) is biserial by
+Corollary~\ref{cor:directed}. By results of Auslander and Reiten and of
+Skowro\'nski and Waschb\"usch, a representation-finite algebra is
+biserial if and only if the middle term of every almost split sequence
+has at most two nonprojective indecomposable summands
+(Theorem~\ref{thm:biserial-ar}).
+The almost split sequences of \(\mod S\) lift to almost split sequences
+over \(S_m\) for large \(m\), with the same nonprojective middle
+summands, and \(A\) and \(S\) have isomorphic Auslander--Reiten quivers.
+Hence \(A\) is biserial, and special biserial by
+Theorem~\ref{thm:biserial-special} (Section~\ref{sec:equality}).
+Figure~\ref{fig:proof-overview} summarizes these steps.
 
 \begin{figure}[htbp]
 \centering
@@ -258,8 +260,8 @@ Figure~\ref{fig:proof-overview} shows how these steps fit together.
    Proposition~\ref{prop:poset-equivalence}; Corollary~\ref{prop:intrinsic}};
 \node[input] (sequences) at (11.1,-1.85)
   {Comparison of almost split sequences\\
-   \(r\leq c\) for the counts of Definition~\ref{def:new-counts}\\
-   Corollary~\ref{cor:directed-compensation}};
+   \(\delta=0\) (Propositions~\ref{prop:boundary-one} and~\ref{thm:directed-deletion})\\
+   \(r\leq c\) (Corollary~\ref{cor:directed-compensation})};
 \node (deletion) at (7.5,-3.65)
   {\(\sigma(A)\geq\sigma(B)\)\quad (Theorem~\ref{thm:serre-magnitude}
    and Proposition~\ref{thm:directed-deletion})};
@@ -273,7 +275,7 @@ Figure~\ref{fig:proof-overview} shows how these steps fit together.
    (Proposition~\ref{prop:graded-classification})};
 \node[font=\small\bfseries] at (3.9,-5.6) {Lower bound};
 \node[font=\small\bfseries] at (11.1,-5.6)
-  {Equality implies special biseriality};
+  {Zero surplus};
 \node (nonnegative) at (3.9,-6.55)
   {\(\sigma(S_m)\geq0\) for all \(m\)\\
    by successive primitive deletions\\
@@ -306,14 +308,15 @@ Figure~\ref{fig:proof-overview} shows how these steps fit together.
 Section~\ref{sec:ar} recalls almost split sequences and Iyama's
 \(\tau\)-categories, and extends the proof of \eqref{eq:intro-count} in
 \cite{BHK} to strict \(\tau\)-categories. Section~\ref{sec:quotient} proves the
-identity of Theorem~\ref{thm:serre-magnitude} for Serre subcategories and a
-criterion for the inequality \(r\leq c\). Section~\ref{sec:deletion} proves
+identity of Theorem~\ref{thm:serre-magnitude} for the ideal quotient by a
+Serre subcategory and a
+sufficient condition for the inequality \(r\leq c\). Section~\ref{sec:deletion} proves
 Theorem~B and the inequality \(\sigma(A/AeA)\leq\sigma(A)\) for a primitive
-idempotent \(e\). Section~\ref{sec:general} introduces interval algebras
+idempotent \(e\). Section~\ref{sec:general} defines interval algebras
 and proves Theorem~A(1), and Section~\ref{sec:equality} proves
 Theorem~A(2).
-Appendix~\ref{app:structural} gives direct proofs of the results of Ringel
-and Vossieck used in Section~\ref{sec:deletion}, so that Theorem~A does
+Appendix~\ref{app:structural} gives direct proofs of the three results on
+the ideal quotient in Section~\ref{sec:deletion} that use \cite{RV}, so that Theorem~A does
 not depend on \cite{RV}; Theorem~B for an arbitrary poset does.
 \end{organization}
 
@@ -322,7 +325,7 @@ Unless specified otherwise, \(k\) is algebraically closed and algebras are
 finite-dimensional \(k\)-algebras. Modules are finite-dimensional right modules, and
 \(\mod A\) denotes their category. Composition is written
 \(gf\) for first \(f\), then \(g\). We use the same order for paths:
-\(\beta\alpha\) traverses \(\alpha\) first, then \(\beta\). For a finite
+\(\beta\alpha\) is the path \(\alpha\) followed by \(\beta\). For a finite
 quiver \(Q\), right modules over \(A=(kQ)^{\op}\), or over its quotient by
 a specified ideal, are identified
 with representations of \(Q\): the space at a
@@ -353,19 +356,27 @@ Translations are displayed by dotted arrows
 or arrow counts.
 An algebra is \emph{representation-directed} if there is no cycle of
 nonzero nonisomorphisms between indecomposable modules. We also use
-\emph{directed} in this sense for a category.
+\emph{directed} in this sense for an algebra and for a category.
 Special biserial and biserial algebras are recalled in
 Definitions~\ref{def:special-biserial} and~\ref{def:biserial}; a non-basic
 algebra is special biserial if its basic algebra is.
 \end{conventions}
 
+\begin{formalization}
+A Lean~4 formalization of Theorem~A is available at
+\url{https://github.com/haruhisa-enomoto/magnitude-conjecture}.
+It follows the proof in this paper, with the arguments of
+Appendix~\ref{app:structural}.
+\end{formalization}
+
 \begin{aiuse}
-The research was conducted under the author's direction using GPT-5.6-Sol,
+The research was done under the author's direction using GPT-5.6-Sol,
 Claude Fable~5, Claude Opus~5, and GPT-6-Astra. GPT-5.6-Sol and Claude Fable~5 developed
 the initial proof, and GPT-5.6-Sol produced earlier manuscript drafts.
 GPT-6-Astra subsequently developed the simplified proof presented here and
-wrote a new manuscript based on it, retaining selected arguments and examples
-from the earlier drafts. Claude Opus~5 extensively reviewed the proofs and
+wrote a new manuscript based on it, keeping selected arguments and examples
+from the earlier drafts. It also produced the Lean formalization.
+Claude Opus~5 extensively reviewed the proofs and
 successive manuscript drafts. The author directed the research and revisions and
 set the structure and much of the wording of the present text. The author
 is responsible for the mathematical content and the final manuscript.
@@ -373,25 +384,29 @@ is responsible for the mathematical content and the final manuscript.
 
 \section{Preliminaries on \texorpdfstring{\(\tau\)}{tau}-categories and magnitude}\label{sec:ar}
 We recall almost split sequences and their generalization to additive
-categories. Each such sequence gives a projective resolution of a simple
-functor. Following the proof of \eqref{eq:intro-count} in
-\cite[Lemma~1.9]{BHK}, these resolutions give an analogue of
-\eqref{eq:intro-count} for strict \(\tau\)-categories
-(Definition~\ref{def:strict-tau}), including module categories and the
-ideal quotients used below (Proposition~\ref{thm:categorical-magnitude}).
+categories. Each such sequence gives the beginning of a projective
+resolution of a simple functor. Following the proof of
+\eqref{eq:intro-count} in \cite[Lemma~1.9]{BHK}, these resolutions give an
+analogue of \eqref{eq:intro-count} (Proposition~\ref{thm:categorical-magnitude})
+for strict \(\tau\)-categories (Definition~\ref{def:strict-tau}), in which
+the resolutions have length two. Module categories and the ideal quotients
+used below are strict \(\tau\)-categories.
 
-\subsection{Almost split maps and \texorpdfstring{\(\tau\)}{tau}-sequences}
+\subsection{Almost split maps and \texorpdfstring{\(\tau\)}{tau}-sequences}\label{subsec:tau-seq}
 We recall almost split maps and sequences, then define the
 \(\tau\)-sequences that replace them in ideal quotients.
 
-A map \(f:V\to X\) to an indecomposable \(X\) is \emph{right almost split}
+Let \(\cC\) be a Krull--Schmidt \(k\)-linear category, for example
+\(\mod A\). A map \(f:V\to X\) in \(\cC\) to an indecomposable \(X\) is
+\emph{right almost split}
 if it is not a retraction and every non-retraction to \(X\) factors through it.
 It is \emph{right minimal} if every \(u\in\End(V)\) with \(fu=f\)
 is invertible. Left almost split maps and left minimality are defined dually,
 using sections.
 
 \begin{definition}\label{def:ar}
-For a nonprojective indecomposable \(X\), write its almost split sequence as
+Let \(A\) be an algebra. For a nonprojective indecomposable \(A\)-module
+\(X\), write its almost split sequence as
 \[
  0\longrightarrow\tau_A X\xrightarrow{\nu_X^+}\theta_A X
  \xrightarrow{\mu_X^+}X\longrightarrow0.
@@ -451,7 +466,10 @@ lemma, and for a map \(f:L\to M\) write
 \[
  \mathsf S_X=\mathsf P_X/\rad_{\cC}(-,X).
 \]
-It is simple, with \(\mathsf S_X(Y)=0\) for indecomposables \(Y\not\cong X\).
+It is simple, with \(\mathsf S_X(Y)=0\) for indecomposables \(Y\not\cong X\),
+and \(\mathsf S_X(X)=\End_{\cC}(X)/\rad_{\cC}(X,X)=k\), since this is a
+finite-dimensional division algebra over the algebraically closed field
+\(k\).
 Dually, for covariant functors put \(\mathsf P^X=\cC(X,-)\),
 \(\mathsf P^f=-\circ f:\mathsf P^M\to\mathsf P^L\), and
 \(\mathsf S^X=\mathsf P^X/\rad_{\cC}(X,-)\).
@@ -482,6 +500,8 @@ is a \emph{\(\tau\)-category} if every indecomposable is the last term of
 a right \(\tau\)-sequence and the first term of a left
 \(\tau\)-sequence.
 \end{definition}
+The terms \(L\) and \(M\) of a right \(\tau\)-sequence may be zero, and
+dually for left \(\tau\)-sequences.
 The two exactness conditions say that every radical map into \(N\)
 factors through \(g\), and every radical map out of \(L\) factors through
 \(f\). For a right \(\tau\)-sequence ending at an indecomposable \(N\), the
@@ -490,7 +510,7 @@ first condition and the weak kernel property give an exact sequence
  \mathsf P_L\xrightarrow{\mathsf P_f}\mathsf P_M\xrightarrow{\mathsf P_g}
  \mathsf P_N\longrightarrow\mathsf S_N\longrightarrow0.
 \end{equation}
-Since \(f\) and \(g\) are radical and \(f\) is right minimal, it is the
+Since \(f\) and \(g\) are radical and \(f\) is a minimal weak kernel, the sequence \eqref{eq:right-presentation} is the
 beginning of a minimal projective resolution of \(\mathsf S_N\). Dually, a
 left \(\tau\)-sequence starting at an indecomposable \(L\) gives the
 beginning of a minimal projective resolution
@@ -532,7 +552,7 @@ bijections between \(\ind\cC\setminus\ind_1^+\cC\) and
 \begin{example}\label{ex:module-tau}
 The category \(\mod A\) is a \(\tau\)-category: its right and left
 \(\tau\)-sequences are the
-almost split sequences with their outer zeros omitted, together with
+almost split sequences with the zeros at both ends omitted, together with
 \(0\to\rad P\to P\) at projectives and
 \(I\to I/\soc I\to0\) at injectives.
 The almost split factorization properties give the two exactness
@@ -551,8 +571,7 @@ As for modules \cite[VII, Proposition~1.3]{ARS}, the middle terms of
 this is stated in \cite[Section~9.1]{IyamaI}.
 \begin{lemma}\label{lem:tau-multiplicity}
 Let \(\cC\) be a Hom-finite \(k\)-linear \(\tau\)-category, and let
-\(X\) be an indecomposable. For every indecomposable \(Y\) with
-\(\End_{\cC}(Y)/\rad_{\cC}(Y,Y)=k\),
+\(X\) be an indecomposable. For every indecomposable \(Y\),
 \[
  [\theta_{\cC}^+X:Y]_\oplus=\dim_k\Irr_{\cC}(Y,X),\qquad
  [\theta_{\cC}^-X:Y]_\oplus=\dim_k\Irr_{\cC}(X,Y).
@@ -587,7 +606,7 @@ irreducible maps. For module categories this is
 \begin{lemma}\label{lem:path-expansion}
 Let \(\cC\) be a Hom-finite Krull--Schmidt \(k\)-linear category with finitely
 many indecomposable isomorphism classes. Choose maps representing a basis
-of each \(\Irr_{\cC}(X,Y)\). Then its radical is nilpotent, and every
+of each \(\Irr_{\cC}(X,Y)\). Then the radical of \(\cC\) is nilpotent, and every
 radical map between indecomposables is a linear combination of nonempty
 paths in the chosen maps.
 \end{lemma}
@@ -602,38 +621,7 @@ expansion in each factor expresses it modulo \(\rad_{\cC}^{n+1}\)
 as a sum of paths of lengths at most \(n\). Taking \(n=N-1\) proves the claim.
 \end{proof}
 
-Conversely, a basis of the irreducible maps into an indecomposable
-determines its minimal right almost split map. For module categories
-this follows from \cite[VII, Lemma~1.2 and Proposition~1.3]{ARS}. We use
-it in Appendix~\ref{app:inequality}.
-\begin{lemma}\label{lem:basis-almost-split}
-Let \(\cC\) be a Hom-finite Krull--Schmidt \(k\)-linear category with
-finitely many indecomposable isomorphism classes and
-\(\End_{\cC}(Z)/\rad_{\cC}(Z,Z)=k\) for each indecomposable \(Z\). Let
-\(Y\) be indecomposable and \(g:M\to Y\) a radical map such that, for each
-indecomposable \(Z\), the components of \(g\) on the summands of \(M\)
-isomorphic to \(Z\) represent a basis of \(\Irr_{\cC}(Z,Y)\). Then \(g\) is
-minimal right almost split.
-\end{lemma}
-\begin{proof}
-Evaluating at each indecomposable \(Z\) shows that \(\mathsf P_g\) induces
-an isomorphism
-\[
- \mathsf P_M/\rad_{\cC}(-,M)\longrightarrow
- \rad_{\cC}(-,Y)/\rad_{\cC}^2(-,Y).
-\]
-Let \(G\subseteq\rad_{\cC}(-,Y)\) be the image of \(\mathsf P_g\). Then
-\(\rad_{\cC}(-,Y)=G+\rad_{\cC}^2(-,Y)\). Composing with radical maps gives
-\(\rad_{\cC}^2(-,Y)\subseteq G+\rad_{\cC}^3(-,Y)\), and inductively
-\(\rad_{\cC}(-,Y)=G+\rad_{\cC}^n(-,Y)\) for every \(n\). The radical is
-nilpotent by Lemma~\ref{lem:path-expansion}, so \(G=\rad_{\cC}(-,Y)\):
-every radical map into \(Y\) factors through \(g\). Since \(g\) is radical,
-it is not a retraction, so \(g\) is right almost split. If \(gu=g\) for
-some \(u\in\End_{\cC}(M)\), then \(\mathsf P_u\) induces the identity on
-\(\mathsf P_M/\rad_{\cC}(-,M)\). Evaluating at \(M\) gives
-\(1_M-u\in\rad_{\cC}(M,M)\), so \(u\) is invertible.
-\end{proof}
-\subsection{Magnitude in a strict \texorpdfstring{\(\tau\)}{tau}-category}
+\subsection{Magnitude in a strict \texorpdfstring{\(\tau\)}{tau}-category}\label{subsec:strict-magnitude}
 The following definition extends magnitude from module categories to
 Krull--Schmidt categories. Proposition~\ref{thm:categorical-magnitude}
 below computes it for ideal quotients and categories of poset
@@ -682,9 +670,8 @@ possibly at \(\mathsf P_{\tau_{\cC}^+X}\), and there it is exact because
 
 
 \begin{proposition}\label{thm:categorical-magnitude}
-Let \(k\) be a field and \(\cC\) a Hom-finite strict \(\tau\)-category with finitely
-many indecomposable isomorphism classes and
-\(\End_{\cC}(X)/\rad_{\cC}(X,X)=k\) for each of them.
+Let \(\cC\) be a Hom-finite strict \(\tau\)-category with finitely
+many indecomposable isomorphism classes.
 Let \(a(\cC)=\sum_{X,Y}\dim_k\Irr_{\cC}(X,Y)\).
 Then \(H_{\cC}\) is invertible and
 \begin{equation}\label{eq:categorical-magnitude}
@@ -696,16 +683,25 @@ The argument is that of \cite[Lemma~1.9]{BHK}, which applies
 \cite[Theorem~1.1]{CKL} to these resolutions; the inverse of \(H_{\cC}\)
 below also appears in the proof of \cite[Theorem~4.3]{IyamaIV}.
 Evaluate the first exact sequence of Lemma~\ref{lem:strict-resolution}
-at each indecomposable \(Y\). Since \(\dim_k\mathsf S_X(Y)\) is \(1\) if \(X=Y\) and \(0\) otherwise, the matrix whose
-\(X\)-column is the multiplicity vector of
-\([X]-[\theta_{\cC}^+X]+[\tau_{\cC}^+X]\) is a right
-inverse of \(H_{\cC}\), whose row indexed by \(Y\) lists the dimensions
-\(\dim_k\cC(Y,Z)\); hence it is the inverse.
+at each indecomposable \(Y\). Let \(M\) be the matrix whose \(X\)-column is
+the multiplicity vector of \([X]-[\theta_{\cC}^+X]+[\tau_{\cC}^+X]\), where
+\([Z]\) records the multiplicities of the indecomposable summands of \(Z\).
+The row of \(H_{\cC}\) indexed by \(Y\) lists the dimensions
+\(\dim_k\cC(Y,Z)\), and \(\dim_k\mathsf S_X(Y)\) is \(1\) if \(X=Y\) and
+\(0\) otherwise, so the evaluated sequence gives
+\[
+ (H_{\cC}M)_{Y,X}=\dim_k\cC(Y,X)-\dim_k\cC(Y,\theta_{\cC}^+X)
+ +\dim_k\cC(Y,\tau_{\cC}^+X)=\indicator_{\{X=Y\}}.
+\]
+Thus \(M\) is a right inverse of \(H_{\cC}\), and therefore its inverse.
 The total multiplicity of the middle terms is \(a(\cC)\), by
 Lemma~\ref{lem:tau-multiplicity}. There are
 \(|\ind\cC|-|\ind_1^+\cC|\) nonzero translates, each
 indecomposable. Summing all entries gives \eqref{eq:categorical-magnitude}.
 \end{proof}
+In other words, \(\chi(\cC)\) is the number of vertices of the irreducible
+quiver of \(\cC\), minus the number of its arrows, plus the number of
+vertices with a nonzero translate.
 
 \subsection{Magnitude of module categories}
 Since the \(\tau\)-projectives of \(\mod A\) correspond to the simple
@@ -719,8 +715,6 @@ Write \(a(A)=a(\mod A)\), and put \(\sigma(A)=\chi(\mod A)-|A|\). We
 call \(\sigma(A)\) the \emph{magnitude surplus}.
 \end{definition}
 
-The following formula is the case \(\cC=\mod A\) of
-Proposition~\ref{thm:categorical-magnitude}.
 \begin{lemma}[{\cite[Lemma~1.9]{BHK}}]\label{lem:count}
 The matrix \(H_A=(\dim_k\Hom_A(X,Y))_{X,Y\in\ind A}\) is invertible, and
 \[
@@ -732,15 +726,16 @@ Consequently,
 \end{equation}
 \end{lemma}
 \begin{remark}
-B{\o}rve, Horiatakis, and Kalck also refine \eqref{eq:intro-count} by
-sorting the meshes of \(\Gamma_A\) according to the number of
-indecomposable middle terms of the corresponding almost split sequences
-\cite[Lemma~1.13]{BHK}.
+B{\o}rve, Horiatakis, and Kalck also give a refinement of
+\eqref{eq:intro-count}, in which the meshes of \(\Gamma_A\) are counted
+according to the number of indecomposable middle terms of the
+corresponding almost split sequences \cite[Lemma~1.13]{BHK}.
 \end{remark}
 
-We use Morita equivalence to reduce to basic algebras and additivity to
-count the surplus of products of interval algebras in
-Section~\ref{sec:equality}; cf. \cite[Remark~1.7(2)]{BHK}.
+The following lemma reduces statements to basic algebras in
+Sections~\ref{sec:deletion}--\ref{sec:equality} and computes the surplus
+of products of interval algebras in Section~\ref{sec:equality}; cf.
+\cite[Remark~1.7(2)]{BHK}.
 \begin{lemma}\label{lem:invariance}
 Magnitude, \(|A|\), and \(\sigma(A)\) are Morita invariant and additive
 on products of algebras.
@@ -800,10 +795,10 @@ identities modulo radical ideals, hence invertible. Thus \(X\cong Y\).
 Every object is a finite sum of these objects with local endomorphism
 rings, proving the Krull--Schmidt assertion.
 
-For the irreducible maps, Iyama shows that
+For the irreducible maps, Iyama shows for an ideal quotient of an
+additive category that
 \(\rad_{\cC/[\mathcal U]}^n=(\rad_{\cC}^n+[\mathcal U])/[\mathcal U]\) for
-\(n\geq1\) \cite[Section~1.3(5)]{IyamaII}; cf.
-\cite[Section~1.4(3)]{IyamaII}. Let
+\(n\geq1\) \cite[Section~1.3(5)]{IyamaII}. Let
 \(X,Y\in\ind\cC\setminus\ind\mathcal U\). A map \(X\to Y\) which factors
 through an indecomposable of \(\mathcal U\) is a composite of two radical
 maps, so \([\mathcal U](X,Y)\subseteq\rad_{\cC}^2(X,Y)\). The case
@@ -830,16 +825,17 @@ inclusion has the right and left adjoints
  i^!Z=\{z\in Z:zAeA=0\}\cong\Hom_A(B,Z),\qquad
  i^*Z=Z/ZeA\cong Z\otimes_AB,
 \]
-the largest submodule and the largest quotient of \(Z\) lying in \(\mod B\).
+the largest submodule and the largest quotient of \(Z\) in \(\mod B\).
 By extension closure, \(Z/i^!Z\) has no nonzero submodule in \(\mod B\), and
 dually \(\ker(Z\to i^*Z)\) has no nonzero quotient in \(\mod B\).
 \end{setting}
 Every Serre subcategory of \(\mod A\) arises in this way: choose \(e\) as
 the sum of primitive idempotents corresponding to the simple modules
 outside it. For a module map \(f:X\to Y\), write \(f_e:Xe\to Ye\) for its
-restriction. For a primitive idempotent of a directed algebra, Ringel and
-Vossieck describe \(\cD\) through the same evaluation functor
-\cite[Section~10, Lemma~1]{RV}.
+restriction. Ringel and Vossieck show that a map of \(A\)-modules factors
+through \(\mod B\) exactly when its restriction \(f_e\) is zero
+\cite[Section~10, Lemma~1]{RV}; this is the faithfulness in the following
+lemma.
 
 \begin{lemma}\label{lem:quotient-evaluation}
 Evaluation at \(e\) induces a faithful functor
@@ -911,11 +907,9 @@ monic under \(F\), by exactness of \((-)e\), and the last maps
 \(\pi\nu_X^-\) of the left \(\tau\)-sequences become epic.
 Lemma~\ref{lem:quotient-evaluation} proves strictness.
 \end{proof}
-The subcategory \(\mod B\) is rejective in \(\mod A\) in the sense of
-Iyama \cite[Definition~5.1(1)]{IyamaII}: its inclusion has the right and
-left adjoints \(i^!\) and \(i^*\), with monic counit and epic unit. When \(A\)
-is representation-finite, the strictness of \(\cD\) is therefore also a
-case of \cite[Theorem~6.1]{IyamaII}.
+When \(A\) is representation-finite, the strictness of \(\cD\) is also
+a case of \cite[Theorem~6.1]{IyamaII}, since \(i^!\) and \(i^*\) have
+monic counit and epic unit.
 
 \subsection{Restricting almost split sequences to Serre subcategories}\label{subsec:restriction}
 By Proposition~\ref{prop:quotient-sequences}, the translate
@@ -923,7 +917,7 @@ By Proposition~\ref{prop:quotient-sequences}, the translate
 \(\tau_A X\) lies in \(\mod B\). The translate of a
 \(B\)-module in \(\mod B\) is obtained differently: by the following
 result of Hoshino, it is the largest submodule of its translate in
-\(\mod A\) lying in \(\mod B\).
+\(\mod A\) that belongs to \(\mod B\).
 
 \begin{proposition}[{\cite[Section~1, Lemmas~2(2) and~3(2)]{Hos}}]\label{lem:relative-ar}
 Let \(Y\) be a nonprojective indecomposable of \(\mod B\), and write its
@@ -953,7 +947,7 @@ The subcategory \(\mod B\) is closed under quotients and extensions, so it
 is a torsion class, with torsion radical \(i^!\). It is closed under
 submodules and extensions, so it is also the torsion-free class of another
 torsion pair, with torsion-free quotient functor \(i^*\). Since \(\mod B\)
-is extension-closed, its Ext-projective and Ext-injective objects are the
+is extension-closed, \(\Ext_B^1=\Ext_A^1\) on \(\mod B\), so its Ext-projective and Ext-injective objects are the
 projective and injective \(B\)-modules. The two lemmas therefore give the
 two assertions.
 \end{proof}
@@ -968,7 +962,7 @@ Applying \(i^!\) gives
 \[
  0\longrightarrow S_2\longrightarrow P_1\longrightarrow S_1\longrightarrow0,
 \]
-the almost split sequence in \(\mod B\simeq\mod(k(1\to2))^{\op}\).
+the almost split sequence in \(\mod B\simeq\mod\bigl((k(1\to2))^{\op}\bigr)\).
 In particular \(\tau_A S_1=P_3\), whereas \(\tau_BS_1=S_2\). The map
 \(P_1\to S_1\) is irreducible in \(\mod B\), but factors through \(I_2\)
 in \(\mod A\).
@@ -1007,11 +1001,11 @@ Thus \(\Gamma_B\) has \(c_{VW}\) more arrows from \(V\) to \(W\) than
 
 The following identity expresses
 \(\chi(\mod A)-\chi(\mod B)-\chi(\cD)\) through \(c\), \(r\), and the middle terms of the almost split sequences of
-\(\mod A\) with exactly one endpoint in \(\mod B\).
+\(\mod A\) with exactly one end term in \(\mod B\).
 
 \begin{theorem}\label{thm:serre-magnitude}
 Assume \(A\) is representation-finite. For each almost split sequence
-of \(\mod A\) with exactly one endpoint in \(\mod B\), let \(m_{\mathrm{out}}\) be the
+of \(\mod A\) with exactly one end term in \(\mod B\), let \(m_{\mathrm{out}}\) be the
 number of its indecomposable middle summands outside \(\mod B\), counting
 multiplicities, and put
 \[
@@ -1023,20 +1017,22 @@ Then \(\delta\geq0\), and
 \end{equation}
 \end{theorem}
 \begin{proof}
-Applying the exact functor \((-)e\) shows that every sequence in the sum
-has a nonzero middle term after passage to the quotient. Thus
+Let \(0\to\tau_A Y\to\theta_A Y\to Y\to0\) be a sequence in the sum.
+Since \(Ye\ne0\) or \((\tau_A Y)e\ne0\), applying the exact functor
+\((-)e\) gives \((\theta_A Y)e\ne0\). Thus \(\theta_A Y\) has an
+indecomposable summand outside \(\mod B\), and
 \(m_{\mathrm{out}}\geq1\).
 By Proposition~\ref{lem:surviving-arrows},
 \(|\ind A|=|\ind\cD|+|\ind B|\). Let \(t\) be the number of sequences in
 the sum.
 
 We count the \(|\ind A|-|A|\) almost split sequences of \(\mod A\) by their
-endpoints. A sequence with both endpoints in \(\mod B\) lies in \(\mod B\), by
+end terms. A sequence with both end terms in \(\mod B\) lies in \(\mod B\), by
 extension closure, and remains almost split there. These are the
 almost split sequences of \(\mod B\) not counted by \(r\), and there are
 \(|\ind B|-|B|-r\) of them. By
 Proposition~\ref{prop:quotient-sequences}, the sequences with both
-endpoints outside \(\mod B\) correspond to the objects of \(\cD\) with
+end terms outside \(\mod B\) correspond to the objects of \(\cD\) with
 nonzero translate, and there are \(|\ind\cD|-|\ind_1^+\cD|\) of them. Hence
 \[
  |\ind A|-|A|=(|\ind\cD|-|\ind_1^+\cD|)+(|\ind B|-|B|-r)+t,
@@ -1048,7 +1044,7 @@ and substituting \(|\ind A|=|\ind\cD|+|\ind B|\) gives
 
 Let \(z\) be the number of arrows of \(\Gamma_A\) with exactly one
 endpoint in \(\mod B\), counted with multiplicity. Let \(V\to W\) be such
-an arrow with \(V\in\mod B\). An arrow out of an injective \(A\)-module lying in \(\mod B\) is epic, so
+an arrow with \(V\in\mod B\). An arrow out of an injective \(A\)-module in \(\mod B\) is epic, so
 its target also lies in \(\mod B\); hence \(V\) is not injective. The almost
 split sequence starting at \(V\) has \(W\) as a middle summand, so its last
 term is not in \(\mod B\), by extension closure. Thus this sequence is counted
@@ -1056,10 +1052,14 @@ by \(t\), and \(W\) is one of the middle summands outside \(\mod B\) counted
 by \(m_{\mathrm{out}}\) for this sequence. Dually, such an arrow \(W\to V\) with \(V\in\mod B\) ends at a
 nonprojective \(V\) and gives a middle summand outside \(\mod B\) of the
 sequence ending at \(V\). Conversely, every middle summand outside \(\mod B\)
-of a sequence counted by \(t\) gives an arrow to or from its endpoint in
-\(\mod B\). Since such a sequence has only one endpoint in \(\mod B\), this
-is a bijection, and by Proposition~\ref{prop:ar-multiplicity} it
-matches multiplicities, so \(z=\sum m_{\mathrm{out}}\), and hence
+of a sequence counted by \(t\) gives an arrow to or from its end term in
+\(\mod B\). Since such a sequence has only one end term in \(\mod B\), each
+such arrow arises from exactly one sequence, the one starting or ending at
+its endpoint in \(\mod B\). We therefore obtain a bijection between the
+arrows of \(\Gamma_A\) with exactly one endpoint in \(\mod B\) and the
+pairs of a sequence counted by \(t\) and one of its middle summands
+outside \(\mod B\). By Proposition~\ref{prop:ar-multiplicity} it
+respects multiplicities, so \(z=\sum m_{\mathrm{out}}\), and hence
 \begin{equation}\label{eq:delta-z}
  \delta=z-t.
 \end{equation}
@@ -1122,7 +1122,7 @@ Of the two arrows of \(\Gamma_B\), the arrow \(S_2\to P_1\) is an arrow of
 \(\Gamma_A\), and \(P_1\to S_1\) is not; hence \(c=1\). The only almost
 split sequence of \(\mod B\) is not almost split in \(\mod A\), so
 \(r=1\). The almost split sequences of \(\mod A\) with exactly one
-endpoint in \(\mod B\) end at \(I_2\), \(S_1\), and \(S_3\). Each has exactly
+end term in \(\mod B\) end at \(I_2\), \(S_1\), and \(S_3\). Each has exactly
 one middle summand outside \(\mod B\), namely \(P_3\), \(I_2\), and
 \(I_2\), so \(\delta=0\). Both sides of \eqref{eq:serre-magnitude} are
 zero.
@@ -1143,11 +1143,11 @@ Let \(P_E\twoheadrightarrow E\) and \(E\hookrightarrow I_E\) be the
 projective cover and injective envelope, and let
 \(\xi:0\to X\to\theta_B Y\to Y\to0\) be an almost split sequence in
 \(\mod B\).
-Put \(T=\tau_A Y\) and \(Q=T/i^!T\).
+Put \(V=\tau_A Y\) and \(Q=V/i^!V\).
 \begin{enumerate}
 \item \(\mathsf H_E\cong\Hom_B(i^*\rad P_E,-)\) and
 \(\mathsf G_E\cong\Hom_B(-,i^!(I_E/E))\).
-\item \(\Ext_A^1(E,T)=0\), and there is an exact sequence
+\item \(\Ext_A^1(E,V)=0\), and there is an exact sequence
 \begin{equation}\label{eq:extension-support-sequence}
  0\longrightarrow\Dk \mathsf G_E(Y)\longrightarrow\Hom_A(E,Q)
  \longrightarrow \mathsf H_E(X)\longrightarrow0.
@@ -1165,27 +1165,29 @@ adjunction for \(i^*\). Dually, applying \(\Hom_A(W,-)\) to
 \(0\to E\to I_E\to I_E/E\to0\) and using the adjunction for \(i^!\) gives
 the second representation.
 
-(2) By Proposition~\ref{lem:relative-ar}, identify \(X=i^!T\).
-The first isomorphism in \eqref{eq:ar-duality}, with \(M=E\) and \(N=T\),
+(2) By Proposition~\ref{lem:relative-ar}, identify \(X=i^!V\).
+The first isomorphism in \eqref{eq:ar-duality}, with \(M=E\) and \(N=V\),
 gives
 \[
- \Ext_A^1(E,T)=\Dk\uhom_A(Y,E)=0,
+ \Ext_A^1(E,V)=\Dk\uhom_A(Y,E)=0,
 \]
 since \(\Hom_A(Y,E)=0\) for \(Y\in\mod B\).
 The second, with \(M=Y\) and \(N=E\), gives
-\(\Dk \mathsf G_E(Y)=\ohom_A(E,T)=\Hom_A(E,T)\).
-For the equality \(\ohom_A(E,T)=\Hom_A(E,T)\), a nonzero map from a simple summand of \(E\)
-through an injective to \(T\) would extend across its injective envelope.
-The resulting map into \(T\) is monic on the essential simple socle,
-hence monic and split. This contradicts the noninjectivity of the
-indecomposable \(T\). Applying \(\Hom_A(E,-)\) to
-\(0\to X\to T\to Q\to0\), and using \(\Hom_A(E,X)=0\), proves
+\(\Dk \mathsf G_E(Y)=\ohom_A(E,V)=\Hom_A(E,V)\).
+For the equality \(\ohom_A(E,V)=\Hom_A(E,V)\), let a nonzero map
+\(S\to V\) from a simple summand \(S\) of \(E\) factor through an
+injective module. It then factors through the injective envelope
+\(S\hookrightarrow I(S)\). The resulting map \(I(S)\to V\) is monic on the
+essential simple socle \(S\),
+hence monic and split. This contradicts the fact that the
+indecomposable \(V\) is not injective. Applying \(\Hom_A(E,-)\) to
+\(0\to X\to V\to Q\to0\), and using \(\Hom_A(E,X)=0\), proves
 \eqref{eq:extension-support-sequence}.
 
 (3) The sequence \(\xi\) is almost split in \(\mod A\) precisely when
-\(T\in\mod B\), equivalently when \(Q=0\). Indeed, if \(\xi\) is almost
-split in \(\mod A\), then \(T\cong X\in\mod B\). Conversely, if
-\(T\in\mod B\), then the ambient sequence lies in \(\mod B\) by extension
+\(V\in\mod B\), equivalently when \(Q=0\). Indeed, if \(\xi\) is almost
+split in \(\mod A\), then \(V\cong X\in\mod B\). Conversely, if
+\(V\in\mod B\), then the ambient sequence lies in \(\mod B\) by extension
 closure, and it coincides with \(\xi\) by
 Proposition~\ref{lem:relative-ar}. Every simple subobject of a nonzero \(Q\)
 is outside \(\mod B\), by Setting~\ref{set:serre}.
@@ -1209,6 +1211,9 @@ monic or epic. In the monic case, representability of \(\mathsf H_E\)
 (Lemma~\ref{lem:extension-supports}(1)) gives an
 injection \(\mathsf H_E(V)\hookrightarrow \mathsf H_E(W)\); in the epic case,
 representability of \(\mathsf G_E\) gives an injection \(\mathsf G_E(W)\hookrightarrow \mathsf G_E(V)\).
+Hence, if \(\Irr_B(V,W)\ne0\), \(\mathsf H_E(V)\ne0\), and
+\(\mathsf G_E(W)\ne0\), then \(\mathsf H_E(W)\ne0\ne\mathsf G_E(W)\) in the
+monic case and \(\mathsf H_E(V)\ne0\ne\mathsf G_E(V)\) in the epic case.
 Thus \eqref{eq:disjoint-supports} implies
 \begin{equation}\label{eq:forbidden-arrow}
  \Irr_B(V,W)\ne0\quad\Longrightarrow\quad
@@ -1223,8 +1228,7 @@ Since \(\Hom_A(E,Y)=0\), its long exact sequence gives
 \eqref{eq:forbidden-arrow}, forces \(\mathsf G_E(Y)=0\).
 By Lemma~\ref{lem:extension-supports}(3), at least one of \(\mathsf H_E(X)\)
 and \(\mathsf G_E(Y)\) is nonzero, so exactly one is. We assign to the
-sequence an ordered pair of indecomposable \(B\)-modules, treating the two
-cases separately.
+sequence an ordered pair of indecomposable \(B\)-modules, in two cases.
 
 \textbf{Case 1: \(\mathsf H_E(X)\ne0\).}
 Write the ambient middle term ending at \(Y\) as
@@ -1253,7 +1257,8 @@ Assign to the sequence one such pair \((W,Y)\), for which \(c_{WY}>0\).
 
 \textbf{Case 2: \(\mathsf G_E(Y)\ne0\).}
 The dual argument applies to the sequence starting at \(X\). Write \(\theta_A^-X=M'_{\mathrm{in}}\oplus M'_{\mathrm{out}}\) as
-above. The dual part of Proposition~\ref{lem:relative-ar} gives
+above. Since \(\xi\) is also the almost split sequence of \(\mod B\) starting at
+\(X\), the dual part of Proposition~\ref{lem:relative-ar} gives
 \(\theta_B Y=M'_{\mathrm{in}}\oplus i^*M'_{\mathrm{out}}\) and
 \([i^*M'_{\mathrm{out}}:W]_\oplus=c_{XW}\). The map
 \(\mathsf G_E(Y)\to\mathsf G_E(M'_{\mathrm{in}})\) factors through
@@ -1280,8 +1285,8 @@ indecomposables, the second isomorphism in \eqref{eq:ar-duality} gives a
 nonzero map \(N\to\tau_A M\). Following it by the two maps through a middle
 summand \(Z\) of the almost split sequence ending at \(M\) gives nonzero
 maps \(N\to\tau_A M\to Z\to M\) between indecomposables. Removing an isomorphism step if present leaves nonzero
-nonisomorphisms. Nonzero Ext in both directions between \(E\) and
-\(W\) would therefore give a cycle. Condition~\eqref{eq:disjoint-supports}
+nonisomorphisms. For \(W\in\ind B\), nonzero \(\Ext_A^1(E,W)\) and
+\(\Ext_A^1(W,E)\) would therefore give a cycle. Condition~\eqref{eq:disjoint-supports}
 holds, and Theorem~\ref{prop:compensation} applies.
 \end{proof}
 
@@ -1304,18 +1309,20 @@ We compute the magnitude of a representation-finite category of poset
 representations. The equivalence of Ringel and Vossieck
 (Proposition~\ref{prop:poset-equivalence}) then applies this result to the
 ideal quotient associated with a primitive idempotent in a directed
-algebra. Combined with Theorems~\ref{prop:compensation}
-and~\ref{thm:serre-magnitude}, it proves
+algebra. Combined with Theorem~\ref{thm:serre-magnitude} and
+Corollary~\ref{cor:directed-compensation}, it proves
 Proposition~\ref{thm:directed-deletion}, which compares \(\sigma(A)\) with
 \(\sigma(A/AeA)\).
 
-Four results on the quotient come from the work of Ringel and Vossieck:
-the bound \(d_X=1\) at \(\tau\)-projectives and \(\tau\)-injectives
-(Proposition~\ref{prop:boundary-one}), the height function
-(Proposition~\ref{prop:height}), the equivalence \(\cD\simeq\TSp\)
-(Proposition~\ref{prop:poset-equivalence}), and the inequality
-\(\chi(\cD)\geq1\) (Corollary~\ref{prop:intrinsic}).
-Appendix~\ref{app:structural} proves them directly, so
+Three results on the quotient use the work of Ringel and Vossieck.
+Proposition~\ref{prop:boundary-one}, on \(\dim_k Xe\) at the
+\(\tau\)-projectives and \(\tau\)-injectives \(X\) of \(\cD\), follows from
+their bound on \(\dim_k Xe\) for indecomposable \(A\)-modules. They proved the equivalence
+\(\cD\simeq\TSp\) (Proposition~\ref{prop:poset-equivalence}). The
+inequality \(\chi(\cD)\geq1\) (Corollary~\ref{prop:intrinsic}) follows
+from this equivalence and Theorem~\ref{thm:poset-magnitude}, whose proof
+uses their results on \(T\)-spaces.
+Appendix~\ref{app:structural} proves all three directly, so
 Proposition~\ref{thm:directed-deletion} does not depend on \cite{RV}.
 
 \subsection{Magnitude of poset representations}\label{subsec:poset}
@@ -1323,8 +1330,9 @@ We first define representations of a poset by subspaces and compute the
 magnitude of the category they form.
 \begin{definition}\label{def:t-space}
 For a finite poset \(T\), a \emph{representation of \(T\) by subspaces},
-or \(T\)-space, is a finite-dimensional vector space \(W\) with subspaces
-\(W_t\) such that \(W_s\subseteq W_t\) whenever \(s\leq t\).
+or \(T\)-space, is a finite-dimensional vector space \(W\), its
+\emph{total space}, with subspaces \(W_t\), its \emph{indexed subspaces},
+such that \(W_s\subseteq W_t\) whenever \(s\leq t\).
 A morphism \((W;W_t)\to(W';W'_t)\) is a linear map \(f:W\to W'\)
 such that \(f(W_t)\subseteq W'_t\) for every \(t\in T\). Write
 \(\TSp\) for this category. A subset \(U\subseteq T\) is
@@ -1332,19 +1340,14 @@ such that \(f(W_t)\subseteq W'_t\) for every \(t\in T\). Write
 For such \(U\), let \(K_U\) have total space \(k\), with subspace
 \((K_U)_t=k\) for \(t\in U\) and \((K_U)_t=0\) otherwise.
 \end{definition}
-
-Both categories of poset representations and the quotients
-\(\cD=(\mod A)/[\mod A/AeA]\) of a representation-directed algebra studied
-below (Setting~\ref{set:directed}) admit a function \(h\) on indecomposables that
-increases by one along arrows and satisfies \(h(X)=h(\tau^+X)+2\) for
-nonzero translates
-(Theorem~\ref{thm:poset-magnitude} and Proposition~\ref{prop:height}). The
-following count converts such a function into the number of arrows, and
-hence into magnitude.
+In the proof of Theorem~\ref{thm:poset-magnitude} below, we construct a
+function \(h\) on the indecomposable \(T\)-spaces that increases by one
+along arrows and satisfies \(h(X)=h(\tau^+X)+2\) for nonzero translates.
+The following lemma computes the number of arrows, and hence the
+magnitude, from such a function.
 \begin{lemma}\label{lem:height-arrows}
 Let \(\cC\) be a Hom-finite strict \(\tau\)-category with finitely
-many indecomposable isomorphism classes and
-\(\End_{\cC}(X)/\rad_{\cC}(X,X)=k\) for each of them. Suppose there are
+many indecomposable isomorphism classes. Suppose there are
 indecomposables \(X_0,X_1\) and a function
 \(h:\ind\cC\to\mathbb Z\) with the following properties.
 \begin{enumerate}
@@ -1386,7 +1389,10 @@ and \(h(X_0)=0\). For the other \(X\), write
 \(h(X)=h(\tau_{\cC}^+X)+2\), use \eqref{eq:paired-degrees}, and
 reindex by \(Y=\tau_{\cC}^+X\), which runs over
 \(\ind\cC\setminus\ind_1^-\cC\). In the outgoing sum, the
-\(\tau\)-injectives contribute \(h_--L\), by~(1). Hence
+\(\tau\)-injectives contribute \(h_--L\), by~(1). Also by~(1), the
+\(\tau\)-injectives other than \(X_1\) have one outgoing arrow each, and
+\(|\ind_1^-\cC|=|\ind_1^+\cC|\), so
+\(\sum_{Y\notin\ind_1^-\cC}\outdeg_{\cC}(Y)=a(\cC)-(|\ind_1^+\cC|-1)\). Hence
 \[
 \begin{aligned}
  a(\cC)
@@ -1396,28 +1402,24 @@ reindex by \(Y=\tau_{\cC}^+X\), which runs over
  &=2\bigl(a(\cC)-|\ind_1^+\cC|+1\bigr)-2(|\ind\cC|-|\ind_1^+\cC|)+L,
 \end{aligned}
 \]
-where we used
-\(\sum_{Y\notin\ind_1^-\cC}\outdeg_{\cC}(Y)=a(\cC)-(|\ind_1^-\cC|-1)\): by~(1),
-the \(\tau\)-injectives other than \(X_1\) have one outgoing arrow each, and
-\(|\ind_1^-\cC|=|\ind_1^+\cC|\). Solving gives
+and solving gives
 \(a(\cC)=2|\ind\cC|-L-2\). Proposition~\ref{thm:categorical-magnitude} gives
 \(\chi(\cC)=2|\ind\cC|-a(\cC)-|\ind_1^+\cC|=1+L-(|\ind_1^+\cC|-1)\).
 \end{proof}
 
-We recall translation quivers and their mesh categories, which are used
-here and in Subsection~\ref{subsec:graded}.
+We recall translation quivers, used in the next lemma, and their mesh
+categories, used in Subsection~\ref{subsec:graded}.
 \begin{definition}\label{def:mesh}
 A \emph{translation quiver} is a locally
 finite quiver without loops together with an injective map \(\tau\), the
-translation, from a set of vertices to the vertices, such that for every
-vertex \(x\) in its domain and every vertex \(y\), the number of arrows
-\(y\to x\) equals the number of arrows \(\tau x\to y\). A vertex without
-translate plays the role of a \(\tau\)-projective.
+translation, from a subset of the vertex set to the vertex set, such that for every
+vertex \(X\) in its domain and every vertex \(Y\), the number of arrows
+\(Y\to X\) equals the number of arrows \(\tau X\to Y\).
 The \(k\)-linear path category of a translation quiver has its vertices as
 objects; its morphisms are linear combinations of oriented paths, including
 the stationary identity paths, and composition is concatenation.
 A \emph{mesh presentation}
-chooses, at each vertex \(X\) with a translate and each vertex \(Y\), a
+is a choice, at each vertex \(X\) with a translate and each vertex \(Y\), of a
 bijection between the arrows \(\tau X\to Y\) and the arrows \(Y\to X\); we
 write the paired arrows as \(b_{Y,j}:\tau X\to Y\) and
 \(a_{Y,j}:Y\to X\). The \emph{mesh relation}
@@ -1427,21 +1429,19 @@ at \(X\) is
 \]
 The \emph{mesh category} is the path category modulo these relations.
 \end{definition}
-In Section~\ref{sec:general}, the mesh presentation is the one supplied by
-Theorem~\ref{thm:standard}.
 
 A function \(h\) as in Lemma~\ref{lem:height-arrows} is obtained from path
 lengths by the following lemma of Ringel and Vossieck.
 \begin{lemma}[{\cite[Section~7, Lemma, pp.~234--235]{RV}}]\label{lem:rv-grading}
-Let \(\Gamma\) be a translation quiver with finitely many vertices without
-translate and a unique source. Suppose that each vertex without translate
+Let \(\Gamma\) be a translation quiver with a unique source, in which only
+finitely many vertices have no translate. Suppose that each vertex without translate
 has at most one immediate predecessor, that is, a vertex with an arrow to
 it. Then all paths in \(\Gamma\) from the
 source to a fixed vertex have the same length.
 \end{lemma}
 
 \begin{theorem}\label{thm:poset-magnitude}
-Let \(k\) be a field and \(T\) a finite poset such that \(\TSp\) is representation-finite.
+Let \(T\) be a finite poset such that \(\TSp\) is representation-finite.
 Then its Hom matrix is invertible. Every path of irreducible maps from
 \(K_\varnothing\) to \(K_T\) has the same length \(L\), and
 \begin{equation}\label{eq:poset-magnitude}
@@ -1456,16 +1456,15 @@ The following conditions are equivalent:
 \end{theorem}
 \begin{proof}
 We use the following results of Ringel and Vossieck on a finite
-representation-finite poset \(T\), which hold over any field.
+representation-finite poset \(T\).
 \begin{enumerate}[label={\upshape(\alph*)}]
 \item The category \(\TSp\) has almost split sequences, that is,
 sequences \(X\to Y\to Z\) of \(T\)-spaces whose first map is minimal left
 almost split and whose last map is minimal right almost split. They are
 exact on total spaces and on all indexed subspaces
 \cite[Section~1, p.~219, and Section~7, p.~234]{RV}.
-Its Auslander--Reiten quiver is finite, and \(\TSp\) is equivalent to the
-mesh category of this quiver \cite[Section~1, Theorem~2 and
-Corollary~4]{RV}.
+Its Auslander--Reiten quiver is finite, since \(\TSp\) is
+representation-finite.
 \item The object \(K_\varnothing\) is the unique source and \(K_T\) the
 unique sink of the Auslander--Reiten quiver. The vertices without
 translate are \(K_\varnothing\) and \(K_{\{s:t\leq s\}}\) for
@@ -1480,11 +1479,10 @@ other vertex without inverse translate is the source of exactly one arrow
 space, if and only if \(T\) has width at most two
 \cite[Section~8, Proposition, p.~237]{RV}.
 \end{enumerate}
-We deduce that \(\TSp\) satisfies the hypotheses of
+We now verify that \(\TSp\) satisfies the hypotheses of
 Lemma~\ref{lem:height-arrows}.
 
-The mesh category equivalence in (a) gives
-\(\End(X)/\rad(X,X)=k\) for each indecomposable \(X\). A sequence that is
+A sequence that is
 exact on total spaces and on all indexed subspaces is a kernel--cokernel
 pair in \(\TSp\): a map into its middle term killed by the last map factors
 through the first map on total spaces, and exactness on each indexed
@@ -1496,18 +1494,29 @@ monic minimal right almost split map of (b) gives a right
 
 For the dual statement, note that
 \((W;W_t)\mapsto(W^*;W_t^\perp)\) is a contravariant equivalence from
-\(T\)-spaces to \(T^{\op}\)-spaces. Testing with \(K_\varnothing\) and
-\(K_T\) shows that monomorphisms and epimorphisms of \(T\)-spaces are
-injective and surjective on total spaces, so the duality exchanges them.
+\(T\)-spaces to \(T^{\op}\)-spaces. Since \(\Hom(K_\varnothing,W)\) is the
+total space of \(W\) and \(\Hom(W,K_T)\) is its dual, the monomorphisms and
+epimorphisms of \(T\)-spaces are exactly the maps that are injective,
+respectively surjective, on total spaces. The duality exchanges these two
+classes.
 Applied to \(T^{\op}\), (b) therefore shows that the minimal left almost
 split map starting at a vertex without inverse translate is epic. It
 gives a left \(\tau\)-sequence with zero last term. Thus \(\TSp\) is a
 strict \(\tau\)-category, its \(\tau\)-projectives are the vertices listed
-in (b), and \(|\ind_1^+\TSp|=|T|+1\).
+in (b), and \(|\ind_1^+\TSp|=|T|+1\). By
+Proposition~\ref{rem:tau-properties}(2) and Lemma~\ref{lem:tau-multiplicity},
+the number of arrows \(Y\to X\) equals the number of arrows
+\(\tau_{\TSp}^+X\to Y\) whenever \(\tau_{\TSp}^+X\ne0\). Hence the
+irreducible quiver of \(\TSp\) with the translation \(\tau_{\TSp}^+\), which
+is its Auslander--Reiten quiver, is a translation quiver.
 
-By (b) and Lemma~\ref{lem:rv-grading}, the length of the paths from
-\(K_\varnothing\) defines a function \(h\) with \(h(K_\varnothing)=0\)
-that increases by one along each arrow. If \(\tau_{\TSp}^+X\ne0\),
+Every indecomposable \(X\not\cong K_\varnothing\) is the target of a path
+from \(K_\varnothing\): the space \(\Hom(K_\varnothing,X)\) is the total
+space of \(X\), which is nonzero, and a nonzero map \(K_\varnothing\to X\)
+is radical, hence a linear combination of paths of irreducible maps by
+Lemma~\ref{lem:path-expansion}. By (b) and Lemma~\ref{lem:rv-grading}, the
+length of the paths from \(K_\varnothing\) therefore defines a function
+\(h\) with \(h(K_\varnothing)=0\) that increases by one along each arrow. If \(\tau_{\TSp}^+X\ne0\),
 strictness gives a nonzero middle term, so \(X\) and \(\tau_{\TSp}^+X\) are
 joined by paths of length two and \(h(X)=h(\tau_{\TSp}^+X)+2\).
 Lemma~\ref{lem:height-arrows} now applies with \(X_0=K_\varnothing\),
@@ -1526,16 +1535,15 @@ one-dimensional total space.
 We now return to modules. The rest of this section compares an algebra with
 its quotient by a primitive idempotent.
 \begin{definition}\label{def:primitive-deletion}
-For a primitive idempotent \(e\) of an algebra \(A\), the passage from
-\(A\) to \(A/AeA\) is called \emph{primitive deletion} of \(e\).
+For a primitive idempotent \(e\) of an algebra \(A\), the algebra
+\(A/AeA\) is called the \emph{primitive deletion} of \(e\).
 \end{definition}
 For a representation-directed algebra and a primitive idempotent, we fix
-the notation used for the associated ideal quotient in the rest of this
-section.
+the following notation for the associated ideal quotient.
 \begin{setting}\label{set:directed}
 Throughout Subsections~\ref{set:directed-sub}--\ref{subsec:deletion-proof}
 and Appendix~\ref{app:structural}, except in statements and examples that
-specify another algebra, let \(A\) be basic, representation-finite, and
+name another algebra, let \(A\) be basic, representation-finite, and
 representation-directed. Fix a primitive
 idempotent \(e\), and put
 \[
@@ -1546,10 +1554,7 @@ Then \(P\) is the projective cover of the simple module \(E\), \(I\) is
 its injective envelope, and \(\cD\) is the ideal quotient of
 Setting~\ref{set:serre} for this idempotent. Thus \(E\), \(P=P_E\), and
 \(I=I_E\) agree with the notation of
-Subsection~\ref{subsec:extension-supports}. As in
-Setting~\ref{set:serre}, we regard
-\(\mod B\) as the full subcategory of modules \(X\) with \(Xe=0\), by
-restriction of scalars along \(A\twoheadrightarrow B\). Put
+Subsection~\ref{subsec:extension-supports}. Put
 \(d_X=\dim_k Xe=[X:E]\), where \([X:E]\) is composition multiplicity.
 The equality \(\dim_k Xe=[X:E]\) follows by applying the exact functor
 \((-)e\) to a composition series.
@@ -1559,34 +1564,27 @@ The following lemma shows that \(B\) is representation-finite, as assumed
 from Subsection~\ref{subsec:new-counts} on, and representation-directed, as
 needed for induction on primitive deletions.
 \begin{lemma}\label{lem:quotient-closure}
-The subcategory \(\mod B\) of \(\mod A\) is closed under submodules,
-quotients, extensions and direct summands. The algebra \(B\) is
+The algebra \(B\) is
 representation-finite and representation-directed.
-For every \(W\in\mod B\),
-\(\Hom_A(E,W)=\Hom_A(W,E)=0\).
 \end{lemma}
 \begin{proof}
-Closure under submodules, quotients, extensions, and direct summands
-follows from the exactness of evaluation at \(e\), as in
-Setting~\ref{set:serre}. The inclusion preserves indecomposables and their Hom
-spaces, so \(B\) is representation-finite and directed.
-Finally, \(We=0\) implies \([W:E]=0\), so \(E\) is neither a
-submodule nor a quotient of \(W\). This proves both Hom vanishings.
+The inclusion of \(\mod B\) in \(\mod A\) is full
+(Setting~\ref{set:serre}), so it preserves indecomposables and their Hom
+spaces. Hence \(B\) is representation-finite and directed.
 \end{proof}
 
 \subsection{Source, sink, and translation of the quotient}
 Lemma~\ref{lem:quotient-evaluation} and
 Proposition~\ref{lem:surviving-arrows} already describe the maps and the
-indecomposables of \(\cD\). For a directed algebra, we add that the
+indecomposables of \(\cD\). For a directed algebra, we also show that the
 indecomposables of \(\cD\) have endomorphism ring \(k\), that \(\cD\) is
 directed, and that \(P\) and \(I\) are the unique source and sink of its
 irreducible quiver. We identify the indecomposables of \(\cD\) with the
 chosen \(A\)-module representatives with \(Xe\ne0\), writing \(X\) for
-\(\pi X\) when it occurs as an object of \(\cD\). Part~(2) of the
-following lemma is also observed in \cite[Section~10]{RV}.
+\(\pi X\) when it occurs as an object of \(\cD\).
 
 \begin{lemma}\label{lem:evaluation}
-Evaluation at \(e\) and passage to \(\cD\) have the following properties.
+Evaluation at \(e\) and the quotient functor \(\pi\) have the following properties.
 \begin{enumerate}
 \item Every indecomposable \(A\)-module has endomorphism ring \(k\).
 The category \(\cD\) is Krull--Schmidt and directed. Its indecomposables
@@ -1618,19 +1616,25 @@ into paths by Lemma~\ref{lem:path-expansion} gives an incoming arrow at
 every \(X\ne P\) and an outgoing arrow at every \(X\ne I\), by taking
 the last and first arrows of these paths, respectively.
 \end{proof}
+Part~(2) is also observed in \cite[Section~10]{RV}.
 
 By Proposition~\ref{prop:quotient-sequences}, \(\cD\) is a strict
 \(\tau\)-category whose right and left \(\tau\)-sequences at \(X\), in the
 notation introduced before Proposition~\ref{rem:tau-properties}, are the
-images of the ambient almost split sequences ending and starting at \(X\),
-including those at projective and injective \(A\)-modules.
-Subsection~\ref{subsec:boundary} computes the arrows at the
-\(\tau\)-projectives and \(\tau\)-injectives of \(\cD\).
+images of the right and left \(\tau\)-sequences of \(\mod A\) ending and
+starting at \(X\) (Example~\ref{ex:module-tau}).
 \begin{definition}\label{def:boundary}
 Write \(\Gamma_{\cD}\) for the irreducible quiver of \(\cD\) equipped
 with the translation \(\tau_{\cD}^+\), displayed by dotted arrows
 \(X\dashrightarrow\tau_{\cD}^+X\).
 \end{definition}
+Since \(\cD\) is directed (Lemma~\ref{lem:evaluation}(1)), \(\Gamma_{\cD}\)
+has no loops, and \(\tau_{\cD}^+\) is injective by
+Proposition~\ref{rem:tau-properties}(3). By
+Proposition~\ref{rem:tau-properties}(2) and
+Lemma~\ref{lem:tau-multiplicity}, the number of arrows \(Y\to X\) equals the
+number of arrows \(\tau_{\cD}^+X\to Y\) whenever \(\tau_{\cD}^+X\ne0\). Thus
+\(\Gamma_{\cD}\) is a translation quiver (Definition~\ref{def:mesh}).
 
 \begin{lemma}\label{rem:iyama-boundary}
 Let \(X\) be an indecomposable \(A\)-module with \(Xe\ne0\).
@@ -1646,67 +1650,12 @@ modules in \(\mod B\) (Proposition~\ref{lem:surviving-arrows}). The dual
 statement follows in the same way.
 \end{proof}
 
-The \(\tau\)-sequences of \(\cD\) give the following identities, which we
-use for the arrows at \(\tau\)-projectives and \(\tau\)-injectives and in
-Appendix~\ref{app:structural}. Ringel and Vossieck use the additivity in part~(3)
-\cite[Section~1, p.~217]{RV}.
-
-\begin{lemma}\label{lem:quotient-identities}
-In Setting~\ref{set:directed}, the following hold.
-\begin{enumerate}
-\item For \(X,Y\in\ind\cD\), the middle multiplicities are
-\begin{equation}\label{eq:quotient-multiplicity}
- [\theta_{\cD}^+X:Y]_\oplus=\dim_k\Irr_{\cD}(Y,X),\qquad
- [\theta_{\cD}^-X:Y]_\oplus=\dim_k\Irr_{\cD}(X,Y).
-\end{equation}
-\item If \(\tau_{\cD}^+X\ne0\), then for every \(Y\in\ind\cD\),
-\begin{equation}\label{eq:paired-middle}
- \theta_{\cD}^-(\tau_{\cD}^+X)\cong\theta_{\cD}^+X,
- \qquad\dim_k\Irr_{\cD}(Y,X)=\dim_k\Irr_{\cD}(\tau_{\cD}^+X,Y).
-\end{equation}
-\item For \(X\in\ind\cD\), evaluation at \(e\) satisfies
-\begin{equation}\label{eq:dimension-defects}
- d_X-d_{\theta_{\cD}^+X}+d_{\tau_{\cD}^+X}=\indicator_{\{X=P\}},\qquad
- d_X-d_{\theta_{\cD}^-X}+d_{\tau_{\cD}^-X}=\indicator_{\{X=I\}}.
-\end{equation}
-Here \(\indicator_{\{X=P\}}\) is one if \(X\cong P\) and zero
-otherwise, and similarly for \(I\).
-\end{enumerate}
-\end{lemma}
-\begin{proof}
-(1) Apply Lemma~\ref{lem:tau-multiplicity}; its hypothesis on
-endomorphism rings holds by Lemma~\ref{lem:evaluation}(1).
-
-(2) By Proposition~\ref{rem:tau-properties}(2), the right \(\tau\)-sequence at
-\(X\) is also the left \(\tau\)-sequence at \(\tau_{\cD}^+X\). Their
-middle terms agree, and (1) gives the equality of arrow multiplicities.
-
-(3) The category \(\cD\) is a strict \(\tau\)-category by
-Proposition~\ref{prop:quotient-sequences}. Evaluate the first exact
-sequence of Lemma~\ref{lem:strict-resolution} at \(P\). Since
-\(\cD(P,Z)\cong Ze\) by \eqref{eq:evaluation}, this gives
-\(d_X-d_{\theta_{\cD}^+X}+d_{\tau_{\cD}^+X}=\dim_k\mathsf S_X(P)\). By
-Lemma~\ref{lem:evaluation}(1), \(\mathsf S_X(P)\) is \(k\) if \(X\cong P\) and zero otherwise. The
-second identity in \eqref{eq:dimension-defects} follows in the same way,
-by evaluating the second sequence of Lemma~\ref{lem:strict-resolution} at
-\(I\) and using \(\cD(Z,I)\cong\Dk(Ze)\).
-\end{proof}
-
 \subsection{Composition multiplicities at \texorpdfstring{\(\tau\)}{tau}-projectives and \texorpdfstring{\(\tau\)}{tau}-injectives}\label{subsec:boundary}
 We next bound the multiplicity \(d_X\) of \(E\) at the \(\tau\)-projectives
-and \(\tau\)-injectives of \(\cD\). Besides determining the arrows there,
-the bounds
-show that a sequence with exactly one endpoint in \(\mod B\) has
-exactly one middle summand outside it. This will remove the term
-\(\delta\) in Theorem~\ref{thm:serre-magnitude}. The bounds follow from a
-corollary of Ringel and Vossieck \cite[Section~10, Corollary,
-p.~243]{RV}, which they attribute to v.~H\"ohne and deduce from
-\cite[Section~1, Corollary~3]{RV}: over a directed algebra, indecomposable
-projective and injective modules have dimension at most one at \(e\), and
-\(|d_Z-d_{\tau_A Z}|\leq1\) for every nonprojective indecomposable \(Z\).
-Part~(2) below also follows from part~(1) and
-Lemma~\ref{rem:iyama-boundary}; we state it separately for use in
-Proposition~\ref{thm:directed-deletion}.
+and \(\tau\)-injectives of \(\cD\). The bound shows that an almost split
+sequence with exactly one end term in \(\mod B\) has exactly one middle
+summand outside it, which removes the term \(\delta\) in
+Theorem~\ref{thm:serre-magnitude}.
 
 \begin{proposition}[{\cite[Section~10, Corollary, p.~243]{RV}}]\label{prop:boundary-one}
 In Setting~\ref{set:directed}, the following hold.
@@ -1720,31 +1669,22 @@ In Setting~\ref{set:directed}, the following hold.
 \end{equation}
 \end{enumerate}
 \end{proposition}
-A direct proof is given in Appendix~\ref{app:multiplicity}. The following
-corollary is also observed by Ringel and Vossieck
-\cite[Section~1, p.~218]{RV}.
-
-\begin{corollary}\label{cor:boundary-arrows}
-In \(\Gamma_{\cD}\), each \(\tau\)-projective other than \(P\) has exactly one incoming
-arrow, with multiplicity one; \(P\) has none. Dually, each
-\(\tau\)-injective other than \(I\) has exactly one outgoing arrow,
-and \(I\) has none.
-\end{corollary}
 \begin{proof}
-For a \(\tau\)-projective \(X\ne P\), equation
-\eqref{eq:dimension-defects} and Proposition~\ref{prop:boundary-one}(1)
-give \(d_{\theta_{\cD}^+X}=d_X=1\).
-Every indecomposable summand of \(\theta_{\cD}^+X\) has positive integral
-dimension at \(e\), so there is exactly one, occurring once. Equation~\eqref{eq:quotient-multiplicity}
-then shows that \(X\) has exactly one incoming arrow, of multiplicity one. For \(P\), Lemma~\ref{lem:evaluation}(1),(2)
-gives \(d_P=\dim_k\End_A(P)=1\), so equation
-\eqref{eq:dimension-defects} gives \(d_{\theta_{\cD}^+P}=0\). Thus there are no
-incoming arrows. The second formula in \eqref{eq:dimension-defects}
-gives the outgoing counts by the same argument.
+Ringel and Vossieck show that over a representation-directed algebra,
+every indecomposable projective or injective module \(Z\) has
+\(d_Z\leq1\), and \(|d_Z-d_{\tau_A Z}|\leq1\) for every nonprojective
+indecomposable \(Z\) \cite[Section~10, Corollary, p.~243]{RV}; they
+state that it is due to v.~H\"ohne. Part~(2) is the case \(Z=Y\) of this bound.
+For part~(1), a \(\tau\)-projective \(X\) of \(\cD\) is projective over
+\(A\) or satisfies \((\tau_A X)e=0\), by Lemma~\ref{rem:iyama-boundary}. In
+both cases \(d_X\leq1\), and \(d_X\geq1\) since \(X\notin\mod B\). The
+\(\tau\)-injectives are dual.
 \end{proof}
+Appendix~\ref{app:multiplicity} gives a proof that does not use \cite{RV}.
+
 
 In the following example the multiplicities of
-Proposition~\ref{prop:boundary-one} can be read off directly; it is used
+Proposition~\ref{prop:boundary-one} can be computed directly; it is used
 again for the poset construction in Example~\ref{ex:a3-poset}.
 \begin{example}\label{ex:a3}
 Let \(Q\) be \(1\to2\to3\) and \(A=(kQ)^\op\). Write
@@ -1776,68 +1716,6 @@ first term over \(A\) is \(S_3\). Hence
 \(\ind_1^+\cD=\{M_{23},M_{13},S_2\}\). Each has dimension one at
 vertex 2, as does \(I=M_{12}\).
 \end{example}
-\subsection{Path lengths and the number of arrows}\label{subsec:heights}
-The inequality \(\sigma(A/AeA)\leq\sigma(A)\) of
-Proposition~\ref{thm:directed-deletion} uses \(\chi(\cD)\geq1\). In the
-main text, Corollary~\ref{prop:intrinsic} obtains it from
-Theorem~\ref{thm:poset-magnitude} through the equivalence
-\(\cD\simeq\TSp\). This subsection prepares the direct proof in
-Appendix~\ref{app:inequality}. With \(a(\cD)\) as in
-Proposition~\ref{thm:categorical-magnitude}, that proposition gives
-\begin{equation}\label{eq:chi-D}
- \chi(\cD)-1=2|\ind\cD|-a(\cD)-|\ind_1^+\cD|-1,
-\end{equation}
-so \(\chi(\cD)\geq1\) is equivalent to an upper bound on the number of
-arrows \(a(\cD)\). The arrows of Corollary~\ref{cor:boundary-arrows}
-determine the lengths of paths in \(\Gamma_{\cD}\), and
-Lemma~\ref{lem:height-count} below expresses \(a(\cD)\) through the length
-\(L\) of the paths from \(P\) to \(I\).
-
-By Proposition~\ref{rem:tau-properties}(3),
-Lemma~\ref{lem:quotient-identities}(2), Lemma~\ref{lem:evaluation}(2), and
-Corollary~\ref{cor:boundary-arrows}, \(\Gamma_{\cD}\) is a finite
-translation quiver with unique source \(P\), in which each
-\(\tau\)-projective has at most one incoming arrow. Lemma~\ref{lem:rv-grading}
-therefore shows that all paths of irreducible maps from \(P\) to a fixed
-indecomposable have the same length. The following proposition refines
-this consequence of the lemma of Ringel and Vossieck; we prove it in
-Appendix~\ref{app:heights}. Its description of the
-nonzero maps by radical powers is used in Appendix~\ref{app:inequality}.
-
-\begin{proposition}\label{prop:height}
-There is a unique function \(h:\ind\cD\to\mathbb Z_{\geq0}\), called
-the \emph{height}, with \(h(P)=0\)
-such that every arrow \(X\to Y\) satisfies \(h(Y)=h(X)+1\), and
-\(h(X)=h(\tau_{\cD}^+X)+2\) whenever \(\tau_{\cD}^+X\ne0\).
-For distinct \(X,Y\) with \(\cD(X,Y)\ne0\), put \(\ell=h(Y)-h(X)\).
-Then \(\ell>0\) and
-\begin{equation}\label{eq:height-radical}
- \cD(X,Y)=\rad_{\cD}^{\ell}(X,Y),\qquad
- \rad_{\cD}^{\ell+1}(X,Y)=0.
-\end{equation}
-Put \(L=h(I)\). All heights lie in \([0,L]\), with \(P,I\) the unique
-objects of heights \(0,L\), respectively.
-\end{proposition}
-
-The height determines the number of arrows of \(\cD\).
-\begin{lemma}\label{lem:height-count}
-With \(L=h(I)\), one has
-\begin{align}
- a(\cD)&=2|\ind\cD|-L-2,\label{eq:height-count}\\
- \chi(\cD)-1&=L-(|\ind_1^+\cD|-1).\label{eq:height-chi}
-\end{align}
-\end{lemma}
-\begin{proof}
-The category \(\cD\) is a strict \(\tau\)-category by
-Proposition~\ref{prop:quotient-sequences}, and its indecomposables have
-endomorphism ring \(k\) by Lemma~\ref{lem:evaluation}(1).
-Lemma~\ref{lem:evaluation}(2) and Corollary~\ref{cor:boundary-arrows} give
-condition~(1) of Lemma~\ref{lem:height-arrows} with \(X_0=P\) and
-\(X_1=I\), and Proposition~\ref{prop:height} gives condition~(2).
-Lemma~\ref{lem:height-arrows} gives \eqref{eq:height-count}, and
-\eqref{eq:chi-D} then gives \eqref{eq:height-chi}.
-\end{proof}
-
 \subsection{Identification with poset representations}
 We now construct the poset \(T\) and the functor identifying \(\cD\) with
 the category of \(T\)-spaces. The functor \(G\) below is the functor of
@@ -1852,13 +1730,15 @@ indecomposable \(A\)-module representatives \(Q_t\). Define
 \]
 This order is chosen so that \(Q_t\) corresponds to
 \(K_{\{s:t\leq s\}}\) (Proposition~\ref{prop:poset-equivalence}).
-Since \(eAe\cong\End_A(P)=k\) by Lemma~\ref{lem:evaluation}(1),(2),
-identify \(F(P)=eAe\) with \(k\), using \(e\) as basis.
+Let \(F(X)=Xe\) be the evaluation functor of
+Lemma~\ref{lem:quotient-evaluation}. Since \(eAe\cong\End_A(P)=k\) by
+Lemma~\ref{lem:evaluation}(1),(2), identify \(F(P)=eAe\) with \(k\), using
+\(e\) as basis.
 By Proposition~\ref{prop:boundary-one}(1), each \(F(Q_t)\) is one-dimensional.
 Choose a basis vector of each \(F(Q_t)\), and let \(u_t\in\cD(P,Q_t)\) be
 the map corresponding to it under \eqref{eq:evaluation}, so that its
 evaluation sends \(1\) to that basis vector. Identify
-\(\cD(P,X)\) with \(F(X)=Xe\) by \eqref{eq:evaluation}, and set
+\(\cD(P,X)\) with \(F(X)\) by \eqref{eq:evaluation}, and set
 \begin{equation}\label{eq:poset-functor}
  F_t(X)=\operatorname{Im}\bigl(\cD(Q_t,X)\longrightarrow\cD(P,X),
                   \ f\longmapsto fu_t\bigr),\qquad
@@ -1879,10 +1759,6 @@ equivalence \(G:\cD\xrightarrow{\sim}\TSp\). Moreover,
  \qquad |T|=|\ind_1^+\cD|-1.
 \]
 \end{proposition}
-Ringel and Vossieck prove that \(\cD\) is equivalent to the category of
-\(T\)-spaces for this poset. Appendix~\ref{app:poset} proves the proposition
-directly for the functor \(G\) of Construction~\ref{con:poset}.
-
 We compute the equivalence on the four objects of Example~\ref{ex:a3}.
 \begin{example}\label{ex:a3-poset}
 For Example~\ref{ex:a3}, let \(Q_{t_1}=M_{13}\) and \(Q_{t_2}=S_2\).
@@ -1899,7 +1775,8 @@ two-element antichain. Evaluation and the two indexed subspaces give
 \]
 Each arrow of the translation quiver of \(\cD\) in Example~\ref{ex:a3}
 is the identity on total spaces.
-The heights are \(0,1,1,2\), giving \(L=2=|T|\) and \(\chi(\cD)=1\).
+The paths of irreducible maps from \(K_\varnothing\) to \(K_T\) have length
+\(L=2=|T|\), so \(\chi(\cD)=1\) by Theorem~\ref{thm:poset-magnitude}.
 \end{example}
 
 
@@ -1972,7 +1849,7 @@ The almost split sequences ending at \(Z\), \(K_{\{i,j\}}\), \(K_T\),
 and \(S_i\) have middle terms \(\bigoplus_iK_{\{i\}}\), \(Z\),
 \(\bigoplus_{|U|=2}K_U\), and \(K_T\), respectively.
 
-Passing to \(\cD\) deletes \(S_1,S_2,S_3\). By
+The modules \(S_1,S_2,S_3\) become zero in \(\cD\). By
 Propositions~\ref{lem:surviving-arrows} and~\ref{prop:quotient-sequences},
 the remaining arrows and the images of the translations give the
 translation quiver \(\Gamma_{\cD}\):
@@ -1990,12 +1867,10 @@ translation quiver \(\Gamma_{\cD}\):
 \end{tikzcd}
 \]
 The quotient has nine indecomposables, twelve arrows, and four
-\(\tau\)-projectives. Thus
+\(\tau\)-projectives. Thus \eqref{eq:categorical-magnitude} gives
 \[
- \chi(\cD)-1=18-12-4-1=1,\qquad L=4>|T|=3.
+ \chi(\cD)=2\cdot9-12-4=2,\qquad L=4>|T|=3.
 \]
-The middle object \(Z\) inserts an additional step between the singletons
-and the two-element subsets.
 \end{example}
 \subsection{Magnitude under deletion of a simple module}\label{subsec:deletion-proof}
 We now apply Theorem~\ref{thm:serre-magnitude} and
@@ -2015,11 +1890,13 @@ If equality holds in \(\sigma(A)\geq\sigma(B)\), then
 \begin{proof}
 By Lemma~\ref{lem:quotient-closure}, \(\mod B\) is a
 representation-finite Serre subcategory, so Section~\ref{sec:quotient}
-applies. In an almost split sequence with exactly one endpoint in \(\mod B\),
-Proposition~\ref{prop:boundary-one}(2) bounds the other endpoint's
-\(e\)-dimension by one. Applying \((-)e\) shows that it is exactly one,
-and that there is exactly one middle summand outside \(\mod B\),
-with multiplicity one. Thus \(\delta=0\) in
+applies. In an almost split sequence with exactly one end term in \(\mod B\),
+Proposition~\ref{prop:boundary-one}(2) gives \(d_X\leq1\) for the other
+end term \(X\), and \(d_X\geq1\) since \(X\notin\mod B\). The sequence
+stays exact after applying \((-)e\), and its end term in \(\mod B\)
+contributes zero. So \(d_X=1\) is the sum of \(d_Z\geq1\) over the middle
+summands \(Z\) outside \(\mod B\), counted with multiplicity. Hence there
+is exactly one middle summand outside \(\mod B\), with multiplicity one. Thus \(\delta=0\) in
 Theorem~\ref{thm:serre-magnitude}. Since \(|A|=|B|+1\), its identity becomes
 \[
  \sigma(A)-\sigma(B)=\chi(\cD)-1+c-r.
@@ -2032,7 +1909,7 @@ indecomposable \(A\)-modules have \(d_X=0\).
 \end{proof}
 
 
-Deleting a leaf in the \(D_4\) example of Example~\ref{ex:d4-subspaces} gives a strict inequality
+Deleting a leaf in Example~\ref{ex:d4-subspaces} gives a strict inequality
 \(r<c\). We compute \(c\) and \(r\) explicitly.
 \begin{example}\label{ex:d4-boundary}
 Keep \(A=(kQ)^\op\) with arrows \(i\to0\), \(i=1,2,3\), from
@@ -2050,17 +1927,17 @@ K_{\{1,2\}},S_1,S_2\). The Auslander--Reiten quiver \(\Gamma_B\) is
 \end{tikzcd}
 \]
 The two arrows out of \(K_\varnothing\) are irreducible over \(A\).
-The other four are not. Their factorizations in \(\mod A\) are visible
+The other four are not. Their factorizations in \(\mod A\) are shown
 in the following diagram of maps:
 \[
 \begin{tikzcd}[column sep=1.5em,row sep=1.5em]
  K_{\{1\}}\arrow[dr]&&&&S_1\\
- &Z\arrow[r]&K_{\{1,2\}}\arrow[r]&K_{\{1,2,3\}}\arrow[ur]\arrow[dr]&\\
+ &Z\arrow[r]&K_{\{1,2\}}\arrow[r]&K_T\arrow[ur]\arrow[dr]&\\
  K_{\{2\}}\arrow[ur]&&&&S_2
 \end{tikzcd}
 \]
 Each map in this diagram is irreducible in \(\mod A\). The two composites
-through \(Z\) and the two through \(K_{\{1,2,3\}}\) give the other four
+through \(Z\) and the two through \(K_T\) give the other four
 arrows of \(\Gamma_B\): both intermediate modules have nonzero space at
 vertex 3, so they are not \(B\)-modules. Each of these four arrows
 contributes one to \(c\), and there are no other arrows in \(\Gamma_B\).
@@ -2096,7 +1973,7 @@ terms in \eqref{eq:directed-deletion}.
 \begin{example}\label{ex:d4-deletion}
 The Auslander--Reiten quiver of \(\mod A\), displayed in
 Example~\ref{ex:d4-subspaces}, has twelve indecomposables and fifteen
-arrows. Thus
+arrows. Thus, by Lemma~\ref{lem:count},
 \[
  |\ind A|=12,\quad |A|=4,\quad a(A)=15,\quad
  \chi(\mod A)=5,\quad\sigma(A)=1.
@@ -2116,20 +1993,20 @@ For the second row, the associated translation quiver \(\Gamma_{\cD}\) is
 \begin{tikzcd}[column sep=small,row sep=small]
  &&K_{\{1,3\}}\arrow[dr]&&\\
  K_{\{3\}}\arrow[r]&Z\arrow[ur]\arrow[dr]&&
- K_{\{1,2,3\}}\arrow[r]\arrow[ll,dotted,"\tau_{\cD}^+"']&S_3\\
+ K_T\arrow[r]\arrow[ll,dotted,"\tau_{\cD}^+"']&S_3\\
  &&K_{\{2,3\}}\arrow[ur]&&
 \end{tikzcd}
 \]
 Thus it has six indecomposables and six solid arrows. Only
-\(K_{\{1,2,3\}}\) has a nonzero \(\tau_{\cD}^+\)-translate, namely \(Z\).
+\(K_T\) has a nonzero \(\tau_{\cD}^+\)-translate, namely \(Z\).
 Hence there are five \(\tau\)-projectives, and
-\(\chi(\cD)-1=12-6-5-1=0\). The strict increase comes entirely from
+\eqref{eq:categorical-magnitude} gives \(\chi(\cD)=2\cdot6-6-5=1\). The strict increase comes entirely from
 \(\chi(\cD)-1\) in the first row and from \(c-r\) in the second.
 \end{example}
 \subsection{Magnitude of representation-directed algebras}\label{subsec:directed-case}
 Applying Proposition~\ref{thm:directed-deletion} to one simple module at a
 time bounds the surplus of a representation-directed algebra from below,
-and its equality case leads to biserial algebras. We recall the classes of
+and zero surplus leads to biserial algebras. We recall the classes of
 algebras that enter the proof of Theorem~A(2).
 \begin{definition}\label{def:special-biserial}
 A basic algebra is \emph{special biserial} if it has a presentation
@@ -2174,13 +2051,13 @@ indecomposable \(A\)-module is thin, and \(A\) is biserial and hence
 special biserial.
 \end{corollary}
 \begin{proof}
-By Lemma~\ref{lem:invariance} we may assume that \(A\) is basic. Successive
-primitive deletions remain basic, and by Lemma~\ref{lem:quotient-closure}
+By Lemma~\ref{lem:invariance} we may assume that \(A\) is basic. The
+algebras obtained by successive primitive deletions remain basic, and by Lemma~\ref{lem:quotient-closure}
 they remain representation-finite and representation-directed. They end at
 the zero algebra, whose surplus is zero. Proposition~\ref{thm:directed-deletion}
 therefore proves nonnegativity. If \(\sigma(A)=0\), delete any primitive
 idempotent \(e\) first. Since \(\sigma(B)\geq0\) for \(B=A/AeA\), we have
-\(\sigma(A)=\sigma(B)=0\), so every indecomposable has \(e\)-dimension at most one.
+\(\sigma(A)=\sigma(B)=0\), so \(\dim_k Xe\leq1\) for every indecomposable \(X\).
 As \(e\) was arbitrary, all indecomposables are thin.
 Proposition~\ref{prop:thin-biserial} shows that \(A\) is biserial, and
 Theorem~\ref{thm:biserial-special} that it is special biserial.
@@ -2191,9 +2068,10 @@ representation-directed algebras. To remove this hypothesis, we compare a
 graded algebra with its interval algebras, whose modules are graded modules
 supported in finite degree intervals. We first show that the numbers of
 indecomposables and of arrows of the interval algebras grow linearly with
-the length of the interval, with slopes given by the algebra. A grading of
-the Hom spaces between indecomposable modules then makes the interval
-algebras representation-directed, and standard forms have such a grading.
+the length of the interval, with slopes the numbers of indecomposables and
+of arrows of the algebra. A positive grading of
+the Hom spaces between indecomposable modules (Subsection~\ref{subsec:graded-hom})
+then makes the interval algebras representation-directed, and standard forms have such a grading.
 
 \subsection{Graded modules supported in finite intervals}
 We first fix conventions for graded modules and define interval algebras.
@@ -2203,7 +2081,7 @@ A graded right \(R\)-module is a decomposition
 \(M=\bigoplus_{n\in\mathbb Z}M_n\) with
 \(M_nR^{(d)}\subseteq M_{n+d}\). Its support consists of the integers
 \(n\) with \(M_n\ne0\). Write \(\operatorname{grmod}R\) for the category
-of finite-dimensional graded modules and degree-zero maps, and
+of finite-dimensional graded modules and maps of degree zero, and
 \(\Hom_{\mathrm{gr}}\) for its morphism spaces.
 The shift \(M\langle s\rangle\) is defined by
 \((M\langle s\rangle)_n=M_{n-s}\). A homogeneous map of degree \(d\)
@@ -2248,7 +2126,7 @@ holds across the interval boundary because multiplication only increases
 degree: if the initial and final degrees lie in \([0,m]\), so does
 every intermediate degree. This construction and restriction to the
 interval are inverse on modules and maps.
-The positive-degree ideal of \(R\) is nilpotent, so
+The ideal of elements of positive degree in \(R\) is nilpotent, so
 \(|R|=|R^{(0)}|\). The strictly upper triangular ideal of \(R_m\) is
 also nilpotent, and its diagonal quotient is \((R^{(0)})^{m+1}\),
 which proves \(|R_m|=(m+1)|R|\).
@@ -2259,7 +2137,7 @@ and that two graded lifts of an indecomposable differ by shift
 \cite[Theorems~3.2 and~4.1]{GG1}. They also prove that every module over a
 representation-finite graded algebra is gradable
 \cite[Theorem~4.3]{GG2}. Choose one lift of each indecomposable.
-Only finitely many of its shifts fit in \([0,m]\), so the equivalence
+Only finitely many of its shifts are supported in \([0,m]\), so the equivalence
 proves representation-finiteness of \(R_m\).
 \end{proof}
 
@@ -2276,9 +2154,8 @@ Choose a graded lift \(\widetilde X\) of each \(X\in\ind R\), normalized so that
 \item As \(m\to\infty\),
 \begin{align}
  a(R_m)&=(m+1)a(R)+O(1),\label{eq:interval-arrows}\\
- \sigma(R_m)&=(m+1)\sigma(R)+O(1),\label{eq:interval-surplus}
+ \sigma(R_m)&=(m+1)\sigma(R)+O(1).\label{eq:interval-surplus}
 \end{align}
-where the errors are bounded independently of \(m\).
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -2286,40 +2163,44 @@ where the errors are bounded independently of \(m\).
 \(\widetilde X\langle t\rangle\) with \(0\leq t\leq m-w_X\).
 Proposition~\ref{prop:interval-modules} proves \eqref{eq:interval-objects}.
 
-(2) Choose \(b\geq1\) bounding all \(w_X\). Every ungraded map is a sum
-of homogeneous maps, whose degrees lie in \([-b,b]\).
+(2) Choose \(b\geq1\) bounding all \(w_X\). For \(X,Y\in\ind R\), every
+map \(X\to Y\) is a sum of maps homogeneous with respect to the gradings
+of \(\widetilde X\) and \(\widetilde Y\), whose degrees lie in \([-b,b]\)
+because both lifts are supported in \([0,b]\).
 
 We first compare irreducible maps in \(\mod R\) and in
 \(\operatorname{grmod}R\). Fix \(t\in\mathbb Z\). A homogeneous map
-\(X\to Y\) of degree \(d\) is a degree-zero map
+\(X\to Y\) of degree \(d\) is a map of degree zero
 \(\widetilde X\langle t+d\rangle\to \widetilde Y\langle t\rangle\), so decomposing maps into
 homogeneous components gives (cf. \cite[Lemma~2.1]{GG1})
 \begin{equation}\label{eq:graded-hom-sum}
  \Hom_R(X,Y)=\bigoplus_{s\in\mathbb Z}
  \Hom_{\mathrm{gr}}(\widetilde X\langle s\rangle,\widetilde Y\langle t\rangle).
 \end{equation}
-The radical of \(\mod R\) between the underlying modules of graded lifts
-is a graded subspace, that is, it contains the homogeneous components of
-its elements. For distinct underlying indecomposables every map is
-radical. For an endomorphism, a homogeneous component of nonzero degree is
-nilpotent, while its degree-zero part is radical exactly when its image in
-the residue field \(k\) is zero. Hence the radical of
-\(\operatorname{grmod}R\) consists of the degree-zero maps in the radical
-of \(\mod R\), and under \eqref{eq:graded-hom-sum} the space
+For distinct underlying indecomposables every map is radical. For an
+endomorphism, a homogeneous component of nonzero degree is nilpotent, while
+its component of degree zero is radical exactly when its image in the residue
+field \(k\) is zero. Hence the radical of \(\mod R\) between the underlying
+modules of graded lifts is a graded subspace, that is, it contains the
+homogeneous components of its elements. A map of degree zero between graded
+indecomposables is an isomorphism in \(\operatorname{grmod}R\) exactly
+when its underlying map is an isomorphism, so the radical of
+\(\operatorname{grmod}R\) consists of the maps of degree zero in the radical
+of \(\mod R\). Therefore, under \eqref{eq:graded-hom-sum}, the space
 \(\rad_R(X,Y)\) is the direct sum of the spaces
 \(\rad_{\operatorname{grmod}R}(\widetilde X\langle s\rangle,\widetilde Y\langle t\rangle)\). A
 radical composite factors through a finite direct sum of indecomposable
 \(R\)-modules, each of which has a graded lift by
-Proposition~\ref{prop:interval-modules}. Decomposing both factors into
+Proposition~\ref{prop:interval-modules}. Composites of homogeneous maps are
+homogeneous, with degrees adding, so decomposing both factors into
 homogeneous parts shows that the same holds for the radical squares
 \(\rad_R^2\) and \(\rad_{\operatorname{grmod}R}^2\).
 Consequently (cf. \cite[Theorem~3.5]{GG2})
 \begin{equation}\label{eq:graded-irreducible}
  \bigoplus_{s\in\mathbb Z}
  \Irr_{\operatorname{grmod}R}(\widetilde X\langle s\rangle,\widetilde Y\langle t\rangle)
- \cong\Irr_R(X,Y)
+ \cong\Irr_R(X,Y).
 \end{equation}
-as vector spaces, after forgetting the grading.
 
 We now restrict to the interval \([0,m]\) with \(m\geq3b\). Fix \(Y\) and a
 shift \(t\) with \(b\leq t\leq m-2b\). By \eqref{eq:graded-hom-sum} and
@@ -2350,9 +2231,9 @@ Proposition~\ref{prop:interval-modules}, and
 \eqref{eq:interval-arrows} proves \eqref{eq:interval-surplus}.
 \end{proof}
 
-\subsection{Positive gradings of Hom spaces}
+\subsection{Positive gradings of Hom spaces}\label{subsec:graded-hom}
 Interval algebras need not be representation-directed. The following
-grading of the Hom spaces between indecomposable modules guarantees that
+grading of the Hom spaces between indecomposable modules ensures that
 they are.
 \begin{definition}\label{def:positive-hom-grading}
 A \emph{positive Hom grading} on \(\ind R\) is a decomposition
@@ -2440,7 +2321,7 @@ numerical comparison with \(A\); cf. \cite[Section~5.1]{BG}.
  \Hom^{(0)}(X,Y)=
  \begin{cases}k1_X&X=Y,\\0&X\ne Y,\end{cases}
 \end{equation}
-with composition adding degrees. The positive-degree part is the radical,
+with composition adding degrees. The part of positive degree is the radical,
 and the components of degree at least two give its square. In particular,
 \(\Hom^{(1)}(X,Y)\cong\Irr_S(X,Y)\).
 \item One has \(|S|=|A|\) and
@@ -2451,12 +2332,12 @@ and the components of degree at least two give its square. In particular,
 \end{lemma}
 \begin{proof}
 (1) The mesh relations are homogeneous of degree two, so the path spaces
-give the grading \eqref{eq:hom-grading}. The positive-degree part is an
+give the grading \eqref{eq:hom-grading}. The part of positive degree is an
 ideal with quotient \(\prod_X k1_X\), which is semisimple. It is
 nilpotent: there are finitely many finite-dimensional Hom spaces, so their
-degrees are bounded, and a composite of more positive-degree maps than
+degrees are bounded, and a composite of more maps of positive degree than
 this bound vanishes. It is therefore the radical. Every path of length at least two is a product of arrows, so
-those components give the radical square and the degree-one components
+those components give the radical square and the components of degree one
 give the irreducible spaces.
 
 (2) Theorem~\ref{thm:standard}(1) preserves the number of indecomposables,
@@ -2472,14 +2353,13 @@ Proposition~\ref{prop:graded-classification} applies to \(R=S\).
 For the remainder of this section and Section~\ref{sec:equality}, choose a standard
 form \(S\) of a basic representation-finite algebra \(A\), and fix the grading
 \eqref{eq:hom-grading}. Proposition~\ref{prop:graded-classification} gives
-\(S\) a nonnegative grading, with \(S^{(0)}=\bigoplus_i ke_i\) for the
-primitive idempotents \(e_i\) and \(\rad S=\bigoplus_{d>0}S^{(d)}\), and
-gives the graded lifts \(M_X\) of Proposition~\ref{prop:graded-classification}(1),
-on which \(a\in S\) acts by \((f\cdot a)(u)=f(au)\) for \(u\in S\). Choose
+\(S\) a nonnegative grading and the graded lifts \(M_X\) of its part~(1).
+By Lemma~\ref{lem:standard-grading}(1), \(S^{(0)}=\bigoplus_i ke_i\) for the
+primitive idempotents \(e_i\).
+There are finitely many finite-dimensional Hom spaces, so we may choose
 an integer \(b\geq1\) bounding all nonzero degrees in
-\eqref{eq:hom-grading}, as in the proof of
-Lemma~\ref{lem:standard-grading}. In particular \(S^{(d)}=0\)
-for \(d>b\), and \((M_X)_d=0\) for \(d\notin[0,b]\).
+\eqref{eq:hom-grading}. In particular \(S^{(d)}=0\)
+for \(d>b\).
 \end{setting}
 
 By Propositions~\ref{prop:interval-modules}
@@ -2506,8 +2386,8 @@ For \(m\geq2\), let \(Q_m\) be the quiver with vertices
 \(S_m\) is the opposite of \(kQ_m\) modulo all paths of length two, so
 right \(S_m\)-modules are representations of \(Q_m\), with arrows
 \(r\to r+2\), in which all composites of two arrows vanish. Its indecomposables are the \(m+1\)
-simples and the \(m-1\) shifts of \(M_P\) supported on a pair of degrees
-differing by two. Each nonsimple indecomposable has an irreducible map
+simples and the \(m-1\) shifts of \(M_P\) supported in degrees \(r\) and
+\(r+2\), for \(0\leq r\leq m-2\). Each nonsimple indecomposable has an irreducible map
 from its socle and one to its top. Hence
 \[
  |S_m|=m+1,\qquad |\ind S_m|=2m,\qquad a(S_m)=2(m-1),
@@ -2531,10 +2411,10 @@ This gives \(\sigma(S)\geq0\), and \eqref{eq:standard-surplus} gives
 
 \section{Equality in the lower bound and special biserial algebras}\label{sec:equality}
 Theorem~\ref{thm:lower-bound} proves \(\chi(\mod A)\geq|A|\), but its
-asymptotic argument does not by itself determine when equality holds. We first show how a nonnegative invariant that does
-not increase under primitive deletion is controlled on each finite interval
-by its asymptotic growth. We then transfer almost split sequences from a graded
-algebra to sufficiently long intervals.
+asymptotic argument does not by itself determine when equality holds. We first bound, on each finite interval, a nonnegative invariant of
+interval algebras that does not increase under primitive deletion. We then
+show that the almost split sequences of a graded algebra occur in long
+interval algebras.
 
 \subsection{Monotone invariants of interval algebras}\label{subsec:interval-equality}
 The following lemma applies to any invariant with properties (a)--(c)
@@ -2557,30 +2437,30 @@ subalgebra, \(f(C/C\varepsilon C)\leq f(C)\).
 \item \(f(R_m)\geq0\) for every \(m\), and
 \(f(R_m)=(m+1)\lambda+o(m)\) as \(m\to\infty\).
 \end{enumerate}
-Then, for every \(r\geq0\),
+Then, for every \(n\geq0\),
 \[
- 0\leq f(R_r)\leq(r+b+1)\lambda.
+ 0\leq f(R_n)\leq(n+b+1)\lambda.
 \]
-In particular, \(\lambda=0\) forces \(f(R_r)=0\) for every \(r\).
+In particular, \(\lambda=0\) forces \(f(R_n)=0\) for every \(n\).
 \end{lemma}
 \begin{proof}
-Fix \(r\), put \(\ell=r+b+1\), and for \(q\geq1\) put
-\(M=q\ell-b-1\). Retain the \(q\) intervals
+Fix \(n\), put \(\ell=n+b+1\), and for \(q\geq1\) put
+\(M=q\ell-b-1\). Consider the \(q\) intervals
 \[
- [j\ell,j\ell+r],\qquad 0\leq j<q,
+ [j\ell,j\ell+n],\qquad 0\leq j<q,
 \]
-inside \([0,M]\), and delete the degrees in the gaps, that is, pass to
+inside \([0,M]\), and delete the degrees in the gaps between them, that is, pass to
 the idempotent quotient by the sum of the diagonal idempotents of these
 degrees.
-Distinct retained intervals are separated by \(b\) degrees, so all
-blocks between them vanish. No map within a retained interval factors
+Distinct intervals among them are separated by \(b\) degrees, so all
+blocks between them vanish. No map within one of these intervals factors
 through a deleted degree, since degrees are monotone under multiplication.
-The quotient is therefore \(\prod_{j=0}^{q-1}R_r\).
+The quotient is therefore \(\prod_{j=0}^{q-1}R_n\).
 Deleting the corresponding primitive idempotents of the diagonal
 subalgebra one at a time passes through idempotent quotients of \(R_M\).
 Monotonicity and additivity therefore give
 \[
- qf(R_r)\leq f(R_M)=(q\ell-b)\lambda+o(q).
+ qf(R_n)\leq f(R_M)=(q\ell-b)\lambda+o(q).
 \]
 Divide by \(q\) and let \(q\to\infty\). Nonnegativity gives the other bound.
 \end{proof}
@@ -2588,12 +2468,8 @@ Divide by \(q\) and let \(q\to\infty\). Nonnegativity gives the other bound.
 We apply this lemma with \(f=\sigma\) to the standard form \(S\) and
 the grading in Setting~\ref{set:grading}.
 \begin{proposition}\label{prop:interval-equality}
-For every \(r\geq0\),
-\[
- 0\leq\sigma(S_r)\leq(r+b+1)\sigma(S).
-\]
-If \(\sigma(S)=0\), every indecomposable \(S_r\)-module is thin and
-every \(S_r\) is biserial.
+If \(\sigma(S)=0\), then \(\sigma(S_n)=0\) and \(S_n\) is biserial for
+every \(n\geq0\).
 \end{proposition}
 \begin{proof}
 All the interval algebras are basic, since their diagonal quotients are
@@ -2602,20 +2478,21 @@ representation-finite and representation-directed by
 Propositions~\ref{prop:interval-modules}
 and~\ref{prop:graded-classification},
 and so are their idempotent quotients, by repeated application of
-Lemma~\ref{lem:quotient-closure}; primitive deletion keeps an algebra
-basic.
+Lemma~\ref{lem:quotient-closure}; a primitive deletion of a basic
+algebra is basic.
 The hypotheses of Lemma~\ref{lem:separated-intervals} hold with
 \(\lambda=\sigma(S)\): (a) by Lemma~\ref{lem:invariance},
 (b) by Proposition~\ref{thm:directed-deletion}, and (c) by
-Corollary~\ref{cor:directed} and Theorem~\ref{prop:interval-count}(2). That lemma proves the bounds.
-Corollary~\ref{cor:directed} gives thinness and biseriality when the surplus is zero.
+Corollary~\ref{cor:directed} and Theorem~\ref{prop:interval-count}(2).
+That lemma gives \(0\leq\sigma(S_n)\leq(n+b+1)\sigma(S)=0\), and
+Corollary~\ref{cor:directed} shows that \(S_n\) is biserial.
 \end{proof}
 
 \subsection{Almost split sequences of long interval algebras}\label{subsec:ar-equality}
 We first define the number \(\beta(C)\) that appears in the
 characterization of biserial algebras of Theorem~\ref{thm:biserial-ar},
-then prove that a graded algebra's almost split sequences occur in finite
-intervals.
+then prove that the almost split sequences of a graded algebra occur in
+finite intervals.
 \begin{definition}\label{def:beta}
 For a representation-finite algebra \(C\), let \(\beta(C)\) be the
 maximum number of nonprojective indecomposable summands in the middle
@@ -2627,11 +2504,13 @@ multiplicities. An empty maximum is zero.
 A representation-finite algebra \(C\) is biserial if and only if
 \(\beta(C)\leq2\).
 \end{theorem}
-The implication from \(\beta(C)\leq2\) to biseriality is due to Auslander
+The implication that \(C\) is biserial if \(\beta(C)\leq2\) is due to Auslander
 and Reiten \cite[Theorem~4.7]{ARuni}, and Skowro\'nski and Waschb\"usch
-prove the converse \cite[p.~173]{SW}. In \cite{SW} the bound is imposed on
-both left and right modules; by an observation of Gabriel recorded there
-\cite[p.~172]{SW}, the bound for right modules suffices.
+prove the converse \cite[p.~173]{SW}. In \cite{SW} the equivalence is
+stated with the bound on both left and right modules, that is, on
+\(\beta(C)\) and \(\beta(C^\op)\). By an observation of Gabriel recorded
+there \cite[p.~172]{SW}, \(\beta(C)=\beta(C^\op)\) whenever one of them is
+at least three, so the bound on \(\beta(C)\) suffices.
 
 \begin{proposition}\label{prop:ar-transfer}
 Let \(R\) be a nonnegatively graded representation-finite algebra.
@@ -2657,14 +2536,15 @@ nonsplit epimorphism onto the summand, so the summand is nonprojective in
 every interval containing the support of this sequence. There are only
 finitely many almost split sequences and summands to consider. Shift each
 almost split sequence of \(R\), together with the sequences ending at its
-nonprojective middle summands, so that its least degree is zero, and choose
+nonprojective middle summands, by the same integer so that the least degree
+occurring in this family is zero, and choose
 \(m_0\) such that \([0,m_0]\) contains all their supports. For every \(m\geq m_0\), every nonprojective middle summand
 counted over \(R\) is counted over \(R_m\) with the same multiplicity.
 Taking the maximum proves the inequality.
 \end{proof}
 
 \subsection{Algebras attaining the lower bound}
-We now show that zero surplus forces special biseriality, by passing from
+We now show that an algebra with zero surplus is special biserial, by passing from
 the interval algebras of a standard form back to the algebra.
 
 \begin{proposition}\label{prop:equality-forward}
@@ -2688,9 +2568,9 @@ If \(A\) is representation-finite and special biserial, then
 \(\chi(\mod A)=|A|\).
 \end{proposition}
 
-Together with Proposition~\ref{prop:equality-converse} of B{\o}rve,
-Horiatakis, and Kalck, the results above prove their conjecture
-\cite[Conjecture~A]{BHK} over an algebraically closed field.
+Theorem~\ref{thm:lower-bound} and
+Propositions~\ref{prop:equality-forward} and~\ref{prop:equality-converse}
+prove \cite[Conjecture~A]{BHK} over an algebraically closed field.
 \begin{theorem}\label{thm:main}
 Let \(A\) be a finite-dimensional representation-finite algebra over an
 algebraically closed field. Then the following hold.
@@ -2700,8 +2580,8 @@ algebraically closed field. Then the following hold.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-Magnitude, \(|A|\), and special biseriality are invariant under Morita
-equivalence. We may therefore assume that \(A\)
+Magnitude, \(|A|\), and being special biserial are invariant under
+Morita equivalence. We may therefore assume that \(A\)
 is basic.
 \begin{enumerate}
 \item Theorem~\ref{thm:lower-bound} proves the inequality.
@@ -2714,8 +2594,15 @@ Proposition~\ref{prop:equality-converse}.
 \appendix
 \section{Direct proofs for ideal quotients of representation-directed algebras}\label{app:structural}
 We work in Setting~\ref{set:directed}. This appendix proves directly the
-four results listed at the start of Section~\ref{sec:deletion}, in
-Subsections~\ref{app:multiplicity}--\ref{app:inequality} respectively. The
+three results listed at the start of Section~\ref{sec:deletion}.
+Subsection~\ref{app:multiplicity} proves Proposition~\ref{prop:boundary-one}.
+Subsection~\ref{app:heights} determines the arrows at \(\tau\)-projectives
+and \(\tau\)-injectives and constructs a function on the indecomposables
+of \(\cD\) as in Lemma~\ref{lem:height-arrows}, which
+Subsection~\ref{app:inequality} uses.
+Subsection~\ref{app:poset} proves Proposition~\ref{prop:poset-equivalence},
+and Subsection~\ref{app:inequality} proves Corollary~\ref{prop:intrinsic}.
+The
 proofs use the evaluation functor
 \(F(X)=Xe\), the \(\tau\)-sequences of
 Proposition~\ref{prop:quotient-sequences}, and Auslander--Reiten duality,
@@ -2727,9 +2614,7 @@ first bound \(\dim_k\Hom_A(Z,I)\) when \(\Ext_A^1(U,Z)=0\) for every
 submodule \(U\subseteq I\).
 The idea of counting isomorphism classes of kernels is taken from the
 argument in \cite[Section~6]{RV}. Under this vanishing hypothesis it
-gives the following elementary lemma. Brenner gives a combinatorial proof of the
-inequality \(d_{\tau_A Z}-d_Z\leq1\) for nonprojective indecomposables
-\(Z\) \cite[Section~3]{Bre}.
+gives the following lemma.
 
 \begin{lemma}\label{lem:finite-kernel}
 Let \(A\) be representation-finite and \(I_0\) an injective \(A\)-module.
@@ -2762,7 +2647,7 @@ At the \(\tau\)-injectives of \(\cD\), Auslander--Reiten duality gives
 the vanishing of \(\Ext_A^1(U,Z)\) required in
 Lemma~\ref{lem:finite-kernel}; the \(\tau\)-projectives follow by duality.
 
-\begin{proof}[Proof of Proposition~\ref{prop:boundary-one}]
+\begin{proof}[Direct proof of Proposition~\ref{prop:boundary-one}]
 Let \(Z\) be an indecomposable \(A\)-module. If \(Z\) is injective, or if \(\tau_A^-Z\) belongs to \(\mod B\),
 then \(\Ext_A^1(U,Z)=0\) for every \(U\subseteq I\).
 In the second case, apply Auslander--Reiten duality
@@ -2798,13 +2683,87 @@ gives \(d_Y=1\); if \(Ye=0\), then \(d_Y=0\). The second implication is
 dual.
 \end{proof}
 
-\subsection{Existence of the height function}\label{app:heights}
-Proposition~\ref{prop:boundary-one} gives the arrows at \(\tau\)-projectives
-and \(\tau\)-injectives in Corollary~\ref{cor:boundary-arrows}. We now use those arrows and the paired
-middle terms of the \(\tau\)-sequences to construct the height function.
-This proves Proposition~\ref{prop:height} without Lemma~\ref{lem:rv-grading}.
+\subsection{Arrows at \texorpdfstring{\(\tau\)}{tau}-projectives and the height function}\label{app:heights}
+The \(\tau\)-sequences of \(\cD\) give the following identities. Ringel and
+Vossieck use the equations in part~(2) \cite[Section~1, p.~217]{RV}.
+\begin{lemma}\label{lem:quotient-identities}
+In Setting~\ref{set:directed}, the following hold.
+\begin{enumerate}
+\item If \(\tau_{\cD}^+X\ne0\), then for every \(Y\in\ind\cD\),
+\begin{equation}\label{eq:paired-middle}
+ \dim_k\Irr_{\cD}(Y,X)=\dim_k\Irr_{\cD}(\tau_{\cD}^+X,Y).
+\end{equation}
+\item For \(X\in\ind\cD\), evaluation at \(e\) satisfies
+\begin{equation}\label{eq:dimension-defects}
+ d_X-d_{\theta_{\cD}^+X}+d_{\tau_{\cD}^+X}=\indicator_{\{X=P\}},\qquad
+ d_X-d_{\theta_{\cD}^-X}+d_{\tau_{\cD}^-X}=\indicator_{\{X=I\}}.
+\end{equation}
+Here \(\indicator_{\{X=P\}}\) is one if \(X\cong P\) and zero
+otherwise, and similarly for \(I\).
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1) By Proposition~\ref{rem:tau-properties}(2), the right \(\tau\)-sequence at
+\(X\) is also the left \(\tau\)-sequence at \(\tau_{\cD}^+X\), so
+\(\theta_{\cD}^-(\tau_{\cD}^+X)\cong\theta_{\cD}^+X\).
+Lemma~\ref{lem:tau-multiplicity}, applied to both sequences, gives
+\eqref{eq:paired-middle}.
 
-\begin{proof}[Proof of Proposition~\ref{prop:height}]
+(2) The category \(\cD\) is a strict \(\tau\)-category by
+Proposition~\ref{prop:quotient-sequences}. Evaluate the first exact
+sequence of Lemma~\ref{lem:strict-resolution} at \(P\). Since
+\(\cD(P,Z)\cong Ze\) by \eqref{eq:evaluation}, this gives
+\(d_X-d_{\theta_{\cD}^+X}+d_{\tau_{\cD}^+X}=\dim_k\mathsf S_X(P)\). By
+Lemma~\ref{lem:evaluation}(1), \(\mathsf S_X(P)\) is \(k\) if \(X\cong P\) and zero otherwise. The
+second identity in \eqref{eq:dimension-defects} follows in the same way,
+by evaluating the second sequence of Lemma~\ref{lem:strict-resolution} at
+\(I\) and using \(\cD(Z,I)\cong\Dk(Ze)\).
+\end{proof}
+
+With Proposition~\ref{prop:boundary-one}(1), proved in
+Subsection~\ref{app:multiplicity}, these identities determine the arrows
+at \(\tau\)-projectives and \(\tau\)-injectives. Ringel and Vossieck also
+observe this \cite[Section~1, p.~218]{RV}.
+\begin{corollary}\label{cor:boundary-arrows}
+In \(\Gamma_{\cD}\), each \(\tau\)-projective other than \(P\) has exactly one incoming
+arrow, with multiplicity one; \(P\) has none. Dually, each
+\(\tau\)-injective other than \(I\) has exactly one outgoing arrow,
+and \(I\) has none.
+\end{corollary}
+\begin{proof}
+For a \(\tau\)-projective \(X\ne P\), equation
+\eqref{eq:dimension-defects} and Proposition~\ref{prop:boundary-one}(1)
+give \(d_{\theta_{\cD}^+X}=d_X=1\).
+Every indecomposable summand of \(\theta_{\cD}^+X\) has positive integral
+dimension at \(e\), so there is exactly one, occurring once. Lemma~\ref{lem:tau-multiplicity}
+then shows that \(X\) has exactly one incoming arrow, of multiplicity one. For \(P\), Lemma~\ref{lem:evaluation}(1),(2)
+gives \(d_P=\dim_k\End_A(P)=1\), so equation
+\eqref{eq:dimension-defects} gives \(d_{\theta_{\cD}^+P}=0\). Thus there are no
+incoming arrows. The second formula in \eqref{eq:dimension-defects}
+gives the outgoing counts by the same argument.
+\end{proof}
+
+The following proposition constructs on \(\Gamma_{\cD}\) a function as
+in Lemma~\ref{lem:height-arrows}(2), and describes the nonzero maps of
+\(\cD\) by powers of the radical; Subsection~\ref{app:inequality} uses
+both. Its proof uses Corollary~\ref{cor:boundary-arrows} and the arrow
+pairing \eqref{eq:paired-middle}.
+\begin{proposition}\label{prop:height}
+There is a unique function \(h:\ind\cD\to\mathbb Z_{\geq0}\), called
+the \emph{height}, with \(h(P)=0\)
+such that every arrow \(X\to Y\) satisfies \(h(Y)=h(X)+1\), and
+\(h(X)=h(\tau_{\cD}^+X)+2\) whenever \(\tau_{\cD}^+X\ne0\).
+For distinct \(X,Y\) with \(\cD(X,Y)\ne0\), put \(\ell=h(Y)-h(X)\).
+Then \(\ell>0\) and
+\begin{equation}\label{eq:height-radical}
+ \cD(X,Y)=\rad_{\cD}^{\ell}(X,Y),\qquad
+ \rad_{\cD}^{\ell+1}(X,Y)=0.
+\end{equation}
+Put \(L=h(I)\). All heights lie in \([0,L]\), with \(P,I\) the unique
+objects of heights \(0,L\), respectively.
+\end{proposition}
+
+\begin{proof}
 Order the vertices so that the source of every arrow precedes its target;
 this is possible by directedness. We define the heights in that order. At \(P\),
 set \(h(P)=0\).
@@ -2824,9 +2783,10 @@ to \(Y\) has length \(h(Y)-h(X)\), so every map \(X\to Y\) lies in
 proves \eqref{eq:height-radical}. The nonzero maps \(P\to X\) and \(X\to I\)
 in \eqref{eq:evaluation} place all heights in the stated interval and give
 uniqueness at its endpoints.
-Every indecomposable is reached by a path from \(P\). Since \(h(P)=0\)
-and height increases by one along each arrow, its height must be the
-length of that path. This proves uniqueness of \(h\).
+There is a path from \(P\) to every indecomposable. Since \(h(P)=0\)
+and height increases by one along each arrow, the height of each
+indecomposable is the length of any path from \(P\) to it. This proves
+uniqueness of \(h\).
 \end{proof}
 
 \subsection{The equivalence with poset representations}\label{app:poset}
@@ -2835,8 +2795,10 @@ maps from the \(\tau\)-projectives. We prove fullness by induction and
 realize an arbitrary poset representation by taking a quotient of an
 explicit \(A\)-module.
 
-\begin{proof}[Proof of Proposition~\ref{prop:poset-equivalence}]
-\textbf{Step 1: Define the functor and compute it on \(\tau\)-projectives.}
+\begin{proof}[Direct proof of Proposition~\ref{prop:poset-equivalence}]
+We divide the proof into three steps.
+
+\textbf{Step 1: The functor and its values on \(\tau\)-projectives.}
 Since \(F\) is faithful and \(F(Q_t),F(Q_s)\) are one-dimensional,
 \(\dim_k\cD(Q_t,Q_s)\leq1\).
 Composites of nonzero maps between these objects evaluate to composites of
@@ -2873,7 +2835,7 @@ so \(g\) is a weak cokernel of \(f\). Thus \(b=vg\) for
 some \(v:X\to Y\). Surjectivity of \(F(g)\) gives \(G(v)=a\).
 This proves fullness on indecomposables, and hence on direct sums.
 
-\textbf{Step 3: Realizing every poset representation.}
+\textbf{Step 3: Essential surjectivity.}
 For each \(\tau\)-projective \(Q\) of \(\cD\) and each \(A\)-module \(V_0\)
 with \(V_0=V_0eA\), equivalently a quotient of a finite sum of copies of \(P\),
 \begin{equation}\label{eq:generated-ext}
@@ -2914,24 +2876,37 @@ By Step 1, the \(P\)-summand contributes zero to \(F_s(V)\), and the
  \qquad F_s(M)=\rho(F_s(V))=\sum_{t\leq s}W_t=W_s.
 \]
 The equality \(\sum_{t\leq s}W_t=W_s\) holds because every \(W_t\) in the sum is contained in
-\(W_s\), and the term \(t=s\) is present. Thus \(G(M)\) is the prescribed
-\(T\)-space.
+\(W_s\), and the term \(t=s\) is present. Thus \(G(M)\) is isomorphic to the given
+\(T\)-space \((W;W_t)\).
 Steps 1 and 2 prove that \(G\) is fully faithful, and Step 3 proves
 essential surjectivity. Thus \(G\) is an equivalence. By its definition,
 \(T\) has one element for each \(\tau\)-projective other than \(P\),
 so \(|T|=|\ind_1^+\cD|-1\).
 \end{proof}
 
-\subsection{The magnitude of the quotient is at least one}\label{app:inequality}
-Lemma~\ref{lem:height-count} and the equality
-\(|T|=|\ind_1^+\cD|-1\) of Proposition~\ref{prop:poset-equivalence} give
-\(\chi(\cD)-1=L-|T|\). Chains of one-dimensional poset representations
-prove \(L\geq|T|\). If equality holds, commutative squares exclude
-three-element antichains, and Lemma~\ref{lem:two-chains} gives the required
-decomposition into one-dimensional representations.
+\subsection{Lower bound and equality for the magnitude of the quotient}\label{app:inequality}
+By Lemma~\ref{lem:height-arrows}, the height function of
+Proposition~\ref{prop:height} determines the number of arrows of \(\cD\),
+and hence its magnitude.
+\begin{lemma}\label{lem:height-count}
+With \(L=h(I)\), one has
+\begin{align}
+ a(\cD)&=2|\ind\cD|-L-2,\label{eq:height-count}\\
+ \chi(\cD)-1&=L-(|\ind_1^+\cD|-1).\label{eq:height-chi}
+\end{align}
+\end{lemma}
+\begin{proof}
+The category \(\cD\) is a strict \(\tau\)-category by
+Proposition~\ref{prop:quotient-sequences}.
+Lemma~\ref{lem:evaluation}(2) and Corollary~\ref{cor:boundary-arrows} give
+condition~(1) of Lemma~\ref{lem:height-arrows} with \(X_0=P\) and
+\(X_1=I\), and Proposition~\ref{prop:height} gives condition~(2).
+Lemma~\ref{lem:height-arrows} now gives both equations.
+\end{proof}
 
-The equality case uses the following decomposition for posets whose
-antichains have at most two elements. It is well known; see
+The proof of Corollary~\ref{prop:intrinsic} below also uses two general
+facts. The first decomposes representations of posets of width at most
+two. It is well known; see
 \cite[Section~8, Remark, p.~237]{RV} and
 \cite[Section~5.2, Corollary]{GR}.
 \begin{lemma}\label{lem:two-chains}
@@ -2946,16 +2921,57 @@ along these chains, together with \(0\) and \(W\), form two filtrations
 \(0=W'_0\subseteq\cdots\subseteq W'_r=W\) and
 \(0=W''_0\subseteq\cdots\subseteq W''_q=W\). Choose a complement
 \(C_{ij}\) of \((W'_{i-1}\cap W''_j)+(W'_i\cap W''_{j-1})\) in
-\(W'_i\cap W''_j\). Induction on \(i+j\) shows that
-\(W'_i\cap W''_j=\bigoplus_{a\leq i,\,b\leq j}C_{ab}\). Hence bases of the
+\(W'_i\cap W''_j\). We show by induction on \(i+j\) that
+\(W'_i\cap W''_j=\bigoplus_{a\leq i,\,b\leq j}C_{ab}\). By induction,
+\(W'_{i-1}\cap W''_j\), \(W'_i\cap W''_{j-1}\), and their intersection
+\(W'_{i-1}\cap W''_{j-1}\) are the direct sums of the \(C_{ab}\) over the
+corresponding index sets. Comparing dimensions shows that the sum of the
+first two is the direct sum of the \(C_{ab}\) with \(a\leq i\),
+\(b\leq j\), and \((a,b)\ne(i,j)\); adding \(C_{ij}\) completes the
+induction. Hence bases of the
 \(C_{ij}\) form a basis of \(W\) such that every indexed subspace is
 spanned by a subset of it. Each basis line, with its intersections with
 the indexed subspaces, is a \(T\)-space with one-dimensional total space,
 and \(W\) is their direct sum.
 \end{proof}
 
+The second shows that a map formed from bases of the irreducible maps
+into an object is minimal right almost split. For module categories it
+follows from \cite[VII, Lemma~1.2 and Proposition~1.3]{ARS}.
+\begin{lemma}\label{lem:basis-almost-split}
+Let \(\cC\) be a Hom-finite Krull--Schmidt \(k\)-linear category with
+finitely many indecomposable isomorphism classes. Let
+\(Y\) be indecomposable and \(g:M\to Y\) a radical map such that, for each
+indecomposable \(Z\), the components of \(g\) on the summands of \(M\)
+isomorphic to \(Z\) represent a basis of \(\Irr_{\cC}(Z,Y)\). Then \(g\) is
+minimal right almost split.
+\end{lemma}
+\begin{proof}
+Evaluating at each indecomposable \(Z\) shows that \(\mathsf P_g\) induces
+an isomorphism
+\[
+ \mathsf P_M/\rad_{\cC}(-,M)\longrightarrow
+ \rad_{\cC}(-,Y)/\rad_{\cC}^2(-,Y).
+\]
+Let \(\mathsf J\subseteq\rad_{\cC}(-,Y)\) be the image of \(\mathsf P_g\). Then
+\(\rad_{\cC}(-,Y)=\mathsf J+\rad_{\cC}^2(-,Y)\). Composing with radical maps gives
+\(\rad_{\cC}^2(-,Y)\subseteq \mathsf J+\rad_{\cC}^3(-,Y)\), and inductively
+\(\rad_{\cC}(-,Y)=\mathsf J+\rad_{\cC}^n(-,Y)\) for every \(n\). The radical is
+nilpotent by Lemma~\ref{lem:path-expansion}, so \(\mathsf J=\rad_{\cC}(-,Y)\):
+every radical map into \(Y\) factors through \(g\). Since \(g\) is radical,
+it is not a retraction, so \(g\) is right almost split. If \(gu=g\) for
+some \(u\in\End_{\cC}(M)\), then \(\mathsf P_u\) induces the identity on
+\(\mathsf P_M/\rad_{\cC}(-,M)\). Evaluating at \(M\) gives
+\(1_M-u\in\rad_{\cC}(M,M)\), so \(u\) is invertible.
+\end{proof}
+
 \begin{proof}[Direct proof of Corollary~\ref{prop:intrinsic}]
+We divide the proof into four steps.
+
 \textbf{Step 1: \(L\geq|T|\).}
+By Lemma~\ref{lem:height-count} and the equality
+\(|T|=|\ind_1^+\cD|-1\) of Proposition~\ref{prop:poset-equivalence},
+\(\chi(\cD)-1=L-|T|\), so it remains to show \(L\geq|T|\).
 Each \(K_U\) is indecomposable, since its endomorphism ring is \(k\).
 We use the equivalence \(G\) to regard it as an object of \(\cD\) and
 write \(h(K_U)\) for the height of that object.
@@ -2970,8 +2986,8 @@ height by at least one by Proposition~\ref{prop:height}. There are
 \[
  h(K_U)\geq|U|,\qquad L-h(K_U)\geq|T|-|U|.
 \]
-Thus \(L\geq|T|\) and \(\chi(\cD)-1=L-|T|\geq0\).
-If equality holds, then
+Thus \(L\geq|T|\), and hence \(\chi(\cD)\geq1\).
+If \(L=|T|\), then
 \begin{equation}\label{eq:upset-height}
  h(K_U)=|U|\quad\text{for every upward-closed }U.
 \end{equation}
@@ -3006,6 +3022,8 @@ of \(g=\mu_Y^+:\theta_{\cD}^+Y\to Y\). The nonzero tuple \((a,-c,0,\ldots)\)
 is killed by \(g\), so it factors through its weak kernel \(\tau_{\cD}^+Y\).
 Hence \(\tau_{\cD}^+Y\ne0\) and \(\cD(X,\tau_{\cD}^+Y)\ne0\).
 Both objects have height \(h(Y)-2\). By Proposition~\ref{prop:height},
+a nonzero map between distinct indecomposables strictly raises the
+height, so
 \begin{equation}\label{eq:square-translate}
  X\cong\tau_{\cD}^+Y.
 \end{equation}
@@ -3023,7 +3041,8 @@ form such a square, with distinct middle objects. The two squares have
 common source \(K_U\) and distinct targets.
 Equation~\eqref{eq:upset-height} makes their arrows irreducible, and
 \eqref{eq:square-translate} gives the same translate \(K_U\) for their
-distinct targets. This contradicts injectivity of \(\tau_{\cD}^+\).
+distinct targets. This contradicts the injectivity of \(\tau_{\cD}^+\)
+(Proposition~\ref{rem:tau-properties}(3)).
 
 \textbf{Step 3: (3)\(\Rightarrow\)(2).}
 If \(T\) has width at most two, Lemma~\ref{lem:two-chains} decomposes
@@ -3068,10 +3087,6 @@ Invent. Math. \textbf{65} (1981/82), 331--378.
 E.~D.~B{\o}rve, D.~Horiatakis, and M.~Kalck,
 \emph{Magnitude of module categories},
 arXiv:2607.07555v1 (2026).
-\bibitem{Bre}
-S.~Brenner,
-\emph{A combinatorial proof of the Ringel--Vossieck inequality},
-Bull. London Math. Soc. \textbf{25} (1993), 541--548.
 \bibitem{BrG}
 O.~Bretscher and P.~Gabriel,
 \emph{The standard form of a representation-finite algebra},

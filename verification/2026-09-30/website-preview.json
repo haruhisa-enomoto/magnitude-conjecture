@@ -1,0 +1,33 @@
+{
+  "checked_at": "2026-09-30T23:18:37+09:00",
+  "url": "http://127.0.0.1:8771/",
+  "tool": "Playwright 1.62.0",
+  "browser": "151.0.7922.34",
+  "website_build": {
+    "commit": "c5eaea5957217774186cd02dae379cac6bad777f",
+    "dirty": true,
+    "api_generated": true,
+    "api_source_commit": "9380dc294e2586430ff853b613918d5d9fc44375",
+    "statement_lines": 298
+  },
+  "widths_checked": [
+    1440,
+    1024,
+    768,
+    390
+  ],
+  "pages": [
+    "index",
+    "statement",
+    "proof",
+    "api",
+    "verification"
+  ],
+  "page_responses_and_headings": "passed",
+  "github_and_paper_navigation": "passed on all five pages at all four widths",
+  "paper_pdf_sha256": "5ccbe7f306ea609f6a69d570dd599b1bc7787dc0cca4cd806679770fa5d99a4e",
+  "five_api_declaration_links": "passed",
+  "horizontal_overflow": "absent",
+  "javascript_errors": [],
+  "visual_review": "Desktop and mobile overview screenshots inspected; navigation, buttons and mathematical content are legible."
+}

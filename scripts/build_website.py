@@ -24,10 +24,12 @@ def main():
     subprocess.run(["python3", str(ROOT / "scripts/generate_import_graph.py"), "--check"], check=True)
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     dirty = bool(subprocess.check_output(["git", "status", "--porcelain"], cwd=ROOT, text=True))
-    source_url = "https://github.com/haruhisa-enomoto/magnitude-conjecture/blob/" + ("main" if dirty else commit)
+    repo_url = "https://github.com/haruhisa-enomoto/magnitude-conjecture"
+    source_url = repo_url + "/blob/" + ("main" if dirty else commit)
     statement = (ROOT / "Challenge.lean").read_text()
     output = ROOT / "_site"
     output.mkdir(exist_ok=True)
+    shutil.copyfile(ROOT / "docs/manuscript/main.pdf", output / "paper.pdf")
     shutil.copytree(ROOT / "website/assets", output / "assets", dirs_exist_ok=True)
     api = ROOT / "docbuild/.lake/build/doc"
     api_state_path = ROOT / "docbuild/.lake/build/api-build.json"
@@ -58,16 +60,18 @@ def main():
         rows.append(f'<tr><td><a href="{target}"><code>{declaration}</code></a></td><td>{description}</td></tr>')
     replacements = {
         "source_url": source_url,
+        "repo_url": repo_url,
         "statement": html.escape(statement),
         "statement_lines": str(len(statement.splitlines())),
         "declaration_rows": "".join(rows),
         "api_link": '<p><a href="api/index.html">Browse and search the generated API</a></p>' if has_api else
                     '<p>The API has not been generated in this preview. Follow <code>docbuild/README.md</code> to build the documentation tool, run <code>python3 scripts/build_api.py</code>, then rebuild this site.</p>',
-        "verification_status": html.escape(status.get("summary", "Independent replay and the fresh standalone build are still in progress; they are not reported as passed.")),
+        "verification_status": html.escape(status.get("summary", "Verification records are available in the repository.")),
     }
     nav = "".join(f'<a href="{slug}.html">{label}</a>' for slug, label in PAGES.items())
-    revision = commit + (" (preview includes uncommitted changes)" if dirty else "")
-    api_revision = ("<br>API source: <code>" + api_state["source_commit"] + "</code>") if has_api else ""
+    nav += f'<a href="paper.pdf">Paper PDF</a><a href="{repo_url}">GitHub</a>'
+    revision = f'<a href="{repo_url}/tree/{commit}">{commit[:7]}</a>' + (" (preview)" if dirty else "")
+    api_revision = (f' · API: <a href="{repo_url}/tree/{api_state["source_commit"]}">{api_state["source_commit"][:7]}</a>') if has_api else ""
     for slug, title in PAGES.items():
         body = (ROOT / f"website/pages/{slug}.html").read_text()
         for key, value in replacements.items():
@@ -78,7 +82,7 @@ def main():
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title} · Magnitude conjecture</title><link rel="stylesheet" href="assets/site.css"></head>
 <body><a class="skip" href="#main">Skip to content</a><header class="site-header"><nav class="nav" aria-label="Main"><a class="brand" href="index.html">Magnitude conjecture</a>{nav}</nav></header>
-<main id="main">{body}</main><footer class="site-footer">Source: <code>{revision}</code>{api_revision}<br>Haruhisa Enomoto · Lean formalization · Apache-2.0</footer></body></html>'''
+<main id="main">{body}</main><footer class="site-footer">Source: {revision}{api_revision}<br>Haruhisa Enomoto · Lean formalization · Apache-2.0</footer></body></html>'''
         (output / f"{slug}.html").write_text(page)
     (output / "build.json").write_text(json.dumps({"commit": commit, "dirty": dirty,
         "api_generated": has_api, "api_source_commit": api_state.get("source_commit") if has_api else None,

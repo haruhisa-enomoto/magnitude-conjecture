@@ -25,7 +25,7 @@ sources:
     authors: ["Haruhisa Enomoto"]
     type: "manuscript"
     relationship: "formalizes"
-    note: "Main theorem of the manuscript frozen September 29 in docs/manuscript/; required special cases and Appendix A are mapped in docs/PAPER-CORRESPONDENCE.md."
+    note: "Main theorem of the September 30 manuscript revision in docs/manuscript/; required special cases and Appendix A are mapped in docs/PAPER-CORRESPONDENCE.md."
   - title: "An equidistribution conjecture for quotient-closed and submodule-closed subcategories: Lean formalization"
     authors: ["Haruhisa Enomoto"]
     type: "formalization"
@@ -50,20 +50,20 @@ automation:
     - method: "agent"
       models: ["GPT-6"]
       framework: "Codex"
-      tool_setup: "Owner-directed Lean development, compiler feedback, source audit, and explicit axiom checks."
+      tool_setup: "Lean development, compiler feedback, source audit, and explicit axiom checks."
       cost:
         wall_time: "Not tracked for the full inherited development"
         spend_usd: "Not tracked"
         hardware: "Local Linux workstation"
-      prompting_notes: "Audit the exact main theorem, expose independent definitions, prove their connections, and prepare a private standalone repository."
+      prompting_notes: "Development used independent theorem definitions, compiler feedback, explicit definition equivalences and axiom checks."
   spend_usd: "Not tracked"
   notes: >-
-    The model listed is recorded for the independent-interface, extraction and graded-interval migration
-    work. The full inherited development's model inventory has not been
-    reconstructed. No subagents were used in this preparation pass.
+    The model listed is recorded for work on the independent interface, source
+    extraction and graded-interval proof. The full inherited development's model inventory has not been
+    reconstructed.
 fidelity:
   divergences: >-
-    The main theorem follows the frozen manuscript through the direct proofs
+    The main theorem follows the manuscript through the direct proofs
     in Appendix A and specialized directed and standard-form results. General
     Serre, poset, grading and abstract invariant statements are outside scope.
     Almost-split transfer uses incoming maps and middle-term decompositions

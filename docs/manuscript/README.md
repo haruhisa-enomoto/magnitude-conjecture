@@ -1,15 +1,13 @@
-# Frozen manuscript
+# Manuscript
 
-The current target is the main theorem of *Magnitude of module categories and
-special biserial algebras*, frozen on September 29, 2026. The [TeX](main.tex)
-and 33-page [PDF](main.pdf) are exact copies from research commit
-`e091a2d056470e49366a64650e1504d3d151df85`; the manuscript was last changed in
-`ea7d79800044d5a007679ced5bf7115b62140631`. [manifest.json](manifest.json)
-records source paths, Git blobs and SHA-256 hashes.
+*Magnitude of module categories and special biserial algebras*, by Haruhisa
+Enomoto. [Read the paper](main.pdf) · [TeX source](main.tex).
 
-This snapshot replaces the September 21 manuscript target. See
-[the correspondence](../PAPER-CORRESPONDENCE.md) for the main theorem's route
-through the six sections and Appendix A, its exact Lean coverage and proof
-verification provenance. Broader results not needed for the main theorem are
-outside the formalization scope. Subsequent live manuscript edits do not
-change these frozen files automatically.
+This is the September 30, 2026 revision, submitted to arXiv. The public arXiv
+identifier is pending. The 33-page PDF and TeX are preserved from source commit
+`e327fbcf1b75a3f6986f4f29d5afe5089e384297`; [manifest.json](manifest.json)
+records their hashes and provenance.
+
+The [paper correspondence](../PAPER-CORRESPONDENCE.md) maps the main theorem
+and its required special cases to Lean, including the direct proofs in
+Appendix A. The snapshot fixes the manuscript revision used by that mapping.
